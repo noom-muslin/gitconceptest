@@ -796,6 +796,20 @@
             }
           }
         }
+      },"p_NOOM": {
+      "route": "/noom",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "noom",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "noom"
+            }
+          }
+        }
       },
       "defaults": {
         "searchParams": {
