@@ -1,0 +1,3694 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "กลับไป",
+                  "options": {
+                    "validationSchema": false,
+                    "icon": "ArrowBack",
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_CallVerify_Details_Back",
+                    "subtype": "show"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Call Ver",
+                  "options": {
+                    "validationSchema": false,
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_CallVerify_Details_Back",
+                    "subtype": "show"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "4px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_id",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "validationSchema": false,
+                    "variant": "secondary",
+                    "sx": {
+                      "& svg": {
+                        "marginRight": "8px"
+                      }
+                    },
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "spacing": 2,
+        "container": true,
+        "sx": {
+          "padding": "16px",
+          "marginBottom": "70px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "Documentum"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "marginBottom": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "variant": "section"
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ความคิดเห็นจาก RCCO"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "container": true,
+                            "spacing": "16px",
+                            "padding": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": true,
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 12
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "UniversalArrayView",
+                                      "scope": "#/properties/rc_comments",
+                                      "label": {
+                                        "show": false
+                                      },
+                                      "options": {
+                                        "hideColumnTitles": true,
+                                        "hideTableToolbar": true,
+                                        "disableItemsRemove": true,
+                                        "sx": {
+                                          "th": {
+                                            "padding": "8px 3px"
+                                          },
+                                          "td": {
+                                            "padding": "5px 3px"
+                                          }
+                                        },
+                                        "cells": [
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#/properties/station",
+                                            "options": {
+                                              "variant": "body2",
+                                              "columnTitle": "station"
+                                            }
+                                          },
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#/properties/operator",
+                                            "options": {
+                                              "variant": "body2",
+                                              "columnTitle": "operator"
+                                            }
+                                          },
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#/properties/commentTimestamp",
+                                            "options": {
+                                              "variant": "body2",
+                                              "columnTitle": "commentTimestamp"
+                                            }
+                                          },
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#/properties/commentDetail",
+                                            "options": {
+                                              "variant": "body2",
+                                              "columnTitle": "commentDetail"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 16px 0",
+                  "marginBottom": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "margin": "0 -16px",
+                      "backgroundColor": "#f5f3ff"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Accordion",
+                      "label": "รายละเอียดข้อมูลลูกค้า",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": true,
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6,
+                                    "md": 12
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ประเภทลูกค้า",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/customer_type",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "คำนำหน้า",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/title_name",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ชื่อ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/name",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ชื่อกลาง",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/middle_name",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "นามสกุล",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/last_name",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "เลขที่เอกสารอ้างอิง",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/reference_no",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "วันเกิด/วันที่จดทะเบียนนิติบุคคล (พ.ศ.)",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/dob",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "เบอร์โทรศัพท์",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/phone_number",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "เบอร์โทรศัพท์มือถือ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/mobile_number",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "Application Group",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/application_group",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "Product Type",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/product_type",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "Sub Product Type",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/sub_product_type",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ที่ทำงาน",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/borrowers/properties/work_place",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 16px 0",
+                  "marginBottom": "16px"
+                }
+              },
+              "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/isParty_type",
+                  "schema": {
+                    "const": true
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "margin": "0 -16px",
+                      "backgroundColor": "#f5f3ff"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Accordion",
+                      "label": "ตรวจสอบทางโทรศัพท์",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "container": true,
+                              "padding": "16px",
+                              "Height": "68px",
+                              "Width":"616px",
+                              "gap" : "8px",
+                              "fontSize" : "14px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/is_autodial_checking",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "format": "radio",
+                                "row": "true",
+                                "Width":20,
+                                "Height":20,
+                                "Border":2 
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "sx": {
+                                  "container": true,
+                                  "padding": "0 0",
+                                  "spacing": "16px",
+                                  "margin-left": "0",
+                                  "margin-top": "0"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 16px",
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "รายการคำถาม",
+                                  "options": {
+                                    "variant": "subtitle2",
+                                    "sx": {
+                                      "fontSize": "15px",
+                                      "color": "#2F3846"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ผลการตรวจสอบ",
+                                  "options": {
+                                    "variant": "subtitle2",
+                                    "sx": {
+                                      "fontSize": "15px",
+                                      "color": "#2F3846"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "หมายเหตุ",
+                                  "options": {
+                                    "variant": "subtitle2",
+                                    "sx": {
+                                      "fontSize": "15px",
+                                      "color": "#2F3846"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "0 16px 16px",
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "พบข้อมูลผู้ขอสินเชื่อ",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/lessor",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "  ",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ยืนยันการขอสินเชื่อ",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_loan_request",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 23,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_loan_request_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "autocomplete": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_loan_request",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ยืนยันประเภทรถที่ขอเช่าซื้อ",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_type_of_car",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "SelectField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_type_of_car_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "autocomplete": true,
+                                    "size": "small",
+                                    "enumDataPath": "confirmTypeOfCarReason_enum"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_type_of_car",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ยี่ห้อ/รุ่นรถตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_brand",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "SelectField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_brand_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "autocomplete": true,
+                                    "enumDataPath": "confirmBrandReason_enum",
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_brand",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ที่อยู่ปัจจุบันตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_current_address",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_current_address_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_current_address",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "กรรมสิทธิ์ที่พักอาศัยตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_residence_owner",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "SelectField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_residence_owner_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "autocomplete": true,
+                                    "enumDataPath": "confirmResidenceOwnerReason_enum",
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_residence_owner",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ที่อยู่จัดส่งตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_mailing_address",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_mailing_address_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_mailing_address",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ยืนยันข้อมูลการใช้รถ",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_using_car",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_using_car_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_using_car",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "จำนวนเงินดาวน์ตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_down_amount",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_down_amount_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_down_amount",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "จำนวนยอดจัดตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_principal_amount",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_principal_amount_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_principal_amount",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 16px 0",
+                  "marginBottom": "16px"
+                }
+              },
+              "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/isParty_type",
+                  "schema": {
+                    "const": false
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "margin": "0 -16px",
+                      "backgroundColor": "#f5f3ff"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Accordion",
+                      "label": "ตรวจสอบทางโทรศัพท์",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "container": true,
+                              "padding": "16px",
+                              "Height": "68px",
+                              "Width":"616px",
+                              "gap" : "8px",
+                              "fontSize" : "14px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/is_autodial_checking",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "format": "radio",
+                                "row": "true",
+                                "Width":20,
+                                "Height":20,
+                                "Border":2 
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "sx": {
+                                  "container": true,
+                                  "padding": "0 0",
+                                  "spacing": "16px",
+                                  "margin-left": "0",
+                                  "margin-top": "0"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 16px",
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "รายการคำถาม",
+                                  "options": {
+                                    "variant": "subtitle2",
+                                    "sx": {
+                                      "fontSize": "15px",
+                                      "color": "#2F3846"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ผลการตรวจสอบ",
+                                  "options": {
+                                    "variant": "subtitle2",
+                                    "sx": {
+                                      "fontSize": "15px",
+                                      "color": "#2F3846"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "หมายเหตุ",
+                                  "options": {
+                                    "variant": "subtitle2",
+                                    "sx": {
+                                      "fontSize": "15px",
+                                      "color": "#2F3846"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 16px",
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ตรวจสอบผู้ค้ำประกัน",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/guarantor",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "  ",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ยืนยันการค้ำประกัน",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_guarantee",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_guarantee_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_guarantee",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ยืนยันความสัมพันธ์",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_relationship",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_relationship_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_relationship",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ที่อยู่ปัจจุบันตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_current_address",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_current_address_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_current_address",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "กรรมสิทธิ์ที่พักอาศัยตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_residence_owner",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "SelectField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_residence_owner_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "autocomplete": true,
+                                    "enumDataPath": "confirmResidenceOwnerReason_enum",
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_residence_owner",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ที่อยู่จัดส่งตรงกับเอกสาร",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "Control",
+                                  "scope": "#/properties/confirm_mailing_address",
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "format": "radio",
+                                    "row": "true",
+                                    "Width": 20,
+                                    "Height": 20,
+                                    "Border": 2
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6,
+                                "md": 4
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/confirm_mailing_address_reason",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "size": "small"
+                                  },
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/confirm_mailing_address",
+                                      "schema": {
+                                        "const": "false"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 16px 0",
+                  "marginBottom": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "backgroundColor": "#f5f3ff",
+                      "margin": "0 -16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Accordion",
+                      "label": "ตรวจสอบที่อยู่",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "container": true,
+                              "padding": "16px",
+                              "Height": "68px",
+                              "Width":"616px",
+                              "gap" : "8px",
+                              "fontSize" : "14px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Control",
+                              "scope": "#/properties/is_address_checking",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "format": "radio",
+                                "row": "true",
+                                "padding": "16px",
+                                "Height": "68px",
+                                "Width":"616px",
+                                "gap" : "8px"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "sx": {
+                                  "container": true,
+                                  "padding": "0 0",
+                                  "spacing": "16px",
+                                  "margin-left": "0",
+                                  "margin-top": "0"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 16px",
+                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                            },
+                            "container": true
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "sx": {
+                                  "container": true,
+                                  "padding": "0 0",
+                                  "margin-left": "0",
+                                  "margin-top": "0"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "options": {
+                                    "sx": {
+                                      "padding": "0 0 0"
+                                    }
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "GridLayout",
+                                      "scope": "#/properties/borrowers",
+                                      "options": {
+                                        "container": true,
+                                        "spacing": "16px"
+                                      },
+                                      "elements": [
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4,
+                                            "md": 12
+                                            
+                                  
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่ปัจจุบัน",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "fontSize": "14px",
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "เลขที่",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/address_no",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "หมู่ที่",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/moo",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "หมู่บ้าน/อาคาร/คอนโด",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/village",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ชั้นที่",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/floor",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ห้อง",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/room",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ตรอก",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/trok",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ซอย/แยก",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/soi",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ถนน",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/road",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "จังหวัด",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/province",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "อำเภอ/เขต",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/amphur",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ตำบล/แขวง",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/tambon",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "รหัสไปรษณีย์",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Current/properties/zip_code",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx": {
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "sx": {
+                                              "padding": "16px 16px 16px",
+                                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                                            },
+                                            "container": true,
+                                            "spacing": "16px"
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "GridLayout",
+                                              "options": {
+                                                "sx": {
+                                                  "container": true,
+                                                  "padding": "0 0",
+                                                  "spacing": "16px",
+                                                  "margin-left": "0",
+                                                  "margin-top": "0"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 12
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่ที่ทำงาน",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "fontSize": "15px",
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "เลขที่",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/address_no",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "หมู่ที่",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/moo",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "หมู่บ้าน/อาคาร/คอนโด",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/village",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ชั้นที่",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/floor",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ห้อง",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/room",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ตรอก",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/trok",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ซอย/แยก",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/soi",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ถนน",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/road",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "จังหวัด",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/province",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "อำเภอ/เขต",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/amphur",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ตำบล/แขวง",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "*",
+                                                  "options": {
+                                                    "variant": "label",
+                                                    "sx": {
+                                                      "color": "#EF4444"
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/tambon",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "รหัสไปรษณีย์",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/Work/properties/zip_code",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "sx": {
+                                              "padding": "16px 16px 16px",
+                                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                                            },
+                                            "container": true,
+                                            "spacing": "16px"
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "GridLayout",
+                                              "options": {
+                                                "sx": {
+                                                  "container": true,
+                                                  "padding": "0 0",
+                                                  "spacing": "16px",
+                                                  "margin-left": "0",
+                                                  "margin-top": "0"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 12
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่ NCB",
+                                                  "options": {
+                                                    "variant": "subtitle2",
+                                                    "sx": {
+                                                      "fontSize": "15px",
+                                                      "color": "#2F3846"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่บรรทัดที่ 1",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/addr_line1",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx":{
+                                                      "color": "#000000"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่บรรทัดที่ 2",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/addr_line2",
+                                                  "options": {
+                                                    "variant": "body2",
+                                                    "sx":{
+                                                      "color": "#000000"
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 12
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่บรรทัดที่ 3",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/addr_line3",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "จังหวัด",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/province",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "อำเภอ/เขต",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/district",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ตำบล/แขวง",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/sub_district",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "รหัสไปรษณีย์",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                },
+                                                {
+                                                  "type": "Typography",
+                                                  "scope": "#/properties/NCB/properties/zip_code",
+                                                  "options": {
+                                                    "variant": "body2"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "sx": {
+                                              "padding": "16px 16px 16px",
+                                              "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                                            },
+                                            "container": true,
+                                            "spacing": "16px"
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "GridLayout",
+                                              "options": {
+                                                "sx": {
+                                                  "container": true,
+                                                  "padding": "0 0",
+                                                  "spacing": "16px",
+                                                  "margin-left": "0",
+                                                  "margin-top": "0"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 12
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "ที่อยู่ปัจจุบัน/ที่อยู่ที่ทำงาน ตรงกับที่อยู่ตามบัตรประชาชนหรือที่อยู่ NCB",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                }                             
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Control",
+                                              "scope": "#/properties/is_ncb_address_match",
+                                              "label": {
+                                                "show": false
+                                              },
+                                              "options": {
+                                                "format": "radio",
+                                                "row": "true",
+                                                "Width":20,
+                                                "Height":20,
+                                                "Border":2 
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 12
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "rule": {
+                                                "effect": "SHOW",
+                                                "condition": {
+                                                  "scope": "#/properties/is_ncb_address_match",
+                                                  "schema": {
+                                                    "const": "false"
+                                                  }
+                                                }
+                                              },
+                                              "elements": [
+                                                {
+                                                  "type": "Typography",
+                                                  "label": "โทรยืนยันกับลูกค้าเพิ่มเติม",
+                                                  "options": {
+                                                    "variant": "label"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 4
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Control",
+                                              "scope": "#/properties/is_confirm_customer",
+                                              "label": {
+                                                "show": false
+                                              },
+                                              "options": {
+                                                "format": "radio",
+                                                "row": "true",
+                                                "Width":20,
+                                                "Height":20,
+                                                "Border":2 
+                                              },
+                                              "rule": {
+                                                "effect": "SHOW",
+                                                "condition": {
+                                                  "scope": "#/properties/is_ncb_address_match",
+                                                  "schema": {
+                                                    "const": "false"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 11.5
+                                          },
+                                          "rule": {
+                                            "effect": "SHOW",
+                                            "condition": {
+                                              "scope": "#/properties/is_ncb_address_match",
+                                              "schema": {
+                                                "const": "false"
+                                              }
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "เหตุผล",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            },
+                                            {
+                                              "type": "TextField",
+                                              "scope": "#/properties/reason_ncb_address",
+                                              "label": false,
+                                              "options": {
+                                                "variant": "outlined",
+                                                "hideRequiredAsterisk": true,
+                                                "fullwidth": true,
+                                                "multi": true,
+                                                "minRows": 1,
+                                                "maxRows": 2
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 6,
+                                            "md": 11.5
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "ความเห็นเพิ่มเติม",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            },
+                                            {
+                                              "type": "TextField",
+                                              "scope": "#/properties/additional_comment",
+                                              "label": false,
+                                              "options": {
+                                                "variant": "outlined",
+                                                "hideRequiredAsterisk": true,
+                                                "fullwidth": true,
+                                                "multi": true,
+                                                "minRows": 5,
+                                                "maxRows": 8
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }  
+              ]
+            }
+            ,
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 16px 0",
+                  "marginBottom": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "margin": "0 -16px",
+                      "backgroundColor": "#f5f3ff"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Accordion",
+                      "label": "หมายเหตุ",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      },
+                      "elements": [
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 16px"
+                            },
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "elements": [
+                                {
+                                  "label": {
+                                    "show": false
+                                  },
+                                  "options": {
+                                    "sx": {
+                                      "& .quill": {
+                                        "height": "200px"
+                                      }
+                                    }
+                                  },
+                                  "scope": "#/properties/text",
+                                  "type": "RtfField"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Follow Up",
+              "options": {
+                "operationType": "script",
+                "subtype": "followUp",
+                "variant": "secondary",
+                "converter": "logContext"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Fraud",
+              "options": {
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_TempIndexing_Details_Cancel",
+                "variant": "secondary"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ทำภายหลัง",
+              "options": {
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_RCVerify_Details_Reminder",
+                "variant": "secondary"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกแบบร่าง",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_CallVerify_Details_saveToDraft",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "variant": "primary",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_CallVerify_Details_Submit",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

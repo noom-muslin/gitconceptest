@@ -1,0 +1,108 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "address_usage": {
+        "type": "string"
+      },
+      "address_usageLabel": {
+        "type": "string"
+      },
+      "address_no": {
+        "type": ["null", "string"],
+        "pattern": "^(?!เลข|บ้าน|NUMBER|NO\\.)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "moo": {
+        "type": ["string", "null"],
+        "pattern": "^(?!หมู่|ม\\.|MOO|M\\.|MU)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "village": {
+        "type": ["string", "null"],
+        "pattern": "^(?!หมู่บ้าน|มบ|อาคาร|อ\\.|VILLAGE|BUILDING|BLDG)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "floor": {
+        "type": ["string", "null"],
+        "pattern": "^(?!ชั้น|FLOOR|FL\\.)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "room": {
+        "type": ["string", "null"],
+        "pattern": "^(?!ห้อง|UNIT|ROOM)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "trok": {
+        "type": ["string", "null"],
+        "pattern": "^(?!ตรอก|TROK)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "soi": {
+        "type": ["string", "null"],
+        "pattern": "^(?!ซอย|ส\\.|SOI|S\\.)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "road": {
+        "type": ["string", "null"],
+        "pattern": "^(?!ถนน|ROAD|RD\\.|STREET)(?!.*ไม่มี)(?!.* {2})(?!^\\s)(?!.*\\s$)[A-Z0-9ก-๙ ]+$"
+      },
+      "province": {
+        "type": "string"
+      },
+      "amphur": {
+        "type": "string"
+      },
+      "tambon": {
+        "type": "string"
+      },
+      "zip_code": {
+        "type": ["string", "null"]
+      },
+      "telephone_number": {
+        "type": "string",
+        "minLength": 10,
+        "pattern": "^0"
+      },
+      "telephone_to": {
+        "type": ["string", "null"],
+        "maxLength": 4,
+        "pattern": "^\\d*$"
+      },
+      "telephone_ext": {
+        "type": ["string", "null"],
+        "maxLength": 4,
+        "pattern": "^\\d*$"
+      },
+      "mobile_number": {
+        "type": "string",
+        "minLength": 10,
+        "pattern": "^0"
+      },
+      "address_format": {
+        "type": "string"
+      },
+      "address_owner": {
+        "type": "string"
+      },
+      "residence_period": {
+        "type": ["string", "null"]
+      },
+      "residence_expenses": {
+        "type": ["string", "null"],
+        "pattern": "^\\d*$"
+      }     
+    },
+    "required": ["address_usage", "province", "amphur", "tambon", "telephone_number", "mobile_number"],
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "address_usage": {
+              "const": "CurrentAddress"
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "address_format", "address_owner"
+          ]
+        }
+      }
+    ]
+  }
+}

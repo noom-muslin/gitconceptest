@@ -1,0 +1,416 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em",
+    "sx": {
+      "minWidth": "800px",
+      "maxWidth": "800px"
+    }
+  },
+  "elements": [
+    {
+      "type": "ActionButton",
+      "options": {
+        "sx": {
+          "display": "none"
+        },
+        "htmlID": "hiddenOldLoanModalButton",
+        "operationType": "modal",
+        "subtype": "show",
+        "dialogName": "m_Basic_Error",
+        "dialogVariables": {
+          "title": "{status.header}",
+          "text": "{status.description}"
+        }
+      }
+    },
+    {
+      "type": "Group",
+      "options": {
+        "sx": {
+          "height": "0px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/station/properties/showNotification",
+          "schema": {
+            "const": "Register_Loan_Get_Account_Deposits"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "Notification",
+          "label": "เกิดข้อผิดพลาด",
+          "options": {
+            "preventDuplicate": 1,
+            "autoHideDuration": "1750",
+            "persist": false,
+            "variant": "error",
+            "hideCloseButton": true,
+            "anchorOrigin": {
+              "horizontal": "center",
+              "vertical": "top"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormMapperListener",
+      "options": {
+        "resultMappingSchema": {
+          "type": "object",
+          "properties": {
+            "station": {
+              "converter": "stationListenerRegister",
+              "type": "object",
+              "dataPath": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "BoxLayout",
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "5"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ประเภทวงเงิน",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "red"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "SelectField",
+                  "label": false,
+                  "scope": "#properties/credit_line_type",
+                  "options": {
+                    "hideRequiredAsterisk": true,
+                    "variant": "outlined",
+                    "fullwidth": true,
+                    "sx": {
+                      "width": "95%"
+                    },
+                    "query": "CommonSearch/GetStandardCode",
+                    "queryVariables": {
+                      "standard_list_code": [
+                        "N006"
+                      ]
+                    },
+                    "converter": "mapValueLabel"
+                  },
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "5",
+                "sx": {
+                  "margin": "0 0 0 -1rem"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "เลขที่บัญชี",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "red"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "TextField",
+                  "label": false,
+                  "scope": "#properties/account_number",
+                  "options": {
+                    "hideRequiredAsterisk": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "width": "95%"
+                    }
+                  },
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx": {
+                  "margin": "0 0 0 -2rem"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": ".",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "transparent"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ค้นหาบัญชี",
+                  "options": {
+                    "sx": {
+                      "width": "150px !important",
+                      "height": "39px"
+                    },
+                    "variant": "secondary",
+                    "chain": [
+                      {
+                        "operationType": "action",
+                        "conditionTypeId": "Register_Loan_Get_Account_Deposits",
+                        "payload": {
+                          "userId": "{user.login}",
+                          "accountNumber": "{account_number}",
+                          "enum_project": [],
+                          "enum_organization": [],
+                          "appl_account": {
+                            "is_show_account_name": false
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": [
+                                "payload"
+                              ],
+                              "properties": {
+                                "payload": {
+                                  "type": "object",
+                                  "required": [
+                                    "data"
+                                  ],
+                                  "properties": {
+                                    "data": {
+                                      "required": [
+                                        "appl_account"
+                                      ],
+                                      "type": "object",
+                                      "properties": {
+                                        "appl_account": {
+                                          "type": "object",
+                                          "required": [
+                                            "is_show_account_name"
+                                          ],
+                                          "properties": {
+                                            "is_show_account_name": {
+                                              "type": "boolean",
+                                              "const": true
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ชื่อบัญชี",
+                      "options": {
+                        "variant": "label"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "elements": [
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/appl_account/properties/accountName",
+                  "options": {
+                    "variant": "body2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "sx": {
+              "padding": "1em"
+            },
+            "direction": "row-reverse"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ดึงข้อมูล",
+              "options": {
+                "variant": "primary",
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "Register_Loan_Collateral_Old_Loan_Inquiry",
+                    "payload": {
+                      "userId": "{user.login}",
+                      "accountNumber": "{account_number}",
+                      "applicationId": "{application_number}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "payload",
+                            "status"
+                          ],
+                          "properties": {
+                            "status": {
+                              "type": "object",
+                              "required": [
+                                "code"
+                              ],
+                              "properties": {
+                                "code": {
+                                  "type": "number",
+                                  "const": 1000
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "close"
+                      }
+                    ]
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "showOldLoanModal"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

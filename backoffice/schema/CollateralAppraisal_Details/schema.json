@@ -1,0 +1,163 @@
+{
+  "type": "object",
+  "properties": {
+    "application_details": {
+      "type": "object",
+      "properties": {
+        "created_on": {
+          "type": "string"
+        },
+        "date_customer_signs": {
+          "type": "string"
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "register_date": {
+          "type": "string"
+        }
+      }
+    },
+    "salespersonInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "firstAndLastName": {
+            "type": "string",
+            "readOnly": true
+          },
+          "branch": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ocCode": {
+            "type": "string",
+            "readOnly": true
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "readOnly": true
+            }
+          },
+          "view_details": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    },
+    "recommenderInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string",
+            "readOnly": true
+          },
+          "firstAndLastName": {
+            "type": "string",
+            "readOnly": true
+          },
+          "branch": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ocCode": {
+            "type": "string",
+            "readOnly": true
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "readOnly": true
+            }
+          },
+          "view_details": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    },
+    "borroverInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "readOnly": true
+          },
+          "referenceNum": {
+            "type": "string",
+            "readOnly": true
+          },
+          "customerName": {
+            "type": "string",
+            "readOnly": true
+          },
+          "spouse": {
+            "type": "string",
+            "readOnly": true
+          },
+          "dob_registrationDate": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ocCode": {
+            "type": "string",
+            "readOnly": true
+          },
+          "segmentCode": {
+            "type": "string",
+            "readOnly": true
+          },
+          "view_details": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    },
+    "guarantorInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "readOnly": true
+          },
+          "referenceDocNum": {
+            "type": "string",
+            "readOnly": true
+          },
+          "customerName": {
+            "type": "string",
+            "readOnly": true
+          },
+          "referenceDocType": {
+            "type": "string",
+            "readOnly": true
+          },
+          "view_details": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    }
+  }
+}

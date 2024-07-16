@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "application_id":{
+      "type":"string"
+    },
+    "statusId":{
+      "type":"string"
+    },
+    "output":{
+      "type":"object",
+      "properties":{
+        "application_id":{
+          "type":"string"
+        },
+        "statusId":{
+          "type":"string"
+        }
+      }
+    }
+  }
+}

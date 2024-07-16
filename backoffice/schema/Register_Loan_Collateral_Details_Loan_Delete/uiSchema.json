@@ -1,0 +1,397 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em",
+    "sx": {
+      "minWidth": "400px",
+      "maxWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการลบข้อมูลนี้หรือไม่",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อกดลบแล้ว ระบบจะลบข้อมูลนี้ออก",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "กลับไป",
+          "options": {
+            "variant": "outlined",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel",
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "cancel"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ลบ",
+          "options": {
+            "validationSchema": false,
+            "variant": "primaryError",
+            "size": "large",
+            "sx": {},
+            "operationType": "script",
+            "converter": "deleteLoan",
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "emptyLoans": {
+                  "type": "boolean"
+                },
+                "loanSection": {
+                  "type": "object",
+                  "properties": {
+                    "newLoan": {
+                      "type": "object",
+                      "properties": {
+                        "application_account_id": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "application_group": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "application_type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "product_group": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "product_type": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "sub_product": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "loans": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "seq": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "application_account_id": {
+                            "type": "string"
+                          },
+                          "loan_objective_description": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "master_account_flag": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "account_name": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "account_number": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "sub_loan_type_description": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "credit_line_type": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "balance_credit_line_amount": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "old_credit_line_amount": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "approved_amount": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "requested_amount": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "tenor_month": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "campaign": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "account_installment_monthly_amount": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "application_group": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "product_group": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "product_type": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "sub_product": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "contract_no": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "application": {
+                      "type": "object",
+                      "properties": {
+                        "objective_details": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "appl_account": {
+                  "type": "object",
+                  "properties": {
+                    "requested_amount": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "net_amount_pvd": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "company_code_pvd": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "member_code_pvd": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "loan_tenor_month_pvd": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "pn_payment_method": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "loan_purpose_code": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "account_number": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "accountNumber": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "accountName": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "accountStatus": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "accountStatusCode": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "accountNumber": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "cancel"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

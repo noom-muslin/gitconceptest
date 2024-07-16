@@ -1,0 +1,12 @@
+query GetSourceOfInsurance{
+  result: ngl_enum_standard_code(
+    where: {
+      standard_list_code: {_eq: "0155"}
+      status: {_eq: true}
+    },
+    order_by: {priority: asc}
+  ) {
+    code: code
+    label: display_value
+  }
+}

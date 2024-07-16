@@ -1,0 +1,110 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em",
+    "sx": {
+      "padding": "1em"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "12"
+              },
+              "elements": [
+                {
+                  "type": "SelectField",
+                  "label": "ประเภทที่อยู่",
+                  "scope": "#/properties/addAddress/properties/address_usage",
+                  "options": {
+                    "variant": "outlined",
+                    "fullwidth": true,
+                    "autocomplete": true,
+                    "enumDataPath": "addAddress.addressUsageEnum"
+                  },
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "12"
+              },
+              "elements": [
+                {
+                  "type": "SelectField",
+                  "label": "ใช้ข้อมูลตั้งต้นจาก",
+                  "scope": "#/properties/addAddress/properties/addressSource",
+                  "options": {
+                    "variant": "outlined",
+                    "fullwidth": true,
+                    "enumDataPath": "addAddress.addressSourceEnum"
+                  },
+                  "rule": {
+                    "effect": "ENABLE",
+                    "condition": {
+                      "scope": "#/properties/addAddress/properties/addressSourceEnabled",
+                      "schema": {
+                        "const": true
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse",
+            "sx": {
+              "paddingTop": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกข้อมูล",
+              "options": {
+                "variant": "primary",
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "registerAddBorrowerAddAddress",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "addresses": {
+                          "$ref": "urn:zbo:schema:Register_Details_Add_Borrower_Addresses"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

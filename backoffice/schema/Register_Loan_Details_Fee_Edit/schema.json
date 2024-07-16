@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "properties": {
+    "appl_account_fee_edit": {
+      "type": "object",
+      "required": [
+        "fee_type_id",
+        "collected_fee"
+      ],
+      "properties": {
+        "id":{
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_type_desc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_type_id": {
+          "type": 
+            "string"
+        },
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_percent": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "calculated_fee": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_condition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "collected_fee": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

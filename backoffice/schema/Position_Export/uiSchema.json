@@ -1,0 +1,68 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "436px",
+      "minWidth": "436px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "label": "เลือกวิธีการดาวน์โหลด",
+              "scope": "#/properties/exportType",
+              "options": {
+                "labelPlacement": "end",
+                "radioSize": "small",
+                "format": "radio"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยืนยัน",
+          "options": {
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Position_Management_Export"
+              },
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

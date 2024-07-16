@@ -1,0 +1,272 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 118
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 106
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 142
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 142
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 142
+    },
+    {
+      "name": "customer_name",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "title": "ชื่อลูกค้า",
+      "minWidth": 200
+    },
+    {
+      "title": "เบอร์โทรศัพท์มือถือ",
+      "field": "application.primary_borrower.borrower.party",
+      "schemas": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "contacts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "mobile_phone": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "uiSchema": {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/contacts",
+          "options": {
+            "hideColumnTitles": true,
+            "hideTableToolbar": true,
+            "cells": [
+              {
+                "options": {
+                  "columnTitle": ""
+                },
+                "scope": "#/properties/mobile_phone",
+                "type": "Typography"
+              }
+            ]
+          }
+        }
+      },
+      "name": "mobile_no",
+      "minWidth": 200
+    },
+    {
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.code",
+      "name": "product_type",
+      "minWidth": 200
+    },
+    {
+      "title": "Sub Product",
+      "field": "application.primary_account.account.sub_product_type_id",
+      "name": "sub_product",
+      "minWidth": 146
+    },
+    {
+      "title": "จำนวนรถ (คัน)",
+      "field": "application.primary_account.account.collaterals[0].autos[0].number_car",
+      "name": "number_car",
+      "minWidth": 144
+    },
+    {
+      "title": "ยี่ห้อ",
+      "field": "application.primary_account.account.collaterals[0].autos[0].vehicle_brand",
+      "name": "brand",
+      "minWidth": 114
+    },
+    {
+      "title": "รุ่น",
+      "field": "application.primary_account.account.collaterals[0].autos[0].vehicle_model",
+      "name": "model",
+      "minWidth": 114
+    },
+    {
+      "title": "รุ่นปี ค.ศ.",
+      "field": "application.primary_account.account.collaterals[0].autos[0].model_year",
+      "name": "year",
+      "minWidth": 111
+    },
+    {
+      "title": "รุ่นย่อย",
+      "field": "application.primary_account.account.collaterals[0].autos[0].vehicle_sub_model",
+      "name": "sub_model",
+      "minWidth": 253
+    },
+    {
+      "title": "OEM",
+      "field": "application.primary_account.account.collaterals[0].autos[0].chasis_no",
+      "name": "oem_model",
+      "minWidth": 87
+    },
+    {
+      "title": "ประเภทเครื่องยนต์",
+      "field": "application.primary_account.account.collaterals[0].autos[0].engine_type",
+      "name": "engine_type",
+      "minWidth": 169
+    },
+    {
+      "title": "CCKWH",
+      "field": "application.primary_account.account.collaterals[0].autos[0].horse_power",
+      "name": "cckwh",
+      "minWidth": 106
+    },
+    {
+      "title": "ประเภทเกียร์",
+      "field": "application.primary_account.account.collaterals[0].autos[0].gear_type",
+      "name": "gear_type",
+      "minWidth": 133
+    },
+    {
+      "title": "ราคารถ",
+      "field": "application.primary_account.account.collaterals[0].autos[0].vehicle_price",
+      "name": "car_price",
+      "minWidth": 112
+    },
+    {
+      "title": "Application Submit Date​​",
+      "field": "application.application_date_time_in",
+      "name": "app_submit_date",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 224
+    },
+    {
+      "title": "วันที่เอกสารถึง WB",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 171
+    },
+    {
+      "title": "Application Created By",
+      "field": "application.created_by",
+      "name": "app_create_by",
+      "minWidth": 214
+    },
+    {
+      "title": "อีเมลพนักงานขาย",
+      "field": "application.saleinfos[0].email",
+      "name": "sales_email",
+      "minWidth": 192
+    },
+    {
+      "title": "เบอร์โทรศัพท์พนักงานขาย",
+      "field": "application.saleinfos[0].phone",
+      "name": "sales_phone",
+      "minWidth": 218
+    },
+    {
+      "title": "สถานะใบสมัคร",
+      "field": "application.status_id",
+      "name": "app_status",
+      "minWidth": 199
+    },
+    {
+      "title": "FU Updated",
+      "field": "followup.fu_updated",
+      "name": "fu_updated",
+      "converter": "followup_updated",
+      "minWidth": 136
+    },
+    {
+      "title": " ",
+      "name": "fu",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู FU",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CollateralAppraisal",
+            "route": "/collateral-appraisal",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 51
+    },
+    {
+      "title": " ",
+      "name": "ca",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CollateralAppraisal",
+            "route": "/collateral-appraisal",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 51
+    },
+    {
+      "title": " ",
+      "name": "get_task",
+      "sortable": false,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_CollateralAppraisal",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/collateral-appraisal/{data.id}/details"
+            },
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 76
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

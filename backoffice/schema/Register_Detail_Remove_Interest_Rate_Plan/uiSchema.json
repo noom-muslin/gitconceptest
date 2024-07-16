@@ -1,0 +1,173 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ต้องการลบแผนอัตราดอกเบี้ยหรือไม่",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อกดลบ ระบบจะนำข้อมูลออกจากระบบ",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "variant": "outlined",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ลบ",
+          "options": {
+            "variant": "primaryError",
+            "size": "large",
+            "operationType": "script",
+            "converter": "deleteInterestRatePlan",
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "amount_tier_list": {
+                  "type": "array",
+                  "dataPath": "amount_tier_list"
+                },
+                "is_multi_amount_tier": {
+                  "type": "boolean",
+                  "dataPath": "is_multi_amount_tier"
+                },
+                "afterward_list": {
+                  "type": "array",
+                  "dataPath": "afterward_list"
+                },    
+                "starting_date": {
+                  "type": ["string", "null"],
+                  "dataPath": "starting_date"
+                },
+                "ending_date": {
+                  "type": ["string", "null"],
+                  "dataPath": "ending_date"
+                },
+                "period_unit": {
+                  "type": ["string", "null"],
+                  "dataPath": "period_unit"
+                },
+                "tier_type": {
+                  "type": ["string", "null"],
+                  "dataPath": "tier_type"
+                },
+                "base_factor_standard": {
+                  "type": ["string", "null"],
+                  "dataPath": "base_factor_standard"
+                },
+                "base_factor_interest_rates": {
+                  "type": ["string", "null"],
+                  "dataPath": "base_factor_interest_rates"
+                },
+                "diff_code": {
+                  "type": ["string", "null"],
+                  "dataPath": "diff_code"
+                },
+                "diff_value": {
+                  "type": ["string", "null"],
+                  "dataPath": "diff_value"
+                },
+                "diff_code2": {
+                  "type": ["string", "null"],
+                  "dataPath": "diff_code2"
+                },
+                "diff_value2": {
+                  "type": ["string", "null"],
+                  "dataPath": "diff_value2"
+                },
+                "interest_rate_list":{
+                  "type": "array",
+                  "dataPath": "interest_rate_list"
+                },"ra_seq":{
+                  "type":["string", "null"],
+                  "dataPath": "ra_seq"
+                }
+              }
+            },
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "cancel"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

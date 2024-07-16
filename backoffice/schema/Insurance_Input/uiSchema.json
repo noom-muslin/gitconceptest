@@ -1,0 +1,275 @@
+{
+  "type": "StackLayout",
+  "options": {
+  },
+  "elements": [
+    { 
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "0.25em"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "Update Status Insurance. ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/op_number",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "1em",
+          "marginBottom": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": 1
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": true
+              },
+              "elements": [
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "padding": "0 1em 1em",
+                      "marginBottom": "1em",
+                      "display": "grid"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "backgroundColor": "#f5f3ff",
+                          "margin": "0 -1em"
+                        }
+                      }
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "marginTop": ".5em",
+                          "paddingBottom": "1em"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "marginBottom": "1em",
+                              "marginTop": ".5em"
+                            }
+                          }
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "marginBottom": "1em"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "options": {
+                                "direction": "row"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Select an Option : ",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "*",
+                                  "options": {
+                                    "variant": "label-red"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "SelectField",
+                              "scope": "#/properties/option",
+                              "label": false,
+                              "options": {
+                                "variant": "outlined",
+                                "autocomplete": true,
+                                "hideRequiredAsterisk": true,
+                                "fullwidth": true,
+                                "enumDataPath": "input_status_enum",
+                                "sx": {
+                                  "width": "100%"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "sx": {
+                            "marginBottom": "1em"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "Comments : ",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "TextField",
+                              "scope": "#/properties/remark",
+                              "label": false,
+                              "options": {
+                                "variant": "outlined",
+                                "hideRequiredAsterisk": true,
+                                "fullwidth": true,
+                                "multi": true,
+                                "minRows": 5,
+                                "maxRows": 8
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "12",
+                        "container": true,
+                        "justifyContent": "flex-end",
+                        "sx": {
+                          "paddingBottom": "1em"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "Save",
+                          "options": {
+                            "sx":{
+                              "margin-right": "10px"
+                            },
+                            "className": "primaryButton",
+                            "chain": [
+                              {
+                                "operationType": "action",
+                                "conditionTypeId": "Insurance_input_detail_save",
+                                "payload": {
+                                  "nextStep": false,
+                                  "checker_flag": "{checker_flag}",
+                                  "userId": "{user.login}",
+                                  "option": "{option}",
+                                  "remark": "{remark}",
+                                  "taskId": "{taskId}",
+                                  "opInsuranceId": "{opInsuranceId}"
+                                }
+                              },
+                              {
+                                "operationType": "modal",
+                                "subtype": "close",
+                                "dialogName": "{conditionContext.context.condition_action.condition.typeId}",
+                                "variant": "text"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "ActionButton",
+                          "rule": {
+                            "effect": "ENABLE",
+                            "condition": {
+                              "scope": "#/properties/option",
+                              "schema": {
+                                "enum": ["Complete", "Cancel"]
+                              }
+                            }
+                          },
+                          "label": "Submit",
+                          "options": {
+                            "className": "primaryButton",
+                            "operationType": "modal",
+                            "dialogName": "m_Insurance_Confirm",
+                            "subtype": "show",
+                            "sx":{
+                              "margin-right": "10px"
+                            }
+                          }
+                        },
+                        {
+                          "type": "ActionButton",
+                          "label": "Close",
+                          "options": {
+                            "operationType": "modal",
+                            "subtype": "close",
+                            "dialogName": "{conditionContext.context.condition_action.condition.typeId}",
+                            "variant": "outlined",
+                            "size": "large"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

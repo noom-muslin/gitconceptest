@@ -1,0 +1,57 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "htmlID": "ผู้ขอสินเชื่อ"
+                  },
+                  "elements": [
+                    {
+                      "type": "Datagrid",
+                      "scope": "#",
+                      "options": {
+                        "grid": "RCWebVerify/RCVerifyBorrower",
+                        "dataContext": {
+                          "query": "RCWebVerify/GetRCVerifyBorrower",
+                          "queryVariables": {
+                            "assignee": "{user.login}",
+                            "taskId": "{route.taskId}"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

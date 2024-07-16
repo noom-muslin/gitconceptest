@@ -1,0 +1,720 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/{route.station}/pending-followup"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Pending Follow Up"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "validationSchema": false,
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px 16px 86px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": false
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "Documentum"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true,
+            "sx": {
+              "minWidth": 0
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "label": "ข้อมูลใบสมัคร",
+                  "type": "Accordion",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "8px 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ข้อมูลผู้ขอสินเชื่อ",
+                          "options": {
+                            "variant": "subtitle2Dark"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/applicants",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "hideColumnTitles": false,
+                        "rowClick": false,
+                        "sx": {
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark",
+                          "margin-bottom": "16px"
+                        },
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/customer_type",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ประเภทลูกค้า"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/name",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ชื่อลูกค้า"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/ref_document_no",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "เลขที่เอกสารอ้างอิง"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "8px 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ข้อมูลสินเชื่อ",
+                          "options": {
+                            "variant": "subtitle2Dark"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/loans",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "hideColumnTitles": false,
+                        "rowClick": false,
+                        "sx": {
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark",
+                          "margin-bottom": "16px"
+                        },
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/product_group",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "Product Group"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/product_type",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "Product Type"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/sub_product_type",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "Sub Product Type"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "8px 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ข้อมูลพนักงานขาย",
+                          "options": {
+                            "variant": "subtitle2Dark"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/salesPersons",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "hideColumnTitles": false,
+                        "rowClick": false,
+                        "sx": {
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark",
+                          "margin-bottom": "16px"
+                        },
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/no",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "รหัสพนักงาน"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/name",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ชื่อ-นามสกุล"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/branch",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "สาขา"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/agency_oc_code",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "OC Code หน่วยงานเจ้าของเรื่อง"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/phone_number",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "เบอร์โทรศัพท์"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "Follow Up (Internal)",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/followUpInternal",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "label": "สถานะ",
+                                "scope": "#/properties/status"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "Station ต้นทาง",
+                                "scope": "#/properties/originStation"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "Station ปลายทาง",
+                                "scope": "#/properties/destinationStation"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "SLA",
+                                "scope": "#/properties/sla"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "วันเวลาที่ Follow Up",
+                                "scope": "#/properties/requestDateTime",
+                                "converter": "date_column_converter"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "วันเวลาที่จบการติดตาม",
+                                "scope": "#/properties/completeDateTime",
+                                "converter": "date_column_converter"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "วันเวลาที่ได้รับเอกสาร",
+                                "scope": "#/properties/receivedDocumentDateTime",
+                                "converter": "date_column_converter"
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": "ดูรายละเอียด",
+                                "options": {
+                                  "validationSchema": false,
+                                  "variant": "href",
+                                  "chain": [
+                                    {
+                                      "operationType": "script",
+                                      "converter": "map_fu_history",
+                                      "resultMappingSchema": {
+                                        "type": "object",
+                                        "properties": {
+                                          "fuHistoryRow": {
+                                            "type": "object",
+                                            "properties": {
+                                              "commentCode": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "commentDetails": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "originStation": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "remark": {
+                                                "type": ["string", "null"],
+                                                "maxLength": 128
+                                              },
+                                              "originTaskType": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "fuId": {
+                                                "type": "string"
+                                              },
+                                              "fuUpdated": {
+                                                "type": ["boolean", "null"]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "operationType": "modal",
+                                      "subtype": "show",
+                                      "dialogName": "m_Followups_Details_Internal_View_History"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "Follow Up (External)",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/followUpExternal",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "label": "สถานะ",
+                                "scope": "#/properties/status"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "Station ต้นทาง",
+                                "scope": "#/properties/originStation"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "SLA",
+                                "scope": "#/properties/sla"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "วันเวลาที่ Follow Up",
+                                "scope": "#/properties/requestDateTime",
+                                "converter": "date_column_converter"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "วันเวลาที่จบการติดตาม",
+                                "scope": "#/properties/completeDateTime",
+                                "converter": "date_column_converter"
+                              },
+                              {
+                                "type": "Typography",
+                                "label": "วันเวลาที่ได้รับเอกสาร",
+                                "scope": "#/properties/receivedDocumentDateTime",
+                                "converter": "date_column_converter"
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": "ดูรายละเอียด",
+                                "options": {
+                                  "validationSchema": false,
+                                  "variant": "href",
+                                  "chain": [
+                                    {
+                                      "operationType": "script",
+                                      "converter": "map_fu_history",
+                                      "resultMappingSchema": {
+                                        "type": "object",
+                                        "properties": {
+                                          "fuHistoryRow": {
+                                            "type": "object",
+                                            "properties": {
+                                              "commentCode": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "commentDetails": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "originStation": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "remark": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "originTaskType": {
+                                                "type": ["string", "null"]
+                                              },
+                                              "fuId": {
+                                                "type": "string"
+                                              },
+                                              "fuUpdated": {
+                                                "type": ["boolean", "null"]
+                                              },
+                                              "documents": {
+                                                "type": "array"
+                                              },
+                                              "information": {
+                                                "type": "array"
+                                              },
+                                              "rc_reshape": {
+                                                "type": "array"
+                                              }
+                                            }
+                                          },
+                                          "isPending": {
+                                            "type": "boolean"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "operationType": "modal",
+                                      "subtype": "show",
+                                      "dialogName": "m_Followups_Details_External_View_History"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "variant": "section"
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ยกเลิกใบสมัคร/ใบคอนเฟิร์ม"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "CheckboxField",
+                          "label": "ต้องการยกเลิกใบสมัคร/ใบคอนเฟิร์ม",
+                          "scope": "#/properties/isCancelApplication",
+                          "options": {
+                            "variant": "body2"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "sx": {
+                      "backgroundColor": "white",
+                      "padding": "16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": "true",
+                        "columnSpacing": "16px",
+                        "rowSpacing": "4px"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "6"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "อัปเดตล่าสุดโดย",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/updated_by",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "6"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "อัปเดตล่าสุดเมื่อ",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/updated_on_formatted",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

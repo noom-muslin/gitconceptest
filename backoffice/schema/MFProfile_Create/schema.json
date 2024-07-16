@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "search": { 
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "project_name": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "project_id": {
+          "type": "string"
+        },
+        "company_name": {
+          "type": "string"
+        },
+        "oc_code": {
+          "type": "string"
+        }
+      }
+    },
+    "application_type_enum": {
+      "type": "array"
+    },
+    "mf_application_type_enum": {
+      "type": "array"
+    },
+    "oc_code_owner_agency_enum": {
+      "type": "array"
+    },
+    "worklist_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    }
+  }
+}

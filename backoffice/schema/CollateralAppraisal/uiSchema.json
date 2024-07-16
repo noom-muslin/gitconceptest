@@ -1,0 +1,94 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "Collateral Appraisal",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#properties/userInfo",
+              "schema": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "SCB_MORTGAGE"
+                    }
+                  }
+                },
+                "required": [
+                  "roles"
+                ]
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "CollateralAppraisal_Mortgage"
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#properties/userInfo",
+              "schema": {
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "SCB_AUTO"
+                    },
+                    "not": {
+                      "contains": {
+                        "const": "SCB_MORTGAGE"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "roles"
+                ]
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "CollateralAppraisal_Auto"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

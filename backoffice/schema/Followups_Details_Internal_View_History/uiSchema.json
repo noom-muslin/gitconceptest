@@ -1,0 +1,313 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "backgroundColor": "primary.light",
+          "color": "primary.main",
+          "height": "48px",
+          "alignItems": "center",
+          "display": "flex"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "scope": "#/properties/fuHistoryRow/properties/originStation",
+          "options": {
+            "sx": {
+              "paddingLeft": "16px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "8px",
+        "sx": {
+          "padding": "0px 16px 16px 0px",
+          "borderBottom": "solid 1px #C1C3C8"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "12"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เหตุผลในการ Follow Up",
+                  "options": {
+                    "variant": "subtitle2Dark"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เหตุผล",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/fuHistoryRow/properties/commentCode",
+                  "options": {
+                    "fullwidth": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "หมายเหตุ",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/fuHistoryRow/properties/commentDetails",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "12"
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "scope": "#/properties/fuHistoryRow/properties/remark",
+                  "label": "ความเห็นเพิ่มเติม",
+                  "options": {
+                    "variant": "outlined",
+                    "fullwidth": true,
+                    "multi": true,
+                    "minRows": 3,
+                    "maxRows": 8
+                  },
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/fuHistoryRow/properties/fuUpdated",
+                      "schema": {
+                        "const": false
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "HIDE",
+                    "condition": {
+                      "scope": "#/properties/fuHistoryRow/properties/fuUpdated",
+                      "schema": {
+                        "const": false
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ความเห็นเพิ่มเติม",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/fuHistoryRow/properties/remark",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "textWrap": "nowrap"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "1em",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/fuHistoryRow/properties/fuUpdated",
+          "schema": {
+            "const": false
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "บันทึกความเห็น",
+          "options": {
+            "variant": "secondary",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Followups_Details_Save_Internal_FU_history",
+                "validationSchema": false,
+                "payload": {
+                  "fuId": "{fuHistoryRow.fuId}",
+                  "remark": "{fuHistoryRow.remark}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "submitted"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "จบการติดตาม",
+          "options": {
+            "variant": "primary",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Followups_Details_Complete_Internal_FU_history",
+                "validationSchema": false,
+                "payload": {
+                  "fuId": "{fuHistoryRow.fuId}",
+                  "originTaskType": "{fuHistoryRow.originTaskType}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "submitted"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

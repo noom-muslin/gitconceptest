@@ -1,0 +1,95 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wl_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 100
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 120
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class",
+      "minWidth": 120
+    },
+    {
+      "title": "Indexing Type",
+      "field": "indexing_type.code",
+      "name": "indexing_type",
+      "minWidth": 150
+    },
+    {
+      "title": "รับมาจาก",
+      "field": "previous_task.task_type.code",
+      "name": "previous_channel_station",
+      "minWidth": 150
+    },
+    {
+      "title": "ช่องทาง",
+      "field": "application.application_channel.code",
+      "name": "channel_type",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": " ",
+      "name": "view_details",
+      "sortable": false,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "ดูรายละเอียด",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "{zboRouteObject.permission}",
+            "route": "{zboRouteObject.route}/{data.id}/details",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 180
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

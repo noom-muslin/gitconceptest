@@ -1,0 +1,1211 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "กลับไป",
+                  "options": {
+                    "icon": "ArrowBack",
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_NCB_Details_Back",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "NCB",
+                  "options": {
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_NCB_Details_Back",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "4px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ดู FU",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "validationSchema": false,
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px 16px 86px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "Accordion",
+          "label": "ข้อมูลพนักงานขาย",
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/salesPersons",
+                      "itemOperations": {
+                        "remove": true
+                      },
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "sx": {
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark"
+                        },
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/employeeId",
+                            "options": {
+                              "columnTitle": "รหัสพนักงาน"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/firstAndLastName",
+                            "options": {
+                              "columnTitle": "ชื่อ-นามสกุล"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/branch",
+                            "options": {
+                              "columnTitle": "สาขา"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/ocCode",
+                            "options": {
+                              "columnTitle": "OC Code หน่วยงานเจ้าของเรื่อง"
+                            }
+                          },
+                          {
+                            "type": "Schema",
+                            "scope": "#/properties/phoneNumbers",
+                            "options": {
+                              "columnTitle": "เบอร์โทรศัพท์",
+                              "uiSchema": {
+                                "scope": "#",
+                                "type": "SchemedListView",
+                                "label": {
+                                  "show": false
+                                },
+                                "options": {
+                                  "layoutOptions": {
+                                    "spacing": "0"
+                                  },
+                                  "cellUiSchema": {
+                                    "type": "StackLayout",
+                                    "elements": [
+                                      {
+                                        "type": "Typography",
+                                        "scope": "#"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": " ",
+                            "scope": "#",
+                            "options": {
+                              "operationType": "open",
+                              "route": "/ncb/{route.taskId}/{_rowData.employeeId}/edit",
+                              "columnTitle": "",
+                              "icon": "EditOutlined",
+                              "variant": "secondary",
+                              "size": "smallIcon",
+                              "validationSchema": false,
+                              "columnSx": {
+                                "width": "50px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": " ",
+                            "scope": "#",
+                            "options": {
+                              "operationType": "action",
+                              "columnTitle": "",
+                              "icon": "DeleteOutline",
+                              "payload": {
+                                "taskId": "{data}"
+                              },
+                              "variant": "secondaryError",
+                              "size": "smallIcon",
+                              "columnSx": {
+                                "width": "50px"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "padding": "0 16px 16px 16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "+ เพิ่มพนักงานขาย",
+                      "options": {
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_NCB_Details_Add_SalesPerson",
+                        "variant": "secondary",
+                        "validationSchema": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Accordion",
+          "label": "ข้อมูลผู้ขอสินเชื่อ",
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/borrowersInformation",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "cells": [
+                          {
+                            "type": "CheckboxField",
+                            "label": "ส่งตรวจเอง",
+                            "scope": "#/properties/sendForInspectionYourself",
+                            "options": {
+                              "variant": "body2",
+                              "visible": "{isJuristic}",
+                              "disabled": "{_rowData.isSendForInspectionYourselfDisabled}",
+                              "alternateWidget": {
+                                "selector": "sendForInspectionYourself_visibility",
+                                "case": {
+                                  "false": {
+                                    "type": "Typography",
+                                    "options": {
+                                      "visible": false
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "CheckboxField",
+                            "label": "ตรวจ NCB ซ้ำ",
+                            "scope": "#/properties/repeatNcbCheck",
+                            "options": {
+                              "variant": "body2",
+                              "disabled": "{_rowData.isRepeatNcbCheckDisabled}",
+                              "alternateWidget": {
+                                "selector": "repeatNcbCheck_visibility",
+                                "case": {
+                                  "false": {
+                                    "type": "Typography",
+                                    "options": {
+                                      "visible": false
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ลำดับ",
+                            "scope": "#/properties/number",
+                            "options": {
+                              "variant": "body2"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": "เอกสาร Consent",
+                            "scope": "#/properties/consentDocument",
+                            "errors": {
+                              "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                            },
+                            "options": {
+                              "variant": "outlined",
+                              "autocomplete": true,
+                              "sx": {
+                                "width": "147px"
+                              },
+                              "enum": [
+                                {
+                                  "value": "OriginalDocument",
+                                  "label": "ต้นฉบับ"
+                                },
+                                {
+                                  "value": "CopyOfDocument",
+                                  "label": "สำเนา"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ประเภทเอกสารอ้างอิง",
+                            "scope": "#/properties/referenceDocumentType",
+                            "options": {
+                              "visible": "{isJuristic}",
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": "เลขที่เอกสารอ้างอิง",
+                            "scope": "#/properties/referenceDocumentNoIndividual",
+                            "errors": {
+                              "type": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                              "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                              "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                            },
+                            "options": {
+                              "variant": "outlined",
+                              "visible": "{isIndividual}",
+                              "sx": {
+                                "width": "147px"
+                              },
+                              "alternateOptions": {
+                                "selector": "isReferenceDocumentNoDisabled",
+                                "case": {
+                                  "true": {
+                                    "displayOnly": true
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": "เลขที่เอกสารอ้างอิง",
+                            "scope": "#/properties/referenceDocumentNoJuristic",
+                            "errors": {
+                              "type": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                              "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                              "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                            },
+                            "options": {
+                              "variant": "outlined",
+                              "visible": "{isJuristic}",
+                              "displayOnly": "{_rowData.isReferenceDocumentNoDisabled}",
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Schema",
+                            "scope": "#/properties/consentDate",
+                            "label": "วันลงนาม Consent",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              },
+                              "uiSchema": {
+                                "type": "ExternalComponent",
+                                "scope": "#",
+                                "errors": {
+                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                                  "type": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                },
+                                "options": {
+                                  "externalComponentName": "thai-calendar",
+                                  "externalComponentScope": "remote1",
+                                  "externalComponentModule": "./ThaiDatePicker",
+                                  "minDate": "#/properties/minConsentDate",
+                                  "maxDate": "#/properties/maxConsentDate",
+                                  "views": "year,month,day",
+                                  "variant": "outlined"
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "Schema",
+                            "label": "ชื่อลูกค้า",
+                            "scope": "#/properties/customerName",
+                            "options": {
+                              "sx": {
+                                "width": "180px"
+                              },
+                              "uiSchema": {
+                                "type": "TooltipLayout",
+                                "options": {
+                                  "arrow": true,
+                                  "title": "{_rowData.customerName}"
+                                },
+                                "elements": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#",
+                                    "options": {
+                                      "sx": {
+                                        "maxWidth": "180px",
+                                        "overflow": "hidden",
+                                        "whiteSpace": "nowrap",
+                                        "textOverflow": "ellipsis"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": "เลขพัสดุ EMS",
+                            "scope": "#/properties/emsParcelNumber",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined",
+                              "visible": "{isJuristic}",
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ประเภททะเบียนธุรกิจ",
+                            "scope": "#/properties/businessRegistrationType",
+                            "options": {
+                              "visible": "{isJuristic}",
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "วันที่จดทะเบียนนิติบุคคล",
+                            "scope": "#/properties/businessRegistrationDate",
+                            "options": {
+                              "visible": "{isJuristic}",
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "scope": "#/properties/dateOfBirth",
+                            "label": "วันเกิด (พ.ศ.)",
+                            "errors": {
+                              "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                            },
+                            "options": {
+                              "columnTitle": "วันเกิด (พ.ศ.)",
+                              "variant": "outlined",
+                              "displayOnly": true,
+                              "hideRequiredAsterisk": true,
+                              "visible": "{isIndividual}",
+                              "sx": {
+                                "border": "none",
+                                "width": "120px",
+                                ".Mui-disabled:not(label)": {
+                                  "background-color": "transparent",
+                                  "-webkit-text-fill-color": "rgb(47, 56, 70)",
+                                  "& fieldset.MuiOutlinedInput-notchedOutline": {
+                                    "borderColor": "transparent"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "Schema",
+                            "label": "OC Code ลูกค้า",
+                            "scope": "#/properties/ocCode",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              },
+                              "uiSchema": {
+                                "type": "TooltipLayout",
+                                "options": {
+                                  "arrow": true,
+                                  "title": "{_rowData.ocCode}"
+                                },
+                                "elements": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#",
+                                    "options": {
+                                      "sx": {
+                                        "maxWidth": "147px",
+                                        "overflow": "hidden",
+                                        "whiteSpace": "nowrap",
+                                        "textOverflow": "ellipsis"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "type": "Schema",
+                            "label": "Segment ลูกค้า",
+                            "scope": "#/properties/customerSegment",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              },
+                              "uiSchema": {
+                                "type": "TooltipLayout",
+                                "options": {
+                                  "arrow": true,
+                                  "title": "{_rowData.customerSegment}"
+                                },
+                                "elements": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#",
+                                    "options": {
+                                      "sx": {
+                                        "maxWidth": "147px",
+                                        "overflow": "hidden",
+                                        "whiteSpace": "nowrap",
+                                        "textOverflow": "ellipsis"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ผลการส่ง NCB",
+                            "scope": "#/properties/ncbSubmissionResult",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Schema",
+                            "label": "รหัสพนักงาน",
+                            "scope": "#/properties/employeeId",
+                            "options": {
+                              "sx": {
+                                "width": "180px"
+                              },
+                              "uiSchema": {
+                                "type": "TooltipLayout",
+                                "options": {
+                                  "arrow": true,
+                                  "title": "{_rowData.employeeId}"
+                                },
+                                "elements": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#",
+                                    "options": {
+                                      "sx": {
+                                        "maxWidth": "180px",
+                                        "overflow": "hidden",
+                                        "whiteSpace": "nowrap",
+                                        "textOverflow": "ellipsis"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ผลตรวจ NCB",
+                            "scope": "#/properties/ncbTestResult",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "เกรด NCB",
+                            "scope": "#/properties/ncbGrade",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "เกรด OD",
+                            "scope": "#/properties/odGrade",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "วันที่ตรวจ NCB",
+                            "scope": "#/properties/ncbInspectionDate",
+                            "options": {
+                              "sx": {
+                                "width": "147px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": "ดูประวัติ",
+                            "options": {
+                              "validationSchema": false,
+                              "variant": "href",
+                              "chain": [
+                                {
+                                  "operationType": "script",
+                                  "converter": "map_ncb_history",
+                                  "resultMappingSchema": {
+                                    "type": "object",
+                                    "properties": {
+                                      "ncbHistoryBorrowerInfo": {
+                                        "type": "array",
+                                        "dataPath": "ncbHistoryBorrowerInfo"
+                                      },
+                                      "ncbHistory": {
+                                        "type": "array",
+                                        "dataPath": "ncbHistory"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "operationType": "modal",
+                                  "subtype": "show",
+                                  "dialogName": "m_NCB_Details_View_History"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/isIndividual",
+                      "schema": {
+                        "const": true
+                      }
+                    }
+                  },
+                  "options": {
+                    "direction": "row",
+                    "alignItems": "center",
+                    "spacing": "16px",
+                    "sx": {
+                      "padding": "0 16px 16px 16px",
+                      "alignItems": "center"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "ส่งตรวจ NCB",
+                      "rule": {
+                        "effect": "DISABLE",
+                        "condition": {
+                          "scope": "#/properties/isNcbButtonDisabled",
+                          "schema": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "options": {
+                        "variant": "primary",
+                        "chain": [
+                          {
+                            "operationType": "script",
+                            "converter": "validateReferenceDocumentNo"
+                          },
+                          {
+                            "ifError": {},
+                            "operationType": "script",
+                            "converter": "getIncorrectDocumentNoError"
+                          },
+                          {
+                            "chain": [
+                              {
+                                "operationType": "script",
+                                "converter": "isSalesPersonInfoFound",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "isSalesPersonInfoFound": {
+                                      "type": "boolean",
+                                      "dataPath": "isSalesPersonInfoFound"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "type": "object",
+                                  "required": [
+                                    "payload"
+                                  ],
+                                  "properties": {
+                                    "payload": {
+                                      "type": "object",
+                                      "required": [
+                                        "data"
+                                      ],
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "required": [
+                                            "isSalesPersonInfoFound"
+                                          ],
+                                          "properties": {
+                                            "isSalesPersonInfoFound": {
+                                              "type": "boolean",
+                                              "const": false
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "operationType": "modal",
+                                "subtype": "show",
+                                "dialogName": "m_Basic_Error",
+                                "dialogVariables": {
+                                  "title": "ไม่สามารถส่งตรวจ NCB ได้",
+                                  "text": "กรุณาเพิ่มพนักงานขายอย่างน้อย 1 รายเพื่อส่งข้อมูล"
+                                }
+                              },
+                              {
+                                "if": {
+                                  "else": true
+                                },
+                                "chain": [
+                                  {
+                                    "operationType": "script",
+                                    "converter": "isRepeatNcbCheckSelected",
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "isRepeatNcbCheckSelected": {
+                                          "type": "boolean",
+                                          "dataPath": "isRepeatNcbCheckSelected"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "if": {
+                                      "type": "object",
+                                      "required": [
+                                        "payload"
+                                      ],
+                                      "properties": {
+                                        "payload": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "type": "object",
+                                              "required": [
+                                                "isRepeatNcbCheckSelected"
+                                              ],
+                                              "properties": {
+                                                "isRepeatNcbCheckSelected": {
+                                                  "type": "boolean",
+                                                  "const": false
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "operationType": "modal",
+                                    "subtype": "show",
+                                    "dialogName": "m_Basic_Error",
+                                    "dialogVariables": {
+                                      "title": "ไม่สามารถส่งตรวจ NCB ได้",
+                                      "text": "กรุณาเลือกผู้ขอสินเชื่ออย่างน้อย 1 รายเพื่อส่งตรวจ NCB"
+                                    }
+                                  },
+                                  {
+                                    "if": {
+                                      "else": true
+                                    },
+                                    "chain": [
+                                      {
+                                        "operationType": "action",
+                                        "conditionTypeId": "NCB_Details_NCB_Request"
+                                      },
+                                      {
+                                        "if": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "type": "object",
+                                              "required": [
+                                                "payload"
+                                              ],
+                                              "properties": {
+                                                "payload": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "data"
+                                                  ],
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "required": [
+                                                        "isDowntime"
+                                                      ],
+                                                      "properties": {
+                                                        "isDowntime": {
+                                                          "type": "boolean",
+                                                          "const": true
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "operationType": "modal",
+                                        "subtype": "show",
+                                        "dialogName": "m_Basic_Error",
+                                        "dialogVariables": {
+                                          "title": "ไม่สามารถส่งตรวจ NCB ได้",
+                                          "text": "เนื่องจากอยู่ในช่วงปิดปรับปรุงระบบประจำวัน กรุณาลองใหม่ภายหลัง"
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "type": "object",
+                                              "required": [
+                                                "payload"
+                                              ],
+                                              "properties": {
+                                                "payload": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "data"
+                                                  ],
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "required": [
+                                                        "isAbleToCallApi"
+                                                      ],
+                                                      "properties": {
+                                                        "isAbleToCallApi": {
+                                                          "type": "boolean",
+                                                          "const": false
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "operationType": "modal",
+                                        "subtype": "show",
+                                        "dialogName": "m_Basic_Error",
+                                        "dialogVariables": {
+                                          "title": "ไม่สามารถดำเนินการต่อได้",
+                                          "text": "กรุณาลองใหม่อีกครั้ง"
+                                        }
+                                      },
+                                      {
+                                        "if": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "type": "object",
+                                              "required": [
+                                                "payload"
+                                              ],
+                                              "properties": {
+                                                "payload": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "data"
+                                                  ],
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "required": [
+                                                        "isThirdFailure"
+                                                      ],
+                                                      "properties": {
+                                                        "isThirdFailure": {
+                                                          "type": "boolean",
+                                                          "const": true
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "operationType": "modal",
+                                        "subtype": "show",
+                                        "dialogName": "m_Basic_Error",
+                                        "dialogVariables": {
+                                          "title": "ไม่สามารถส่งตรวจ NCB ได้",
+                                          "text": "เนื่องจากมีผู้ขอสินเชื่อที่ส่งตรวจ NCB ไม่สำเร็จมากกว่า 2 ครั้ง กรุณาส่งไป Follow Up"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "หากผลการส่ง NCB สำเร็จ กรณีต้องการส่งตรวจซ้ำ จะส่งอีกครั้งได้ในวันถัดไป",
+                      "options": {
+                        "variant": "caption"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "GridLayout",
+              "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/documentOn",
+                  "schema": {
+                    "const": true
+                  }
+                }
+              },
+              "options": {
+                "container": true,
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 4
+                  },
+                  "elements": [
+                    {
+                      "type": "Bucket",
+                      "options": {
+                        "name": "APPDocumentum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 4
+                  },
+                  "elements": [
+                    {
+                      "type": "Bucket",
+                      "options": {
+                        "name": "CIDDocumentum"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 4
+                  },
+                  "elements": [
+                    {
+                      "type": "Bucket",
+                      "options": {
+                        "name": "CSENTDocumentum"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Follow Up",
+              "options": {
+                "variant": "secondary",
+                "subtype": "followUp"
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "10px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "บันทึกแบบร่าง",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "modal",
+                    "dialogName": "m_NCB_Details_SaveToDraft",
+                    "subtype": "show"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ส่งข้อมูล",
+                  "options": {
+                    "variant": "primary",
+                    "subtype": "show",
+                    "operationType": "modal",
+                    "dialogName": "m_NCB_Details_Confirm"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

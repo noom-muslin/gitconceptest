@@ -1,0 +1,108 @@
+{
+  "hideColumnFilter": true,
+  "hideExportButton": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 170
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 180
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class",
+      "minWidth": 170
+    },
+    {
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.code",
+      "name": "product_type",
+      "minWidth": 150
+    },
+    {
+      "title": "ช่องทาง",
+      "field": "application.application_channel.code",
+      "name": "channel_type",
+      "minWidth": 150
+    },
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "name": "customer_name",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "name": "doc_in_one_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 170
+    },
+    {
+      "title": "วันที่ลงทะเบียน",
+      "field": "application.create_date_time",
+      "name": "registration_date",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 150
+    },
+    {
+      "name": "actions",
+      "title": " ",
+      "locked": true,
+      "resizable": false,
+      "sortable": false,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_CSENT",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/csent/{data.id}/details"
+            },
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 180
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

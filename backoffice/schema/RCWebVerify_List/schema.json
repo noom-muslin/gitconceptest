@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "properties": {
+    "documentOn": {
+      "type": "boolean"
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "taskId": {
+      "type": "string",
+      "readonly": true
+    },
+    "applicationId": {
+      "type": "string",
+      "readonly": true
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readonly": true
+        },
+        "title": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "customers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "readonly": true
+          },
+          "appl_partyId": {
+            "type": "string",
+            "readonly": true
+          },
+          "icon": {
+            "type": "string",
+            "readonly": true
+          },
+          "verify": {
+            "type": "string",
+            "readonly": true
+          },
+          "no": {
+            "type": "string",
+            "readonly": true
+          },
+          "party_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "customer_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "income_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "name": {
+            "type": "string",
+            "readonly": true
+          },
+          "reference_no": {
+            "type": "string",
+            "readonly": true
+          },
+          "dob": {
+            "type": "string",
+            "readonly": true
+          },
+          "work_place": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    }
+  }
+}

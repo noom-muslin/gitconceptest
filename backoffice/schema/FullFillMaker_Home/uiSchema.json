@@ -1,0 +1,47 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#properties/userInfo",
+              "schema": {
+                "required": ["roles"],
+                "properties": {
+                  "roles": {
+                    "contains": {
+                      "const": "SCB_MORTGAGE"
+                    },
+                    "not": {
+                      "contains": {
+                        "const": "SCB_AUTO"
+                      }
+                    },
+                    "not": {
+                      "contains": {
+                        "const": "SCB_UNSECURED"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "FullFillMaker_Home_MG"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

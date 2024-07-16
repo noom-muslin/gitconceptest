@@ -1,0 +1,12 @@
+query GetTitleName($customer_type_code: String!){
+  result: ngl_enum_title(
+    where: {
+      is_active: {_eq: true},
+      type: {_eq: $customer_type_code}
+    },
+    order_by: {long_th: asc}
+  ) {
+    code: code
+    label: long_th
+  }
+}

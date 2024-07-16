@@ -1,0 +1,238 @@
+{
+  "type": "object",
+  "properties": {
+    "status":{
+      "type":"object",
+      "properties":{
+        "code":{
+          "type": "number"
+        }
+      }
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "work_object": {
+      "type": "string"
+    },
+    "application_number": {
+      "type": "string"
+    },
+    "product_group_id": {
+      "type": "string"
+    },
+    "application_id": {
+      "type": "string"
+    },
+    "application_details": {
+      "type": "object",
+      "properties": {
+        "application_group": {
+          "type": "string"
+        },
+        "application_group_id": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_type_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "application_group",
+        "application_type"
+      ]
+    },
+    "loanSection": {
+      "type": "object",
+      "properties": {
+        "newLoan": {
+          "type": "object",
+          "properties": {
+            "application_account_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "application_group": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "application_type": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "product_group": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "product_type": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sub_product": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "loans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "seq": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "application_account_id": {
+                "type": "string"
+              },
+              "loan_objective_description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "master_account_flag": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "account_name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "account_number": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sub_loan_type_description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "credit_line_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "balance_credit_line_amount": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "old_credit_line_amount": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "approved_amount": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "requested_amount": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "tenor_month": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "campaign": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "account_installment_monthly_amount": {
+                "type": [
+                  "string",
+                  "number",
+                  "null"
+                ]
+              },
+              "application_group": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "product_group": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "product_type": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sub_product": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "contract_no": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "application": {
+          "type": "object",
+          "properties": {
+            "objective_details": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

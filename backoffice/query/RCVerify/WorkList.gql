@@ -1,0 +1,70 @@
+subscription GetRcVerifyWorkList(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_task(
+    where: {
+      task_type_id: { _eq: "RCVerify" }
+      status_id: { _eq: "InProgress" }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    is_urgency_work
+    create_date_time
+    deadline_at
+    application_id
+    application{
+      lane
+      primary_account{
+        account{
+          product_type{
+            description
+        }
+        sub_product{
+          description
+        } 
+        }
+      }
+      application_group {
+        description
+      }
+      application_class {
+        description
+      }
+      channel_id
+      status_work{
+        description
+      }
+      followups{
+        comment_details
+        receive_document_date_time
+      }
+      primary_borrower{
+        borrower{
+          party{
+            full_name
+            name
+            last_name
+            reference_type
+            reference_no
+            party_id
+          }
+        }
+      }
+    }
+    document_in_datetime
+    id
+    external_id
+    appl_party{
+      party_id
+      appl_party_rcverify{
+        id
+      }
+    }
+  }
+}

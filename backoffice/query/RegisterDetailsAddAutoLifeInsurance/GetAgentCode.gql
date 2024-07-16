@@ -1,0 +1,8 @@
+query GetAgentCode {
+  result: ngl_staff_profile(where: {staff_active: {_eq: 1}}) {
+    value: staff_id
+    staff_title
+    staff_name
+    staff_surname
+  }
+}

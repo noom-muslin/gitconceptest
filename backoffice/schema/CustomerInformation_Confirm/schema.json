@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "properties": {
+    "save_status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "header": {
+          "type": "string"
+        }
+      }
+    },
+    "input_status_enum": {
+      "type": "array"
+    },
+    "status": {
+      "type": ["string","null"]
+    },
+    "remark": {
+      "type": ["string","null"]
+    },
+    "flag_checker": {
+      "type": "boolean"
+    },
+    "nextStep": {
+      "type": "string"
+    },
+    "opCiId": {
+      "type": "string"
+    },
+    "op_number": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "status_show_button": {
+      "type": "boolean"
+    }
+
+  }
+}

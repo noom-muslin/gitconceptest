@@ -1,0 +1,51 @@
+{
+  "type": "PaperLayout",
+  "options": {
+    "component": "section",
+    "variant": "section"
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row"
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "scope": "#/properties/documentDetails/properties/title"
+        },
+        {
+          "type": "ActionButton",
+          "options": {
+            "validationSchema": false,
+            "operationType": "script",
+            "converter": "openDocumentumLink",
+            "icon": "OpenInNew",
+            "sx": {
+              "color": "primary.main",
+              "padding": 0
+            },
+            "variant": "secondary",
+            "size": "smallIcon"            
+          }          
+        }
+      ]
+    },
+    {
+      "type": "ExternalComponent",
+      "scope": "#/properties/documentDetails",
+      "options": {
+        "externalComponentName": "iframe-view",
+        "externalComponentScope": "remote1",
+        "externalComponentModule": "./IframeView",
+        "url": "#/properties/documentDetails/url",
+        "styles": {
+          "width": "100%",
+          "height": "650px"
+        }
+      }
+    }
+    
+  ]
+}

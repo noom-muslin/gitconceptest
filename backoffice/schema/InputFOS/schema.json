@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "product_group": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9ก-๙]+$"
+        },
+        "customer_lastname": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9ก-๙]+$"
+        },
+        "doc_in_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "application_group_enum": {
+      "type": "array"
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "product_group_enum": {
+      "type": "array"
+    },
+    "product_type_enum": {
+      "type": "array"
+    },
+    "stationName": {
+      "type": "string"
+    },
+    "worklist_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    },
+    "workbasket_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    }
+  }
+}

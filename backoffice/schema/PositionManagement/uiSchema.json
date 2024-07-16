@@ -1,0 +1,393 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/position-management"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Admin Panel"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Typography",
+          "label": "Position Management",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "16px"
+        },
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "justifyContent": "space-between"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "Position Management",
+              "options": {
+                "variant": "h6",
+                "sx": {
+                  "padding": "4px 0"
+                }
+              }
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "display": "flex",
+                  "gap": "16px",
+                  "justifyContent": "space-between"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label":  "ดาวน์โหลดผลการค้นหา",
+                  "options": {
+                    "validationSchema": false,
+                    "variant": "outlined",
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_Position_Export",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label":  "+ เพิ่มข้อมูล",
+                  "validationSchema": false,
+                  "options": {
+                    "operationType": "open",
+                    "route": "/position-management-add"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "variant": "section"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ค้นหา"
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "display": "flex",
+                  "gap": "20px",
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "รหัสตำแหน่ง",
+                  "scope": "#/properties/search/properties/positionCode",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                },
+                {
+                  "type": "TextField",
+                  "label": "ชื่อตำแหน่ง",
+                  "scope": "#/properties/search/properties/positionName",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "display": "flex",
+                  "justifyContent": "space-between",
+                  "gap": "16px",
+                  "padding": "16px",
+                  "paddingTop": "0px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label":  "ล้างค่า",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "clear_position_management_search_criteria",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "search": {
+                          "type": "object",
+                          "properties": {
+                            "positionCode": {
+                              "type": "string"
+                            },
+                            "positionName": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "workbasket_grid": {
+                          "type": "object",
+                          "properties": {
+                            "filters": {
+                              "type": "array"
+                            },
+                            "pagination": {
+                              "type": "object",
+                              "properties": {
+                                "pageIndex": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "variant": "secondaryError",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label":  "ค้นหา",
+                  "options": {
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "check_position_management_search_criteria",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "canSubmit": {
+                              "type": "boolean",
+                              "dataPath": "canSubmit"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "required": [
+                                    "canSubmit"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "canSubmit": {
+                                      "type": "boolean",
+                                      "const": true
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "operationType": "script",
+                        "converter": "work_basket_filter",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "workbasket_grid": {
+                              "type": "object",
+                              "properties": {
+                                "filters": {
+                                  "type": "array"
+                                },
+                                "pagination": {
+                                  "type": "object",
+                                  "properties": {
+                                    "pageIndex": {
+                                      "type": "number"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "else": true
+                        },
+                        "operationType": "modal",
+                        "dialogName": "m_Basic_Error",
+                        "subtype": "show",
+                        "dialogVariables": {
+                          "title": "ไม่สามารถค้นหาได้",
+                          "text": "กรุณาระบุข้อมูลอย่างน้อย 1 รายการเพื่อค้นหา"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "marginTop": "0px !important",
+              "background": "secondary.main"
+            }
+          },
+          "elements": [
+            {
+              "type": "Datagrid",
+              "scope": "#/properties/workbasket_grid",
+              "options": {
+                "grid": "PositionManagement/WorkList",
+                "multiselectActions": [
+                  {
+                    "label": "Add Multiple Comments",
+                    "icon": "k-i-comment",
+                    "options": {
+                      "operationType": "modal",
+                      "subtype": "show",
+                      "dialogName": "EditOrderNote",
+                      "multiselect": true
+                    }
+                  }
+                ],
+                "dataContext": {
+                  "query": "PositionManagement/Search"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label":  "ลบข้อมูล",
+              "options": {
+                "validationSchema": false,
+                "variant": "secondaryError",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_Position_Delete",
+                    "subtype": "show",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "workbasket_grid": {
+                          "type": "object",
+                          "properties": {
+                            "filters": {
+                              "type": "array"
+                            },
+                            "pagination": {
+                              "type": "object",
+                              "properties": {
+                                "pageIndex": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}

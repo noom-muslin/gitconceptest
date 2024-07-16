@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "properties": {
+      "showNotification": {
+        "type": "string"
+      },
+      "roleUndefined":{
+        "type": "boolean"
+      },
+      "station": {
+        "type": "object",
+        "properties": {
+          "stationName": {
+            "type": "string"
+          }
+        }
+      },
+      "search": {
+        "type": "object",
+        "properties": {
+          "application_number": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "minLength": 5,
+            "maxLength": 40
+          },
+          "application_group": {
+            "type": "string"
+          },
+          "application_type": {
+            "type": "string"
+          },
+          "product_type": {
+            "type": "string"
+          },
+          "sub_product_type": {
+            "type": "string"
+          },
+          "document_in_datetime": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              }
+            }
+          },
+          "customer_name": {
+            "type": "string"
+          },
+          "customer_lastname": {
+            "type": "string"
+          }
+        }
+      },
+      "application_group_enum": {
+        "type": "array"
+      },
+      "application_type_enum": {
+        "type": "array"
+      },
+      "application_class_enum": {
+        "type": "array"
+      },
+      "application_channel_enum": {
+        "type": "array"
+      },
+      "document_type_enum": {
+        "type": "array"
+      },
+      "product_group_enum": {
+        "type": "array"
+      },
+      "oc_code_owner_agency_enum": {
+        "type": "array"
+      },
+      "workbasket_grid": {
+        "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+      }
+    }
+  }

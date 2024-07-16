@@ -1,0 +1,11 @@
+query GetReasonForUsingInterestRate{
+  result: ngl_enum_standard_code(
+    where: {
+      standard_list_code: {_eq: "0034"},
+      application_group: {_eq: "%AutoGroup%"},
+      status:{_eq:true}
+  }){
+    value: code
+    label: display_value
+  }
+}

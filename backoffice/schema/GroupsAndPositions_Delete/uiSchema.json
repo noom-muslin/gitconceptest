@@ -1,0 +1,137 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconWarning"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "HelpOutlineOutlined"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "คุณต้องการลบข้อมูลนี้หรือไม่่",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "เมื่อกดลบแล้ว ระบบจะลบข้อมูลนี้ออก",
+              "options": {
+                "variant": "body2"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "กลับไป",
+          "options": {
+            "variant": "secondary",
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ลบ",
+          "options": {
+            "variant": "primaryError",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Groups_And_Positions_Delete",
+                "validationSchema": false
+              },
+              {
+                "operationType": "script",
+                "converter": "reset_grid",
+                "validationSchema": false,
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "workbasket_grid": {
+                      "type": "object",
+                      "properties": {
+                        "filters": {
+                          "type": "array"
+                        },
+                        "selection": {
+                          "type": "object",
+                          "properties": {
+                            "additionalProperties": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "pagination": {
+                          "type": "object",
+                          "properties": {
+                            "pageIndex": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

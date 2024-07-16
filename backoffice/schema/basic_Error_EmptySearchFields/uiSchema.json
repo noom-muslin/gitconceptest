@@ -1,0 +1,9 @@
+{
+  "operationType": "modal",
+  "dialogName": "m_Basic_Error",
+  "subtype": "show",
+  "dialogVariables": {
+    "title": "ไม่สามารถค้นหาได้",
+    "text": "กรุณาระบุข้อมูลอย่างน้อย 1 รายการเพื่อค้นหา"
+  }
+}

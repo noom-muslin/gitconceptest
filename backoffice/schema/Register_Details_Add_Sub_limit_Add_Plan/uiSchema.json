@@ -1,0 +1,606 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "minWidth": "800px",
+      "maxWidth": "800px"
+    }
+  },
+  "elements": [
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx": {
+          "padding": "1rem",
+          "gap": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 12,
+            "sx": {
+              "&.MuiGrid-item": {
+                "paddingLeft": "0px",
+                "paddingTop": "0px"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "วิธีการชำระคืน",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "field-label-error",
+                        "sx": {
+                          "color": "#EF4444"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "SelectField",
+                  "label": false,
+                  "scope": "#/properties/repayType/properties/payment_method",
+                  "options": {
+                    "hideRequiredAsterisk": true,
+                    "variant": "outlined",
+                    "fullwidth": true,
+                    "autocomplete": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em",
+            "sx": {
+              "width": "calc(100% + 1rem)"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระยะเวลาเริ่มต้น",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error",
+                            "sx": {
+                              "color": "#EF4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "NumberField",
+                      "scope": "#/properties/repayType/properties/duration_from",
+                      "label": false,
+                      "options": {
+                        "thousandSeparator": ",",
+                        "hideRequiredAsterisk": true,
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "errors": {
+                          "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                        },
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระยะเวลาสิ้นสุด",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error",
+                            "sx": {
+                              "color": "#EF4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "NumberField",
+                      "scope": "#/properties/repayType/properties/duration_to",
+                      "label": false,
+                      "options": {
+                        "thousandSeparator": ",",
+                        "hideRequiredAsterisk": true,
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "errors": {
+                          "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                        },
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "หน่วยเวลา",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error",
+                            "sx": {
+                              "color": "#EF4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "SelectField",
+                      "label": false,
+                      "scope": "#/properties/repayType/properties/timeType",
+                      "options": {
+                        "hideRequiredAsterisk": true,
+                        "errors": {
+                          "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                        },
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em",
+            "sx": {
+              "width": "calc(100% + 1rem)"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Buffer Rate",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error",
+                            "sx": {
+                              "color": "#EF4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "NumberField",
+                      "scope": "#/properties/repayType/properties/buffer_rate",
+                      "label": false,
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                        "maximum": "กรุณากรอกจำนวนให้ถูกต้อง"
+                      },
+                      "options": {
+                        "thousandSeparator": ",",
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ค่างวดต่อเดือน (คำนวณโดยระบบ)",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Typography",
+                      "label": false,
+                      "options": {
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em",
+            "sx": {
+              "width": "calc(100% + 1rem)"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ค่างวดต่อเดือน",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error",
+                            "sx": {
+                              "color": "#EF4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "NumberField",
+                      "scope": "#/properties/repayType/properties/adjust_amount",
+                      "label": false,
+                      "options": {
+                        "thousandSeparator": ",",
+                        "hideRequiredAsterisk": true,
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "endAdornmentTypography": {
+                          "text": "บาท"
+                        },
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "จำนวนงวดที่ต้องชำระ",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error",
+                            "sx": {
+                              "color": "#EF4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "NumberField",
+                      "scope": "#/properties/repayType/properties/amount",
+                      "label": false,
+                      "options": {
+                        "thousandSeparator": ",",
+                        "hideRequiredAsterisk": true,
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 12
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "right"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "บันทึกข้อมูล",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "add_repay",
+                    "className": "primaryButton",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "repayList": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "bs_seq": {
+                                "type": [
+                                  "integer",
+                                  "string"
+                                ]
+                              },
+                              "payment_method": {
+                                "type": [
+                                  "string",
+                                  "integer"
+                                ]
+                              },
+                              "duration_from": {
+                                "type": [
+                                  "string",
+                                  "integer"
+                                ]
+                              },
+                              "duration_to": {
+                                "type": [
+                                  "string",
+                                  "integer"
+                                ]
+                              },
+                              "buffer_rate": {
+                                "type": [
+                                  "string",
+                                  "number"
+                                ]
+                              },
+                              "calculate_amount": {
+                                "type": [
+                                  "string",
+                                  "number"
+                                ]
+                              },
+                              "adjust_amount": {
+                                "type": [
+                                  "string",
+                                  "number"
+                                ]
+                              },
+                              "amount": {
+                                "type": [
+                                  "string",
+                                  "integer"
+                                ]
+                              },
+                              "sublimit_type_desc": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "repayType": {
+                          "type": "object",
+                          "properties": {
+                            "payment_method": {
+                              "type": "string"
+                            },
+                            "timeType": {
+                              "type": "string"
+                            },
+                            "duration_from": {
+                              "type": "integer"
+                            },
+                            "duration_to": {
+                              "type": "integer"
+                            },
+                            "buffer_rate": {
+                              "type": "number",
+                              "maximum": 999,
+                              "multipleOfPrecision": 0.01
+                            },
+                            "calculate_amount": {
+                              "type": "integer"
+                            },
+                            "adjust_amount": {
+                              "type": "number"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "bs_seq": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

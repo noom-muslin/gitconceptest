@@ -1,0 +1,9 @@
+query GetOccupationCode {
+  result:  ngl_enum_standard_code (
+    order_by: {code: asc}, 
+    where: {standard_list_code: {_eq: "N023"}}
+  ) {
+    value: code
+    label: display_value
+  }
+}

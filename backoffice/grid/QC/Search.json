@@ -1,0 +1,60 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "created_date_time",
+      "name": "date_of_recieve",
+      "minWidth": 250
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.primary_borrower.borrower.party.full_name_en",
+      "name": "customer_name",
+      "minWidth": 200
+    },
+    {
+      "title": "เลขที่บัญชี",
+      "field": "application.application_id",
+      "name": "account_number",
+      "minWidth": 150
+    },
+    {
+      "title": "วัตถุประสงค์",
+      "field": "task_type_id",
+      "name": "objective",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "minWidth": 180
+    },
+    {
+      "title": "Product Type",
+      "field": "application.application_type.code",
+      "name": "product_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Sub Product Type",
+      "field": "application.application_sub_type.code",
+      "name": "sub_product_type",
+      "minWidth": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "created_date_time",
+      "dir": "desc"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+query GetInvoiceCode{
+  result: ngl_enum_standard_code(
+    where: {
+      standard_list_code: {_eq: "0048"},
+      check_special: {_like: "%ListPR%"},
+      status:{_eq:true}
+  }){
+    value: code
+    label: display_value
+  }
+}

@@ -1,0 +1,637 @@
+{
+  "type": "ContainerLayout",
+  "options": {
+    "sx": {
+      "fontSize": "14px",
+      "lineHeight": "20px",
+      "textAlign": "left"
+    },
+    "disableGutters": true
+  },
+  "elements": [
+    {
+      "type": "ContainerLayout",
+      "options": {
+        "sx": {
+          "padding": "0px 16px !important"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "sx": {
+              "& .MuiGrid-item": {
+                "paddingLeft": "0px !important"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6",
+                "sx": {
+                  "paddingRight": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "RadioGroupField",
+                      "scope": "#/properties/life_insurance/properties/the_insured_type",
+                      "label": "ผู้เอาประกัน",
+                      "options": {
+                        "row": "false",
+                        "enum": [
+                          {
+                            "value": "01",
+                            "label": "ผู้กู้"
+                          },
+                          {
+                            "value": "02",
+                            "label": "ผู้ค้ำประกัน"
+                          }
+                        ],
+                        "radioSize": "small"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/life_insurance/properties/the_insured_type",
+                  "schema": {
+                    "oneOf": [
+                      {
+                        "const": "01"
+                      },
+                      {
+                        "const": "00"
+                      }
+                    ]
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "label": "ชื่อผู้เอาประกัน",
+                  "type": "SelectField",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "query": "RegisterDetailsAddAutoLifeInsurance/GetInsurer01",
+                    "queryVariables": {
+                      "application_id": "{application_number}"
+                    },
+                    "converter": "mapFullNameValue"
+                  },
+                  "scope": "#/properties/life_insurance/properties/the_insured_name",
+                  "rule": {
+                    "effect": "DISABLE",
+                    "condition": {
+                      "scope": "#/properties/life_insurance/properties/the_insured_type",
+                      "schema": {
+                        "not": {
+                          "enum": [
+                            "01",
+                            "02"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/life_insurance/properties/the_insured_type",
+                  "schema": {
+                    "oneOf": [
+                      {
+                        "const": "02"
+                      }
+                    ]
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "label": "ชื่อผู้เอาประกัน",
+                  "type": "SelectField",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "query": "RegisterDetailsAddAutoLifeInsurance/GetInsurer02",
+                    "queryVariables": {
+                      "application_id": "{application_number}"
+                    },
+                    "converter": "mapValueLabel"
+                  },
+                  "scope": "#/properties/life_insurance/properties/the_insured_name",
+                  "rule": {
+                    "effect": "DISABLE",
+                    "condition": {
+                      "scope": "#/properties/life_insurance/properties/the_insured_type",
+                      "schema": {
+                        "not": {
+                          "enum": [
+                            "01",
+                            "02"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "justifyContent": "space-between",
+            "sx": {
+              "& .MuiGrid-item": {
+                "paddingLeft": "0px !important"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "บริษัทประกัน",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "paddingRight": "16px"
+                    },
+                    "query": "RegisterDetailsAddAutoLifeInsurance/GetInsuranceCompany",
+                    "converter": "mapValueLabel"
+                  },
+                  "scope": "#/properties/life_insurance/properties/insurance_company_name",
+                  "type": "SelectField"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "FormMapperListener",
+                  "options": {
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "life_insurance": {
+                          "type": "object",
+                          "dataPath": "life_insurance.insurance_type",
+                          "converter": "insuranceTypeListener"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "label": "ประเภทประกัน",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "query": "RegisterDetailsAddAutoLifeInsurance/GetInsuranceType",
+                    "queryVariables": {
+                      "application_group": "{application_details.application_group}",
+                      "product_type": "{loan_account.product_type_id.id}",
+                      "sub_type": "{loan_account.product_type_id.id}"
+                    },
+                    "converter": "mapInsuranceType"
+                  },
+                  "scope": "#/properties/life_insurance/properties/insurance_type",
+                  "type": "SelectField"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "justifyContent": "space-between",
+            "sx": {
+              "& .MuiGrid-item": {
+                "paddingLeft": "0px !important"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "แผนประกัน",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "paddingRight": "16px"
+                    },
+                    "query": "RegisterDetailsAddAutoLifeInsurance/GetInsurancePlan",
+                    "queryVariables": {
+                      "ListCode": "0030",
+                      "InsuranceTypeCode": "{life_insurance.insurance_type_code.insurance_plan_code}"
+                    },
+                    "converter": "mapCodeLabel"
+                  },
+                  "scope": "#/properties/life_insurance/properties/insurance_plan",
+                  "type": "SelectField"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "หมายเลขใบสมัคร",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  },
+                  "scope": "#/properties/life_insurance/properties/insurance_application_id",
+                  "type": "TextField"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "justifyContent": "space-between",
+            "sx": {
+              "& .MuiGrid-item": {
+                "paddingLeft": "0px !important"
+              },
+              "& .MuiInputBase-root": {
+                "paddingRight": "10px !important"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6",
+                "container": "true",
+                "justifyContent": "space-between",
+                "sx": {
+                  "paddingRight": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": "9"
+                  },
+                  "elements": [
+                    {
+                      "label": "ระยะเวลาชำระเบี้ยประกัน",
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "endAdornmentTypography": {
+                          "text": "เดือน"
+                        }
+                      },
+                      "scope": "#/properties/life_insurance/properties/insurance_duration",
+                      "type": "TextField",
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/life_insurance/properties/isAutoCalculation",
+                          "schema": {
+                            "const": false
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "label": "ระยะเวลาชำระเบี้ยประกัน",
+                      "options": {
+                        "autocomplete": false,
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "query": "RegisterDetailsAddAutoLifeInsurance/GetPaymentPeriod",
+                        "queryVariables": {
+                          "ListCode": "0201",
+                          "InsuranceTypeCode": "{life_insurance.insurance_type_code.insurance_duration_code}"
+                        },
+                        "converter": "mapCodeLabel"
+                      },
+                      "scope": "#/properties/life_insurance/properties/insurance_duration",
+                      "type": "SelectField",
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/life_insurance/properties/isAutoCalculation",
+                          "schema": {
+                            "const": true
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": "3",  
+                    "alignSelf": "end !important",
+                    "container": "true",
+                    "justifyContent": "end",
+                    "alignItems": "end"
+                  },
+                  "elements": [
+                    {
+                      "label": "คำนวณ",
+                      "type": "ActionButton",
+                      "options": {
+                        "variant": "secondary",
+                        "fullwidth": true,
+                        "validationSchema": false,
+                        "operationType": "action",
+                        "conditionTypeId": "INT_v1_common_life_insurance_premium_amount_inquiry",
+                        "converter": "mapSumInsured"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "ทุนประกัน",
+                  "options": {
+                    "decimalScale": 2,
+                    "fixedDecimalScale": true,
+                    "thousandSeparator": ",",
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "endAdornmentTypography": {
+                      "text": "บาท"
+                    }
+                  },
+                  "scope": "#/properties/life_insurance/properties/sum_insured",
+                  "type": "NumberField"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "justifyContent": "space-between",
+            "sx": {
+              "& .MuiGrid-item": {
+                "paddingLeft": "0px !important"
+              },
+              "& .MuiInputBase-root": {
+                "paddingRight": "10px !important"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "เบี้ยประกัน",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "paddingRight": "16px"
+                    },
+                    "endAdornmentTypography": {
+                      "text": "บาท"
+                    },
+                    "decimalScale": 2,
+                    "fixedDecimalScale": true,
+                    "thousandSeparator": ","
+                  },
+                  "scope": "#/properties/life_insurance/properties/premium_amount",
+                  "type": "NumberField"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "วันที่รับแจ้ง",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "views": "year,day"
+                  },
+                  "scope": "#/properties/life_insurance/properties/data_entry_date",
+                  "type": "DateField"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "justifyContent": "space-between",
+            "sx": {
+              "& .MuiGrid-item": {
+                "paddingLeft": "0px !important"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "วิธีการชำระเงิน",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "paddingRight": "16px"
+                    },
+                    "query": "InputFOS/StandardCode",
+                    "queryVariables": {
+                      "ListCode": "0032"
+                    },
+                    "converter": "mapCodeLabel"
+                  },
+                  "scope": "#/properties/life_insurance/properties/ins_payment_method",
+                  "type": "SelectField"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "label": "ช่องทางการชำระเงิน",
+                  "options": {
+                    "autocomplete": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "query": "InputFOS/StandardCode",
+                    "queryVariables": {
+                      "ListCode": "0031"
+                    },
+                    "converter": "mapCodeLabel"
+                  },
+                  "scope": "#/properties/life_insurance/properties/payment_channel",
+                  "type": "SelectField"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "paddingTop": "16px"
+            }
+          },
+          "elements": [
+            {
+              "label": "พนักงานขาย",
+              "options": {
+                "autocomplete": true,
+                "fullwidth": true,
+                "variant": "outlined",
+                "query": "RegisterDetailsAddAutoLifeInsurance/GetAgentCode",
+                "converter": "mapStaffNameValue"
+              },
+              "scope": "#/properties/life_insurance/properties/agent_code",
+              "type": "SelectField"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": "true",
+        "justifyContent": "flex-end",
+        "sx": {
+          "& .MuiGrid-item": {
+            "paddingLeft": "0px !important"
+          },
+          "marginTop": "16px",
+          "borderTop": "1px solid #EAEBED",
+          "padding": "0px 16px 16px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": "auto"
+          },
+          "elements": [
+            {
+              "label": "บันทึกข้อมูล",
+              "type": "ActionButton",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "register_add_life_insurances",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "vehicles": {
+                          "type": "array"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

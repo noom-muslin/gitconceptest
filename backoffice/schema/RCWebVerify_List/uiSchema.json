@@ -1,0 +1,433 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "กลับไป",
+                  "options": {
+                    "validationSchema": false,
+                    "icon": "ArrowBack",
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_RCWebVerify_List_Back",
+                    "subtype": "show"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Web Verify",
+                  "options": {
+                    "validationSchema": false,
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_RCWebVerify_List_Back",
+                    "subtype": "show"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "4px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/applicationId",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant" : "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant" : "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "อัปโหลดเอกสาร",
+                  "options": {
+                    "variant" : "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "operationType": "script",
+                    "validationSchema": false,
+                    "variant": "secondary",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "marginBottom": "70px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "documentum"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true,
+            "sx": {
+              "minWidth": 100
+            }
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "variant": "section"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ผู้ขอสินเชื่อ"
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx":{
+                      "padding":"4px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "overflowX": "auto"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "UniversalArrayView",
+                              "scope": "#/properties/customers",
+                              "options": {
+                                "hideTableToolbar": true,
+                                "sx": {
+                                  "th": {
+                                    "padding": "8px 10px"
+                                  },
+                                  "td": {
+                                    "padding":"8px 10px"
+                                  }
+                                },
+                                "cells": [
+                                  {
+                                    "type": "Icon",
+                                    "scope": "#/properties/verify",
+                                    "label": "-"
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/no",
+                                    "label": "ลำดับ",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/party_type",
+                                    "label": "ประเภทลูกค้า",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/name",
+                                    "label": "ชื่อลูกค้า",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/dob",
+                                    "label": "วันเกิด/วันที่จดทะเบียนนิติบุคคล",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/customer_type",
+                                    "label": "ประเภทบุคคล",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/income_type",
+                                    "label": "การรับรายได้",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/reference_no",
+                                    "label": "เลขที่เอกสารอ้างอิง",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/work_place",
+                                    "label": "ชื่อสถานที่ทำงาน",
+                                    "options": {
+                                      "variant": "label"
+                                    }
+                                  },
+                                  {
+                                    "type": "ActionButton",
+                                    "options": {
+                                      "chain": [
+                                        {
+                                          "operationType": "action",
+                                          "conditionTypeId": "RCWebVerify_Details_Open",
+                                          "payload": {
+                                            "taskId": "{route.taskId}",
+                                            "task_type": "WebVerify",
+                                            "borrower_no": "{_rowData.no}",
+                                            "test":"{_rowData}",
+                                            "test_payload":"1234"
+                                          }
+                                        },
+                                        {
+                                          "operationType": "open",
+                                          "route": "/webverify/{_rowData.taskId}/list-details/{_rowData.party_id}"
+                                        }
+                                      ]
+                                    },
+                                    "label": "ตรวจสอบ"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Follow Up",
+              "options": {
+                "operationType": "script",
+                "subtype": "followUp",
+                "variant" : "secondary"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Fraud",
+              "options": {
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_TempIndexing_Details_Cancel",
+                "variant" : "secondary"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกแบบร่าง",
+              "options": {
+                "variant" : "secondary",
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_RCVerify_Details_SaveToDraft"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "WebVerify_Details_Submit",
+                    "payload": {
+                      "application_number": ""
+                    }
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/webverify/{route.taskId}/done"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+  

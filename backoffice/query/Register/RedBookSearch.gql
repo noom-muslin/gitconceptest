@@ -1,0 +1,24 @@
+query GetRedBookSearch(
+  $where: [ngl_enum_vehicle_sub_model_bool_exp]
+  $order_by: [ngl_enum_vehicle_sub_model_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_enum_vehicle_sub_model(
+    where: {
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    brand_code
+    model_code
+    sub_model_year
+    cckwh
+    engine_type_code
+    sub_model_code
+    engine_type_code
+    price_list
+  }
+}

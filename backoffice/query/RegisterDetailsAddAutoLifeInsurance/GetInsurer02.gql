@@ -1,0 +1,17 @@
+query GetInsurer02($application_id: String!) {
+  result: ngl_appl_party(
+    where: {
+      application_id: {_eq: $application_id}
+      borrowers: {
+        application: {
+          tasks: {
+            application_id: {_eq: $application_id}
+          }
+        }
+      }
+    }
+  ) {
+    value: full_name
+    label: full_name
+  }
+}

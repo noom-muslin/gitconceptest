@@ -1,0 +1,159 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "assessment_date",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "ชื่อโครงการ",
+      "field": "generalinfo.thai_name",
+      "name": "project_name",
+      "minWidth": 120
+    },
+    {
+      "title": "วัตถุประสงค์",
+      "field": "objective.description",
+      "name": "objective",
+      "minWidth": 120
+    },
+    {
+      "title": "สถานะ",
+      "field": "py_status_work",
+      "name": "status",
+      "minWidth": 120
+    },
+    {
+      "title": "Create application date",
+      "field": "create_date_time",
+      "name": "create_application_date",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "Complete appraisal date",
+      "field": "wait_for_appraisal_until_date_time",
+      "name": "complete_appraisal_date",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "ชื่อบริษัท",
+      "field": "company_name",
+      "name": "company_name",
+      "minWidth": 120
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "MFProfile",
+            "route": "/mf-profile/{data.application_id}/ca_document",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View Details",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "MFProfile",
+            "route": "/mf-profile/{data.application_id}/details",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Open doc",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "MFProfile",
+            "route": "/mf-profile/{data.application_id}/documents",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View FU",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "MFProfile",
+            "route": "/mf-profile/{data.application_id}/follow-up",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "resizable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Change Condition",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "MFProfile",
+            "route": "/mf-profile/{data.application_id}/change-condition"
+          }
+        }
+      ]
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

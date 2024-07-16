@@ -1,0 +1,140 @@
+{
+  "type": "object",
+  "properties": {
+    "addressType": {
+      "type": ["string","null"],
+      "readOnly": true
+    },
+    "sendToFosStatus": {
+      "type": "boolean"
+    },
+    "documentOn": {
+      "type": "boolean"
+    },
+    "HomeAddress_on": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "CurrentAddress_on": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "WorkAddress_on": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "SecondaryAddress_on": {
+      "type": "boolean",
+      "readOnly": true
+    },
+    "application_id": {
+      "type": ["string","null"],
+      "readOnly": true
+    },
+    "customer_type": {
+      "type": ["string","null"],
+      "readOnly": true
+    },
+    "occupation_type": {
+      "type": ["string","null"],
+      "readOnly": true
+    },
+    "full_name": {
+      "type": ["string","null"],
+      "readOnly": true
+    },
+    "reference_no": {
+      "type": ["string","null"],
+      "readOnly": true
+    },
+    "province_enum": {
+      "type": "array"
+    },
+    "amphur_enum": {
+      "type": "array"
+    },
+    "tambon_enum": {
+      "type": "array"
+    },
+    "zipcode_enum": {
+      "type": "array"
+    },
+    "province": {
+      "type": ["string","null"]
+    },
+    "amphur": {
+      "type": ["string","null"]
+    },
+    "tambon": {
+      "type": ["string","null"]
+    },
+    "zipcode": {
+      "type": ["string","null"]
+    },
+    "business_enum": {
+      "type": "array"
+    },
+    "business": {
+      "type": ["string","null"]
+    },
+    "latitude": {
+      "type": ["string","null"]
+    },
+    "longitude": {
+      "type": ["string","null"]
+    },
+    "address_no": {
+      "type": ["string","null"]
+    },
+    "appointmentDate": {
+      "type": ["string", "null"]
+    },
+    "appointmentTime": {
+      "type": ["string", "null"]
+    },
+    "fos_to_remark": {
+      "type": ["string","null"],
+      "maxLength": 300
+    },
+    "fos_interface_status":{
+      "type": ["string","null"]
+    },
+    "fos_status":{
+      "type": ["string","null"]
+    },
+    "fos_response_message":{
+      "type": ["string","null"]
+    },
+    "remark_from_fos":{
+      "type": ["string","null"]
+    },
+    "remark_from_co":{
+      "type": ["string","null"]
+    },
+    "application_details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type":["string","null"],
+            "readOnly": true
+          },
+          "product_group": {
+            "type": ["string","null"],
+            "readOnly": true
+          },
+          "product_type": {
+            "type": ["string","null"],
+            "readOnly": true
+          },
+          "sub_product_type": {
+            "type": ["string","null"],
+            "readOnly": true
+          }
+        }
+      }
+    }
+  },
+  "required": ["province","amphur","tambon","zipcode","business"]
+}

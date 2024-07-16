@@ -1,0 +1,143 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "hideExportButton": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 130
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class",
+      "minWidth": 120
+    },
+    {
+      "title": "รับมาจาก",
+      "field": "previous_task.task_type.code",
+      "name": "previous_channel_station",
+      "minWidth": 150
+    },
+    {
+      "title": "ช่องทาง",
+      "field": "application.application_channel.code",
+      "name": "channel_type",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 190
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "chain":[
+              {
+                "operationType": "action",
+                "conditionTypeId": "WorkBasket_GetTask",
+                "permission": "p_CheckList",
+                "payload": {
+                  "taskId": "{data.id}",
+                  "routeUrl": "/check-list/{data.id}/details"
+                },
+                "validationSchema": false
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "error"
+                          ],
+                          "properties": {
+                            "error": {
+                              "required": [
+                                "code"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "integer",
+                                  "const": 1001
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "operationType": "modal",
+                "dialogName": "m_BasicError_TaskAlreadyAssigned",
+                "subtype": "show"
+
+              }
+            ]
+           
+            
+          }
+        }
+      ],
+      "width": 120
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

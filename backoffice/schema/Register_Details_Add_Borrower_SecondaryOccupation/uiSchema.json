@@ -1,0 +1,466 @@
+{
+  "type": "StackLayout",
+  "direction": "row",
+  "rule": {
+    "effect": "SHOW",
+    "condition": {
+      "scope": "#/properties/haveSecondaryOccupation",
+      "schema": {
+        "const": "have"
+      }
+    }
+  },
+  "elements": [
+    {
+      "type": "SchemedListView",
+      "scope": "#/properties/secondaryOccupations",
+      "options": {
+        "sx": {
+          "padding": "16px 0px"
+        },
+        "cellUiSchema": {
+          "type": "StackLayout",
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "alignItems": "center",
+                "spacing": "1em",
+                "paddingBottom": "16px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "อาชีพรองที่",
+                  "options": {
+                    "variant": "subtitle2Dark"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/index",
+                  "options": {
+                    "variant": "subtitle2Dark"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": " ",
+                  "scope": "#",
+                  "options": {
+                    "columnTitle": "",
+                    "validationSchema": false,
+                    "icon": "DeleteOutlined",
+                    "variant": "secondaryError",
+                    "size": "smallIcon",
+                    "operationType": "script",
+                    "converter": "delete_borrower_secondary_occupation",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "secondaryOccupations": {
+                              "type": "array"
+                          }
+                        }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "Credit Level",
+                      "scope": "#/properties/creditLevel",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "autocomplete": false,
+                        "query": "CommonSearch/CreditLevel",
+                        "converter": "mapValueLabel"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "เลขที่",
+                      "scope": "#/properties/number",
+                      "options": {
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "fullwidth": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "หมู่ที่",
+                      "scope": "#/properties/village",
+                      "options": {
+                        "fullwidth": true,
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "หมู่บ้าน/อาคาร/คอนโด",
+                      "scope": "#/properties/address",
+                      "options": {
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "fullwidth": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ชั้นที่",
+                      "scope": "#/properties/floor",
+                      "options": {
+                        "fullwidth": true,
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ห้อง",
+                      "scope": "#/properties/room",
+                      "options": {
+                        "fullwidth": true,
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ตรอก",
+                      "scope": "#/properties/alley",
+                      "options": {
+                        "fullwidth": true,
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ซอย/แยก",
+                      "scope": "#/properties/intersection",
+                      "options": {
+                        "fullwidth": true,
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ถนน",
+                      "scope": "#/properties/road",
+                      "options": {
+                        "fullwidth": true,
+                        "hideRequiredAsterisk": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "จังหวัด",
+                      "scope": "#/properties/province",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "conditionTypeId": "poc_cache_data_provider",
+                        "queryVariables": {
+                          "payload": {
+                            "userId": "{user.login}"
+                          }
+                        },
+                        "converter": "filterProvince"
+                      },
+                      "errors": {
+                        "required": "required field"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "rule": {
+                    "effect": "HIDE",
+                    "condition": {
+                      "scope": "#",
+                      "schema": {
+                        "required": [
+                          "x"
+                        ]
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "options": {
+                        "resultMappingSchema": {
+                          "properties": {
+                            "provincevalue": {
+                              "dataPath": "province",
+                              "type": "string"
+                            },
+                            "amphurValue": {
+                              "dataPath": "amphur",
+                              "type": "string"
+                            },
+                            "tambonValue": {
+                              "dataPath": "tambon",
+                              "type": "string"
+                            },
+                            "district_enum": {
+                              "dataPath": "provincevalue",
+                              "type": "string",
+                              "converter": "filterAmphur"
+                            },
+                            "subdistrict_enum": {
+                              "dataPath": [
+                                "provincevalue",
+                                "amphurValue"
+                              ],
+                              "type": "string",
+                              "converter": "filterTambon"
+                            },
+                            "zipcode_enum": {
+                              "dataPath": [
+                                "provincevalue",
+                                "amphurValue",
+                                "tambonValue"
+                              ],
+                              "type": "string",
+                              "converter": "filterZipcode"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "FormMapperListener"
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "อำเภอ/เขต",
+                      "scope": "#/properties/amphur",
+                      "rule": {
+                        "effect": "DISABLE",
+                        "condition": {
+                          "scope": "#",
+                          "schema": {
+                            "not": {
+                              "required": [
+                                "province"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "enumDataPath": "district_enum",
+                        "autocomplete": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "ตำบล/แขวง",
+                      "scope": "#/properties/tambon",
+                      "rule": {
+                        "effect": "DISABLE",
+                        "condition": {
+                          "scope": "#",
+                          "schema": {
+                            "not": {
+                              "required": [
+                                "province",
+                                "amphur"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "enumDataPath": "subdistrict_enum",
+                        "autocomplete": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "รหัสไปรษณีย์",
+                      "scope": "#/properties/zipcode",
+                      "rule": {
+                        "effect": "DISABLE",
+                        "condition": {
+                          "scope": "#",
+                          "schema": {
+                            "not": {
+                              "required": [
+                                "province",
+                                "amphur",
+                                "tambon"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "hideRequiredAsterisk": true,
+                        "enumDataPath": "zipcode_enum",
+                        "autocomplete": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "8px",
+        "direction": "row"
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "+ เพิ่มอาชีพรอง",
+          "options": {
+            "variant": "secondary",
+            "validationSchema": false,
+            "operationType": "script",
+            "converter": "add_borrower_secondary_occupation",
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "secondaryOccupations": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

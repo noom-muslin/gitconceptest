@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "message": {
+      "type": "string"
+    },
+    "documentOn": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string"
+    },
+    "recordNo": {
+      "type": "integer",
+      "readOnly": true
+    },
+    "ocCode": {
+      "type": "integer",
+      "minimum": 1000,
+      "maximum": 9999,
+      "readOnly": true
+    },
+    "ocCodeOld": {
+      "type": "integer"
+    },
+    "monthYear": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 4
+    },
+    "monthYearOld": {
+      "type": "string"
+    },
+    "boxNoFrom": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9999,
+      "readOnly": true
+    },
+    "boxNoTo": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9999
+    },
+    "boxNoGroup": {
+      "type": "string"
+    },
+    "applicationGroupId": {
+      "type": "string"
+    }
+  }
+}

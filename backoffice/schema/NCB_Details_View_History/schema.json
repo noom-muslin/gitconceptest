@@ -1,0 +1,133 @@
+{
+  "type": "object",
+  "properties": {
+    "ncbHistoryBorrowerInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "businessRegistrationType": {
+            "type": "string"
+          },
+          "businessRegistrationDate": {
+            "type": "string"
+          },
+          "ocCode": {
+            "type": "string"
+          },
+          "customerSegment": {
+            "type": "string"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "consentDocument": {
+            "type": "string"
+          },
+          "referenceDocumentNo": {
+            "type": "string"
+          },
+          "consentDate": {
+            "type": "object",
+            "properties": {
+              "consentDate": {
+                "type": "string"
+              }
+            }
+          },
+          "EmsParcelNumber": {
+            "type": "string"
+          },
+          "ncbSubmissionResults": {
+            "type": "string"
+          },
+          "employeeId": {
+            "type": "string"
+          },
+          "ncbTestResults": {
+            "type": "string"
+          },
+          "ncbGrade": {
+            "type": "string"
+          },
+          "OdGrade": {
+            "type": "string"
+          },
+          "ncbInspectionDate": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ncbHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "businessRegistrationType": {
+            "type": "string"
+          },
+          "businessRegistrationDate": {
+            "type": "string"
+          },
+          "ocCode": {
+           "type": "string"
+          },
+          "customerSegment": {
+            "type": "string"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "consentDocument": {
+            "type": "string"
+          },
+          "referenceDocumentNo": {
+            "type": "string"
+          },
+          "consentDate": {
+            "type": "object",
+            "properties": {
+              "consentDate": {
+                "type": "string"
+              }
+            }
+          },
+          "EmsParcelNumber": {
+            "type": "string"
+          },
+          "ncbSubmissionResults": {
+            "type": "string"
+          },
+          "employeeId": {
+            "type": "string"
+          },
+          "ncbTestResults": {
+            "type": "string"
+          },
+          "ncbGrade": {
+            "type": "string"
+          },
+          "OdGrade": {
+            "type": "string"
+          },
+          "ncbInspectionDate": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

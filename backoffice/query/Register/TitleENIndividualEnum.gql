@@ -1,0 +1,6 @@
+query GetTitleENIndividual {
+  result: ngl_enum_title(order_by: {order_num: asc}, where: {is_active: {_eq: true}, type: {_eq: "P"}}) {
+    label: short_en
+    value: code
+  }
+}

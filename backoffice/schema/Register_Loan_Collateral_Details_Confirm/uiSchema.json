@@ -1,0 +1,115 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการส่งข้อมูลหรือไม",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อเลือกส่งข้อมูล ระบบจะตรวจสอบข้อมูลซ้ำ และส่งข้อมูลใบสมัครไปยัง Station ถัดไป",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "กลับไป",
+          "options": {
+            "variant": "outlined",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "size": "large",
+            "sx": {},
+            "chain": [
+              {
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/register"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

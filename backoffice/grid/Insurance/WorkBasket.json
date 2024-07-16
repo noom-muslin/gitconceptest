@@ -1,0 +1,185 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "deadline_at",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application_id",
+      "name": "application_id",
+      "minWidth": 150
+    },
+    {
+      "title": "OP Number",
+      "field": "op.op_number",
+      "name": "OPNumber",
+      "width": 120
+    },
+    {
+      "sortable": false,
+      "title": "วัตถุประสงค์ OP",
+      "field": "op.op_objectives",
+      "converter": "objectives_converter_ci_insurance",
+      "name": "op_objective_desc",
+      "minWidth": 150
+    },
+    {
+      "sortable": false,
+      "title": "ชื่อลูกค้า",
+      "name": "customer_name",
+      "field": "application.appl_parties",
+      "converter": "customer_name_converter_ci_insurance",
+      "minWidth": 120
+    },
+    {
+      "title": "เลขที่บัญชี",
+      "field": "op_loan.account_number",
+      "name": "AccountNumber",
+      "minWidth": 150
+    },
+    {
+      "title": "ประเภทหลักประกัน",
+      "field": "application.collateral_securities",
+      "name": "security_type",
+      "converter": "security_type_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "วันที่ตัดยอดชำระ",
+      "field": "application.accounts",
+      "name": "settlement_date",
+      "converter": "account_settlement_date_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "เริ่มมีผล/ไถ่ถอน",
+      "field": "application.collateral_securities",
+      "name": "apprisal_date",
+      "converter": "apprisal_date_converter",
+      "minWidth": 150
+    },
+    {
+      "name": "",
+      "field": "id",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดูเอกสาร",
+          "type": "ActionButton",
+          "options": {
+            "variant" : "href",
+              "operationType": "script",
+              "converter": "openDocumentumLinkfromGrid",
+              "payload": {
+                "task_id": "{data.id}"              
+              }
+          }
+        }
+      ],
+      "width": 140
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "รายละเอียด OP",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_Insurance",
+            "route": "/insurance/{data.id}/details"
+          }
+        }
+      ],
+      "width": 140
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_Insurance",
+            "route": "/insurance/{data.id}/details"
+          }
+        }
+      ],
+      "width": 30
+    },
+    {
+      "title": " ",
+      "name": "get_tast",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "reset_notification",
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "previous_user": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+              "operationType": "action",
+              "conditionTypeId": "Check_User_GetTask",
+              "permission": "p_Insurance",
+              "payload": {
+                "userId": "{user.login}",
+                "performingBy": "{data.previous_task.performing_by}",
+                "taskId": "{data.id}",
+                "routeUrl": "/insurance",
+                "flagChecker":"{data.op_loan.op_loans_insurance.checker_flag}"
+                }
+              } 
+            ]
+          }
+        }
+      ],
+      "width": 120
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

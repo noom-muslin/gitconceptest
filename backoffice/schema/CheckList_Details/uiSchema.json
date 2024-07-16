@@ -1,0 +1,669 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/check-list"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Checklist"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px 16px 86px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "Documentum"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true,
+            "sx": {
+              "minWidth": 0
+            }
+          },
+          "elements": [
+            {
+              "type": "Accordion",
+              "label": "รายละเอียดงาน",
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "paddingBottom": "16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px",
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 12
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "วันที่ได้รับเอกสาร",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_date_time_in",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Group",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_group",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Type",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_type",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/credits",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "disableItemsRemove": true,
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/number",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ลำดับ",
+                              "size": "small",
+                              "fontWeight": "bold"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": "Product Group",
+                            "scope": "#/properties/productGroup",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "enumDataPath": "product_group_enum"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": "Product Type",
+                            "scope": "#/properties/productType",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "enumDataPath": "product_group_enum.{|productGroupIndex}.types"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": "Sub Product Type",
+                            "scope": "#/properties/subProductType",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "enumDataPath": "product_group_enum.{|productGroupIndex}.types.{|productTypeIndex}.subTypes"
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": " ",
+                            "options": {
+                              "chain": [
+                                {
+                                  "operationType": "script",
+                                  "converter": "checkListDetailsGetProduct",
+                                  "resultMappingSchema": {
+                                    "type": "object",
+                                    "properties": {
+                                      "credit": {
+                                        "type": "object",
+                                        "dataPath": "credit",
+                                        "properties": {
+                                          "number": {
+                                            "type": "integer"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "operationType": "modal",
+                                  "dialogName": "m_CheckList_Details_Delete_Product",
+                                  "subtype": "show"
+                                }
+                              ],
+                              "variant": "secondaryError",
+                              "icon": "DeleteOutlined",
+                              "size": "smallIcon",
+                              "columnSx": {
+                                "width": "50px"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "0 16px 16px",
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.deep"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "+ เพิ่มสินเชื่อ",
+                          "rule": {
+                            "effect": "ENABLE",
+                            "condition": {
+                              "scope": "#/properties/credits",
+                              "schema": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "number": {
+                                      "type": "integer"
+                                    },
+                                    "productGroup": {
+                                      "type": "string"
+                                    },
+                                    "productType": {
+                                      "type": "string"
+                                    },
+                                    "subProductType": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [ "number", "productGroup", "productType", "subProductType" ]
+                                }
+                              }
+                            }
+                          },
+                          "options": {
+                            "converter": "checkListDetailsAddProduct",
+                            "operationType": "script",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "properties": {
+                                "credits": {
+                                  "type": "object",
+                                  "dataPath": "credits"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "0 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "กลุ่มลูกค้า",
+                          "scope": "#/properties/customer_group",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "overflowX": "auto",
+                  "pt": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "label": "เอกสารผู้กู้หลัก",
+                  "type": "Accordion",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px 24px 16px 24px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระบุ Product Group, Product Type และ Sub Product Type เพื่อดูรายการเอกสาร",
+                          "options": {
+                            "variant": "body2",
+                            "sx": {
+                              "fontSize": "14px",
+                              "fontWeight": 400,
+                              "color": "#828890"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "overflowX": "auto",
+                  "pt": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "label": "เอกสารผู้กู้ร่วม",
+                  "type": "Accordion",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px 24px 16px 24px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระบุ Product Group, Product Type และ Sub Product Type เพื่อดูรายการเอกสาร",
+                          "options": {
+                            "variant": "body2",
+                            "sx": {
+                              "fontSize": "14px",
+                              "fontWeight": 400,
+                              "color": "#828890"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "overflowX": "auto",
+                  "pt": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "label": "เอกสารผู้ค้ำประกัน",
+                  "type": "Accordion",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px 24px 16px 24px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระบุ Product Group, Product Type และ Sub Product Type เพื่อดูรายการเอกสาร",
+                          "options": {
+                            "variant": "body2",
+                            "sx": {
+                              "fontSize": "14px",
+                              "fontWeight": 400,
+                              "color": "#828890"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "overflowX": "auto",
+                  "pt": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "label": "เอกสารผู้ถือกรรมสิทธิ์",
+                  "type": "Accordion",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px 24px 16px 24px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระบุ Product Group, Product Type และ Sub Product Type เพื่อดูรายการเอกสาร",
+                          "options": {
+                            "variant": "body2",
+                            "sx": {
+                              "fontSize": "14px",
+                              "fontWeight": 400,
+                              "color": "#828890"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกสถานะ",
+              "options": {
+                "operationType": "action",
+                "conditionTypeId": "CheckList_Details_SaveApplication",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                },
+                "variant": "secondary"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "variant": "primary",
+                "operationType": "action",
+                "conditionTypeId": "CheckList_Details_SubmitApplication",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,655 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/temp-indexing"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Temp Indexing"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/work_object",
+              "options": {
+                "variant": "h6White"
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "Documentum"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true,
+            "sx": {
+              "minWidth": 0
+            }
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "variant": "section"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "รายละเอียดงาน"
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px"
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px",
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Group",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_group",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Type",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_type",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Indexing Type",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/indexing_type",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "0 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "spacing": "8px"
+                          },
+                          "elements": [
+                            {
+                              "type": "TextField",
+                              "label": "Application No.",
+                              "scope": "#/properties/application_number",
+                              "rule": {
+                                "effect": "DISABLE",
+                                "condition": {
+                                  "scope": "#/properties/rule_vars/properties/is_enabled_app_no",
+                                  "schema": {
+                                    "const": false
+                                  }
+                                }
+                              },
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined"
+                              },
+                              "errors": {
+                                "pattern": "Application number has invalid format."
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "rule": {
+                                "effect": "ENABLE",
+                                "condition": {
+                                  "scope": "#/properties/rule_vars/properties/is_enabled_search",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              },
+                              "options": {
+                                "variant": "secondary",
+                                "operationType": "action",
+                                "conditionTypeId": "TempIndexing_Details_Search",
+                                "payload": {
+                                  "taskId": "{route.taskId}",
+                                  "application_number": "{application_number}"
+                                },
+                                "sx": {
+                                  "&.MuiButtonBase-root.MuiButton-root": {
+                                    "marginTop": "24px"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "0 16px"
+                        }
+                      },
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/indexing_type_id",
+                          "schema": {
+                            "const": "TempIndexing"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "สร้าง Application No.",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#/properties/rule_vars/properties/is_enabled_generate",
+                              "schema": {
+                                "const": false
+                              }
+                            }
+                          },
+                          "options": {
+                            "operationType": "action",
+                            "conditionTypeId": "TempIndexing_Details_GenerateAppNo",
+                            "payload": {
+                              "taskId": "{route.taskId}"
+                            },
+                            "variant": "secondary"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "borderTop": "1px solid",
+                          "borderColor": "secondary.dark",
+                          "overflowX": "auto"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/search_result",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "disableItemsRemove": true,
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_number",
+                                "options": {
+                                  "columnTitle": "Application No"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_group",
+                                "options": {
+                                  "columnTitle": "Application Group"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_type",
+                                "options": {
+                                  "columnTitle": "Application Type"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/indexing_type",
+                                "options": {
+                                  "columnTitle": "Indexing Type"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/received_from",
+                                "options": {
+                                  "columnTitle": "Received From"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/status_work",
+                                "options": {
+                                  "columnTitle": "Work Status"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ยกเลิกการส่งงาน",
+              "options": {
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "tempIndexing_cancel",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "canCancel": {
+                          "type": "boolean",
+                          "dataPath": "canCancel"
+                        },
+                        "isAppNumberGenerated": {
+                          "type": "boolean",
+                          "dataPath": "isAppNumberGenerated"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "canCancel"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "canCancel": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "variant": "secondaryError",
+                    "operationType": "modal",
+                    "subtype": "show",
+                    "dialogName": "m_Details_Reject"
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "isAppNumberGenerated"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "isAppNumberGenerated": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_Basic_Error",
+                    "subtype": "show",
+                    "dialogVariables": {
+                      "title": "ไม่สามารถยกเลิกใบสมัครได้ เนื่องจากสร้าง Application No. แล้ว",
+                      "text": "หากต้องการยกเลิกใบสมัคร กรุณากลับไปหน้า Temp Indexing และทำรายการอีกครั้ง"
+                    }
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_Basic_Error",
+                    "subtype": "show",
+                    "dialogVariables": {
+                      "title": "",
+                      "text": "กรุณาลบ Application No. หากต้องการยกเลิกใบสมัคร"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "tempIndexing_canSubmit",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "canSubmit": {
+                          "type": "boolean",
+                          "dataPath": "canSubmit"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "canSubmit"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "canSubmit": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_TempIndexing_Details_Confirm",
+                    "subtype": "show"
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_Basic_Error",
+                    "subtype": "show",
+                    "dialogVariables": {
+                      "title": "ไม่สามารถส่งข้อมูลได้",
+                      "text": "กรุณาระบุข้อมูลให้ครบถ้วนและกดค้นหา เพื่อส่งข้อมูล"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

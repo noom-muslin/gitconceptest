@@ -1,0 +1,9 @@
+query MyQuery($ListCode: String!){
+  result: ngl_enum_standard_code(where: 
+  {standard_list_code: {_eq: $ListCode},status:{_eq:true}
+  }){
+    code
+    value: display_value
+    label: display_value
+  }
+}

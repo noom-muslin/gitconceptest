@@ -1,0 +1,6 @@
+query GetBusinessType {
+  result: ngl_enum_isic(order_by: {order_num: asc}, where: {is_active: {_eq: true}}) {
+    label: description
+    value: code
+  }
+}

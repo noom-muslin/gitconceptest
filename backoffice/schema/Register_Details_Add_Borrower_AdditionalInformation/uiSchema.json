@@ -1,0 +1,382 @@
+[
+  {
+    "type": "GridLayout",
+    "options": {
+      "container": true,
+      "sx": {
+        "padding": "16px"
+      }
+    },
+    "elements": [
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 12
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "RadioGroupField",
+            "scope": "#/properties/additiaonalInforamtion/properties/haveInsurance",
+            "label": "มีประกันภัย",
+            "options": {
+              "radioSize": "small",
+              "row": "false",
+              "sx": {
+                "padding": "16px"
+              },
+              "enum": [
+                {
+                  "value": true,
+                  "label": "มี"
+                },
+                {
+                  "value": false,
+                  "label": "ไม่มี"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 12
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "RadioGroupField",
+            "scope": "#/properties/additiaonalInforamtion/properties/consentOfLoanInterest",
+            "label": "Consent ดอกเบี้ยเงินกู้",
+            "options": {
+              "radioSize": "small",
+              "row": "false",
+              "sx": {
+                "padding": "16px"
+              },
+              "enum": [
+                {
+                  "value": "Consent",
+                  "label": "ยินยอม"
+                },
+                {
+                  "value": "Not consent",
+                  "label": "ไม่ยินยอม"
+                },
+                {
+                  "value": "Not specified",
+                  "label": "ไม่ระบุ"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายผ่อนรถยนต์นอก SCB",
+            "scope": "#/properties/additiaonalInforamtion/properties/carInstallmentExpensesOutsideSCB",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายผ่อนรถยนต์ใน SCB",
+            "scope": "#/properties/additiaonalInforamtion/properties/carInstallmentExpensesInSCB",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายผ่อนบัตรเครดิตนอก SCB",
+            "scope": "#/properties/additiaonalInforamtion/properties/creditCardInstallmentExpensesOutsideSCB",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายผ่อนบัตรเครดิต์ใน SCB",
+            "scope": "#/properties/additiaonalInforamtion/properties/creditCardInstallmentExpensesInSCB",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายผ่อนสินเชื่อบ้าน/SSME นอก SCB",
+            "scope": "#/properties/additiaonalInforamtion/properties/homeLoanSSMEInstallmentExpensesOutsideSCB",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Mortgage"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายผ่อนสินเชื่อบ้าน/SSME ใน SCB ",
+            "scope": "#/properties/additiaonalInforamtion/properties/homeLoanSSMEInstallmentExpensesInSCB                   ",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Auto"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายรวม",
+            "scope": "#/properties/additiaonalInforamtion/properties/totalExpenses",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Auto"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "Total Debt Burden",
+            "scope": "#/properties/additiaonalInforamtion/properties/totalDebtBurden",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Unsecured"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "อีเมลผู้ติดต่อเพื่อทวงถามหนี้",
+            "scope": "#/properties/additiaonalInforamtion/properties/contactEmail",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/applicationGroup",
+            "schema": {
+              "const": "Unsecured"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ค่าใช้จ่ายรวม",
+            "scope": "#/properties/additiaonalInforamtion/properties/totalExpenses",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "endAdornmentTypography": {
+                "text": "บาท"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

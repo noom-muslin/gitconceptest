@@ -1,0 +1,67 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "work_object": {
+          "type": "string"
+        },
+        "indexing_type": {
+          "type": "string"
+        },
+        "doc_in_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+
+    "application_group_enum": {
+      "type": "array"
+    },
+    "application_type_enum": {
+      "type": "array"
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "indexing_type_enum": {
+      "type": "array"
+    },
+    "application_channel_enum": {
+      "type": "array"
+    },
+    "stationName": {
+      "type": "string"
+    },
+    "workbasket_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    }
+  }
+}

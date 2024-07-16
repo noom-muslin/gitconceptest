@@ -1,0 +1,5 @@
+query MyQuery{
+  result: ngl_mas_holiday(where: {is_active: {_eq: true}}) {
+    holiday_date
+  }
+}

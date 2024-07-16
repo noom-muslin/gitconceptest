@@ -1,0 +1,431 @@
+{
+    "type": "StackLayout",
+    "options": {
+      "spacing": "1em",
+      "sx": {
+        "padding": "0 1em 1em"
+      }
+    },
+    "elements": [
+      {
+        "type": "Typography",
+        "label": "Pending Follow Up",
+        "options": {
+          "variant": "h6Dark"
+        }
+      },
+      {
+        "type": "PaperLayout",
+        "options": {
+          "component": "section",
+          "sx": {
+            "padding": "0 1em 1em"
+          }
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row",
+              "justifyContent": "space-between",
+              "sx": {
+                "backgroundColor": "#f5f3ff",
+                "margin": "0 -1em 1em"
+              }
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "Pending Follow Up",
+                "options": {
+                  "variant": "subtitle2Purple"
+                }
+              }
+            ]
+          },
+
+          {
+            "type": "StackLayout",
+            "options": {
+              "spacing": "1em"
+            },
+            "elements": [
+              {
+                "type": "BoxLayout",
+                "elements": [
+                  {
+                    "type": "GridLayout",
+                    "options": {
+                      "container": "true",
+                      "spacing": "1em"
+                    },
+                    "elements": [
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "Application No.",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/application_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรภาษาอังกฤษ ตัวเลข - และ _ เท่านั้น",
+                              "minLength": "กรุณาระบุข้อมูลอย่างน้อย 5 ตัวอักษร"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "Application Class",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/application_class",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "enumDataPath": "application_class_enum"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "วันที่ได้รับเอกสาร",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "ExternalComponent",
+                            "scope": "#/properties/search/properties/doc_in_datetime",
+                            "options": {
+                              "externalComponentName": "thai-calendar",
+                              "externalComponentScope": "remote1",
+                              "externalComponentModule": "./ThaiDateRange",
+                              "views": "year,month,day",
+                              "variant": "outlined",
+                              "sx": {
+                                "width": "100%"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "ชื่อลูกค้า",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/customer_name",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "นามสกุลลูกค้า",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/customer_last_name",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "Station ต้นทาง",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/oc_code_owner_agency",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "query": "QC/OcCode",
+                              "converter": "mapOcCode"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "สถานะ Follow Up",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/oc_code_owner_agency",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "query": "QC/OcCode",
+                              "converter": "mapOcCode"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "จำนวนครั้งที่ Follow Up",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search/properties/customer_name",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+
+              {
+                "type": "StackLayout",
+                "options": {
+                  "direction": "row",
+                  "justifyContent": "space-between"
+                },
+                "elements": [
+                  {
+                    "type": "ActionButton",
+                    "label": "ล้างค่า",
+                    "options": {
+                      "operationType": "script",
+                      "converter": "workbasket_filter_clear",
+                      "className": "secondaryButton-redText",
+                      "resultMappingSchema": {
+                        "type": "object",
+                        "properties": {
+                          "workbasket_grid": {
+                            "type": "object",
+                            "properties": {
+                              "filters": {
+                                "type": "array"
+                              },
+                              "pagination": {
+                                "type": "object",
+                                "properties": {
+                                  "pageIndex": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ActionButton",
+                    "label": "ค้นหา",
+                    "options": {
+                      "className": "primaryButton",
+                      "chain":[
+                        {
+                          "operationType": "script",
+                          "converter": "ncb_check_search_criteria",
+                          "resultMappingSchema": {
+                            "type": "object",
+                            "properties": {
+                              "canSubmit": {
+                                "type": "boolean",
+                                "dataPath": "canSubmit"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "if": {
+                            "type": "object",
+                            "required": [
+                              "payload"
+                            ],
+                            "properties": {
+                              "payload": {
+                                "type": "object",
+                                "required": [
+                                  "data"
+                                ],
+                                "properties": {
+                                  "data": {
+                                    "required": [
+                                      "canSubmit"
+                                    ],
+                                    "type": "object",
+                                    "properties": {
+                                      "canSubmit": {
+                                        "type": "boolean",
+                                        "const": true
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "operationType": "script",
+                          "converter": "workbasket_filter",
+                          "size": "large",
+                          "sx": {
+                            "backgroundColor": "#5b21b6"
+                          },
+                          "resultMappingSchema": {
+                            "type": "object",
+                            "properties": {
+                              "workbasket_grid": {
+                                "type": "object",
+                                "properties": {
+                                  "filters": {
+                                    "type": "array"
+                                  },
+                                  "pagination": {
+                                    "type": "object",
+                                    "properties": {
+                                      "pageIndex": {
+                                        "type": "number"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "if": {
+                            "else": true
+                          },
+                          "operationType": "modal",
+                          "dialogName": "p_NCBError",
+                          "subtype": "show"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+
+              {
+                "type": "BoxLayout",
+                "options": {
+                  "htmlID": "FollowUp"
+                },
+                "elements": [
+                  {
+                    "type": "Datagrid",
+                    "scope": "#/properties/workbasket_grid",
+                    "options": {
+                      "grid": "QC/PendingFollowUp",
+                      "dataContext": {
+                        "query": "QC/PendingFollowUp",
+                        "queryVariables": {
+                          "taskType": "{zboRouteObject.buckets.content.dataContext.payload.stationName}",
+                          "assignee": "{user.login}"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

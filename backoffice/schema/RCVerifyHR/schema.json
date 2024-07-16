@@ -1,0 +1,117 @@
+{
+  "type": "object", 
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9]+$"
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        },
+        "subproduct_type": {
+          "type": "string"
+        },
+        "lane_level": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "customer_surname": {
+          "type": "string"
+        },
+        "doc_type": {
+          "type": "string"
+        },
+        "doc_number": {
+          "type": "string"
+        }
+      }
+    },
+
+    "application_group_enum": {
+      "type": "array"
+    },
+    "application_type_enum": {
+      "type": "array"
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "application_channel_enum": {
+      "type": "array"
+    },
+    "indexing_type_enum": {
+      "type": "array"
+    },
+
+    "workbasket_grid": {
+      "type": "object",
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "logic": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "sorting": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dir": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        }
+      },
+      "selection": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,668 @@
+{
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "dataPath": "task_id"
+    },
+    "appl_account": {
+      "type": "object",
+      "properties": {
+        "account_interest_monthly_amount_str": {
+          "type": ["string", "null"]
+        },
+        "account_interest_monthly_amount": {
+          "type": ["number", "null"]
+        },
+        "id": {
+          "type": "string"
+        },
+        "product_type_id": {
+          "type": "string"
+        },
+        "sub_product_type_id": {
+          "type": "string"
+        },
+        "sub_loan_type": {
+          "type": ["string"]
+        },
+        "credit_line_type": {
+          "type": ["string"]
+        },
+        "bot_object": {
+          "type": ["string", "null"]
+        },
+        "is_home_e_registered": {
+          "type": ["string"]
+        },
+        "is_show_account_name": {
+          "type": ["boolean", "null"]
+        },
+        "product_program": {
+          "type": ["string", "null"]
+        },
+        "booking_branch": {
+          "type": ["number"]
+        },
+        "tenor_year": {
+          "type": ["integer"]
+        },
+        "tenor_month": {
+          "type": ["integer"]
+        },
+        "open_reason": {
+          "type": ["string"]
+        },
+        "campaign_id": {
+          "type": ["string", "null"]
+        },
+        "requested_amount": {
+          "type": ["number"]
+        },
+        "review_credit_line_year": {
+          "type": ["integer", "null"]
+        },
+        "review_credit_line_month": {
+          "type": ["integer", "null"]
+        },
+        "pri_credit_limit": {
+          "type": ["number"]
+        },
+        "housing_credit_limit": {
+          "type": ["number", "null"]
+        },
+        "final_installment_transfer_limit": {
+          "type": ["number", "null"]
+        },
+        "nl_pot_credit_limit": {
+          "type": ["number", "null"]
+        },
+        "pis_credit_limit": {
+          "type": ["number", "null"]
+        },
+        "pot_credit_limit": {
+          "type": ["number", "null"]
+        },
+        "project_code": {
+          "type": ["string", "null"]
+        },
+        "developer_code": {
+          "type": ["string", "null"]
+        },
+        "mf_uwc_group": {
+          "type": ["string", "null"]
+        },
+        "cppg_grade": {
+          "type": ["string", "null"]
+        },
+        "mf_project_colour": {
+          "type": ["string", "null"]
+        },
+        "broker_code": {
+          "type": ["string", "null"]
+        },
+        "broker_grade": {
+          "type": ["string", "null"]
+        },
+        "home_builder_code": {
+          "type": ["string", "null"]
+        },
+        "home_builder_grade": {
+          "type": ["string", "null"]
+        },
+        "npanpl_code": {
+          "type": ["string", "null"]
+        },
+        "package_loan_code": {
+          "type": ["string", "null"]
+        },
+        "payment_method": {
+          "type": ["string", "null"]
+        },
+        "special_condition": {
+          "type": ["string", "null"]
+        },
+        "account_number_home_e_desc": {
+          "type": ["string", "null"]
+        },
+        "has_apprisal_book": {
+          "type": ["string", "null"],
+          "oneOf": [
+            {
+              "const": "true",
+              "title": "มี"
+            },
+            {
+              "const": "false",
+              "title": "ไม่มี"
+            }
+          ]
+        },
+        "account_number_home_e": {
+          "type": ["string", "null"]
+        },
+        "deduct_bonus_staff_amount": {
+          "type": ["number", "null"]
+        },
+        "refinance_from": {
+          "type": ["string", "null"]
+        },
+        "old_credit_line_amount": {
+          "type": ["number", "null"]
+        },
+        "balance_credit_line_amount": {
+          "type": ["number", "null"]
+        },
+        "lg_account_period": {
+          "type": ["integer", "null"]
+        },
+        "lg_payment_fee": {
+          "type": ["string", "null"]
+        },
+        "lg_account_type": {
+          "type": ["string", "null"]
+        },
+        "lg_guarantee_book_type": {
+          "type": ["string", "null"]
+        },
+        "lg_guarantee_type": {
+          "type": ["string", "null"]
+        },
+        "lg_use_of_work_cap": {
+          "type": ["string", "null"]
+        },
+        "lg_minimum_fee": {
+          "type": ["number", "null"]
+        },
+        "lg_guarantee_letter_for": {
+          "type": ["string", "null"]
+        },
+        "lg_guarantor": {
+          "type": ["string", "null"]
+        },
+        "account_number": {
+          "type": ["string", "null"]
+        },
+        "accountName": {
+          "type": ["string", "null"]
+        },
+        "account_name": {
+          "type": ["string", "null"]
+        },
+        "account_method_interest": {
+          "type": ["string", "null"]
+        },
+        "account_interest_monthly": {
+          "type": ["number", "null"]
+        },
+        "pn_acct_type": {
+          "type": ["string", "null"]
+        },
+        "pn_payment_method": {
+          "type": ["string", "null"],
+          "oneOf": [
+            {
+              "value": "วิธีชำระ P/N",
+              "label": "วิธีชำระ P/N"
+            }
+          ]
+        },
+        "pn_condition": {
+          "type": ["string", "null"]
+        },
+        "pn_period_items": {
+          "type": ["string", "null"]
+        },
+        "pn_period_day": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": []
+    },
+    "appl_account_objective": {
+      "type": "object",
+      "properties": {
+        "objective_id": {
+          "type": ["string"]
+        }
+      },
+      "required": []
+    },
+    "appl_account_lg_fee": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": ["string", "null"]
+          },
+          "seq": {
+            "type": ["integer", "null"]
+          },
+          "fee_amount": {
+            "type": ["number", "null"]
+          },
+          "fee_percentage": {
+            "type": ["number", "null"]
+          }
+        }
+      }
+    },
+    "appl_account_partialinstallment_details": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "installment_flag": {
+            "type": ["boolean", "null"]
+          },
+          "seq": {
+            "type": ["integer", "null"]
+          },
+          "installment_display": {
+            "type": ["string", "null"]
+          },
+          "installment_type": {
+            "type": ["string", "null"],
+            "readOnly": true
+          },
+          "premium_requested_amt": {
+            "type": ["integer", "null"],
+            "readOnly": true
+          },
+          "premium_produce_perc": {
+            "type": ["integer", "null"],
+            "readOnly": true
+          },
+          "premium_disburse_amt": {
+            "type": ["integer", "null"],
+            "readOnly": true
+          },
+          "premium_remaining_amt": {
+            "type": ["integer", "null"],
+            "readOnly": true
+          }
+        }
+      }
+    },
+    "appl_account_od_interest_plan": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": ["integer", "null"]
+          },
+          "amount": {
+            "type": ["number", "null"]
+          },
+          "interest_rate": {
+            "type": ["string", "null"]
+          },
+          "interest_spread": {
+            "type": ["string", "null"]
+          },
+          "interest_spread_amount": {
+            "type": ["number", "null"]
+          }
+        }
+      }
+    },
+    "method_of_interest_enum": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_standard_code_credit_line_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_sub_loan_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_loan_objective": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_broker": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_campaign": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_credit_line_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "standard_list_code": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_pn_payment_method": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_home_builder": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_payment_method": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_bot_object": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_lg_account_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_lg_guarantee_book_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_project": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_product_program": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_organization": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "label": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "enum_lg_guarantee_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_account_method_interest": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_pn_period_day": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_pn_period_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_pn_condition": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_open_reason": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_pn_acct_type": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_interest_rate": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enum_bank": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

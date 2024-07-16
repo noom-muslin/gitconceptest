@@ -1,0 +1,6 @@
+query GetCountry {
+  result: ngl_enum_country(order_by: {order_num: asc}, where: {is_active: {_eq: true}}) {
+    label: name_th
+    value: code
+  }
+}

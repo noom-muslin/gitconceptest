@@ -1,0 +1,9 @@
+query GetJobPositionCode {
+  result: ngl_enum_job_position (
+    order_by: {code: asc}, 
+    where: {is_active: {_eq: true}}
+  ) {
+    value: code
+    label: description
+  }
+}

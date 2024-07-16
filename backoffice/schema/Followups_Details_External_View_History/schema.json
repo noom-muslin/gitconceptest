@@ -1,0 +1,107 @@
+{
+  "type": "object",
+  "properties": {
+    "fuHistoryRow": {
+      "type": "object",
+      "properties": {
+        "comment_category": {
+          "type": "string"
+        },
+        "comment_details": {
+          "type": "string"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "itemSelected": {
+                "type": "boolean"
+              },
+              "document_name": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "remark": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "information": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "itemSelected": {
+                "type": "boolean"
+              },
+              "data_name": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "remark": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rc_reshape": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "itemSelected": {
+                "type": "boolean"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "remark": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "commentCode": {
+          "type": ["string", "null"]
+        },
+        "commentDetails": {
+          "type": ["string", "null"]
+        },
+        "originStation": {
+          "type": ["string", "null"]
+        },
+        "remark": {
+          "type": ["string", "null"],
+          "maxLength": 128
+        },
+        "originTaskType": {
+          "type": ["string", "null"]
+        },
+        "fuId": {
+          "type": "string"
+        },
+        "fuUpdated": {
+          "type": ["boolean", "null"]
+        }
+      }
+    }
+  }
+}

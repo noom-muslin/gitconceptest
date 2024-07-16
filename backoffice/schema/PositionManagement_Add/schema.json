@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "positionCode": {
+      "type": "string"
+    },
+    "positionDesc": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "positionCode",
+    "positionDesc",
+    "status"
+  ]
+}

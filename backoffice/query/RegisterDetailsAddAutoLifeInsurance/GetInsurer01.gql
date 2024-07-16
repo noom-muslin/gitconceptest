@@ -1,0 +1,11 @@
+query GetInsurer01($application_id: String!) {
+  result: ngl_appl_borrower(order_by: {seq: asc}, where: {application_id: {_eq: $application_id}}) {
+    label: party {
+      full_name
+    }
+    value: party {
+      full_name
+    }
+  }
+}
+

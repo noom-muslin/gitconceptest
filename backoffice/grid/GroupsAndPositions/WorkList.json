@@ -1,0 +1,127 @@
+{
+  "hideColumnFilter": true,
+  "hideExportButton": true,
+  "selectionColumnLocked": false,
+  "dataItemKey": "id",
+  "columns": [
+    {
+      "title": "รหัสกลุ่ม",
+      "field": "group_code",
+      "name": "group_code",
+      "minWidth": 240
+    },
+    {
+      "title": "ชื่อกลุ่ม",
+      "field": "group_name",
+      "name": "group_name",
+      "minWidth": 240
+    },
+    {
+      "name": "",
+      "title": "ตำแหน่ง",
+      "rowActions": [
+        {
+          "label": "แก้ไขตำแหน่ง",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "route": "/groups-and-positions/{data.id}/set-function",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 110
+    },
+    {
+      "name": "",
+      "title": "หน้าที",
+      "rowActions": [
+        {
+          "label": "แก้ไขหน้าที่",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "route": "/groups-and-positions/{data.id}/set-function",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 110
+    },
+    {
+      "title": "แก้ไขโดย",
+      "field": "update_by",
+      "name": "update_by",
+      "minWidth": 240
+    },
+    {
+      "title": "วันเวลาที่แก้ไข",
+      "field": "update_date_time",
+      "name": "update_date_time",
+      "converter": "date_column_converter",
+      "width": 140
+    },
+    {
+      "title": "สถานะ",
+      "field": "status",
+      "name": "status",
+      "width": 90,
+      "content": [
+        {
+          "container": {
+            "type": "badge",
+            "field": "status",
+            "options": {
+              "alternateOptions": {
+                "selector": "isActiveCell",
+                "case": {
+                  "Active": {
+                    "variant": "statusSuccess"
+                  },
+                  "Inactive": {
+                    "variant": "statusError"
+                  }
+                }
+              }
+            }
+          },
+          "content": [
+            {
+              "field": "status",
+              "converter": "isActiveCell"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "type": "ActionButton",
+          "label": " ",
+          "options": {
+            "icon": "EditOutlined",
+            "operationType": "open",
+            "variant": "secondary",
+            "size": "smallIcon",
+            "route": "/groups-and-positions/{data.id}/edit",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 55
+    }
+  ],
+  "selection": {
+    "type": "object",
+    "properties": {
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  }
+}

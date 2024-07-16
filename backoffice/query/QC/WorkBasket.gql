@@ -1,0 +1,82 @@
+subscription QueryWorkBasketQCStation(
+  $where: [ngl_task_bool_exp]
+  $taskType: String
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_task(
+    where: {
+      task_type_id: {_eq: $taskType}, 
+      performing_by: {_is_null: true}, 
+      status_id: {_eq: "Todo"}
+       _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    external_id
+    sla_wb {
+      current_duration_minutes
+    }
+    sla_tty {
+      current_duration_minutes
+    }
+    status_id
+    task_type_id
+    previous_task {
+      task_type {
+        code
+      }
+    }
+    application {
+      application_date_time_in
+      application_id
+      primary_account {
+        account {
+          product_type {
+            code
+          }
+          sub_product {
+            code
+          }
+        }
+      }
+      application_group {
+        code
+      }
+      application_type {
+        code
+      }
+      accounts {
+        product_type {
+          code
+        }
+        sub_product {
+          code
+        }
+      }
+      primary_borrower {
+        borrower {
+          party {
+            full_name
+          }
+        }
+      }
+      previous_qc_performing_by {
+        previous_qc_user
+        previous_qc_tm
+        previous_qc_am
+        previous_qc_hs 
+      }
+      saleinfos(where: {sale_seq: {_eq: 1}}) {
+        sale_id
+        title
+        name
+        surname
+      }
+    }
+  }
+}

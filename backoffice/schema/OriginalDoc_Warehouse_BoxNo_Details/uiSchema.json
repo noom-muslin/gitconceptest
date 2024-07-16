@@ -1,0 +1,494 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Group",
+          "options": {
+            "sx": {
+              "height": "0px"
+            }
+          },
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/status/properties/code",
+              "schema": {
+                "const": 2000
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Notification",
+              "label": "",
+              "scope": "#/properties/status/properties/message",
+              "options": {
+                "preventDuplicate": 1,
+                "autoHideDuration": 2000,
+                "persist": false,
+                "variant": "success",
+                "hideCloseButton": true,
+                "anchorOrigin": {
+                  "horizontal": "center",
+                  "vertical": "top"
+                },
+                "style": {
+                  "color": "#166534",
+                  "display": "flex",
+                  "justifyContent": "center",
+                  "backgroundColor": "#F0FDF4",
+                  "min-width": "auto",
+                  "width": "189px",
+                  "height": "44px",
+                  "margin-left": "63.5px"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/originaldoc/warehouseadmin/boxno"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Original Doc"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "กดปุ่มเพื่อดูรายละเอียด",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "ลบ",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_OriginalDoc_Warehouse_BoxNo_Details_Remove",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "แก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "validationSchema": false,
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": "12"
+          },
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "variant": "section"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Set ข้อมูล Box No."
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px"
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "borderBottom": "1px solid",
+                              "borderColor": "secondary.dark"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Record No.",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "NumberField",
+                                  "label": false,
+                                  "scope": "#/properties/recordNo",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "OC Code",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "NumberField",
+                                  "label": false,
+                                  "scope": "#/properties/ocCode",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Box No. From",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "NumberField",
+                                  "label": false,
+                                  "scope": "#/properties/boxNoFrom",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Box No. To",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "NumberField",
+                                  "label": false,
+                                  "scope": "#/properties/boxNoTo",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "container": true,
+                        "sx": {
+                          "padding": "16px 16px 16px 16px"
+                        },
+                        "direction": "row",
+                        "justifyContent": "flex-end",
+                        "alignItems": "center"
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "Save",
+                          "options": {
+                            "className": "primaryButton",
+                            "chain": [
+                              {
+                                "operationType": "modal",
+                                "dialogName": "m_OriginalDoc_Warehouse_BoxNo_Details_Submit",
+                                "subtype": "show"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": "12"
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "variant": "section"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Set ข้อมูล Box No."
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px"
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px",
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Record No.",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/recordNo"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "OC Code *",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/ocCode"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "6"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Box No. From",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/boxNoFrom"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "6"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Box No. To",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/boxNoTo"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

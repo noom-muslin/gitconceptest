@@ -1,0 +1,187 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10,
+                "sx": {
+                  "marginTop": "-14px",
+                  "marginLeft": "-14px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการยกเลิกงานหรือไม่",
+                  "options": {
+                    "variant": "subtitle2Dark",
+                    "sx": {
+                      "marginBottom": "8px",
+                      "display": "block"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อกดยกเลิกเเล้ว ระบบจะส่งงานนี้ให้กับ RCCO เพื่อพิจารณายกเลิกต่อไป",
+                  "options": {
+                    "variant": "body2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "กลับไป",
+          "options": {
+            "variant": "outlined",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "size": "large",
+            "variant": "primaryError",
+            "sx": {},
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "QC_Details_Cancel",
+                "payload": {
+                  "userId": "{user.login}",
+                  "workflowId": "{externalId}",
+                  "taskId": "{taskId}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "status"
+                          ],
+                          "properties": {
+                            "status": {
+                              "required": [
+                                "code"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "integer",
+                                  "const": 1000
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "{zboRouteObject.backPage.route}"
+                  },
+                  {
+                    "operationType": "script",
+                    "converter": "setQcCancelModalPage"
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_BasicError_TryAgain",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

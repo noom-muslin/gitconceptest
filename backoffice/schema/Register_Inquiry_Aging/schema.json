@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "accountNumber": {
+            "type": ["string","null"]
+        },
+        "effectiveDate": {
+            "type": ["string","null"]
+        },
+        "date": {
+            "type": ["string", "null"],
+            "format": "date"
+        },
+        "numberPeriodUnpaid": {
+            "type": ["integer","null"]
+        },
+        "amountUnpaid": {
+            "type": ["integer","null"]
+        },
+        "outstandingBalance": {
+            "type": ["number","null"]
+        },
+        "availableBalance" : {
+            "type": ["number","null"]
+        },
+        "grade": {
+            "type": ["string","null"]
+        },
+        "pri": {
+            "type": ["string","null","number"]
+        },
+        "pis": {
+            "type": ["string","null","number"]
+        },
+        "pot": {
+            "type": ["string","null","number"]
+        }
+    }
+}

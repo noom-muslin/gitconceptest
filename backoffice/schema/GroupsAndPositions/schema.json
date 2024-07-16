@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "search": {
+        "type": "object",
+        "properties": {
+          "groupsPositionCode": {
+            "type": "string"
+          },
+          "groupsPositionName": {
+            "type": "string"
+          }
+        }
+      },
+      "canSubmit": {
+        "type": "boolean"
+      },
+      "workbasket_grid": {
+        "type": "object"
+      }
+    }
+  }
+}

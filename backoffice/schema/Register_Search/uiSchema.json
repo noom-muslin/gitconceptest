@@ -1,0 +1,66 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "Register",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "TabStripMenu",
+      "options": {
+        "menu": [
+          {
+            "type": "link",
+            "text": "หน้าหลัก",
+            "link": "/register"
+          },
+          {
+            "type": "link",
+            "text": "Pending Follow Up",
+            "link": "/register/pending-followup"
+          },
+          {
+            "type": "link",
+            "text": "ค้นหา",
+            "link": "/register/search"
+          }
+        ]
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "ค้นหา",
+          "options": {
+            "variant": "h6Dark"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1724 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "Group",
+      "options": {
+        "sx": {
+          "height": "0px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/station/properties/showNotification",
+          "schema": {
+            "const": "Register_Loan_Collateral_Details_Save"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "Notification",
+          "label": "บันทึกสำเร็จ",
+          "options": {
+            "preventDuplicate": 1,
+            "autoHideDuration": "1750",
+            "persist": false,
+            "variant": "success",
+            "hideCloseButton": true,
+            "anchorOrigin": {
+              "horizontal": "center",
+              "vertical": "top"
+            },
+            "style": {
+              "color": "#166534",
+              "display": "flex",
+              "justifyContent": "center",
+              "backgroundColor": "#F0FDF4",
+              "min-width": "auto",
+              "width": "162px",
+              "height": "44px",
+              "margin-left": "63.5px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/register"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Register"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "4px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ดู FU",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "สร้างเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": "forceFail",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ดูเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script",
+                    "converter": "logContext"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "ข้อมูลลูกค้า",
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "0 16px 86px 16px"
+                }
+              },
+              "elements": [
+                {
+                  "label": "ข้อมูลลูกค้า",
+                  "options": {
+                    "variant": "h6",
+                    "sx": {
+                      "padding": "16px 0 0"
+                    }
+                  },
+                  "type": "Typography"
+                },
+                {
+                  "type": "Accordion",
+                  "label": "รายละเอียดใบสมัคร",
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": true,
+                        "sx": {
+                          "padding": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "options": {
+                                "direction": "row"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "วันที่รับเอกสาร",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "*",
+                                  "options": {
+                                    "variant": "label",
+                                    "sx": {
+                                      "color": "error.main"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/application_details/properties/application_date_thai",
+                              "options": {
+                                "variant": "label",
+                                "sx": {
+                                  "marginTop": "8px"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "options": {
+                                "direction": "row"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "นที่ลูกค้าลงนาม",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "*",
+                                  "options": {
+                                    "variant": "label",
+                                    "sx": {
+                                      "color": "error.main"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "ExternalComponent",
+                              "scope": "#/properties/application_details/properties/application_date",
+                              "options": {
+                                "externalComponentName": "thai-calendar",
+                                "externalComponentScope": "remote1",
+                                "externalComponentModule": "./ThaiDatePicker",
+                                "views": "year,month,day",
+                                "variant": "outlined",
+                                "sx": {
+                                  "width": "100%"
+                                }
+                              },
+                              "errors": {
+                                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "SelectField",
+                              "label": "Application Group",
+                              "scope": "#/properties/application_details/properties/application_group",
+                              "options": {
+                                "variant": "outlined",
+                                "fullwidth": true,
+                                "autocomplete": true,
+                                "enumDataPath": "application_details.application_group_enum"
+                              },
+                              "errors": {
+                                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "SelectField",
+                              "label": "Application Type",
+                              "scope": "#/properties/application_details/properties/application_type",
+                              "options": {
+                                "variant": "outlined",
+                                "autocomplete": true,
+                                "fullwidth": true,
+                                "enumDataPath": "application_details.application_type_enum"
+                              },
+                              "errors": {
+                                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "เงื่อนไขพิเศษ NCB และ RC Verify",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": true,
+                            "sx": {
+                              "padding": "16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 12
+                              },
+                              "elements": [
+                                {
+                                  "type": "CheckboxField",
+                                  "label": "มีเงื่อนไขพิเศษ",
+                                  "scope": "#/properties/special_conditions/properties/special_conditions",
+                                  "options": {}
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#/properties/special_conditions/properties/special_conditions",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              },
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "SelectField",
+                                  "label": "เงื่อนไข",
+                                  "scope": "#/properties/special_conditions/properties/condition",
+                                  "options": {
+                                    "variant": "outlined",
+                                    "fullwidth": true,
+                                    "autocomplete": true,
+                                    "enumDataPath": "special_conditions.condition_enum"
+                                  },
+                                  "errors": {
+                                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#/properties/special_conditions/properties/special_conditions",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              },
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "label": "เลขที่ใบสมัครเดิม/เลขที่สัญญาเดิม",
+                                  "scope": "#/properties/special_conditions/properties/original_application_number",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#/properties/special_conditions/properties/special_conditions",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              },
+                              "options": {
+                                "xs": 12
+                              },
+                              "elements": [
+                                {
+                                  "type": "FormMapperListener",
+                                  "options": {
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "special_conditions": {
+                                          "type": "object",
+                                          "dataPath": "special_conditions",
+                                          "converter": "register_special_conditions_checkbox"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "CheckboxField",
+                                  "label": "ไม่ต้องตรวจ NCB",
+                                  "scope": "#/properties/special_conditions/properties/special_conditions_skipNCB",
+                                  "options": {
+                                    "icon": "RadioButtonUnchecked",
+                                    "checkedIcon": "RadioButtonChecked"
+                                  }
+                                },
+                                {
+                                  "type": "BoxLayout",
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/special_conditions/properties/special_conditions",
+                                      "schema": {
+                                        "const": true
+                                      }
+                                    }
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "rule": {
+                                        "effect": "SHOW",
+                                        "condition": {
+                                          "scope": "#/properties/application_details/properties/application_group",
+                                          "schema": {
+                                            "const": "Auto"
+                                          }
+                                        }
+                                      },
+                                      "elements": [
+                                        {
+                                          "type": "BoxLayout",
+                                          "rule": {
+                                            "effect": "SHOW",
+                                            "condition": {
+                                              "scope": "#/properties/special_conditions/properties/special_conditions_skipNCB",
+                                              "schema": {
+                                                "const": true
+                                              }
+                                            }
+                                          },
+                                          "options": {},
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "options": {
+                                                "sx": {
+                                                  "padding": "0 0 0 36px"
+                                                }
+                                              },
+                                              "elements": [
+                                                {
+                                                  "type": "RadioGroupField",
+                                                  "scope": "#/properties/special_conditions/properties/special_conditions_rcVerify",
+                                                  "label": false,
+                                                  "options": {
+                                                    "enumDataPath": "special_conditions.special_conditions_rcVerify_enum",
+                                                    "radioSize": "small"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "CheckboxField",
+                                  "label": "ไม่ต้องการส่ง RC Verify หลังแจ้งตรวจ NCB",
+                                  "scope": "#/properties/special_conditions/properties/special_conditions_notAllRCVerify",
+                                  "options": {
+                                    "icon": "RadioButtonUnchecked",
+                                    "checkedIcon": "RadioButtonChecked"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "ข้อมูลพนักงานขาย",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/salesPersons",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "disableItemsRemove": false,
+                            "sx": {
+                              "borderBottom": "1px solid",
+                              "borderColor": "secondary.dark"
+                            },
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/employeeId",
+                                "options": {
+                                  "columnTitle": "รหัสพนักงาน",
+                                  "variant": "body2",
+                                  "sx": {
+                                    "paddingLeft": "5px"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/firstAndLastName",
+                                "options": {
+                                  "columnTitle": "ชื่อ-นามสกุล",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/branch",
+                                "options": {
+                                  "columnTitle": "ทีม/สาขา",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/ocCode",
+                                "options": {
+                                  "columnTitle": "OC Code หน่วยงานเจ้าของเรื่อง",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Schema",
+                                "scope": "#/properties/phoneNumbers",
+                                "options": {
+                                  "columnTitle": "เบอร์โทรศัพท์",
+                                  "uiSchema": {
+                                    "scope": "#",
+                                    "type": "SchemedListView",
+                                    "label": {
+                                      "show": false
+                                    },
+                                    "options": {
+                                      "layoutOptions": {
+                                        "spacing": "0"
+                                      },
+                                      "cellUiSchema": {
+                                        "type": "StackLayout",
+                                        "elements": [
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#",
+                                            "options": {
+                                              "variant": "body2"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "validationSchema": false,
+                                  "columnTitle": "",
+                                  "icon": "EditOutlined",
+                                  "variant": "secondary",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  },
+                                  "chain": [
+                                    {
+                                      "operationType": "script",
+                                      "converter": "getSalesPersonForEdit",
+                                      "payload": {
+                                        "noteId": "{data.id}"
+                                      },
+                                      "resultMappingSchema": {
+                                        "type": "object",
+                                        "properties": {
+                                          "salesPersonForEdit": {
+                                            "type": "object",
+                                            "properties": {
+                                              "saleId": {
+                                                "type": "string"
+                                              },
+                                              "firstAndLastName": {
+                                                "type": "string"
+                                              },
+                                              "branch": {
+                                                "type": "string"
+                                              },
+                                              "ocCode": {
+                                                "type": "string"
+                                              },
+                                              "phone1": {
+                                                "type": "string"
+                                              },
+                                              "phone2": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              },
+                                              "phone3": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "dialogName": "m_Register_Details_Edit_Salesperson",
+                                      "operationType": "modal",
+                                      "subtype": "show"
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "validationSchema": false,
+                                  "columnTitle": "",
+                                  "icon": "DeleteOutlined",
+                                  "variant": "secondaryError",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  },
+                                  "chain": [
+                                    {
+                                      "operationType": "script",
+                                      "converter": "getSalesPersonForEdit",
+                                      "resultMappingSchema": {
+                                        "type": "object",
+                                        "properties": {
+                                          "salesPersonForEdit": {
+                                            "type": "object",
+                                            "properties": {
+                                              "saleId": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "operationType": "modal",
+                                      "dialogName": "m_Register_Details_Delete_Salesperson",
+                                      "subtype": "show"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "8px",
+                            "direction": "row",
+                            "sx": {
+                              "padding": "16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "+ เพิ่มพนักงานขาย",
+                              "options": {
+                                "variant": "secondary",
+                                "validationSchema": false,
+                                "operationType": "modal",
+                                "subtype": "show",
+                                "dialogName": "m_Register_Details_Add_SalesPerson"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "ข้อมูลผู้แนะนำ",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/recommendedPersons",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "disableItemsRemove": false,
+                            "sx": {
+                              "borderBottom": "1px solid",
+                              "borderColor": "secondary.dark"
+                            },
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/employeeId",
+                                "options": {
+                                  "columnTitle": "รหัสพนักงาน",
+                                  "variant": "body2",
+                                  "sx": {
+                                    "paddingLeft": "5px"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/firstAndLastName",
+                                "options": {
+                                  "columnTitle": "ชื่อ-นามสกุล",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/branch",
+                                "options": {
+                                  "columnTitle": "ทีม/สาขา",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/ocCode",
+                                "options": {
+                                  "columnTitle": "OC Code หน่วยงานเจ้าของเรื่อง",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Schema",
+                                "scope": "#/properties/phoneNumbers",
+                                "options": {
+                                  "columnTitle": "เบอร์โทรศัพท์",
+                                  "uiSchema": {
+                                    "scope": "#",
+                                    "type": "SchemedListView",
+                                    "label": {
+                                      "show": false
+                                    },
+                                    "options": {
+                                      "layoutOptions": {
+                                        "spacing": "0"
+                                      },
+                                      "cellUiSchema": {
+                                        "type": "StackLayout",
+                                        "elements": [
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#",
+                                            "options": {
+                                              "variant": "body2"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "validationSchema": false,
+                                  "columnTitle": "",
+                                  "icon": "EditOutlined",
+                                  "variant": "secondary",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  },
+                                  "chain": [
+                                    {
+                                      "operationType": "script",
+                                      "converter": "getRecommendedPersonForEdit",
+                                      "resultMappingSchema": {
+                                        "type": "object",
+                                        "properties": {
+                                          "recommendedPersonForEdit": {
+                                            "type": "object",
+                                            "properties": {
+                                              "saleId": {
+                                                "type": "string"
+                                              },
+                                              "oldSaleId": {
+                                                "type": "string"
+                                              },
+                                              "firstAndLastName": {
+                                                "type": "string"
+                                              },
+                                              "branch": {
+                                                "type": "string"
+                                              },
+                                              "ocCode": {
+                                                "type": "string"
+                                              },
+                                              "phone1": {
+                                                "type": "string"
+                                              },
+                                              "phone2": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              },
+                                              "phone3": {
+                                                "type": [
+                                                  "string",
+                                                  "null"
+                                                ]
+                                              },
+                                              "externalPerson": {
+                                                "type": "boolean"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "if": {
+                                        "type": "object",
+                                        "required": [
+                                          "payload"
+                                        ],
+                                        "properties": {
+                                          "payload": {
+                                            "type": "object",
+                                            "required": [
+                                              "data"
+                                            ],
+                                            "properties": {
+                                              "data": {
+                                                "required": [
+                                                  "recommendedPersonForEdit"
+                                                ],
+                                                "type": "object",
+                                                "properties": {
+                                                  "recommendedPersonForEdit": {
+                                                    "type": "object",
+                                                    "required": [
+                                                      "externalPerson"
+                                                    ],
+                                                    "properties": {
+                                                      "externalPerson": {
+                                                        "type": "boolean",
+                                                        "const": true
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "dialogName": "m_Register_Details_Edit_ExternalRecommendedPerson",
+                                      "operationType": "modal",
+                                      "subtype": "show"
+                                    },
+                                    {
+                                      "if": {
+                                        "else": true
+                                      },
+                                      "dialogName": "m_Register_Details_Edit_RecommendedPerson",
+                                      "operationType": "modal",
+                                      "subtype": "show"
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "validationSchema": false,
+                                  "columnTitle": "",
+                                  "icon": "DeleteOutlined",
+                                  "variant": "secondaryError",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  },
+                                  "chain": [
+                                    {
+                                      "operationType": "script",
+                                      "converter": "getRecommendedPersonForEdit",
+                                      "resultMappingSchema": {
+                                        "type": "object",
+                                        "properties": {
+                                          "recommendedPersonForEdit": {
+                                            "type": "object",
+                                            "properties": {
+                                              "saleId": {
+                                                "type": "string"
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "operationType": "modal",
+                                      "dialogName": "m_Register_Details_Delete_RecommendedPerson",
+                                      "subtype": "show"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "spacing": "16px",
+                            "sx": {
+                              "padding": "16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "+ เพิ่มผู้แนะนำจากธนาคาร",
+                              "options": {
+                                "variant": "secondary",
+                                "validationSchema": false,
+                                "operationType": "modal",
+                                "subtype": "show",
+                                "dialogName": "m_Register_Details_Add_RecommendedPerson"
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "+ เพิ่มผู้แนะนำจากภายนอก",
+                              "options": {
+                                "variant": "secondary",
+                                "validationSchema": false,
+                                "operationType": "modal",
+                                "subtype": "show",
+                                "dialogName": "m_Register_Details_Add_ExternalRecommendedPerson"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "marginBottom": "16px",
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "ข้อมูลผู้กู้",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/borrowers",
+                          "itemOperations": {
+                            "remove": true
+                          },
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "disableItemsRemove": true,
+                            "selectedIndexScope": "#/properties/selectedIndex",
+                            "sx": {
+                              "borderBottom": "1px solid",
+                              "borderColor": "secondary.dark"
+                            },
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/number",
+                                "options": {
+                                  "columnTitle": "ลำดับ",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/documentNumber",
+                                "options": {
+                                  "columnTitle": "เลขที่เอกสารอ้างอิง",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/customerName",
+                                "options": {
+                                  "columnTitle": "ชื่อลูกค้า",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/spouse",
+                                "options": {
+                                  "columnTitle": "คู่สมรส",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dateOfBirth",
+                                "options": {
+                                  "columnTitle": "วันเกิด/วันที่จดทะเบียนนิติบุคคล (พ.ศ.)",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/ocCode",
+                                "options": {
+                                  "columnTitle": "OC Code ลูกค้า",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/codeSegment",
+                                "options": {
+                                  "columnTitle": "รหัส Segment",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "operationType": "open",
+                                  "validationSchema": false,
+                                  "route": "/register/app/{application_number}/edit-borrower/{_rowData.id}",
+                                  "columnTitle": "",
+                                  "icon": "EditOutlined",
+                                  "variant": "secondary",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "operationType": "action",
+                                  "validationSchema": false,
+                                  "columnTitle": "",
+                                  "icon": "DeleteOutlined",
+                                  "payload": {
+                                    "taskId": "{data}"
+                                  },
+                                  "variant": "secondaryError",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "8px",
+                            "direction": "row",
+                            "sx": {
+                              "padding": "16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "+ เพิ่ม/แก้ไขผู้กู้",
+                              "options": {
+                                "operationType": "open",
+                                "variant": "secondary",
+                                "route": "/register/app/{application_number}/add-borrower",
+                                "validationSchema": false
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "แก้ไขลำดับผู้กู้",
+                              "_label": "Edit the borrower order",
+                              "rule": {
+                                "effect": "ENABLE",
+                                "condition": {
+                                  "scope": "#/properties/rule_vars/properties/is_enabled_edit_borrower_order",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              },
+                              "options": {
+                                "variant": "secondary",
+                                "validationSchema": false,
+                                "chain": [
+                                  {
+                                    "operationType": "script",
+                                    "converter": "passBorrowersToEditOrder",
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "orderBorrowers": {
+                                          "dataPath": "borrowers"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "operationType": "modal",
+                                    "subtype": "show",
+                                    "dialogName": "m_Register_Details_Edit_Borrower_Order"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "marginBottom": "16px",
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "ข้อมูลผู้ค้ำประกัน",
+                      "type": "Accordion",
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/guarantors",
+                          "itemOperations": {
+                            "remove": true
+                          },
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "disableItemsRemove": true,
+                            "selectedIndexScope": "#/properties/selectedIndex",
+                            "sx": {
+                              "borderBottom": "1px solid",
+                              "borderColor": "secondary.dark"
+                            },
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/number",
+                                "options": {
+                                  "columnTitle": "ลำดับ",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/documentNumber",
+                                "options": {
+                                  "columnTitle": "เลขที่เอกสารอ้างอิง",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/customerName",
+                                "options": {
+                                  "columnTitle": "ชื่อลูกค้า",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/spouse",
+                                "options": {
+                                  "columnTitle": "คู่สมรส",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dateOfBirth",
+                                "options": {
+                                  "columnTitle": "วันเกิด/วันที่จดทะเบียนนิติบุคคล (พ.ศ.)",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "operationType": "open",
+                                  "validationSchema": false,
+                                  "route": "/register_details/guarantor/{_rowData.someId}/edit",
+                                  "columnTitle": "",
+                                  "icon": "EditOutlined",
+                                  "variant": "secondary",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  }
+                                }
+                              },
+                              {
+                                "type": "ActionButton",
+                                "label": " ",
+                                "scope": "#",
+                                "options": {
+                                  "operationType": "action",
+                                  "validationSchema": false,
+                                  "columnTitle": "",
+                                  "icon": "DeleteOutlined",
+                                  "payload": {
+                                    "taskId": "{data}"
+                                  },
+                                  "variant": "secondaryError",
+                                  "size": "smallIcon",
+                                  "columnSx": {
+                                    "width": "50px"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "+ เพิ่มผู้ค้ำประกัน",
+                              "options": {
+                                "operationType": "modal",
+                                "validationSchema": false,
+                                "subtype": "show",
+                                "dialogName": "m_add_guarantor",
+                                "variant": "secondary"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "space-between",
+                "sx": {
+                  "padding": "16px",
+                  "backgroundColor": "white",
+                  "borderTop": "1px solid #eaebed",
+                  "position": "fixed",
+                  "zIndex": "2",
+                  "bottom": 0,
+                  "left": 0,
+                  "right": 0
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "spacing": "8px"
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "ยกเลิกใบสมัคร",
+                      "options": {
+                        "variant": "secondaryError",
+                        "validationSchema": false,
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Details_Reject"
+                      }
+                    },
+                    {
+                      "type": "ActionButton",
+                      "label": "ส่งไป Follow Up",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false,
+                        "operationType": "open",
+                        "route": "/register/app/{application_number}/send-to-followup"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "spacing": "8px"
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "บันทึกแบบร่าง",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false,
+                        "operationType": "action",
+                        "conditionTypeId": "Register_Details_SaveDraft",
+                        "payload": {
+                          "taskId": "{route.taskId}"
+                        }
+                      }
+                    },
+                    {
+                      "type": "ActionButton",
+                      "label": "ส่งข้อมูล",
+                      "options": {
+                        "validationSchema": true,
+                        "chain": [
+                          {
+                            "_variant": "primary",
+                            "operationType": "modal",
+                            "dialogName": "m_Register_Details_Confirm",
+                            "subtype": "show"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "ข้อมูลสินเชื่อและหลักประกัน",
+          "options": {
+            "sx": {
+              "padding": "0 0 86px 0"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "0 16px 16px 16px"
+                }
+              },
+              "elements": [
+                {
+                  "label": "ข้อมูลสินเชื่อและหลักประกัน",
+                  "options": {
+                    "variant": "h6",
+                    "sx": {
+                      "padding": "16px 0 0"
+                    }
+                  },
+                  "type": "Typography"
+                },
+                {
+                  "type": "StackLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/product_group_id",
+                      "schema": {
+                        "const": "Unsecured"
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/appl_account/properties/sub_product_type",
+                          "schema": {
+                            "const": "Provident Fund"
+                          }
+                        }
+                      },
+                      "$ref": "urn:zbo:uischema:Register_Details_UnSecure"
+                    }
+                  ]
+                },
+                {
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/product_group_id",
+                      "schema": {
+                        "const": "MortgageProducts"
+                      }
+                    }
+                  },
+                  "$ref": "urn:zbo:uischema:Register_Details_Mortgage"
+                },
+                {
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/product_group_id",
+                      "schema": {
+                        "const": "Auto"
+                      }
+                    }
+                  },
+                  "$ref": "urn:zbo:uischema:Register_Details_Auto"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "zIndex": "2",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ยกเลิกใบสมัคร",
+              "options": {
+                "variant": "secondaryError",
+                "validationSchema": false,
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Details_Reject"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Follow Up",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "operationType": "open",
+                "route": "/register/app/{application_number}/send-to-followup"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกแบบร่าง",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "Register_Loan_Collateral_save",
+                    "payload": {
+                      "user": "{user.login}",
+                      "data": "{data}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "required": [
+                                    "status"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "status": {
+                                      "type": "object",
+                                      "required": [
+                                        "code"
+                                      ],
+                                      "properties": {
+                                        "code": {
+                                          "type": "number",
+                                          "const": 1000
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "script",
+                    "converter": "show_register_have_success"
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_BasicError_TryAgain",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "validationSchema": true,
+                "chain": [
+                  {
+                    "_variant": "primary",
+                    "operationType": "modal",
+                    "dialogName": "m_Register_Loan_Collateral_Details_Confirm",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center",
+                "sx": {
+                  "paddingTop": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการยกเลิกใบสมัครหรือไม่",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อกดยกเลิกแล้วสถานะงานจะเปลี่ยนเป็นResolvedCancelและใบสมัครนี้จะถูกยกเลิก",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "1em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px",
+          "paddingTop": "12px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "กลับไป",
+          "options": {
+            "variant": "secondary",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "size": "large",
+            "variant": "primaryError",
+            "sx": {},
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "MFProfile_Details_CancelApplication",
+                "payload": {
+                  "applicationId": "{route.applicationId}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["submitted"],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/mf-profile"
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_BasicError_TryAgain",
+                    "payload": {
+                      "name1": "name1",
+                      "Name2": "name2"
+                    },
+                    "subtype": "show"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

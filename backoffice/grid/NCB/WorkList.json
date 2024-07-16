@@ -1,0 +1,206 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "งานด่วน",
+      "field": "urgent_work",
+      "name": "",
+      "width": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 130
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class",
+      "minWidth": 130
+    },
+    {
+      "title": "Product Group",
+      "field": "application.primary_account.account.product_group.code",
+      "name": "application_group",
+      "minWidth": 120
+    },
+    {
+      "name": "document_type",
+      "field": "application.primary_borrower.borrower.party.reference_type_code.description",
+      "title": "ประเภทเอกสารอ้างอิง",
+      "minWidth": 160
+    },
+    {
+      "name": "document_number",
+      "field": "primary_document.document.document_number",
+      "title": "เลขที่เอกสารอ้างอิง",
+      "minWidth": 150
+    },
+    {
+      "name": "customer_name",
+      "field": "application",
+      "schemas": {
+        "schema": {
+          "type": "object",
+          "properties": {
+            "borrowers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "party": {
+                    "type": "object",
+                    "properties": {
+                      "full_name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "uiSchema": {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/borrowers",
+          "options": {
+            "hideColumnTitles": true,
+            "hideTableToolbar": true,
+            "cells": [
+              {
+                "type": "RowIndexCell",
+                "options": {
+                  "base": 1,
+                  "columnTitle": "",
+                  "sx": {
+                    "marginRight": "2px",
+                    "::after": {
+                      "content": "'.'"
+                    }
+                  }
+                }
+              },
+              {
+                "options": {
+                  "columnTitle": ""
+                },
+                "scope": "#/properties/party/properties/full_name",
+                "type": "Typography"
+              }
+            ]
+          }
+        }
+      },
+      "title": "ชื่อลูกค้า",
+      "minWidth": 120
+    },
+    {
+      "title": "รับมาจาก",
+      "field": "previous_task.task_type.code",
+      "name": "previous_channel_station",
+      "minWidth": 150
+    },
+    {
+      "title": "ช่องทาง",
+      "field": "application.application_channel.code",
+      "name": "channel_type",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "application.application_date_time_in",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 190
+    },
+    {
+      "title": "วันเวลาที่งานถึง Station",
+      "field": "start_at",
+      "name": "arrived_to_station_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 190
+    },
+    {
+      "title": "NCB Interface Status",
+      "field": "",
+      "name": "ncb_interface_status",
+      "minWidth": 180
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "label": "ดู FU",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_NCB",
+            "route": "/{searchParams.stationName}/pending-followup/{data.application.application_id}",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 100
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "resizable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดูรายละเอียด",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_NCB",
+            "route": "/ncb/{data.id}/details",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

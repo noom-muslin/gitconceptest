@@ -1,0 +1,150 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "assessment_date",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "ชื่อโครงการ",
+      "field": "generalinfo.thai_name",
+      "name": "project_name",
+      "minWidth": 120
+    },
+    {
+      "title": "Generate subtype",
+      "field": "generate_subtype",
+      "name": "sub_type",
+      "minWidth": 120
+    },
+    {
+      "title": "Objective",
+      "field": "objective.description",
+      "name": "objective",
+      "minWidth": 120
+    },
+    {
+      "title": "Status",
+      "field": "py_status_work",
+      "name": "status",
+      "minWidth": 120
+    },
+    {
+      "title": "Create application date",
+      "field": "create_date_time",
+      "name": "create_application_date",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "Complete appraisal date",
+      "field": "wait_for_appraisal_until_date_time",
+      "name": "complete_appraisal_date",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "ชื่อบริษัท",
+      "field": "company_name",
+      "name": "company_name",
+      "minWidth": 120
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "route": "/mf-profile/{data.application_id}/details",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Open doc",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "route": "/mf-profile/{data.application_id}/details",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View FU",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "route": "/mf-profile/{data.application_id}/follow-up",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "MFProfile_GetTask",
+            "permission": "p_MFOfficer",
+            "payload": {
+              "applicationId": "{data.application_id}",
+              "routeUrl": "/mf-profile/{data.application_id}/details",
+              "validationSchema": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

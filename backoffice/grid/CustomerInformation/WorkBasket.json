@@ -1,0 +1,178 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "deadline_at",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No.",
+      "field": "application_id",
+      "name": "",
+      "minWidth": 150
+    },
+    {
+      "title": "เลขที่ OP.",
+      "field": "op.op_number",
+      "name": "",
+      "width": 100
+    },
+    {
+      "sortable": false,
+      "title": "ชื่อลูกค้า",
+      "name": "customer_name",
+      "field": "application.appl_parties",
+      "converter": "customer_name_converter_ci_insurance",
+      "minWidth": 120
+    },
+    {
+      "title": "เลขที่บัญชี",
+      "field": "op_loan.account_number",
+      "name": "application_group",
+      "width": 130
+    },
+    {
+      "sortable": false,
+      "title": "วัตถุประสงค์ OP",
+      "field": "op.op_objectives",
+      "converter": "objectives_converter_ci_insurance",
+      "name": "op_objective_desc",
+      "minWidth": 150
+    },
+    {
+      "title": " Status ",
+      "field": "status_id",
+      "name": "",
+      "minWidth": 180
+    },
+    {
+      "title": "Date Approved/Rejected",
+      "field": "op.approved_date_time",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 190
+    },
+    {
+      "name": "",
+      "field": "id",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดูเอกสาร",
+          "type": "ActionButton",
+          "options": {
+            "variant" : "href",
+              "operationType": "script",
+              "converter": "openDocumentumLinkfromGrid",
+              "payload": {
+                "task_id": "{data.id}"              
+              }
+          }
+        }
+      ],
+      "width": 140
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "รายละเอียด OP",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CustomerInformation",
+            "route": "/ci/{data.id}/details"
+          }
+        }
+      ],
+      "width": 140
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CustomerInformation",
+            "route": "/ci/{data.id}/details"
+          }
+        }
+      ],
+      "width": 80
+    },
+    {
+      "title": " ",
+      "name": "get_tast",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "reset_notification",
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "previous_user": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "operationType": "action",
+                "conditionTypeId": "Check_User_GetTask",
+                "permission": "p_CustomerInformation",
+                "payload": {
+                  "userId": "{user.login}",
+                  "performingBy": "{data.previous_task.performing_by}",
+                  "taskId": "{data.id}",
+                  "routeUrl": "/ci",
+                  "flagChecker": "{data.op_loan.op_loans_customer_informations[0].flag_checker}"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "width": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

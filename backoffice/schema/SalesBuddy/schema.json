@@ -1,0 +1,186 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_group": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "indexing_type": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "work_object": {
+          "type": "string"
+        },
+        "doc_in_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "search_fu": {
+      "type": "object",
+      "properties": {
+        "application_group": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "indexing_type": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "work_object": {
+          "type": "string"
+        },
+        "doc_in_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "search_fu": {
+      "type": "object",
+      "properties": {
+        "application_group": {
+          "type": "string"
+        },
+        "taskId": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "application_number": {
+          "type": "string"
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "indexing_type": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "work_object": {
+          "type": "string"
+        },
+        "doc_in_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "SubProcessId": {
+      "type": "string"
+    },
+    "vehicleInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vehicleType": {
+            "type": "string"
+          },
+          "vehicleBrand": {
+            "type": "string"
+          },
+          "vehicleModel": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ItemInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ApplicationNo": {
+            "type": "string"
+          },
+          "WorkObject": {
+            "type": "string"
+          },
+          "DeadlineAt": {
+            "type": "string"
+          },
+          "TotalSla": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "worklist_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    },
+    "workbasket_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    }
+  }
+}

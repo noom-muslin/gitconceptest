@@ -1,0 +1,47 @@
+subscription GetInputFOSWorkBasket(
+  $taskStatus: String!
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $where: [ngl_task_bool_exp]
+  ) { 
+  result:ngl_task(
+    where: {
+      status_id: {_eq: "Todo"} 
+      performing_by: {_is_null: true}
+      task_type_id: {_eq: $taskStatus}
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset) {
+    external_id
+    id
+    application_id
+    application {
+      application_date_time_in
+      application_group {
+        code
+      }
+      primary_account {
+        account {
+          product_group {
+            code
+          }
+          product_type {
+            code
+          }
+        }
+      }
+      primary_borrower {
+        borrower {
+          party {
+            full_name
+            name
+            last_name
+          }
+        }
+      }
+    }
+  }
+}

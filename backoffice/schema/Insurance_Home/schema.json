@@ -1,0 +1,280 @@
+{
+    "type": "object",
+    "properties": {
+      "search_WL": {
+        "type": "object",
+        "properties": {
+          "application_number": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9|_]+$"
+          },
+          "op_number": {
+            "type": "string"
+          },
+          "customer_firstname": {
+            "type": "string"
+          },
+          "customer_lastname": {
+            "type": "string"
+          },
+          "exact_match": {
+            "type": "boolean"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "document_number": {
+            "type": "string"
+          }
+        }
+      },
+  
+      "search_WB": {
+        "type": "object",
+        "properties": {
+          "application_number": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9|_]+$"
+          },
+          "op_number": {
+            "type": "string"
+          },
+          "customer_firstname": {
+            "type": "string"
+          },
+          "customer_lastname": {
+            "type": "string"
+          },
+          "exact_match": {
+            "type": "boolean"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "document_number": {
+            "type": "string"
+          }
+        }
+      },
+      
+      "save_status": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "header": {
+            "type": "string"
+          }
+        }
+      },
+      "previous_user": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+           "description": {
+            "type": "string"
+          },
+          "header": {
+            "type": "string"
+          }
+        }
+      },
+      "check_status": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+           "description": {
+            "type": "string"
+          },
+          "header": {
+            "type": "string"
+          }
+        }
+      },
+      "send_wb": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+           "description": {
+            "type": "string"
+          },
+          "header": {
+            "type": "string"
+          }
+        }
+      },
+      "code": {
+        "type": "boolean"
+      },
+      "document_type_enum": {
+        "type": "array"
+      },
+      "option": {
+        "type": ["string","null"]
+      },
+      "remark": {
+        "type": ["string","null"]
+      },
+      "checker_flag": {
+        "type": "string"
+      },
+      "nextStep": {
+        "type": "string"
+      },
+      "opInsuranceId": {
+        "type": "string"
+      },
+      "op_number": {
+        "type": "string"
+      },
+      "taskId": {
+        "type": "string"
+      },
+      "status_show_button": {
+        "type": "boolean"
+      },
+      "performingBy": {
+        "type": "string"
+      },
+      
+      "worklist_grid": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "logic": {
+                  "type": "string"
+                },
+                "filters": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "type": "string"
+                      },
+                      "operator": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "sorting": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "dir": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "pageIndex": {
+                "type": "integer"
+              },
+              "pageSize": {
+                "type": "integer"
+              }
+            }
+          },
+          "selection": {
+            "type": "object",
+            "properties": {
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      },
+      
+      "workbasket_grid": {
+        "type": "object",
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "logic": {
+                "type": "string"
+              },
+              "filters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "operator": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sorting": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "dir": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer"
+            },
+            "pageSize": {
+              "type": "integer"
+            }
+          }
+        },
+        "selection": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }

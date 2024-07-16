@@ -1,0 +1,145 @@
+{
+  "applications": [
+    {
+      "application_id": "APP1906202400000001",
+      "application_system_type_id": "Regular",
+      "application_class_id": "Normal",
+      "application_type_id": "SCBP",
+      "application_group_id": "Auto",
+      "application_date_time_in": "2024-05-23T09:12:58.728Z",
+      "application_register_type_id": "FullPack",
+      "channel_id": "Paper",
+      "status_id": "InProgress",
+      "created_by": "sittinanp",
+      "updated_by": "sittinanp",
+      "approved_date_time": null,
+      "tasks": {
+        "data": [
+          {
+            "task_type_id": "WebVerify",
+            "indexing_type_id": null,
+            "work_object": "AL-APP1906202400000001",
+            "document_in_datetime": "2024-05-23T09:12:58.729Z",
+            "status_id": "Todo",
+            "previous_task_id": null,
+            "documents": {
+              "data": {
+                "document": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "document_type_id": "PASSPORT",
+                    "document_status_id": "InformationOnly",
+                    "document_number": "document_number1"
+                  }
+                }
+              }
+            },
+            "party_type": "BorrowerIndividual",
+            "appl_party": {
+              "data": {
+                "name_en": "John",
+                "middle_name_en": "",
+                "last_name_en": "Doe",
+                "name": "John",
+                "middle_name": "",
+                "last_name": "Doe",
+                "full_name_en": "John Doe",
+                "full_name": "John Doe",
+                "application_id": "APP1906202400000001",
+                "reference_no": "1234",
+                "party_juristic_infos": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "juristic_name": "Juristic_name"
+                  }
+                },
+                "accountlistncbs": {
+                  "data": {
+                    "ncb_account_status": "Unknown",
+                    "application_id": "APP1906202400000001",
+                    "updated_by": "Bank"
+                  }
+                },
+                "borrowers": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "party_type_id": "BorrowerIndividual",
+                    "seq": 1
+                  }
+                },
+                "appl_guarantees": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "party_type_id": "BorrowerIndividual",
+                    "seq": 1
+                  }
+                },
+                "appl_party_rcverify_com_regis": {
+                  "data": {
+                    "updated_by": "Duangtian",
+                    "created_by": "Duangtian",
+                    "appl_party_rcverify_fos": {
+                      "data": {
+                        "address_seq": 1,
+                        "customer_type": "Individual",
+                        "occupation_type": "Company",
+                        "full_name": "John Doe",
+                        "reference_no": "123456",
+                        "province": "Bangkok",
+                        "amphur": "Jatujak",
+                        "tambol": "Jatujak",
+                        "zip_code": "10000",
+                        "business": "Company",
+                        "latitude": "109.97",
+                        "longitude": "90.90",
+                        "address_no": "111",
+                        "address_usage": "WorkAddress",
+                        "appointment_date": "2016-01-25 10:10:10.555555-05:00",
+                        "appointment_time": "2016-01-25 10:10:10.555555-05:00",
+                        "fos_to_remark": "nothing krub"
+                      }
+                    }
+                  }
+                },
+                "appl_party_rcverify": {
+                  "data": {
+                    "updated_by": "Duangtian",
+                    "created_by": "Duangtian",
+                    "appl_party_rcverify_fos": {
+                      "data": {
+                        "address_seq": 1,
+                        "customer_type": "Individual",
+                        "occupation_type": "Company",
+                        "full_name": "John Doe",
+                        "reference_no": "123456",
+                        "province": "Bangkok",
+                        "amphur": "Jatujak",
+                        "tambol": "Jatujak",
+                        "zip_code": "10000",
+                        "business": "Company",
+                        "latitude": "109.97",
+                        "longitude": "90.90",
+                        "address_no": "111",
+                        "address_usage": "WorkAddress",
+                        "appointment_date": "2016-01-25 10:10:10.555555-05:00",
+                        "appointment_time": "2016-01-25 10:10:10.555555-05:00",
+                        "fos_to_remark": "nothing krub"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "accounts": {
+        "data": {
+          "product_group_id": "Auto",
+          "product_type_id": "New",
+          "rccoloan_status": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+query RmCustomerType {
+  result: ngl_enum_rm_customer_type(order_by: {order_num: asc}, where: {is_active: {_eq: true}}) {
+    label: description
+    value: code
+  }
+}

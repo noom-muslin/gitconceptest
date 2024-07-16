@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "selected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "occupation_group_code": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unselected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "occupation_group_code": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

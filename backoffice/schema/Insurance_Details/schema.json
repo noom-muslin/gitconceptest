@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "properties": {
+    "work_object": {
+      "type": "string",
+      "readOnly": true
+    },
+    "application_group": {
+      "type": "string",
+      "readOnly": true
+    },
+    "application_type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "indexing_type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "indexing_type_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "application_number": {
+      "type": "string"
+    },
+
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string"
+        }
+      }
+    },
+
+    "search_result": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "application_group": {
+            "type": "string",
+            "readOnly": true
+          },
+          "application_type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "indexing_type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "application_number": {
+            "type": "string",
+            "readOnly": true
+          },
+          "application_channel": {
+            "type": "string",
+            "readOnly": true
+          },
+          "status_work": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "applicationNo":{
+      "type":"string",
+      "readonly": true
+    },
+    "originalDocList":{      
+      "type": "array",
+      "items": {
+        "type":"object",
+        "properties":{
+          "customerName":{
+            "type":"string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Complete",
+              "Incomplete"
+            ]
+          },
+          "originalDocCheckList":{
+            "type":"object",
+            "properties":{
+              "id":{
+                "type":"string",
+                "readonly": true
+              },
+              "applOriginalDocListId":{
+                "type":"string",
+                "readonly": true
+              },
+              "addCheckListDocId":{
+                "type":"string"
+              },
+              "reason":{
+                "type":"string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

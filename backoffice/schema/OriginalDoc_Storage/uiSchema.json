@@ -1,0 +1,1310 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_MainTab"
+      }
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_Storage_SubTab"
+      }
+    },
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "ส่งเอกสารเก็บทรัพย์ศรีไทย",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "backgroundColor": "#f5f3ff",
+                      "margin": "0 -16px",
+                      "color": "#0000001A"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ส่งเอกสารเก็บทรัพย์ศรีไทย - USC"
+                    }
+                  ]
+                },
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section"
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                              "sx": {
+                                "padding": "16px"
+                              }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": true,
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "11"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application No.",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/application_number",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "1"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "ActionButton",
+                                      "label": "ค้นหา",
+                                      "options": {
+                                        "chain": [
+                                          {
+                                            "operationType": "action",
+                                            "conditionTypeId": "OriginalDoc_Subsrithai_SearchApplication",
+                                            "className": "primaryButton",
+                                            "payload": {
+                                              "applicationToSearch": "{applicationToSearch}"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/SubsrithaiSearchResult",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "itemOperations": {
+                              "remove": true
+                            },
+                            "hideTableToolbar": true,
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/no",
+                                "options": {
+                                  "columnTitle": "No.",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/applicationId",
+                                "options": {
+                                  "columnTitle": "Applcation No.",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/accountnumberList",
+                                "options": {
+                                  "columnTitle": "เลขที่สัญญา",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/customerNameList",
+                                "options": {
+                                  "columnTitle": "ชื่อ นามสกุลลูกค้า",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/accountSettlementDate",
+                                "options": {
+                                  "columnTitle": "วันที่ตั้งหนี้",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/warehouseBoxNo",
+                                "options": {
+                                  "columnTitle": "Warehouse Box No",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dateInWarehouse",
+                                "options": {
+                                  "columnTitle": "Date In warehouse",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/applicationStatus",
+                                "options": {
+                                  "columnTitle": "Application Status",
+                                  "variant": "body2"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/destroyDate",
+                                "options": {
+                                  "columnTitle": "Destroy Date",
+                                  "variant": "body2"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                  "sx": {
+                    "padding": "16px"
+                  }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "8px",
+                    "direction": "row",
+                    "justifyContent": "flex-start",
+                    "sx":{
+                      "padding": "0 16px 16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "ส่งข้อมูล",
+                      "options": {
+                        "variant": "primary",
+                        "chain": [
+                          {
+                            "operationType": "modal",
+                            "dialogName": "m_OriginalDoc_Storage_Subsrithai_Confirm",
+                            "subtype": "show"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "รายงานส่งทรัพย์ศรีไทย",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "padding": "0 16px 16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "justifyContent": "space-between",
+                        "sx": {
+                          "backgroundColor": "#f5f3ff",
+                          "margin": "0 -16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รายงานส่งทรัพย์ศรีไทย - AUTO",
+                          "options": {
+                            "variant": "subtitle2Purple"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": "true",
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application No.",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/application_number",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "เลขที่สัญญา",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/account_number",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Warehouse Box No.",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/warehouse_box_no",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ชื่อลูกค้า",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/customer_firstname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "นามสกุลลูกค้า",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/customer_lastname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Status",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "SelectField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/application_status",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "application_class_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ชื่อผู้ค้ำประกัน",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/guarantor_firstname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "นามสกุลผู้ค้ำประกัน",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/guarantor_lastname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "วันที่ตั้งหนี้ ตั้งแต่-วันที่",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "ExternalComponent",
+                                      "scope": "#/properties/search/properties/Application_in_datetime",
+                                      "options": {
+                                        "externalComponentName": "thai-calendar",
+                                        "externalComponentScope": "remote1",
+                                        "externalComponentModule": "./ThaiDateRange",
+                                        "views": "year,month,day",
+                                        "variant": "outlined",
+                                        "sx": {
+                                          "width": "100%"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "justifyContent": "space-between"
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "ล้างค่า",
+                              "options": {
+                                "operationType": "script",
+                                "converter": "clear_filter_applications_grid",
+                                "className": "secondaryButton-redText",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "search": {
+                                      "type": "object",
+                                      "properties": {
+                                        "application_number": {
+                                          "type": "string"
+                                        },
+                                        "account_number": {
+                                          "type": "string"
+                                        },
+                                        "warehouse_box_no": {
+                                          "type": "string"
+                                        },
+                                        "customer_firstname": {
+                                          "type": "string"
+                                        },
+                                        "customer_lastname": {
+                                          "type": "string"
+                                        },
+                                        "application_status": {
+                                          "type": "string"
+                                        },
+                                        "guarantor_firstname": {
+                                          "type": "string"
+                                        },
+                                        "guarantor_lastname": {
+                                          "type": "string"
+                                        },
+                                        "Application_in_datetime": {
+                                          "type": "object",
+                                          "properties": {
+                                            "from": {
+                                              "type": "string"
+                                            },
+                                            "to": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "WorkBasket_Storage": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "operationType": "script",
+                                "converter": "originaldoc_workbasket_filter",
+                                "className": "primaryButton",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "workbasket_grid": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "0 16px",
+                              "borderTop": "1px solid var(--Content-divider, #eaebed)",
+                              "overflowX": "scroll"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Datagrid",
+                              "scope": "#/properties/workbasket_grid",
+                              "options": {
+                                "grid": "OriginalDoc/WorkBasket_Storage",
+                                "dataContext": {
+                                  "query": "OriginalDoc/WorkBasket_Storage"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "justifyContent": "flex-start"
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "ดาวโหลดไฟล์ .xls",
+                              "options": {
+                                "size": "large",
+                                "operationType": "script",
+                                "className": "getTopTask",
+                                "converter": "workbasket_filter_clear",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "workbasket_grid": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "Print",
+                              "options": {
+                                "size": "large",
+                                "operationType": "script",
+                                "className": "getTopTask",
+                                "converter": "workbasket_filter_clear",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "workbasket_grid": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "ส่งเอกสารเก็บห้องมั่นคง",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "backgroundColor": "#f5f3ff",
+                      "margin": "0 -16px",
+                      "color": "#0000001A"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ส่งเอกสารเก็บเข้าห้องมั่นคง - Auto",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Account Nuber",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "sx": {
+                              "color": "#ef4444"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": false,
+                          "scope": "#/properties/accountNumberToSearch",
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                            "pattern": "อนุญาตให้ใช้เฉพาะตัวอักษรภาษาอังกฤษ,ตัวเลข และ เครื่องหมาย _เท่านั้น"
+                          },
+                          "options": {
+                            "hideRequiredAsterisk": true,
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "readonly": false,
+                            "sx": {
+                              "height": "38px"
+                            }
+                          }
+                        },
+                        {
+                          "type": "ActionButton",
+                          "label": "ค้นหา",
+                          "options": {
+                            "chain": [
+                              {
+                                "operationType": "action",
+                                "conditionTypeId": "OriginalDoc_SearchApplication",
+                                "className": "primaryButton",
+                                "payload": {
+                                  "accountNumberToSearch": "{accountNumberToSearch}"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "UniversalArrayView",
+                  "scope": "#/properties/applicationSearchResult",
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "itemOperations": {
+                      "remove": true
+                    },
+                    "hideTableToolbar": true,
+                    "cells": [
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/no",
+                        "options": {
+                          "columnTitle": "No.",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/accountNumber",
+                        "options": {
+                          "columnTitle": "เลขที่สัญญา",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/customerNameList",
+                        "options": {
+                          "columnTitle": "ชื่อ นามสกุลลูกค้า",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/accountSettlementDate",
+                        "options": {
+                          "columnTitle": "วันที่ตั้งหนี้",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/dateInWarehouse",
+                        "options": {
+                          "columnTitle": "วันที่จัดส่ง",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/noOfGuarantee",
+                        "options": {
+                          "columnTitle": "จำนวนผู้ค้ำประกัน",
+                          "variant": "body2"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "className": "primaryButton",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_OriginalDoc_Storage_Confirm",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "รายงานส่งห้องมั่นคง",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "padding": "0 16px 16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "justifyContent": "space-between",
+                        "sx": {
+                          "backgroundColor": "#f5f3ff",
+                          "margin": "0 -16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รายงานส่งห้องมั่นคง - Auto",
+                          "options": {
+                            "variant": "subtitle2Purple"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": "true",
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "เลขที่สัญญา",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/account_number",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "วันที่จัดส่ง",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "ExternalComponent",
+                                      "scope": "#/properties/search/properties/Application_in_datetime",
+                                      "options": {
+                                        "externalComponentName": "thai-calendar",
+                                        "externalComponentScope": "remote1",
+                                        "externalComponentModule": "./ThaiDateRange",
+                                        "views": "year,month,day",
+                                        "variant": "outlined",
+                                        "sx": {
+                                          "width": "100%"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ชื่อลูกค้า",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/customer_firstname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "นามสกุลลูกค้า",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/customer_lastname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ชื่อผู้ค้ำประกัน",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/guarantor_firstname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "นามสกุลผู้ค้ำประกัน",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "TextField",
+                                      "label": false,
+                                      "scope": "#/properties/search/properties/guarantor_lastname",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "justifyContent": "space-between"
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "ล้างค่า",
+                              "options": {
+                                "operationType": "script",
+                                "converter": "clear_filter_workbasket",
+                                "className": "secondaryButton-redText",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "search": {
+                                      "type": "object",
+                                      "properties": {
+                                        "account_number": {
+                                          "type": "string"
+                                        },
+                                        "Application_in_datetime": {
+                                          "type": "object",
+                                          "properties": {
+                                            "from": {
+                                              "type": "string"
+                                            },
+                                            "to": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        },
+                                        "customer_firstname": {
+                                          "type": "string"
+                                        },
+                                        "customer_lastname": {
+                                          "type": "string"
+                                        },
+                                        "guarantor_firstname": {
+                                          "type": "string"
+                                        },
+                                        "guarantor_lastname": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    },
+                                    "WorkBasket_Storage_CCMS": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "operationType": "script",
+                                "converter": "workbasket_filter",
+                                "className": "primaryButton",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "workbasket_grid": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "0 16px",
+                              "borderTop": "1px solid var(--Content-divider, #eaebed)",
+                              "overflowX": "scroll"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Datagrid",
+                              "scope": "#/properties/workbasket_grid",
+                              "options": {
+                                "grid": "OriginalDoc/WorkBasket_Storage_CCMS",
+                                "dataContext": {
+                                  "query": "OriginalDoc/WorkBasket_Storage_CCMS"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

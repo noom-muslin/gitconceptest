@@ -1,0 +1,312 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10,
+                "sx": {
+                  "marginTop": "-14px",
+                  "marginLeft": "-14px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการส่งข้อมูลหรือไม่",
+                  "options": {
+                    "variant": "subtitle2Dark",
+                    "sx": {
+                      "marginBottom": "8px",
+                      "display": "block"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อกดส่งข้อมูลแล้ว ระบบจะส่งข้อมูลไปให้เจ้าหน้าที่ลำดับถัดไปพิจารณา",
+                  "options": {
+                    "sx": {
+                      "variant": "body2"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "variant": "outlined",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "className": "primaryButton",
+            "size": "large",
+            "sx": {},
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "check_qc_user_task_type_id",
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "isQcUser": {
+                      "type": "String",
+                      "dataPath": "isQcUser"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "payload"
+                  ],
+                  "properties": {
+                    "payload": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "required": [
+                            "isQcUser"
+                          ],
+                          "type": "object",
+                          "properties": {
+                            "isQcUser": {
+                              "type": "boolean",
+                              "const": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "QC_Details_MakerSubmit",
+                    "payload": {
+                      "userId": "{user.login}",
+                      "workflowId": "{externalId}",
+                      "taskId": "{taskId}",
+                      "taskTypeId": "{taskTypeId}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "status"
+                              ],
+                              "properties": {
+                                "status": {
+                                  "required": [
+                                    "code"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "code": {
+                                      "type": "integer",
+                                      "const": 1000
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      },
+                      {
+                        "operationType": "open",
+                        "route": "{zboRouteObject.backPage.route}/{route.workflowId}/done"
+                      }
+                    ]
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      },
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_BasicError_TryAgain",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "QC_Details_ApproverSubmit",
+                    "payload": {
+                      "userId": "{user.login}",
+                      "workflowId": "{externalId}",
+                      "taskId": "{taskId}",
+                      "taskTypeId": "{taskTypeId}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "status"
+                              ],
+                              "properties": {
+                                "status": {
+                                  "required": [
+                                    "code"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "code": {
+                                      "type": "integer",
+                                      "const": 1000
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      },
+                      {
+                        "operationType": "open",
+                        "route": "{zboRouteObject.backPage.route}/{route.workflowId}/done"
+                      }
+                    ]
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      },
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_BasicError_TryAgain",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

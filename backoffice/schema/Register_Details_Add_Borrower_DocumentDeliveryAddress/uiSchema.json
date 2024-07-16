@@ -1,0 +1,40 @@
+[
+  {
+    "type": "StackLayout",
+    "options": {
+      "direction": "row",
+      "alignItems": "baseline"
+    },
+    "elements": [
+      {
+        "type": "RadioGroupField",
+        "scope": "#/properties/documentDeliveryAddress/properties/receiveDocumentChannel",
+        "label": false,
+        "options": {
+          "radioSize": "small",
+          "sx": {
+            "padding": "16px"
+          },
+          "query": "Register/DeliveryChannelEnum",
+          "converter": "mapValueLabel"
+        }
+      },
+      {
+        "type": "TextField",
+        "label": false,
+        "scope": "#/properties/documentDeliveryAddress/properties/email",
+        "options": {
+          "fullwidth": false,
+          "variant": "outlined"
+        },
+        "rule": {
+          "effect": "ENABLE",
+          "condition": {
+            "scope": "#/properties/documentDeliveryAddress/properties/receiveDocumentChannel",
+            "schema": { "const": "1300" }
+          }
+        }
+      }
+    ]
+  }
+]

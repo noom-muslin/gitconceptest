@@ -1,0 +1,10 @@
+query GetStandardCode($standard_list_code: [String!]) {
+  result: ngl_enum_standard_code(
+    order_by: {priority: asc}, 
+    where: {standard_list_code: {_in: $standard_list_code}, status:{_eq: true}}
+  ) {
+    standard_list_code
+    value: code
+    label: display_value
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "properties": {
+    "officerId": {
+      "type": "string"
+    },
+    "recommendedPerson": {
+      "type": "object",
+      "properties": {
+        "saleId": {
+          "type": "string"
+        },
+        "firstAndLastName": {
+          "type": "string"
+        },
+        "branch": {
+          "type": ["string", "null"],
+          "enum": [
+            "333 - Code - bank Name",
+            "Branch - ",
+            "Code 1111 - bank Branch Name",
+            "Code 1112 - bank Branch Name",
+            null
+          ]
+        },
+        "ocCode": {
+          "type": ["string", "null"]
+        },
+        "phone1": {
+          "type": "string",
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "phone2": {
+          "type": ["string", "null"]
+        },
+        "phone3": {
+          "type": ["string", "null"]
+        },
+        "isSalesPersonInfoFound": {
+          "type": "boolean"
+        }
+      },
+      "required": ["phone1"]
+    }
+  }
+}

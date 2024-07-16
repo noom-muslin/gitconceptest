@@ -1,0 +1,256 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "{zboRouteObject.label}",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_MainTab"
+      }
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_Storage_SubTab"
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "ส่งเอกสารเก็บเข้าห้องมั่นคง - Auto",
+          "options": {
+            "variant": "h6",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                      "sx": {
+                        "padding": "16px"
+                      }
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": true,
+                        "spacing": "16px",
+                        "alignItems": "flex-end",
+                        "justifyContent": "space-between"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "11"
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "options": {
+                                "direction": "row"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Account Number",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "*",
+                                  "options": {
+                                    "variant": "label",
+                                    "sx": {
+                                      "color": "error.main"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "TextField",
+                              "label": false,
+                              "scope": "#/properties/accountNumberToSearch",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type":"GridLayout",
+                          "options":{
+                            "xs": "1"
+                          },
+                          "elements":[
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "chain": [
+                                  {
+                                    "operationType": "action",
+                                    "conditionTypeId": "OriginalDoc_SearchApplication",
+                                    "variant": "primary",
+                                    "payload": {
+                                      "accountNumberToSearch": "{accountNumberToSearch}"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                      "sx": {
+                        "padding": "8px"
+                      }
+                  },
+                  "elements": [
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/applicationSearchResult",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "itemOperations": {
+                          "remove": true
+                        },
+                        "hideTableToolbar": true,
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/no",
+                            "options": {
+                              "columnTitle": "No.",
+                              "variant": "body2"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/accountNumber",
+                            "options": {
+                              "columnTitle": "เลขที่สัญญา",
+                              "variant": "body2"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/customerNameList",
+                            "options": {
+                              "columnTitle": "ชื่อ นามสกุลลูกค้า",
+                              "variant": "body2"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/accountSettlementDate",
+                            "options": {
+                              "columnTitle": "วันที่ตั้งหนี้",
+                              "variant": "body2"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/dateInWarehouse",
+                            "options": {
+                              "columnTitle": "วันที่จัดส่ง",
+                              "variant": "body2"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/noOfGuarantee",
+                            "options": {
+                              "columnTitle": "จำนวนผู้ค้ำประกัน",
+                              "variant": "body2"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "spacing": "8px",
+            "direction": "row",
+            "justifyContent": "flex-start"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "variant": "primary",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_OriginalDoc_Storage_Confirm",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

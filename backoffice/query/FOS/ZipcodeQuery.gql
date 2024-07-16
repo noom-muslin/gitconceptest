@@ -1,0 +1,12 @@
+query ZipcodeQuery($province: String!, $amphur: String!, $tambon: String!){
+  result: ngl_enum_location(
+  where: {
+    province_name_th: {_eq: $province},
+    district_th: {_eq: $amphur},
+    sub_district_th: {_eq: $tambon}
+  }
+  distinct_on: zip_code
+  ){
+    zip_code
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 100
+    },
+    {
+      "title": "วันเวลาที่อนุมัติใบสมัคร",
+      "field": "application.approved_date_time",
+      "name": "approved_date_time",
+      "converter": "date_column_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "วัตถุประสงค์การกู้​",
+      "field": "application.purpose_of_loan_id",
+      "name": "purpose_of_loan_id",
+      "minWidth": 150
+    },
+    {
+      "title": "หน่วยงานเจ้าของใบสมัคร",
+      "field": "application.oc_code",
+      "name": "oc_code",
+      "minWidth": 150
+    },
+    {
+      "title": "ความเห็นพนักงานขาย",
+      "field": "application.remark",
+      "name": "remark",
+      "minWidth": 150
+    },
+    {
+      "title": "วันที่ทำนิติกรรมสัญญา​",
+      "field": "#",
+      "name": "#",
+      "converter": "date_column_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "วันที่จำนอง/ไถ่ถอน",
+      "field": "#",
+      "name": "#",
+      "converter": "date_column_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "Product Type",
+      "field": "application.accounts",
+      "name": "product_type",
+      "converter": "product_type_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.borrowers",
+      "name": "customer_name",
+      "converter": "customer_name_multi_converter",
+      "minWidth": 120
+    },
+    {
+      "title": " ",
+      "name": "ca",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CollateralAppraisal",
+            "route": "/collateral-appraisal",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "name": "get_task",
+      "sortable": false,
+      "minWidth": 120,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "{zboRouteObject.permission}",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "{zboRouteObject.route}/{data.id}/details"
+            },
+            "validationSchema": false
+          }
+        }
+      ]
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+query GetPaymentPeriod($ListCode: String!, $InsuranceTypeCode: String!){
+  result: ngl_enum_standard_code(where: 
+  { standard_list_code: {_eq: $ListCode},
+    check_special: {_eq: $InsuranceTypeCode}
+  }){
+    value: code
+    label: display_value
+  }
+}

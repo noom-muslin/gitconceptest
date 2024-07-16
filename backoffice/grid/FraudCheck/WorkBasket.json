@@ -1,0 +1,117 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "name": "total_sla",
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "name": "wb_sla",
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "name": "application_no",
+      "title": "Application No.",
+      "field": "application.application_id",
+      "minWidth": 100
+    },
+    {
+      "name": "application_group",
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "width": 120
+    },
+    {
+      "name": "application_type",
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "minWidth": 150
+    },
+    {
+      "name": "customer_name",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "title": "ชื่อลูกค้า",
+      "minWidth": 120
+    },
+    {
+      "name": "customer_type",
+      "field": "application.primary_borrower.borrower.party.customer_type.description",
+      "title": "ประเภทลูกค้า",
+      "minWidth": 120
+    },
+    {
+      "name": "product_type",
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.code",
+      "minWidth": 120
+    },
+    {
+      "name": "sub_product_type",
+      "title": "Sub Product Type",
+      "field": "application.primary_account.account.sub_product.code",
+      "minWidth": 120
+    },
+    {
+      "name": "previous_channel_station",
+      "title": "รับมาจาก",
+      "field": "previous_task.task_type.code",
+      "minWidth": 150
+    },
+    {
+      "name": "fraud_reason",
+      "title": "เหตุผลที่สงสัย Fraud",
+      "field": "",
+      "minWidth": 150
+    },
+    {
+      "name": "last_fraud_staff",
+      "title": "อัปเดตล่าสุดโดย",
+      "field": "",
+      "minWidth": 150
+    },
+    {
+      "name": "doc_in_datetime",
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": " ",
+      "name": "get_task",
+      "sortable": false,
+      "resizable": false,
+      "minWidth": 120,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_FraudCheck",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/fraud-check/{data.id}/details"
+            },
+            "validationSchema": false
+          }
+        }
+      ]
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

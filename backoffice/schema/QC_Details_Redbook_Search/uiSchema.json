@@ -1,0 +1,511 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "padding": "0 0 0"
+    }
+  },
+  "elements": [
+    {
+      "type": "FormMapperListener",
+      "options": {
+        "resultMappingSchema": {
+          "type": "object",
+          "properties": {
+            "search": {
+              "converter": "qcRedbookSearchForm",
+              "type": "object",
+              "dataPath": ["search", "modalIn"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 0 0"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "1em 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": "true",
+                    "spacing": "1em"
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "display": "flex"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "ยี่ห้อ",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " *",
+                              "options": {
+                                "variant": "label",
+                                "sx": {
+                                  "color": "#EF4444"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/redbook_brand",
+                          "options": {
+                            "query": "QC/VehicleBrand",
+                            "converter": "mapValueLabel",
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "rule": {
+                            "effect": "HIDE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/redbook_brand",
+                              "schema": {
+                                "type": "string",
+                                "required": ["search", "redbook_brand"]
+                              }
+                            }
+                          },
+                          "options": {
+                            "sx": {
+                              "display": "flex"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                              "options": {
+                                "variant": "label",
+                                "sx": {
+                                  "color": "#EF4444"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "display": "flex"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "รุ่น",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " *",
+                              "options": {
+                                "variant": "label",
+                                "sx": {
+                                  "color": "#EF4444"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/redbook_model",
+                          "options": {
+                            "query": "QC/VehicleModels",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "application_date_time_in": "{modalIn.applicationDateIn}"
+                            },
+                            "converter": "mapValueLabel",
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/disabledRedbookModel",
+                              "schema": {
+                                "const": true
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "rule": {
+                            "effect": "HIDE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/redbook_model",
+                              "schema": {
+                                "type": "string",
+                                "required": ["search", "redbook_model"]
+                              }
+                            }
+                          },
+                          "options": {
+                            "sx": {
+                              "display": "flex"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                              "options": {
+                                "variant": "label",
+                                "sx": {
+                                  "color": "#EF4444"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รุ่นปี ค.ศ.",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/sub_model_year",
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "QC/VehicleRedBookSubModelYear",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/disabledSubModelYear",
+                              "schema": {
+                                "const": true
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "CCKWH",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/cckwh",
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "QC/VehicleRedBookCckwh",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/disabledCCKWH",
+                              "schema": {
+                                "const": true
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ประเภทเกียร์",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/gear_type",
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "QC/VehicleRedBookGearType",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/disabledGearType",
+                              "schema": {
+                                "const": true
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รุ่นย่อย",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/redbook_sub_model",
+                          "options": {
+                            "query": "QC/VehicleRedBookSubModelCode",
+                            "converter": "mapValueLabelOneParameter",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#/properties/search/properties/disabledRedbookSubModel",
+                              "schema": {
+                                "const": true
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "sx": {
+          "padding": "1em 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "spacing": "1em",
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "sx": {
+              "margin": "5"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ค้นหา",
+              "options": {
+                "validationSchema": false,
+                "variant": "secondary",
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "qc_redbook_search_criteria",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "canSubmit": {
+                          "type": "boolean",
+                          "dataPath": "canSubmit"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "sx": {
+          "padding": "0 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/canSubmit",
+              "schema": {
+                "const": "true"
+              }
+            }
+          },
+          "options": {
+            "htmlID": "Search1"
+          },
+          "elements": [
+            {
+              "type": "Datagrid",
+              "scope": "#/properties/redbook_grid",
+              "options": {
+                "grid": "QC/RedBookSearch",
+                "dataContext": {
+                  "queryVariables": {
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/canSubmit",
+              "schema": {
+                "const": "true"
+              }
+            }
+          },
+          "options": {
+            "htmlID": "Search2"
+          },
+          "elements": [
+            {
+              "type": "Datagrid",
+              "scope": "#/properties/redbook_grid",
+              "options": {
+                "grid": "QC/RedBookSearch",
+                "dataContext": {
+                  "query": "QC/RedBookSearch",
+                  "queryVariables": {
+                    "addWhere": {
+                      "redbook_brand": {"_eq": "{search.redbook_brand}"},
+                      "redbook_model": {"_eq": "{search.redbook_model}"},
+                      "sub_model_year": {"_eq": "{search.sub_model_year}"},
+                      "cckwh": {"_eq": "{search.cckwh}"},
+                      "gear_type": {"_eq": "{search.gear_type}"},
+                      "sub_model_code": {"_eq": "{search.redbook_sub_model}"}
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

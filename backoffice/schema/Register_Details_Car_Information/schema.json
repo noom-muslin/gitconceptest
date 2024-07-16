@@ -1,0 +1,119 @@
+{
+  "type": "object",
+  "properties": {
+    "modalIn": {
+      "type": "object",
+      "properties": {
+        "applicationDateIn": {
+          "type": "string"
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "brand_code": {
+          "type": "string"
+        },
+        "model_code": {
+          "type": "string"
+        },
+        "cckwh": {
+          "type": "string"
+        },
+        "engine_type_code": {
+          "type": "string"
+        },
+        "sub_model_code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "brand_code",
+        "model_code"
+      ]
+    },
+    "vehicle_info": {
+      "type": "object",
+      "properties": {
+        "vehicle_type": {
+          "type": "string"
+        },
+        "vehicle_brand": {
+          "type": "string"
+        },
+        "vehicle_model": {
+          "type": "string"
+        },
+        "vehicle_sub_model": {
+          "type": "string"
+        },
+        "cckwh": {
+          "type": "string"
+        },
+        "engine_type": {
+          "type": "string"
+        },
+        "model_year": {
+          "type": "string"
+        }
+      }
+    },
+    "redbook_grid": {
+      "type": "object",
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "logic": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "sorting": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dir": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconWarning"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "HelpOutlineOutlined"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "คุณต้องการส่งข้อมูลหรือไม่",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "เมื่อกดส่งข้อมูลแล้ว ข้อมูลนี้จะถูกส่งไปยัง Station ถัดไป"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "operationType": "modal",
+            "subtype": "cancel",
+            "variant": "secondary"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "NCB_Details_Submit"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": ["submitErrorModalType"],
+                              "properties": {
+                                "submitErrorModalType": {
+                                  "type": "string",
+                                  "const": "salesPersonsError"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Basic_Error",
+                "dialogVariables": {
+                  "title": "ไม่สามารถส่งข้อมูลได้",
+                  "text": "กรุณาเพิ่มพนักงานขายอย่างน้อย 1 รายเพื่อส่งข้อมูล"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": ["submitErrorModalType"],
+                              "properties": {
+                                "submitErrorModalType": {
+                                  "type": "string",
+                                  "const": "ncbResultError"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Basic_Error",
+                "dialogVariables": {
+                  "title": "ไม่สามารถส่งข้อมูลได้",
+                  "text": "เนื่องจากมีผลการส่งตรวจ NCB ไม่สำเร็จ"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": ["submitErrorModalType"],
+                              "properties": {
+                                "submitErrorModalType": {
+                                  "type": "string",
+                                  "const": "unsuccessfulSubmitError"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Basic_Error",
+                "dialogVariables": {
+                  "title": "ไม่สามารถดำเนินการต่อได้",
+                  "text": "กรุณาลองใหม่อีกครั้ง"
+                }
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/ncb/{route.taskId}/done"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

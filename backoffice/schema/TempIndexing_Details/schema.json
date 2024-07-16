@@ -1,0 +1,86 @@
+{
+  "type": "object",
+  "properties": {
+    "work_object": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "readOnly": true
+    },
+    "application_group": {
+      "type": "string",
+      "readOnly": true
+    },
+    "application_type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "indexing_type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "indexing_type_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "application_number": {
+      "type": "string",
+      "pattern": "^[0-9A-Za-z_\\-]{10,40}$"
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string"
+        }
+      }
+    },
+    "search_result": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "application_group": {
+            "type": "string",
+            "readOnly": true
+          },
+          "application_type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "indexing_type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "application_number": {
+            "type": "string",
+            "readOnly": true
+          },
+          "application_channel": {
+            "type": "string",
+            "readOnly": true
+          },
+          "status_work": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      }
+    },    
+    "rule_vars": {
+      "type": ["object", "null"],
+      "properties": {
+        "is_enabled_generate": {
+          "type": "boolean"
+        },
+        "is_enabled_search": {
+          "type": "boolean"
+        },
+        "is_enabled_app_no": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

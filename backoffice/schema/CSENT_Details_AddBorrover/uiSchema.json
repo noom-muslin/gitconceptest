@@ -1,0 +1,688 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbsWhiteBg"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/csent/{route.taskId}/details"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ"
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "เพิ่มลูกค้า",
+              "options": {
+                "variant": "h6"
+              }
+            }
+          ]
+        },
+        {
+          "type": "FormMapperListener",
+          "options": {
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "borrower": {
+                  "type": "object",
+                  "dataPath": "borrower",
+                  "converter": "csent_on_customer_type_borrower_change"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "variant": "section"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ค้นหาข้อมูลลูกค้า"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/borrower/properties/customerType",
+                      "label": "ประเภทบุคคล",
+                      "options": {
+                        "format": "radio",
+                        "radioColor": "success",
+                        "labelPlacement": "end",
+                        "row": "false"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "ประเภทเอกสารอ้างอิง",
+                      "scope": "#/properties/borrower/properties/refDocumentType",
+                      "options": {
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "variant": "outlined",
+                        "enumDataPath": "borrower.referenceTypes"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "เลขที่เอกสารอ้างอิง",
+                      "scope": "#/properties/borrower/properties/refDocumentNo",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "end",
+                "sx": {
+                  "padding": "16px",
+                  "borderTop": "1px solid",
+                  "borderColor": "secondary.dark"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "ค้นหา",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "formValidationErrors": "show",
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "csent_checking_search_fields",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "dataPath": "status"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": ["payload"],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "required": ["status"],
+                                  "type": "object",
+                                  "properties": {
+                                    "status": {
+                                      "type": "string",
+                                      "const": "form_valid"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "chain": [
+                          {
+                            "operationType": "action",
+                            "conditionTypeId": "CSENT_Details_AddBorrover_Search",
+                            "payload": {
+                              "taskId": "{route.taskId}"
+                            }
+                          },
+                          {
+                            "if": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "required": ["payload"],
+                                  "properties": {
+                                    "payload": {
+                                      "type": "object",
+                                      "required": ["data"],
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "required": ["validation"],
+                                          "properties": {
+                                            "validation": {
+                                              "type": "object",
+                                              "required": ["error_search"],
+                                              "properties": {
+                                                "error_search": {
+                                                  "type": "string",
+                                                  "const": "Connection error"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "operationType": "modal",
+                            "subtype": "show",
+                            "dialogName": "m_Basic_Error",
+                            "dialogVariables": {
+                              "title": "ไม่สามารถดำเนินการต่อได้",
+                              "text": "กรุณาลองใหม่อีกครั้ง"
+                            }
+                          },
+                          {
+                            "if": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "required": ["payload"],
+                                  "properties": {
+                                    "payload": {
+                                      "type": "object",
+                                      "required": ["data"],
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "required": ["validation"],
+                                          "properties": {
+                                            "validation": {
+                                              "type": "object",
+                                              "required": ["error_search"],
+                                              "properties": {
+                                                "error_search": {
+                                                  "type": "string",
+                                                  "const": "No information found"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "operationType": "modal",
+                            "subtype": "show",
+                            "dialogName": "m_Basic_Error",
+                            "dialogVariables": {
+                              "title": "ไม่พบข้อมูล",
+                              "text": "กรุณาตรวจสอบข้อมูลให้ถูกต้อง หรือระบุข้อมูลลูกค้าเอง"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "PaperLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/borrower/properties/isSearchResultShown",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "component": "section",
+            "variant": "section"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ข้อมูลลูกค้า"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "ประเภทเอกสารอ้างอิง",
+                      "scope": "#/properties/borrower/properties/refDocumentType",
+                      "options": {
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "variant": "outlined",
+                        "enumDataPath": "borrower.referenceTypes"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "เลขที่เอกสารอ้างอิง",
+                      "scope": "#/properties/borrower/properties/refDocumentNo",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "คำนำหน้า",
+                      "scope": "#/properties/borrower/properties/title",
+                      "options": {
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "variant": "outlined",
+                        "query": "CommonSearch/GetTitleShort",
+                        "converter": "mapValueLabel"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "HIDE",
+                    "condition": {
+                      "scope": "#/properties/borrower/properties/customerType",
+                      "schema": {
+                        "const": "Juristic"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ชื่อ",
+                      "scope": "#/properties/borrower/properties/firstName",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "HIDE",
+                    "condition": {
+                      "scope": "#/properties/borrower/properties/customerType",
+                      "schema": {
+                        "const": "Juristic"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "ชื่อกลาง",
+                      "scope": "#/properties/borrower/properties/middleName",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "HIDE",
+                    "condition": {
+                      "scope": "#/properties/borrower/properties/customerType",
+                      "schema": {
+                        "const": "Juristic"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "นามสกุล",
+                      "scope": "#/properties/borrower/properties/lastName",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/borrower/properties/customerType",
+                      "schema": {
+                        "const": "Juristic"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "นามสกุล",
+                      "scope": "#/properties/borrower/properties/juristicName",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "OC Code ลูกค้า",
+                      "scope": "#/properties/borrower/properties/ocCode",
+                      "options": {
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "variant": "outlined",
+                        "query": "CommonSearch/GetOcCode",
+                        "converter": "mapValueLabel"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "end",
+                "sx": {
+                  "padding": "16px",
+                  "borderTop": "1px solid",
+                  "borderColor": "secondary.dark"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "บันทึกข้อมูล",
+                  "options": {
+                    "variant": "primary",
+                    "validationSchema": false,
+                    "formValidationErrors": "show",
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "csent_checking_save_fields",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "dataPath": "status"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": ["payload"],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "required": ["status"],
+                                  "type": "object",
+                                  "properties": {
+                                    "status": {
+                                      "type": "string",
+                                      "const": "form_valid"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "chain": [
+                          {
+                            "operationType": "action",
+                            "conditionTypeId": "CSENT_Details_AddBorrover_Save",
+                            "payload": {
+                              "taskId": "{route.taskId}"
+                            }
+                          },
+                          {
+                            "if": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "required": ["payload"],
+                                  "properties": {
+                                    "payload": {
+                                      "type": "object",
+                                      "required": ["data"],
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "required": ["validation"],
+                                          "properties": {
+                                            "validation": {
+                                              "type": "object",
+                                              "required": ["error_search"],
+                                              "properties": {
+                                                "error_search": {
+                                                  "type": "string",
+                                                  "const": "Connection error"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "operationType": "modal",
+                            "subtype": "show",
+                            "dialogName": "m_Basic_Error",
+                            "dialogVariables": {
+                              "title": "ไม่สามารถดำเนินการต่อได้",
+                              "text": "กรุณาลองใหม่อีกครั้ง"
+                            }
+                          },
+                          {
+                            "if": {
+                              "else": true
+                            },
+                            "operationType": "open",
+                            "route": "/csent/{route.taskId}/details",
+                            "payload": {
+                              "taskId": "{route.taskId}"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

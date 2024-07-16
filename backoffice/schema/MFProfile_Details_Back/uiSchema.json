@@ -1,0 +1,221 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center",
+                "sx": {
+                  "paddingTop": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณกำลังจะออกจากหน้านี้",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "หากต้องการบันทึกข้อมูลที่ระบุหรือแก้ไขไว้ กรุณาเลือก “บันทึก”",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px",
+          "paddingTop": "12px"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ยกเลิก",
+              "options": {
+                "variant": "secondary",
+                "size": "large",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ไม่บันทึก",
+              "options": {
+                "variant": "secondary",
+                "size": "large",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/mf-profile"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "บันทึก",
+              "options": {
+                "size": "large",
+                "variant": "primary",
+                "sx": {},
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "MFProfile_Details_SaveApplication",
+                    "payload": {
+                      "applicationId": "{route.applicationId}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "required": [
+                                    "submitted"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "submitted": {
+                                      "type": "boolean",
+                                      "const": true
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      },
+                      {
+                        "operationType": "open",
+                        "route": "/mf-profile"
+                      }
+                    ]
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      },
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_BasicError_TryAgain",
+                        "payload": {
+                          "name1": "name1",
+                          "Name2": "name2"
+                        },
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

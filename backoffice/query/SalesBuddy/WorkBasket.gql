@@ -1,0 +1,45 @@
+subscription getBuddyDetail(
+  $taskStatus: String!
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $where: [ngl_task_bool_exp]
+  ) { 
+  result:ngl_task(
+    where: {
+      status_id: {_eq: "Todo"} 
+      performing_by: {_is_null: true}
+      task_type_id: {_eq: $taskStatus}
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset) {
+      id
+      sla_wb {
+        current_duration_minutes
+      }
+      sla_tty {
+        current_duration_minutes
+      }
+      document_in_datetime
+      application {
+        application_id
+        application_class_id
+        primary_borrower {
+          borrower {
+            party_type_id
+            party {
+              full_name
+              name
+              last_name
+              oc_code
+              party_juristic_infos {
+                juristic_name
+              }
+            }
+          }
+        }
+      }
+  }
+}

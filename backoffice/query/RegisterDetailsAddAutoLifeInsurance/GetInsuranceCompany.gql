@@ -1,0 +1,6 @@
+query GetInsuranceCompany {
+  result: ngl_enum_insurance_company(where: {is_active: {_eq: true}}) {
+    value: insurance_company_code
+    label: insurance_company_name
+  }
+}

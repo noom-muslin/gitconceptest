@@ -1,0 +1,119 @@
+{
+  "type": "object",
+  "properties": {
+    "docName": {
+      "type": "string",
+      "enum": [
+        "คำรับรองของผู้กู้",
+        "สัญญากู้เงิน สคบ",
+        "สัญญากู้เงิน อเนกประสงค์",
+        "สัญญากู้เงิน อเนกประสงค์ (สวัสดิการพนักงาน)"
+      ]
+    },
+    "repayList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "bs_seq": {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "payment_method": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "duration_from": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "duration_to": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "buffer_rate": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "calculate_amount": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "adjust_amount": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "amount": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "sublimit_type_desc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "repayType": {
+      "type": "object",
+      "properties": {
+        "payment_method": {
+          "type": "string",
+          "enum": [
+            "INT/INT.3-PRI (LOAN, TDR)",
+            "Test Data 2"
+          ]
+        },
+        "timeType": {
+          "type": "string",
+          "enum": [
+            "วัน",
+            "เดือน",
+            "ปี"
+          ]
+        },
+        "duration_from": {
+          "type": "integer"
+        },
+        "duration_to": {
+          "type": "integer"
+        },
+        "buffer_rate": {
+          "type": "number",
+          "maximum": 999,
+          "multipleOfPrecision": 0.01
+        },
+        "calculate_amount": {
+          "type": "integer"
+        },
+        "adjust_amount": {
+          "type": "number"
+        },
+        "amount": {
+          "type": "integer"
+        },
+        "bs_seq": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

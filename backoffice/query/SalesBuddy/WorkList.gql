@@ -1,0 +1,70 @@
+subscription InquiryWorkList(
+  $task_type_id: String
+  $performing_by: String
+  $status_id: String
+  $limit: Int
+  $offset: Int
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+) {
+  result: ngl_task(
+    where: {
+      task_type_id: { _eq: $task_type_id }
+      performing_by: { _eq: $performing_by }
+      status_id: { _eq: $status_id }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    externalId: external_id
+    sla_wb {
+      current_duration_minutes
+    }
+    sla_tty {
+      current_duration_minutes
+    }
+    task_staff_profile {
+      staffbdfullname
+    }
+    document_in_datetime
+    update_date_time
+    application {
+      primary_borrower {
+        borrower {
+          party_type_id
+          party {
+            full_name
+            name
+            last_name
+            oc_code
+            party_juristic_infos {
+              juristic_name
+            }
+          }
+        }
+      }
+      primary_account {
+        account {
+          product_group {
+            code
+          }
+          product_type {
+            code
+          }
+          account_number
+        }
+      }
+      application_id
+      application_group_id
+      app_sale {
+        sale_id
+        staffownerfullname
+      }
+    }
+    performing_by
+    update_date_time
+  }
+}

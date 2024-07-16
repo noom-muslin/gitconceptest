@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "properties": {
+    "editSalesPerson": {
+      "type": "object",
+      "properties": {
+        "employeeId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phoneNumber1": {
+          "type": "string",
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "phoneNumber2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "phoneNumber3": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "ocCode": {
+          "type": "string"
+        },
+        "incentiveOcCode": {
+          "type": "string"
+        },
+        "bookingBranch": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "employeeId",
+        "title",
+        "name",
+        "lastName",
+        "phoneNumber1"
+      ]
+    },
+    "applicationGroup": {
+      "type": "object",
+      "properties": {
+        "unsecuredOrAuto": {
+          "type": "boolean"
+        },
+        "auto": {
+          "type": "boolean"
+        }
+      }
+    },
+    "application_number": {
+      "type": "string"
+    }
+  }
+}

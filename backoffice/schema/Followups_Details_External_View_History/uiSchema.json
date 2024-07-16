@@ -1,0 +1,754 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "backgroundColor": "primary.light",
+          "color": "primary.main",
+          "height": "48px",
+          "alignItems": "center",
+          "display": "flex"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "scope": "#/properties/fuHistoryRow/properties/originStation",
+          "options": {
+            "sx": {
+              "paddingLeft": "16px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "0px 16px 16px 0px",
+          "borderBottom": "solid 1px #C1C3C8"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "เอกสารที่ต้องติดตาม",
+          "options": {
+            "variant": "subtitle2Dark",
+            "sx": { "padding": "20px" }
+          }
+        },
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/fuHistoryRow/properties/documents",
+          "options": {
+            "hideTableToolbar": true,
+            "disableItemsRemove": false,
+            "sx": {
+              "borderBottom": "1px solid",
+              "borderColor": "secondary.dark"
+            },
+            "cells": [
+              {
+                "type": "BoxLayout",
+                "label": "จบการติดตาม",
+                "scope": "#/properties/itemSelected",
+                "elements": [
+                  {
+                    "type": "CheckboxField",
+                    "label": "",
+                    "options": {
+                      "visible": "{isPending}",
+                      "sx": {
+                        "marginLeft": "1em",
+                        "width": "50px"
+                      },
+                      "variant": "outlined"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/document_name",
+
+                "options": {
+                  "columnTitle": "ประเภทเอกสาร",
+                  "fullwidth": true,
+                  "variant": "outlined",
+                  "sx": {
+                    "width": "450px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/reason",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                },
+                "options": {
+                  "fullwidth": true,
+                  "variant": "outlined",
+                  "columnTitle": "เหตุผลการติดตาม",
+                  "sx": {
+                    "width": "450px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/remark",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                },
+                "options": {
+                  "columnTitle": "หมายเหตุ",
+                  "fullwidth": true,
+                  "variant": "outlined"
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/status",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                },
+                "options": {
+                  "columnTitle": "สถานะ",
+                  "fullwidth": true,
+                  "variant": "outlined"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "0px 16px 16px 0px",
+          "borderBottom": "solid 1px #C1C3C8"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "ข้อมูลที่ต้องติดตาม",
+          "options": {
+            "variant": "subtitle2Dark",
+            "sx": { "padding": "20px" }
+          }
+        },
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/fuHistoryRow/properties/information",
+
+          "options": {
+            "hideTableToolbar": true,
+            "disableItemsRemove": false,
+            "sx": {
+              "borderBottom": "1px solid",
+              "borderColor": "secondary.dark"
+            },
+            "cells": [
+              {
+                "type": "BoxLayout",
+                "label": "จบการติดตาม",
+                "scope": "#/properties/itemSelected",
+                "rule": {
+                  "effect": "HIDE",
+                  "condition": {
+                    "scope": "#/properties/status",
+                    "schema": {
+                      "const": "Pending"
+                    }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "CheckboxField",
+                    "label": "จบการติดตาม",
+                    "options": {
+                      "visible": "{isPending}",
+                      "sx": {
+                        "marginLeft": "1em",
+                        "width": "50px"
+                      },
+                      "variant": "outlined"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/data_name",
+
+                "options": {
+                  "columnTitle": "ชื่อข้อมูล",
+                  "fullwidth": true,
+                  "variant": "outlined",
+                  "sx": {
+                    "width": "450px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/reason",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                },
+                "options": {
+                  "fullwidth": true,
+                  "variant": "outlined",
+                  "columnTitle": "เหตุผลการติดตาม",
+                  "sx": {
+                    "width": "450px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/remark",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                },
+                "options": {
+                  "columnTitle": "หมายเหตุ",
+                  "fullwidth": true,
+                  "variant": "outlined"
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/status",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                },
+                "options": {
+                  "columnTitle": "สถานะ",
+                  "fullwidth": true,
+                  "variant": "outlined"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "0px 16px 16px 0px",
+          "borderBottom": "solid 1px #C1C3C8"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "Follow Up โดย RC / Reshape",
+          "options": {
+            "variant": "subtitle2Dark",
+            "sx": { "padding": "20px" }
+          }
+        },
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/fuHistoryRow/properties/rc_reshape",
+
+          "options": {
+            "hideTableToolbar": true,
+            "disableItemsRemove": false,
+            "sx": {
+              "borderBottom": "1px solid",
+              "borderColor": "secondary.dark"
+            },
+            "cells": [
+              {
+                "type": "BoxLayout",
+                "label": "จบการติดตาม",
+                "scope": "#/properties/itemSelected",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/status",
+                    "schema": {
+                      "const": "Pending"
+                    }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "CheckboxField",
+                    "label": "จบการติดตาม",
+                    "options": {
+                      "visible": "{isPending}",
+                      "sx": {
+                        "marginLeft": "1em",
+                        "width": "50px"
+                      },
+                      "variant": "outlined"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/reason",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                },
+                "options": {
+                  "fullwidth": true,
+                  "variant": "outlined",
+                  "columnTitle": "เหตุผล RC / Reshape",
+                  "sx": {
+                    "width": "450px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/remark",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                },
+                "options": {
+                  "columnTitle": "หมายเหตุ",
+                  "fullwidth": true,
+                  "variant": "outlined",
+                  "sx": {
+                    "width": "450px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "label": " ",
+                "scope": "#/properties/status",
+                "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                },
+                "options": {
+                  "columnTitle": "สถานะ",
+                  "fullwidth": true,
+                  "variant": "outlined"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "0px 16px 16px 0px",
+          "borderBottom": "solid 1px #C1C3C8"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "เหตุผลในการ Follow Up",
+          "options": {
+            "variant": "subtitle2Dark",
+            "sx": { "padding": "20px" }
+          }
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "sx": {
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "เหตุผล",
+                      "options": {
+                        "variant": "label"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/fuHistoryRow/properties/commentCode",
+                  "options": {
+                    "variant": "label",
+                    "sx": {
+                      "marginTop": "8px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "หมายเหตุ",
+                      "options": {
+                        "variant": "label"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/fuHistoryRow/properties/commentDetails",
+                  "options": {
+                    "variant": "label",
+                    "sx": {
+                      "marginTop": "8px"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": "12"
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "scope": "#/properties/fuHistoryRow/properties/remark",
+          "label": "ความเห็นเพิ่มเติม",
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "multi": true,
+            "minRows": 3,
+            "maxRows": 8
+          },
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/fuHistoryRow/properties/fuUpdated",
+              "schema": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/fuHistoryRow/properties/fuUpdated",
+              "schema": {
+                "const": false
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ความเห็นเพิ่มเติม",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "Typography",
+              "scope": "#/properties/fuHistoryRow/properties/remark",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "textWrap": "nowrap"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "1em",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/fuHistoryRow/properties/fuUpdated",
+          "schema": {
+            "const": false
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "บันทึกความเห็น",
+          "options": {
+            "variant": "secondary",
+            "validationSchema": false,
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Followups_Details_Save_External_FU_history",
+                "validationSchema": false,
+                "payload": {
+                  "fuId": "{fuHistoryRow.fuId}",
+                  "remark": "{fuHistoryRow.remark}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["submitted"],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "จบการติดตาม",
+          "rule": {
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#/properties/fuHistoryRow",
+              "schema": {
+                "properties": {
+                  "documents": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "itemSelected": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "information": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "itemSelected": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "rc_reshape": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "itemSelected": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                },
+                "not": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "documents": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSelected": {
+                                "type": "boolean",
+                                "const": true
+                              }
+                            },
+                            "required": ["itemSelected"]
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "information": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSelected": {
+                                "type": "boolean",
+                                "const": true
+                              }
+                            },
+                            "required": ["itemSelected"]
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "rc_reshape": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemSelected": {
+                                "type": "boolean",
+                                "const": true
+                              }
+                            },
+                            "required": ["itemSelected"]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "options": {
+            "variant": "primary",
+            "validationSchema": false,
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Followups_Details_Complete_External_FU_history",
+                "validationSchema": false,
+                "payload": {
+                  "fuId": "{fuHistoryRow.fuId}",
+                  "originTaskType": "{fuHistoryRow.originTaskType}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["submitted"],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

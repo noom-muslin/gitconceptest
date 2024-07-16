@@ -1,0 +1,78 @@
+subscription GetInsuranceWorkList(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $assignee: String!
+  $checkerFlag: String
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _eq: $assignee }
+      task_type_id: { _eq: "OPInsurance" }
+      status_id: { _eq: "InProgress" }
+      op_loan: {
+        op_loans_insurance: {
+          checker_flag : { _eq: $checkerFlag }
+        }
+      }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    create_date_time
+    deadline_at
+    status_id
+    application_id
+    application {
+      appl_parties {
+        full_name
+      }
+      accounts {
+        account_settlement_date
+      }
+      collateral_securities {
+        security_type
+        apprisal_date
+      }
+    }
+    op {
+      op_number
+      approved_date_time
+      op_objectives {
+        op_objective_desc
+      }
+    }
+    op_loan {
+      account_number
+      contract_type
+      op_loans_insurance {
+        option
+        remark
+        checker_status_flag
+        checker_flag
+        accsim
+        op_loans_id
+        status_work
+      }
+      # appl_account {
+      #   account_settlement_date
+      # }
+    }
+    # tasks {
+    #   performing_by
+    # }
+    
+    primary_document {
+      document {
+        document_number
+        document_type {
+          code
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,840 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "หน้าหลัก",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "หน้าหลัก",
+                  "options": {
+                    "variant": "h6",
+                    "sx": {
+                      "padding": "4px 0"
+                    }
+                  }
+                },
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "variant": "section"
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Work List"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 0 16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": "true",
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "TextField",
+                                      "label": "Application No.",
+                                      "scope": "#/properties/work_list_search/properties/application_number",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      },
+                                      "errors": {
+                                        "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรภาษาอังกฤษ ตัวเลข - และ _ เท่านั้น",
+                                        "minLength": "กรุณาระบุข้อมูลอย่างน้อย 5 ตัวอักษร"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Application Type",
+                                      "scope": "#/properties/work_list_search/properties/application_type",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "application_type_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Application Group",
+                                      "scope": "#/properties/work_list_search/properties/application_group",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "application_group_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Product Type",
+                                      "scope": "#/properties/work_list_search/properties/product_type",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "product_type_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Sub Product Type",
+                                      "scope": "#/properties/work_list_search/properties/sub_product_type",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "sub_product_type_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "ชื่อลูกค้า",
+                                      "scope": "#/properties/work_list_search/properties/customer_name",
+                                      "options": {
+                                        "partialQuery": 5,
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "variant": "outlined",
+                                        "query": "CollateralAppraisal/CustomerNameSearch",
+                                        "converter": "autocompleteDataConverter",
+                                        "queryVariablesConverter": "inputToQueryVariables"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "วันที่เอกสารถึง WB",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "ExternalComponent",
+                                      "label": "วันที่ได้รับเอกสาร",
+                                      "scope": "#/properties/work_list_search/properties/doc_in_datetime",
+                                      "options": {
+                                        "externalComponentName": "thai-calendar",
+                                        "externalComponentScope": "remote1",
+                                        "externalComponentModule": "./ThaiDateRange",
+                                        "views": "year,month,day",
+                                        "variant": "outlined",
+                                        "sx": {
+                                          "width": "100%"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "justifyContent": "space-between",
+                            "sx": {
+                              "padding": "0 16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "ล้างค่า",
+                              "options": {
+                                "variant": "secondaryError",
+                                "operationType": "script",
+                                "converter": "clear_work_list_search",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "work_list_search": {
+                                      "type": "object",
+                                      "properties": {
+                                        "application_number": {
+                                          "type": "string",
+                                          "pattern": "^[A-Za-z0-9_-]+$"
+                                        },
+                                        "application_type": {
+                                          "type": "string"
+                                        },
+                                        "application_group": {
+                                          "type": "string"
+                                        },
+                                        "product_type": {
+                                          "type": "string"
+                                        },
+                                        "sub_product_type": {
+                                          "type": "string"
+                                        },
+                                        "customer_name": {
+                                          "type": "string"
+                                        },
+                                        "doc_in_datetime": {
+                                          "type": "object",
+                                          "properties": {
+                                            "from": {
+                                              "type": "string"
+                                            },
+                                            "to": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "worklist_grid": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "validationSchema": false
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "variant": "primary",
+                                "chain": [
+                                  {
+                                    "operationType": "script",
+                                    "converter": "check_work_list_search_criteria",
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "canSubmit": {
+                                          "type": "boolean",
+                                          "dataPath": "canSubmit"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "if": {
+                                      "type": "object",
+                                      "required": [
+                                        "payload"
+                                      ],
+                                      "properties": {
+                                        "payload": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "required": [
+                                                "canSubmit"
+                                              ],
+                                              "type": "object",
+                                              "properties": {
+                                                "canSubmit": {
+                                                  "type": "boolean",
+                                                  "const": true
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "operationType": "script",
+                                    "converter": "work_list_filter",
+                                    "size": "large",
+                                    "sx": {
+                                      "backgroundColor": "#5b21b6"
+                                    },
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "worklist_grid": {
+                                          "type": "object",
+                                          "properties": {
+                                            "filters": {
+                                              "type": "array"
+                                            },
+                                            "pagination": {
+                                              "type": "object",
+                                              "properties": {
+                                                "pageIndex": {
+                                                  "type": "number"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "if": {
+                                      "else": true
+                                    },
+                                    "$ref": "urn:zbo:uischema:basic_Error_EmptySearchFields"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "htmlID": "WorkList"
+                          },
+                          "elements": [
+                            {
+                              "type": "Datagrid",
+                              "scope": "#/properties/worklist_grid",
+                              "options": {
+                                "grid": "CollateralAppraisal/WorkListAuto",
+                                "dataContext": {
+                                  "query": "CollateralAppraisal/WorkListAuto",
+                                  "queryVariables": {
+                                    "assignee": "{user.login}"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "variant": "section"
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Work Basket"
+                        },
+                        {
+                          "type": "ActionButton",
+                          "label":  "Get Top Task",
+                          "options": {
+                            "operationType": "action",
+                            "variant": "secondary",
+                            "size": "small",
+                            "validationSchema": false,
+                            "conditionTypeId": "WorkBasket_GetTopTask",
+                            "permission": "p_CollateralAppraisal",
+                            "payload": {
+                              "routeUrl": "/collateral-appraisal/#[ID]/details",
+                              "taskType": "{searchParams.stationName}",
+                              "applicationGroup": "Auto"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 16px 0 16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": "true",
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "TextField",
+                                      "label": "Application No.",
+                                      "scope": "#/properties/search/properties/application_number",
+                                      "options": {
+                                        "fullwidth": true,
+                                        "variant": "outlined"
+                                      },
+                                      "errors": {
+                                        "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรภาษาอังกฤษ ตัวเลข - และ _ เท่านั้น",
+                                        "minLength": "กรุณาระบุข้อมูลอย่างน้อย 5 ตัวอักษร"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Application Type",
+                                      "scope": "#/properties/search/properties/application_type",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "application_type_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Application Group",
+                                      "scope": "#/properties/search/properties/application_group",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "application_group_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Product Type",
+                                      "scope": "#/properties/search/properties/product_type",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "product_type_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "Sub Product Type",
+                                      "scope": "#/properties/search/properties/sub_product_type",
+                                      "options": {
+                                        "variant": "outlined",
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "enumDataPath": "sub_product_type_enum"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "SelectField",
+                                      "label": "ชื่อลูกค้า",
+                                      "scope": "#/properties/search/properties/customer_name",
+                                      "options": {
+                                        "partialQuery": 5,
+                                        "fullwidth": true,
+                                        "autocomplete": true,
+                                        "variant": "outlined",
+                                        "query": "CollateralAppraisal/CustomerNameSearch",
+                                        "converter": "autocompleteDataConverter",
+                                        "queryVariablesConverter": "inputToQueryVariables"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": "4"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "วันที่เอกสารถึง WB",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "ExternalComponent",
+                                      "label": "วันที่ได้รับเอกสาร",
+                                      "scope": "#/properties/search/properties/doc_in_datetime",
+                                      "options": {
+                                        "externalComponentName": "thai-calendar",
+                                        "externalComponentScope": "remote1",
+                                        "externalComponentModule": "./ThaiDateRange",
+                                        "views": "year,month,day",
+                                        "variant": "outlined",
+                                        "sx": {
+                                          "width": "100%"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "justifyContent": "space-between",
+                            "sx": {
+                              "padding": "0 16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "ActionButton",
+                              "label": "ล้างค่า",
+                              "options": {
+                                "variant": "secondaryError",
+                                "operationType": "script",
+                                "converter": "clear_work_basket_search",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "search": {
+                                      "type": "object",
+                                      "properties": {
+                                        "application_number": {
+                                          "type": "string",
+                                          "pattern": "^[A-Za-z0-9_-]+$"
+                                        },
+                                        "application_type": {
+                                          "type": "string"
+                                        },
+                                        "application_group": {
+                                          "type": "string"
+                                        },
+                                        "product_type": {
+                                          "type": "string"
+                                        },
+                                        "sub_product_type": {
+                                          "type": "string"
+                                        },
+                                        "customer_name": {
+                                          "type": "string"
+                                        },
+                                        "doc_in_datetime": {
+                                          "type": "object",
+                                          "properties": {
+                                            "from": {
+                                              "type": "string"
+                                            },
+                                            "to": {
+                                              "type": "string"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "workbasket_grid": {
+                                      "type": "object",
+                                      "properties": {
+                                        "filters": {
+                                          "type": "array"
+                                        },
+                                        "pagination": {
+                                          "type": "object",
+                                          "properties": {
+                                            "pageIndex": {
+                                              "type": "number"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "validationSchema": false
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "variant": "primary",
+                                "chain": [
+                                  {
+                                    "operationType": "script",
+                                    "converter": "check_work_basket_search_criteria",
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "canSubmit": {
+                                          "type": "boolean",
+                                          "dataPath": "canSubmit"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "if": {
+                                      "type": "object",
+                                      "required": [
+                                        "payload"
+                                      ],
+                                      "properties": {
+                                        "payload": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "required": [
+                                                "canSubmit"
+                                              ],
+                                              "type": "object",
+                                              "properties": {
+                                                "canSubmit": {
+                                                  "type": "boolean",
+                                                  "const": true
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "operationType": "script",
+                                    "converter": "work_basket_filter",
+                                    "resultMappingSchema": {
+                                      "type": "object",
+                                      "properties": {
+                                        "workbasket_grid": {
+                                          "type": "object",
+                                          "properties": {
+                                            "filters": {
+                                              "type": "array"
+                                            },
+                                            "pagination": {
+                                              "type": "object",
+                                              "properties": {
+                                                "pageIndex": {
+                                                  "type": "number"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "if": {
+                                      "else": true
+                                    },
+                                    "$ref": "urn:zbo:uischema:basic_Error_EmptySearchFields"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "htmlID": "WorkBasket"
+                          },
+                          "elements": [
+                            {
+                              "type": "Datagrid",
+                              "scope": "#/properties/workbasket_grid",
+                              "options": {
+                                "grid": "CollateralAppraisal/WorkBasketAuto",
+                                "dataContext": {
+                                  "query": "CollateralAppraisal/WorkBasketAuto"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Pending Follow Up",
+          "options": {
+            "sx": {
+              ".MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": []
+        },
+        {
+          "type": "TabPage",
+          "label": "ค้นหา",
+          "options": {
+            "sx": {
+              ".MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": []
+        }
+      ]
+    }
+  ]
+}

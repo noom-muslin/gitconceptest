@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "applicationType": {
+      "oneOf": [
+        {
+          "const": "Project Code",
+          "title": "โครงการ (Project Code)"
+        },
+        {
+          "const": "Broker Code",
+          "title": "บริษัทขายบ้านมือสอง (Broker Code)"
+        },
+        {
+          "const": "Builder Code",
+          "title": "บริษัทรับสร้างบ้าน (Builder Code)"
+        },
+        {
+          "const": "CWT Code",
+          "title": "กลุ่มพนักงานองค์กร (CWT Code)"
+        }
+      ]
+    }
+  },
+  "required": [
+    "applicationType"
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการส่งข้อมูลหรือไม่",
+                  "options": {
+                    "variant": "h4"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "size": "large",
+            "sx": {},
+            "chain": [
+              {
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "Insurance_input_detail_save",
+                    "payload": {
+                      "nextStep": true,
+                      "checker_flag": "{checker_flag}",
+                      "userId": "{user.login}",
+                      "option": "{option}",
+                      "remark": "{remark}",
+                      "taskId": "{taskId}",
+                      "opInsuranceId": "{opInsuranceId}"
+                    }
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/insurance/{taskId}/done"
+                  },
+                  {
+                    "operationType": "modal",
+                    "subtype": "close",
+                    "dialogName": "{conditionContext.context.condition_action.condition.typeId}",
+                    "variant": "text"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "operationType": "modal",
+            "subtype": "close",
+            "dialogName": "{conditionContext.context.condition_action.condition.typeId}",
+            "variant": "outlined",
+            "size": "large"
+          }
+        }
+      ]
+    }
+  ]
+}

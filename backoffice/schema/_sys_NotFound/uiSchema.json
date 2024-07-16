@@ -1,0 +1,32 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Typography",
+      "label": "ขออภัย ไม่พบหน้าที่คุณกำลังมองหา",
+      "options": {
+        "variant": "body2",
+        "sx": {
+          "display": "block",
+          "textAlign": "center",
+          "padding": "1rem",
+          "marginTop": "3rem",
+          "color": "text.light"
+        }
+      }
+    },
+    {
+      "type": "ActionButton",
+      "label": "กลับสู่หน้าหลัก",
+      "options": {
+        "operationType": "open",
+        "route": "/",
+        "variant": "outlined",
+        "size": "large",
+        "sx": {
+          "margin": "0 auto"
+        }
+      }
+    }
+  ]
+}

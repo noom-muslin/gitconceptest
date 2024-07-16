@@ -1,0 +1,17 @@
+query MyQuery(
+  $product_type: String!, 
+  $sub_product_type: String!,
+  $application_date_time_in: timestamptz = "now()"
+) {
+  result: ngl_enum_auto_campaign_code(where: {
+    _and: [
+      {product_type: {_in: [$product_type, "9999"]}},
+      {sub_product_type: {_in: [$sub_product_type, "9999"]}},
+      {app_in_date_from:{_lte: $application_date_time_in}},
+      {app_in_to_date:{_gte: $application_date_time_in}},
+      {is_active:{_eq:true}}
+    ]}) {
+    value: campaign_code
+    label: campaign_code
+  }
+}

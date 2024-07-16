@@ -1,0 +1,202 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "reference_type": {
+          "type": "string"
+        },
+        "reference_no": {
+          "type": "string",
+          "pattern": "^[0,6,7]\\d{12}$"
+        }
+      }
+    },
+    "marital_status_id": {
+      "type": ["string"]
+    },
+    "reference_type": {
+      "type": ["string", "null"]
+    },
+    "reference_country": {
+      "type": ["string", "null"]
+    },
+    "reference_no": {
+      "type": ["string", "null"]
+    },
+    "title_name_id": {
+      "type": ["string", "null"]
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "middle_name": {
+      "type": ["string", "null"]
+    },
+    "last_name": {
+      "type": ["string", "null"]
+    },
+    "title_name_en_id": {
+      "type": ["string", "null"]
+    },
+    "name_en": {
+      "type": ["string", "null"]
+    },
+    "middle_name_en": {
+      "type": ["string", "null"]
+    },
+    "last_name_en": {
+      "type": ["string", "null"]
+    },
+    "old_last_name": {
+      "type": ["string", "null"]
+    },
+    "nationality_id": {
+      "type": ["string", "null"]
+    },
+    "occupation_group_id": {
+      "type": ["string", "null"],
+      "default": ""
+    },
+    "occupation_id": {
+      "type": ["string", "null"]
+    },
+    "monthly_income": {
+      "type": "integer"
+    },
+    "dob": {
+      "type": ["string", "null"]
+    },
+    "province": {
+      "type": "string"
+    },
+    "amphur": {
+      "type": "string"
+    },
+    "tambon": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": ["string", "null"]
+    },
+    "telephone_number": {
+      "type": "string",
+      "minLength": 10,
+      "pattern": "^0"
+    },
+    "telephone_to": {
+      "type": ["string", "null"],
+      "maxLength": 4,
+      "pattern": "^\\d*$"
+    },
+    "telephone_ext": {
+      "type": ["string", "null"],
+      "maxLength": 4,
+      "pattern": "^\\d*$"
+    },
+    "mobile_number": {
+      "type": "string",
+      "minLength": 10,
+      "pattern": "^0"
+    },
+    "has_child": {
+      "type": "string"
+    }
+  },
+  "required": ["marital_status_id", "has_child"],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "marital_status_id": {
+            "const": "1260"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reference_type",
+          "reference_no",
+          "dob",
+          "occupation_group_id",
+          "occupation_id",
+          "monthly_income",
+          "mobile_number",
+          "telephone_number",
+          "province",
+          "tambon",
+          "amphur"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "marital_status_id": {
+            "const": "1261"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "reference_type",
+          "reference_no",
+          "dob",
+          "occupation_group_id",
+          "occupation_id",
+          "monthly_income",
+          "mobile_number",
+          "telephone_number"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reference_type": {
+            "const": "P8"
+          }
+        },
+        "required": ["reference_type"]
+      },
+      "then": {
+        "required": ["title_name_en_id", "name_en", "last_name_en"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reference_type": {
+            "enum": ["P1", "P7"]
+          }
+        },
+        "required": ["reference_type"]
+      },
+      "then": {
+        "required": ["title_name_id", "name", "last_name"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "marital_status_id": {
+            "enum": ["1262", "1263"]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "title_name_id",
+          "name",
+          "last_name",
+          "occupation_group_id",
+          "occupation_id",
+          "monthly_income",
+          "mobile_number",
+          "telephone_number"
+        ]
+      }
+    }
+  ]
+}

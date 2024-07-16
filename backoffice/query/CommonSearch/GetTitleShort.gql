@@ -1,0 +1,6 @@
+query GetTitleShortTh {
+  result: ngl_enum_title {
+    value: short_th
+    label: short_th
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "type": "object",
+  "properties": {
+    "application_number": {
+      "type": "string",
+      "readonly": true
+    },
+    "application_group": {
+      "type": "string"
+    },
+    "application_type": {
+      "type": "string"
+    },
+    "product_group_code": {
+      "type": "string"
+    },
+    "application_date_time_in": {
+      "type": "string",
+      "readonly": true
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readonly": true
+        },
+        "title": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "product_group_enum": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "readonly": true,
+            "type": "string"
+          },
+          "label": {
+            "readonly": true,
+            "type": "string"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "readonly": true,
+                  "type": "string"
+                },
+                "label": {
+                  "readonly": true,
+                  "type": "string"
+                },
+                "subTypes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "value": {
+                        "readonly": true,
+                        "type": "string"
+                      },
+                      "label": {
+                        "readonly": true,
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "credits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "integer"
+          },
+          "productGroup": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "subProductType": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "borrowerDocuments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "readonly": true
+          },
+          "documentName": {
+            "type": "string",
+            "readonly": true
+          },
+          "enumOneOfRadio": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "coBorrowers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "documents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "readonly": true
+                },
+                "documentName": {
+                  "type": "string",
+                  "readonly": true
+                },
+                "enumOneOfRadio": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "guarantorDocuments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "readonly": true
+          },
+          "documentName": {
+            "type": "string",
+            "readonly": true
+          },
+          "enumOneOfRadio": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

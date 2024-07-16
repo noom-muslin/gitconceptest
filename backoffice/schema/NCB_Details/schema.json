@@ -1,0 +1,210 @@
+{
+  "type": "object",
+  "properties": {
+    "documentOn": {
+      "type": "boolean"
+    },
+    "isSaveDraftErrorModalShown": {
+      "type": "boolean"
+    },
+    "submitErrorModalType": {
+      "type": "string"
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "application_number": {
+      "type": "string"
+    },
+    "applicationGroup": {
+      "type": "object",
+      "properties": {
+        "unsecuredOrAuto": {
+          "type": "boolean"
+        },
+        "auto": {
+          "type": "boolean"
+        }
+      }
+    },
+    "isIndividual": {
+      "type": "boolean"
+    },
+    "isJuristic": {
+      "type": "boolean"
+    },
+    "isSalesPersonInfoFound": {
+      "type": "boolean"
+    },
+    "minConsentDate": {
+      "type": "string"
+    },
+    "maxConsentDate": {
+      "type": "string"
+    },
+    "salesPersons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string"
+          },
+          "firstAndLastName": {
+            "type": "string"
+          },
+          "branch": {
+            "type": "string"
+          },
+          "ocCode": {
+            "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "incentiveOcCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "bookingBranch": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "borrowersInformation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "consentDocument",
+          "referenceDocumentNo",
+          "consentDate",
+          "dateOfBirth"
+        ],
+        "properties": {
+          "partyId": {
+            "type": "string"
+          },
+          "sendForInspectionYourself": {
+            "type": "boolean"
+          },
+          "isSendForInspectionYourselfShown": {
+            "type": "boolean"
+          },
+          "isSendForInspectionYourselfDisabled": {
+            "type": "boolean"
+          },
+          "repeatNcbCheck": {
+            "type": "boolean"
+          },
+          "isRepeatNcbCheckShown": {
+            "type": "boolean"
+          },
+          "isRepeatNcbCheckDisabled": {
+            "type": "boolean"
+          },
+          "number": {
+            "type": "integer"
+          },
+          "consentDocument": {
+            "type": "string"
+          },
+          "referenceDocumentType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "referenceDocumentNo": {
+            "type": "string",
+            "pattern": "^(\\d{12})(\\d)$"
+          },
+          "isReferenceDocumentNoDisabled": {
+            "type": "boolean"
+          },
+          "consentDate": {
+            "type": "string"
+          },
+          "customerName": {
+            "type": "string"
+          },
+          "emsParcelNumber": {
+            "type": "string"
+          },
+          "businessRegistrationType": {
+            "type": "string"
+          },
+          "businessRegistrationDate": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "ocCode": {
+            "type": "string"
+          },
+          "customerSegment": {
+            "type": "string"
+          },
+          "ncbSubmissionResult": {
+            "type": "string"
+          },
+          "employeeId": {
+            "type": "string"
+          },
+          "ncbTestResult": {
+            "type": "string"
+          },
+          "ncbGrade": {
+            "type": "string"
+          },
+          "odGrade": {
+            "type": "string"
+          },
+          "ncbInspectionDate": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "applicationDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "csentDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

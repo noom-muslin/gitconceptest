@@ -1,0 +1,6 @@
+query GetOcCodeInfo {
+  result: ngl_enum_occode {
+    value: code
+    label: description
+  }
+}

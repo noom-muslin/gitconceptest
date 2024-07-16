@@ -1,0 +1,184 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "breadcrumbsWhiteBg"
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/groups-and-positions-add"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ArrowBack"
+            },
+            {
+              "type": "Typography",
+              "label": "กลับไป"
+            },
+            {
+              "type": "Typography",
+              "label": "เพิ่มข้อมูล"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "display": "flex",
+          "justifyContent": "space-between"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "อัปโหลดข้อมูล",
+          "options": {
+            "variant": "h6",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "gap": "16px",
+              "justifyContent": "space-between"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label":  "ดาวน์โหลด Template",
+              "options": {
+                "operationType": "action",
+                "variant": "secondary",
+                "validationSchema": false
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label":  "เลือกไฟล์",
+              "options": {
+                "variant": "secondary",
+                "operationType": "open",
+                "route": "/latest-requests"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "variant": "section"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ผลการตรวจสอบไฟ"
+            },
+            {
+              "type": "ActionButton",
+              "label":  "ดาวน์โหลดผลการตรวจสอบ",
+              "options": {
+                "operationType": "action",
+                "variant": "secondary",
+                "validationSchema": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "justifyContent": "center",
+              "gap": "20px",
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "กรุณากด \"เลือกไฟล์\" เพื่ออัปโหลดข้อมู",
+                "options": {
+                  "sx": {
+                    "color": "text.light"
+                  }
+                }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row-reverse",
+                "spacing": "10px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "อัปโหลด",
+                  "options": {
+                    "variant": "primary",
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_Position_Upload",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/fraud-check"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em",
+                "sx": {
+                  "padding": "0.5em 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack",
+                  "options": {
+                    "sx": {
+                      "color": "#ffffff"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "Go back",
+                  "options": {
+                    "variant": "body2-grey"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "FraudCheck",
+                  "options": {
+                    "variant": "subtitle2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

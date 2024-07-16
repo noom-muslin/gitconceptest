@@ -1,0 +1,80 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "hideExportButton": true,
+  "columns": [
+    {
+      "title": "วันเวลาที่เอกสารถึง WB",
+      "field": "application.application_date_time_in",
+      "name": "wb_date_in",
+      "converter": "date_column_converter",
+      "minWidth": 200
+    },
+    {
+      "title": "Application No.",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 160
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "minWidth": 180
+    },
+    {
+      "title": "Product Group",
+      "field": "application.primary_account.account.product_group.code",
+      "name": "product_group",
+      "minWidth": 160
+    },
+    {
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.code",
+      "name": "product_type",
+      "width": 160
+    },
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "name": "customer_name",
+      "minWidth": 280
+    },
+    {
+      "title": "FU Updated",
+      "field": "",
+      "name": "fu_updated",
+      "width": 140
+    },
+    {
+      "title": "FU details",
+      "field": "",
+      "name": "fu_details",
+      "width": 140
+    },
+    {
+      "title": " ",
+      "name": "get_task",
+      "sortable": false,
+      "resizable": false,
+      "minWidth": 160,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "{zboRouteObject.permission}",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "{zboRouteObject.route}/{data.id}/details"            
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "initialSort": []
+}

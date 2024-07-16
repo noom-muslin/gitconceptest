@@ -1,0 +1,8 @@
+query MyQuery($model_code: String = "", $brand_code: String = ""){
+  result : ngl_view_vehicle_engine_type(
+    where: {brand_code: {_eq: $brand_code}, model_code: {_eq: $model_code}}
+    distinct_on: engine_type_code) {
+    value : engine_type_code
+    label : engine_type_desc
+  }
+}

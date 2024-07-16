@@ -1,0 +1,468 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "padding": "0 0 0"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 0 0"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "1em 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": "true",
+                    "spacing": "1em"
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "ยี่ห้อ",
+                          "scope": "#/properties/search/properties/redbook_brand",
+                          "options": {
+                            "query": "Register/VehicleBrandOld",
+                            "converter": "mapValueLabel",
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "required": "required"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "รุ่น",
+                          "scope": "#/properties/search/properties/redbook_model",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": ["search"]
+                                    }
+                                  },
+                                  {
+                                    "required": ["search"],
+                                    "properties": {
+                                      "search": {
+                                        "not":{
+                                          "required": ["redbook_brand"]
+                                        }
+                                       
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "query": "Register/VehicleModelOld",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "application_date_time_in": "{modalIn.applicationDateIn}"
+                            },
+                            "converter": "mapValueLabel",
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "required": "required"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "รุ่นปี ค.ศ.",
+                          "scope": "#/properties/search/properties/sub_model_year",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": ["search"]
+                                    }
+                                  },
+                                  {
+                                    "required": ["search"],
+                                    "properties": {
+                                      "search": {
+                                        "not":{
+                                          "required": ["redbook_brand","redbook_model"]
+                                        }
+                                       
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "register/VehicleRedBookOldSubModelYear",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "CCKWH",
+                          "scope": "#/properties/search/properties/cckwh",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": ["search"]
+                                    }
+                                  },
+                                  {
+                                    "required": ["search"],
+                                    "properties": {
+                                      "search": {
+                                        "not":{
+                                          "required": ["redbook_brand","redbook_model"]
+                                        }
+                                       
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "Register/VehicleRedBookOldCckwh",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "ประเภทเกียร์",
+                          "scope": "#/properties/search/properties/gear_type",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": ["search"]
+                                    }
+                                  },
+                                  {
+                                    "required": ["search"],
+                                    "properties": {
+                                      "search": {
+                                        "not":{
+                                          "required": ["redbook_brand","redbook_model"]
+                                        }
+                                       
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "Register/VehicleRedBookOldGearType",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "รุ่นย่อย",
+                          "scope": "#/properties/search/properties/redbook_sub_model",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": ["search"]
+                                    }
+                                  },
+                                  {
+                                    "required": ["search"],
+                                    "properties": {
+                                      "search": {
+                                        "not":{
+                                          "required": ["redbook_brand","redbook_model"]
+                                        }
+                                       
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "query": "Register/VehicleRedBookOldSubModelCode",
+                            "converter": "mapValueLabelOneParameter",
+                            "queryVariables": {
+                              "redbook_brand": "{search.redbook_brand}",
+                              "redbook_model": "{search.redbook_model}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "sx": {
+          "padding": "1em 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "spacing": "1em",
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "sx": {
+              "margin": "5"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ค้นหา",
+              "options": {
+                "variant": "secondary",
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "check_work_basket_search_criteria",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "canSubmit": {
+                          "type": "boolean",
+                          "dataPath": "canSubmit"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "canSubmit"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "canSubmit": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "script",
+                    "converter": "redbook_filter",
+                    "size": "large",
+                    "sx": {
+                      "backgroundColor": "#5b21b6"
+                    },
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "redbook_grid": {
+                          "type": "object",
+                          "properties": {
+                            "filters": {
+                              "type": "array"
+                            },
+                            "pagination": {
+                              "type": "object",
+                              "properties": {
+                                "pageIndex": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "selection": {
+                                "type": "object",
+                                "properties": {
+                                    "additionalProperties": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "$ref": "urn:zbo:uischema:basic_Error_EmptySearchFields"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "sx": {
+          "padding": "0 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "options": {
+            "htmlID": "Search"
+          },
+          "elements": [
+            {
+              "type": "Datagrid",
+              "scope": "#/properties/redbook_grid",
+              "options": {
+                "grid": "Register/RedBookOldSearch",
+                "dataContext": {
+                  "query": "Register/RedBookOldSearch"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

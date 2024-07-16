@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "contract_datetime": {
+      "type": "string"
+    },
+    "mortgage_datetime": {
+      "type": "string"
+    },
+    "contract_remark": {
+      "type": "string"
+    }
+  }
+}

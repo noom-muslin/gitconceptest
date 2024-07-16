@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "properties": {
+        "SubsrithaiSearchResult": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "no": {
+                        "type": "integer",
+                        "readonly": true
+                    },
+                    "accountNumber": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "customerNameList": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "customerName": {
+                        "type": "array",
+                        "readonly": true
+                    },
+                    "applicationStatus": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "applicationGroup": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "originalDocType": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "accountSettlementDate": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "dateInWarehouse": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "noOfGuarantee": {
+                        "type": "integer",
+                        "readonly": true
+                    }
+                }
+            }
+        },
+        "status": {
+            "type": "object",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "readonly": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "header": {
+                        "type": "string",
+                        "readonly": true
+                    }
+                }
+            }
+        }
+    }
+
+}

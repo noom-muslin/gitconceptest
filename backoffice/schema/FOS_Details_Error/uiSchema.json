@@ -1,0 +1,80 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconError"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ErrorOutline"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ไม่สามารถดำเนินการต่อได้",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "scope": "#/properties/message",
+              "options":{
+                "variant": "body2"
+              } 
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ตกลง",
+          "options": {
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        }
+      ]
+    }
+  ]
+}

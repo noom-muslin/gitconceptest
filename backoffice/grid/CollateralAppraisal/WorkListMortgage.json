@@ -1,0 +1,149 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 142
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 142
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 142
+    },
+    {
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.code",
+      "name": "product_type",
+      "minWidth": 200
+    },
+    {
+      "title": "Sub Product",
+      "field": "application.primary_account.account.sub_product_type_id",
+      "name": "sub_product",
+      "minWidth": 146
+    },
+    {
+      "name": "customer_name",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "title": "ชื่อลูกค้า",
+      "minWidth": 200
+    },
+    {
+      "title": "วันเวลาที่ลงทะเบียน​​",
+      "field": "application.application_date_time_in",
+      "name": "register_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 224
+    },
+    {
+      "title": "วันที่เอกสารถึง WB",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 171
+    },
+    {
+      "title": "สถานะใบสมัคร",
+      "field": "application.status_id",
+      "name": "app_status",
+      "minWidth": 199
+    },
+    {
+      "title": "FU Updated",
+      "field": "followup.fu_updated",
+      "name": "fu_updated",
+      "converter": "followup_updated",
+      "minWidth": 136
+    },
+    {
+      "title": " ",
+      "name": "fu",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู FU",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CollateralAppraisal",
+            "route": "/collateral-appraisal",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 51
+    },
+    {
+      "title": " ",
+      "name": "ca",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CollateralAppraisal",
+            "route": "/collateral-appraisal",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 51
+    },
+    {
+      "title": " ",
+      "name": "view_details",
+      "sortable": false,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "ดูรายละเอียด",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CollateralAppraisal",
+            "route": "/collateral-appraisal/{data.id}/details",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 97
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

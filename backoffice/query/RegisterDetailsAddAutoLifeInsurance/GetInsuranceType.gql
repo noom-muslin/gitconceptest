@@ -1,0 +1,8 @@
+query GetInsuranceType($application_group: String!, $product_type: String!, $sub_type: String!) {
+  result: ngl_enum_insurance_type(where: {application_group: {_in: ["9999", $application_group]}, product_type: {_in: ["9999", $product_type]}, sub_type: {_in: ["9999", $sub_type]}}) {
+    value: insurance_type_code
+    label: insurance_type_desc
+    auto_cal_insurance_borrower
+    auto_cal_insurance_guarantor
+  }
+}

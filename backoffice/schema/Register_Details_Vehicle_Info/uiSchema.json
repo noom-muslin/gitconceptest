@@ -1,0 +1,491 @@
+{
+    "type": "Accordion",
+    "label": "ข้อมูลรถ",
+    "elements": [
+        {
+            "type": "GridLayout",
+            "options": {
+                "container": true,
+                "sx": {
+                    "padding": "16px"
+                }
+            },
+            "elements": [
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6,
+                        "sx": {
+                            "& .css-1jaw3da": {
+                                "marginTop": "20px"
+                            }
+                        }
+                    },
+                    "elements": [
+                        {
+                            "type": "CheckboxField",
+                            "label": "จดทะเบียน",
+                            "scope": "#/properties/vehicle_info/properties/is_registered",
+                            "options": {}
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "DateTimeField",
+                            "label": "วันที่จดทะเบียน",
+                            "scope": "#/properties/vehicle_info/properties/registered_date",
+                            "options": {
+                                "variant": "outlined",
+                                "readonly": true,
+                                "sx": {
+                                    "width": "100%",
+                                    "& .css-slyssw": {
+                                        "margin": "10px",
+                                        "padding": "0px"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 12
+                    },
+                    "elements": [
+                        {
+                            "type": "ActionButton",
+                            "label": "ดึงข้อมูลรถ",
+                            "options": {
+                                "variant": "secondary",
+                                "operationType": "script",
+                                "converter": "modal_redbook_sent_in",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "modalIn": {
+                                      "type": "object",
+                                      "properties": {
+                                        "applicationDateIn": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "chain": [
+                                  {
+                                    "if": {
+                                      "else": true
+                                    },
+                                    "operationType": "modal",
+                                    "dialogName": "m_Register_Details_Car_Information",
+                                    "dataContext": "#/properties/payload/data/modalIn",
+                                    "subtype": "show"
+                                  }
+                                ]
+                              }
+
+                        },
+                        {
+                            "type": "ActionButton",
+                            "label": "ดึงข้อมูลรถเก่า",
+                            "options": {
+                                "variant": "secondary",
+                                "operationType": "script",
+                                "converter": "modal_redbook_sent_in",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "modalIn": {
+                                      "type": "object",
+                                      "properties": {
+                                        "applicationDateIn": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "chain": [
+                                  {
+                                    "if": {
+                                      "else": true
+                                    },
+                                    "operationType": "modal",
+                                    "dialogName": "m_Register_Details_Old_Car_Information",
+                                    "dataContext": "#/properties/payload/data/modalIn",
+                                    "subtype": "show"
+                                  }
+                                ]
+                              }
+
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "SelectField",
+                            "label": "ประเภทรถ",
+                            "scope": "#/properties/vehicle_info/properties/vehicle_type",
+                            "options": {
+                                "variant": "outlined",
+                                "fullwidth": true,
+                                "autocomplete": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "Typography",
+                            "label": "",
+                            "options": {
+                                "variant": "label"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "ยี่ห้อ",
+                            "scope": "#/properties/vehicle_info/properties/vehicle_brand",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "readonly": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "รุ่น",
+                            "scope": "#/properties/vehicle_info/properties/vehicle_model",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "readonly": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "รุ่นย่อย",
+                            "scope": "#/properties/vehicle_info/properties/vehicle_sub_model",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "readonly": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "CCKWH",
+                            "scope": "#/properties/vehicle_info/properties/cckwh",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "readonly": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "ประเภทเครื่องยนต์",
+                            "scope": "#/properties/vehicle_info/properties/engine_type",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "readonly": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "รุ่นปี ค.ศ.",
+                            "scope": "#/properties/vehicle_info/properties/model_year",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "readonly": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "SelectField",
+                            "label": "สี",
+                            "scope": "#/properties/vehicle_info/properties/color",
+                            "options": {
+                                "variant": "outlined",
+                                "fullwidth": true,
+                                "autocomplete": true,
+                                "query": "InputFOS/StandardCode",
+                                "queryVariables": {
+                                    "ListCode": "0024"
+                                },
+                                "converter": "mapCodeLabel"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": "6"
+                    },
+                    "elements": [
+                        {
+                            "label": "ระยะทางที่ใช้งาน",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "sx": {
+                                    "& .css-3jyj9g": {
+                                        "paddingRight": "12px",
+                                        "paddingBottom": "4px"
+                                    }
+                                },
+                                "endAdornmentTypography": {
+                                    "text": "กิโลเมตร"
+                                }
+                            },
+                            "scope": "#/properties/vehicle_info/properties/mileage",
+                            "type": "TextField"
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": "6"
+                    },
+                    "elements": [
+                        {
+                            "label": "น้ำหนัก",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "sx": {
+                                    "& .css-3jyj9g": {
+                                        "paddingRight": "12px",
+                                        "paddingBottom": "4px"
+                                    }
+                                },
+                                "endAdornmentTypography": {
+                                    "text": "กิโลกรัม"
+                                }
+                            },
+                            "scope": "#/properties/vehicle_info/properties/weight",
+                            "type": "TextField"
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "Typography",
+                            "label": "",
+                            "options": {
+                                "variant": "label"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "เลขทะเบียนรถ",
+                            "scope": "#/properties/vehicle_info/properties/license_plate",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "SelectField",
+                            "label": "จังหวัดที่จดทะเบียนรถ",
+                            "scope": "#/properties/vehicle_info/properties/province",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "query": "InputFOS/StandardCode",
+                                "queryVariables": {
+                                    "ListCode": "0193"
+                                },
+                                "converter": "mapCodeLabel"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "เลขตัวรถ",
+                            "scope": "#/properties/vehicle_info/properties/chasis_no",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "TextField",
+                            "label": "เลขเครื่องยนต์",
+                            "scope": "#/properties/vehicle_info/properties/engine_no",
+                            "options": {
+                                "fullwidth": true,
+                                "variant": "outlined"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6
+                    },
+                    "elements": [
+                        {
+                            "type": "Typography",
+                            "label": "รถยกสูงตรวจสอบข้อมูลที่อยู่อาศัยเพิ่มเติม",
+                            "options": {
+                                "variant": "label"
+                            }
+                        },
+                        {
+                            "type": "Typography",
+                            "scope": "#/properties/vehicle_info/properties/car_forklifts_check_additional_residential_information",
+                            "options": {
+                                "variant": "body2Padding",
+                                "enum": [
+                                    {
+                                        "value": false,
+                                        "label": "ไม่ต้องตรวจสอบ"
+                                    },
+                                    {
+                                        "value": true,
+                                        "label": "รกยกสูงต้องตรวจสอบบ้าน"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "GridLayout",
+                    "options": {
+                        "xs": 6,
+                        "sx": {
+                            "& .css-1jaw3da": {
+                                "marginTop": "20px"
+                            }
+                        }
+                    },
+                    "elements": [
+                        {
+                            "type": "CheckboxField",
+                            "label": "L3 ตรวจสอบข้อมูลที่อยู่อาศัย",
+                            "scope": "#/properties/vehicle_info/properties/car_check_residence_information",
+                            "options": {}
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

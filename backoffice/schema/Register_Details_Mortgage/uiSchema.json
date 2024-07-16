@@ -1,0 +1,1710 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em"
+  },
+  "elements": [
+    {
+      "type": "Group",
+      "options": {
+        "sx": {
+          "height": "0px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/station/properties/showNotification",
+          "schema": {
+            "const": "Register_Loan_Collateral_Details"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "Notification",
+          "label": "ลบสินเชื่อแล้ว",
+          "options": {
+            "preventDuplicate": 1,
+            "autoHideDuration": "1750",
+            "persist": false,
+            "variant": "success",
+            "hideCloseButton": true,
+            "anchorOrigin": {
+              "horizontal": "center",
+              "vertical": "top"
+            },
+            "style": {
+              "color": "#166534",
+              "display": "flex",
+              "justifyContent": "center",
+              "backgroundColor": "#F0FDF4",
+              "min-width": "auto",
+              "width": "162px",
+              "height": "44px",
+              "margin-left": "63.5px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormMapperListener",
+      "options": {
+        "resultMappingSchema": {
+          "type": "object",
+          "properties": {
+            "station": {
+              "converter": "stationListenerRegister",
+              "type": "object",
+              "dataPath": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "overflowX": "auto"
+            }
+          },
+          "elements": [
+            {
+              "label": "ข้อมูลสินเชื่อ",
+              "type": "Accordion",
+              "elements": [
+                {
+                  "type": "UniversalArrayView",
+                  "scope": "#/properties/loanSection/properties/loans",
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "hideTableToolbar": true,
+                    "hideColumnTitles": false,
+                    "rowClick": false,
+                    "sx": {
+                      "borderBottom": "1px solid",
+                      "borderColor": "secondary.dark",
+                      "td:nth-child(6)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 54,
+                        "background": "#FFFFFF"
+                      },
+                      "th:nth-child(6)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 54,
+                        "background": "#FFFFFF"
+                      },
+                      "td:nth-child(7)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 0,
+                        "background": "#FFFFFF"
+                      },
+                      "th:nth-child(7)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 0,
+                        "background": "#FFFFFF"
+                      }
+                    },
+                    "cells": [
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/seq",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "ลำดับ"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/product_group",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "Product Group"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/product_type",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "Product Type"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/sub_product",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "Sub Product Type"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/contract_no",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "เลขที่สัญญาเดิม"
+                        }
+                      },
+                      {
+                        "type": "ActionButton",
+                        "label": " ",
+                        "scope": "#",
+                        "options": {
+                          "validationSchema": false,
+                          "columnTitle": "",
+                          "icon": "Edit",
+                          "sx": {
+                            "color": "#5b21b6",
+                            "width": "32px !important",
+                            "height": "32px !important",
+                            "border": "1px solid #eaebed",
+                            "& span": {
+                              "margin": "0px"
+                            },
+                            "left": "0px"
+                          },
+                          "variant": "secondary",
+                          "size": "smallIcon",
+                          "chain": [
+                            {
+                              "operationType": "script",
+                              "converter": "register_populate_AddLoan",
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "required": [
+                                  "loanSection"
+                                ],
+                                "properties": {
+                                  "loanSection": {
+                                    "type": "object",
+                                    "properties": {
+                                      "newLoan": {
+                                        "type": "object",
+                                        "properties": {
+                                          "application_account_id": {
+                                            "type": "string"
+                                          },
+                                          "seq": {
+                                            "type": "string"
+                                          },
+                                          "contract_no": {
+                                            "type": "string"
+                                          },
+                                          "application_group": {
+                                            "type": "string"
+                                          },
+                                          "product_group": {
+                                            "type": "string"
+                                          },
+                                          "product_type": {
+                                            "type": "string"
+                                          },
+                                          "sub_product": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "operationType": "modal",
+                              "dialogName": "m_Register_Details_Add_Loan",
+                              "subtype": "show"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "ActionButton",
+                        "label": " ",
+                        "scope": "#",
+                        "options": {
+                          "validationSchema": false,
+                          "columnTitle": "",
+                          "icon": "Delete",
+                          "variant": "secondaryError",
+                          "size": "smallIcon",
+                          "sx": {
+                            "color": "#ef4444",
+                            "width": "32px !important",
+                            "height": "32px !important",
+                            "border": "1px solid #eaebed",
+                            "& span": {
+                              "margin": "0px"
+                            }
+                          },
+                          "operationType": "script",
+                          "converter": "selectLoan",
+                          "resultMappingSchema": {
+                            "type": "object",
+                            "properties": {
+                              "loans": {
+                                "type": "object",
+                                "properties": {
+                                  "seq": {
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ]
+                                  },
+                                  "application_account_id": {
+                                    "type": "string"
+                                  },
+                                  "loan_objective_description": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "master_account_flag": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "account_name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "account_number": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "sub_loan_type_description": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "credit_line_type": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "balance_credit_line_amount": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "old_credit_line_amount": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "approved_amount": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "requested_amount": {
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ]
+                                  },
+                                  "tenor_month": {
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ]
+                                  },
+                                  "campaign": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "account_installment_monthly_amount": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "application_group": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "product_group": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "product_type": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "sub_product": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "contract_no": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "delete_loans": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "chain": [
+                            {
+                              "operationType": "modal",
+                              "subtype": "show",
+                              "dialogName": "m_Register_Loan_Collateral_Details_Loan_Delete"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "padding": "16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "+ เพิ่มสินเชื่อ",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false,
+                        "chain": [
+                          {
+                            "operationType": "script",
+                            "converter": "register_populate_AddLoan",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "required": [
+                                "loanSection"
+                              ],
+                              "properties": {
+                                "loanSection": {
+                                  "type": "object",
+                                  "properties": {
+                                    "newLoan": {
+                                      "type": "object",
+                                      "properties": {
+                                        "application_account_id": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "seq": {
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ]
+                                        },
+                                        "contract_no": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "application_group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_group_id": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_type": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "sub_product": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "operationType": "modal",
+                            "dialogName": "m_Register_Details_Add_Loan",
+                            "subtype": "show"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "rule": {
+        "effect": "HIDE",
+        "condition": {
+          "scope": "#/properties/emptyLoans",
+          "schema": {
+            "const": true
+          }
+        }
+      },
+      "options": {
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "Accordion",
+          "label": "รายละเอียดวัตถุประสงค์",
+          "options": {
+            "variant": "subtitle2Purple"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em",
+                "sx": {
+                  "padding": "1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รายละเอียดวัตถุประสงค์",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "TextField",
+                      "label": "",
+                      "scope": "#/properties/loanSection/properties/application/properties/objective_details",
+                      "options": {
+                        "sx": {
+                          "width": "100%"
+                        },
+                        "multi": true,
+                        "minRows": 5,
+                        "maxRows": 7,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "rule": {
+        "effect": "HIDE",
+        "condition": {
+          "scope": "#/properties/emptyLoans",
+          "schema": {
+            "const": true
+          }
+        }
+      },
+      "options": {
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "margin": "0 -1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "sx": {
+                      "backgroundColor": "#f5f3ff"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "รายละเอียดสินเชื่อ",
+                      "options": {
+                        "variant": "subtitlePurplePaper"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "sx": {
+                      "overflowX": "scroll"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/loanSection/properties/loans",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "selectedIndexScope": "#/properties/selectedIndexValue",
+                        "hideTableToolbar": true,
+                        "hideColumnTitles": false,
+                        "rowClick": false,
+                        "sx": {
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark",
+                          "tr:hover": {
+                            "background": "#FFFFFF !important"
+                          },
+                          "th": {
+                            "fontWeight": 700
+                          },
+                          "th:nth-child(17)": {
+                            "position": "sticky",
+                            "right": 509.66,
+                            "background": "#FFFFFF"
+                          },
+                          "th:nth-child(18)": {
+                            "position": "sticky",
+                            "right": 427.06,
+                            "background": "#FFFFFF"
+                          },
+                          "th:nth-child(19)": {
+                            "position": "sticky",
+                            "right": 315.96,
+                            "background": "#FFFFFF"
+                          },
+                          "th:nth-child(20)": {
+                            "position": "sticky",
+                            "right": 202.98,
+                            "background": "#FFFFFF"
+                          },
+                          "th:nth-child(21)": {
+                            "position": "sticky",
+                            "right": 52,
+                            "background": "#FFFFFF"
+                          },
+                          "th:nth-child(22)": {
+                            "position": "sticky",
+                            "right": 0,
+                            "background": "#FFFFFF"
+                          },
+                          "td": {
+                            "fontWeight": 700
+                          },
+                          "td:nth-child(17)": {
+                            "position": "sticky",
+                            "right": 509.66,
+                            "background": "#FFFFFF"
+                          },
+                          "td:nth-child(18)": {
+                            "position": "sticky",
+                            "right": 427.06,
+                            "background": "#FFFFFF"
+                          },
+                          "td:nth-child(19)": {
+                            "position": "sticky",
+                            "right": 315.96,
+                            "background": "#FFFFFF"
+                          },
+                          "td:nth-child(20)": {
+                            "position": "sticky",
+                            "right": 202.98,
+                            "background": "#FFFFFF"
+                          },
+                          "td:nth-child(21)": {
+                            "position": "sticky",
+                            "right": 52,
+                            "background": "#FFFFFF"
+                          },
+                          "td:nth-child(22)": {
+                            "position": "sticky",
+                            "right": 0,
+                            "background": "#FFFFFF"
+                          }
+                        },
+                        "cells": [
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/seq",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ลำดับ"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/loan_objective_description",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "วัตถุประสงค์การกู้"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/product_type",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "Product Type"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/sub_product",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "Sub Product Type"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/master_account_flag",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "Master"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/account_name",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ชื่อเจ้าของบัญชี"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/account_number",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "เลขที่บัญชี"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/sub_loan_type_description",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ประเภทสินเชื่อ"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/credit_line_type",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ประเภทวงเงิน"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/balance_credit_line_amount",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ยอดคงเหลือ"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/old_credit_line_amount",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "วงเงินเดิม"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/approved_amount",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "วงเงินที่ได้รับอนุมัติ"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/requested_amount",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "วงเงินที่ขออนุมัติ"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/tenor_month",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ระยะเวลาผ่อนชำระ (เดือน)"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/campaign_description",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ชื่อแคมเปญ"
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/account_installment_monthly_amount",
+                            "options": {
+                              "variant": "body2",
+                              "columnTitle": "ค่างวดต่อเดือน"
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": "แก้ไขสินเชื่อ",
+                            "options": {
+                              "validationSchema": false,
+                              "columnTitle": " ",
+                              "variant": "text",
+                              "color": "primary",
+                              "size": "small",
+                              "sx": {
+                                "white-space": "nowrap",
+                                "padding": 0,
+                                "lineHeight": "22px",
+                                "textTransform": "none"
+                              },
+                              "chain": [
+                                {
+                                  "operationType": "script",
+                                  "converter": "editLoan"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/requested_amount",
+                            "options": {
+                              "validationSchema": false,
+                              "columnTitle": " ",
+                              "alternateWidget": {
+                                "selector": "showEditSubLimit",
+                                "case": {
+                                  "button": {
+                                    "type": "ActionButton",
+                                    "label": "วงเงินย่อย",
+                                    "options": {
+                                      "validationSchema": false,
+                                      "operationType": "script",
+                                      "converter": "editSublimit",
+                                      "variant": "text",
+                                      "color": "primary",
+                                      "size": "small",
+                                      "sx": {
+                                        "white-space": "nowrap",
+                                        "padding": 0,
+                                        "lineHeight": "22px",
+                                        "textTransform": "none"
+                                      }
+                                    }
+                                  },
+                                  "buttonDisable": {
+                                    "type": "ActionButton",
+                                    "label": "วงเงินย่อย",
+                                    "options": {
+                                      "variant": "text",
+                                      "color": "text",
+                                      "size": "small",
+                                      "sx": {
+                                        "white-space": "nowrap",
+                                        "padding": 0,
+                                        "lineHeight": "22px",
+                                        "textTransform": "none"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "scope": "#/properties/master_account_flag",
+                            "options": {
+                              "columnTitle": " ",
+                              "alternateWidget": {
+                                "selector": "latestRequestsRowComponentType",
+                                "case": {
+                                  "button": {
+                                    "type": "ActionButton",
+                                    "label": "เพิ่มสินเชื่อย่อย",
+                                    "options": {
+                                      "validationSchema": false,
+                                      "operationType": "open",
+                                      "route": "/",
+                                      "variant": "text",
+                                      "color": "primary",
+                                      "size": "small",
+                                      "sx": {
+                                        "white-space": "nowrap",
+                                        "padding": 0,
+                                        "lineHeight": "22px",
+                                        "textTransform": "none"
+                                      }
+                                    }
+                                  },
+                                  "buttonDisable": {
+                                    "type": "ActionButton",
+                                    "label": "เพิ่มสินเชื่อย่อย",
+                                    "options": {
+                                      "validationSchema": false,
+                                      "variant": "text",
+                                      "color": "text",
+                                      "size": "small",
+                                      "sx": {
+                                        "white-space": "nowrap",
+                                        "padding": 0,
+                                        "lineHeight": "22px",
+                                        "textTransform": "none"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": "Inquiry Aging",
+                            "options": {
+                              "validationSchema": false,
+                              "columnTitle": " ",
+                              "variant": "text",
+                              "color": "primary",
+                              "size": "small",
+                              "sx": {
+                                "white-space": "nowrap",
+                                "padding": 0,
+                                "lineHeight": "22px",
+                                "textTransform": "none"
+                              },
+                              "chain": [
+                                {
+                                  "operationType": "script",
+                                  "converter": "mapAgingPayload",
+                                  "resultMappingSchema": {
+                                    "type": "object",
+                                    "properties": {
+                                      "accountNumber": {
+                                        "type": "string"
+                                      },
+                                      "date": {
+                                        "type": "string"
+                                      },
+                                      "effectiveDate": {
+                                        "type": "string"
+                                      },
+                                      "numberPeriodUnpaid": {
+                                        "type": "integer"
+                                      },
+                                      "amountUnpaid": {
+                                        "type": "integer"
+                                      },
+                                      "outstandingBalance": {
+                                        "type": "number"
+                                      },
+                                      "availableBalance": {
+                                        "type": "number"
+                                      },
+                                      "grade": {
+                                        "type": "string"
+                                      },
+                                      "pri": {
+                                        "type": "number"
+                                      },
+                                      "pis": {
+                                        "type": "number"
+                                      },
+                                      "pot": {
+                                        "type": "pot"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "operationType": "modal",
+                                  "dialogName": "m_Register_Inquiry_Aging",
+                                  "subtype": "show"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": "เพิ่ม/แก้ไขหลักประกัน",
+                            "options": {
+                              "validationSchema": false,
+                              "columnTitle": " ",
+                              "operationType": "open",
+                              "route": "/",
+                              "variant": "text",
+                              "color": "primary",
+                              "size": "small",
+                              "sx": {
+                                "white-space": "nowrap",
+                                "padding": 0,
+                                "lineHeight": "22px",
+                                "textTransform": "none"
+                              }
+                            }
+                          },
+                          {
+                            "type": "ActionButton",
+                            "label": " ",
+                            "scope": "#",
+                            "options": {
+                              "validationSchema": false,
+                              "columnTitle": "",
+                              "icon": "Delete",
+                              "variant": "secondaryError",
+                              "size": "smallIcon",
+                              "operationType": "script",
+                              "converter": "selectLoan",
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "properties": {
+                                  "loans": {
+                                    "type": "object",
+                                    "properties": {
+                                      "seq": {
+                                        "type": [
+                                          "integer",
+                                          "null"
+                                        ]
+                                      },
+                                      "application_account_id": {
+                                        "type": "string"
+                                      },
+                                      "loan_objective_description": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "master_account_flag": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "account_name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "account_number": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "sub_loan_type_description": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "credit_line_type": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "balance_credit_line_amount": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "old_credit_line_amount": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "approved_amount": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "requested_amount": {
+                                        "type": [
+                                          "integer",
+                                          "null"
+                                        ]
+                                      },
+                                      "tenor_month": {
+                                        "type": [
+                                          "integer",
+                                          "null"
+                                        ]
+                                      },
+                                      "campaign": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "account_installment_monthly_amount": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "application_group": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "product_group": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "product_type": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "sub_product": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "contract_no": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "delete_loans": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "chain": [
+                                {
+                                  "operationType": "modal",
+                                  "subtype": "show",
+                                  "dialogName": "m_Register_Loan_Collateral_Details_Loan_Delete"
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "1em",
+                    "direction": "row",
+                    "sx": {
+                      "padding": "1em 0 0 0"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "ดึงข้อมูลสินเชื่อเดิม",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false,
+                        "chain": [
+                          {
+                            "operationType": "script",
+                            "converter": "clearOldLoanSearch",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "properties": {
+                                "credit_line_type": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "account_number": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "accountNumber": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "appl_account": {
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
+                                  "properties": {
+                                    "accountName": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "accountStatus": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    },
+                                    "is_show_account_name": {
+                                      "type": [
+                                        "string",
+                                        "null"
+                                      ]
+                                    }
+                                  }
+                                }
+                              },
+                              "required": [
+                                "credit_line_type",
+                                "account_number"
+                              ]
+                            }
+                          },
+                          {
+                            "operationType": "modal",
+                            "dialogName": "m_Register_Details_Search_Old_Loan",
+                            "subtype": "show",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "properties": {
+                                "loanSection": {
+                                  "type": "object",
+                                  "properties": {
+                                    "newLoan": {
+                                      "type": "object",
+                                      "properties": {
+                                        "application_account_id": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "application_group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "application_type": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_type": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "sub_product": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "loans": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "seq": {
+                                            "type": [
+                                              "integer",
+                                              "null"
+                                            ]
+                                          },
+                                          "application_account_id": {
+                                            "type": "string"
+                                          },
+                                          "loan_objective_description": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "master_account_flag": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "account_name": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "account_number": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "sub_loan_type_description": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "credit_line_type": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "balance_credit_line_amount": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "old_credit_line_amount": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "approved_amount": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "requested_amount": {
+                                            "type": [
+                                              "integer",
+                                              "null"
+                                            ]
+                                          },
+                                          "tenor_month": {
+                                            "type": [
+                                              "integer",
+                                              "null"
+                                            ]
+                                          },
+                                          "campaign": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "account_installment_monthly_amount": {
+                                            "type": [
+                                              "string",
+                                              "number",
+                                              "null"
+                                            ]
+                                          },
+                                          "application_group": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "product_group": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "product_type": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "sub_product": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          },
+                                          "contract_no": {
+                                            "type": [
+                                              "string",
+                                              "null"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "application": {
+                                      "type": "object",
+                                      "properties": {
+                                        "objective_details": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "ActionButton",
+                      "label": "ดึงข้อมูลจาก BBI",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false,
+                        "chain": [
+                          {
+                            "operationType": "script",
+                            "converter": "show_bbi_section",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "properties": {
+                                "show_bbi_section": {
+                                  "type": "boolean",
+                                  "dataPath": "show_bbi_section"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "ActionButton",
+                      "label": "Convert",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/show_bbi_section",
+          "schema": {
+            "const": true
+          }
+        }
+      },
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "0 16px 16px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/emptyLoans",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "margin": "0 -1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "sx": {
+                      "backgroundColor": "#f5f3ff"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "รายละเอียดวงเงินจาก BBI ที่ไม่พบใน Leads",
+                      "options": {
+                        "variant": "subtitlePurplePaper"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "Datagrid",
+                  "scope": "#",
+                  "options": {
+                    "sx": {
+                      "width": "calc(100vw - 2em)"
+                    },
+                    "grid": "Register/WorkBBI",
+                    "dataContext": {
+                      "query": "Register/WorkBBI",
+                      "queryVariables": {
+                        "taskId": "{taskId}"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "0 16px 70px 16px"
+        }
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "zIndex": "2",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ยกเลิกใบสมัคร",
+              "options": {
+                "variant": "secondaryError",
+                "validationSchema": false,
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Details_Reject"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Follow Up",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "operationType": "open",
+                "route": "/register/app/{application_number}/send-to-followup"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกแบบร่าง",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "operationType": "action",
+                "conditionTypeId": "Register_Loan_Collateral_save",
+                "payload": {
+                  "user": "{user.login}",
+                  "data": "{data}"
+                }
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "chain": [
+                  {
+                    "_variant": "primary",
+                    "operationType": "modal",
+                    "dialogName": "m_Register_Loan_Collateral_Details_Confirm",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

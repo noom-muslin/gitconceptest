@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "userInfo": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

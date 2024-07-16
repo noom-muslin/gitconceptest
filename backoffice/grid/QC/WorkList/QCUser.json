@@ -1,0 +1,151 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WL SLA",
+      "field": "sla_wl.current_duration_minutes",
+      "name": "wl_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "Application No.",
+      "field": "application.application_id",
+      "name": "application_id",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "width": 150
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.code",
+      "name": "product_type",
+      "minWidth": 120
+    },
+    {
+      "title": "Sub Product Type",
+      "field": "application.primary_account.account.sub_product.code",
+      "name": "sub_product_type",
+      "minWidth": 160
+    },
+    {
+      "title": "ต้นทาง",
+      "field": "source",
+      "name": "source",
+      "minWidth": 120
+    },
+    {
+      "title": "ชื่อพนักงาน TM",
+      "field": "application.previous_qc_performing_by.previous_qc_tm",
+      "name": "previous_qc_tm",
+      "minWidth": 200
+    },
+    {
+      "title": "ชื่อพนักงาน AM",
+      "field": "application.previous_qc_performing_by.previous_qc_am",
+      "name": "previous_qc_am",
+      "minWidth": 200
+    },
+    {
+      "title": "ชื่อพนักงาน HS",
+      "field": "application.previous_qc_performing_by.previous_qc_hs",
+      "name": "previous_qc_hs",
+      "minWidth": 200
+    },
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "name": "full_name",
+      "minWidth": 200
+    },
+    {
+      "title": "ชื่อพนักงานขาย",
+      "field": "application.saleinfos",
+      "name": "saleinfos",
+      "converter": "sale_name_converter",
+      "minWidth": 200
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "application.application_date_time_in",
+      "name": "application_date_time_in",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "ส่งกลับจาก",
+      "field": "previous_task.task_type.code",
+      "name": "ส่งกลับจาก",
+      "minWidth": 120
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "label": "ดู FU",
+          "triggerType": "link",
+          "options": {
+            "sx": {
+              "background": "white"
+            },
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "{zboRouteObject.permission}",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "{zboRouteObject.route}/{data.id}/{data.application.application_id}/details"
+            },
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 100
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดูรายละเอียด",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "{zboRouteObject.permission}",
+            "route": "{zboRouteObject.route}/{data.id}/{data.application.application_id}/details",
+            "validationSchema": false
+          }
+        }
+      ],
+      "width": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

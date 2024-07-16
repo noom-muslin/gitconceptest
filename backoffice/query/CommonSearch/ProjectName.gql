@@ -1,0 +1,6 @@
+query CustomerNameSearch($searchValue: String = "", $limit: Int = 10) {
+  result: ngl_mfappl_generalinfo(where: {thai_name: {_ilike: $searchValue}}, limit: $limit, distinct_on: thai_name) {
+    value: thai_name
+    label: thai_name
+  }
+}

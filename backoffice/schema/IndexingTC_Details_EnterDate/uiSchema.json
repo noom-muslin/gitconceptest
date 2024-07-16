@@ -1,0 +1,143 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "0 16px",
+          "width": "448px",
+          "height": "48px",
+          "backgroundColor": "primary.light",
+          "display": "flex",
+          "alignItems": "center"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "ระบุวันที่",
+          "options": {
+            "variant": "subtitle2",
+            "sx": {
+              "color": "primary.deep"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "width": "448px"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "วันที่ลงนามสัญญา",
+          "options": {
+            "sx": {
+              "marginBottom": "0.25em"
+            }
+          }
+        },
+        {
+          "type": "ExternalComponent",
+          "scope": "#/properties/contract_datetime",
+          "options": {
+            "externalComponentName": "thai-calendar",
+            "externalComponentScope": "remote1",
+            "externalComponentModule": "./ThaiDatePicker",
+            "views": "year,month,day",
+            "variant": "outlined",
+            "sx": {
+              "width": "100%"
+            }
+          }
+        },
+        {
+          "type": "Typography",
+          "label": "วันที่จำนอง/วันที่ไถ่ถอน",
+          "options": {
+            "sx": {
+              "marginTop": "1em",
+              "marginBottom": "0.25em"
+            }
+          }
+        },
+        {
+          "type": "ExternalComponent",
+          "scope": "#/properties/mortgage_datetime",
+          "options": {
+            "externalComponentName": "thai-calendar",
+            "externalComponentScope": "remote1",
+            "externalComponentModule": "./ThaiDatePicker",
+            "views": "year,month,day",
+            "variant": "outlined",
+            "sx": {
+              "width": "100%"
+            }
+          }
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "margin": "16px 0 0"
+            }
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ความเห็น",
+              "scope": "#/properties/contract_remark",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยืนยัน",
+          "options": {
+            "className": "primaryButton",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "IndexingTC_Details_Submit",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              },
+              {
+                "operationType": "open",
+                "route": "/indexing-tc/{route.taskId}/done"
+              },
+              {
+                "operationType": "modal",
+                "subtype": "cancel"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

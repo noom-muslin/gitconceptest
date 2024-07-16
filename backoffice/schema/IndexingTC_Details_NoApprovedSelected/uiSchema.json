@@ -1,0 +1,76 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconError"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ErrorOutline"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ไม่สามารถส่งงานที่สถานะ RCCO เป็น Pending ได้",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "กรุณาส่งงานที่สถานะ RCCO เป็น Resolved-Approved เท่านั้น"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "OK",
+          "options": {
+            "className": "primaryButton",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "type": "object",
+  "properties": {
+    "work_object": {
+      "type": ["string", "null"],
+      "readOnly": true
+    },
+    "card_id_number": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "loan_account_number": {
+      "type": "string"
+    },
+    "application_number": {
+      "type": "string"
+    },
+    "application_number_parrent": {
+      "type": "string"
+    },
+    "indexing_type": {
+      "type": "string",
+      "readOnly": true
+    },
+    "indexing_type_id": {
+      "type": "string",
+      "readOnly": true
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "isMortgage": {
+      "type": "boolean"
+    },
+    "isAuto": {
+      "type": "boolean"
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "isChecked": {
+            "type": "boolean"
+          },
+          "application_number": {
+            "type": "string",
+            "readOnly": true
+          },
+          "loan_accounts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "account_number": {
+                  "type": "string",
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "purpose_of_loan": {
+            "type": ["string", "null"]
+          },
+          "customer_name": {
+            "type": ["string", "null"],
+            "readOnly": true
+          },
+          "auto_model": {
+            "type": ["string", "null"],
+            "readOnly": true
+          },
+          "auto_engine_no": {
+            "type": ["string", "null"],
+            "readOnly": true
+          },
+          "auto_chasis_no": {
+            "type": ["string", "null"],
+            "readOnly": true
+          },
+          "dealer_code": {
+            "type": ["string", "null"],
+            "properties": {
+              "readOnly": true
+            },
+            "dealer_name": {
+              "type": ["string", "null"],
+              "readOnly": true
+            },
+            "dealer_group": {
+              "type": ["string", "null"],
+              "readOnly": true
+            },
+            "dealer_type": {
+              "type": ["string", "null"],
+              "readOnly": true
+            },
+            "status_RCCO": {
+              "type": ["string", "null"],
+              "readOnly": true
+            },
+            "contract_status": {
+              "type": ["string", "null"],
+              "readOnly": true
+            },
+            "approved_date_and_time": {
+              "type": ["string", "null"],
+              "readOnly": true
+            },
+            "view_ca_report": {
+              "type": "string",
+              "readOnly": true
+            }
+          }
+        }
+      }
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readonly": true
+        },
+        "title": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+subscription MFProfileDataWorkList(
+  $assignee: String!,
+  $where: [ngl_mfappl_bool_exp]
+  $order_by: [ngl_mfappl_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_mfappl(
+    where: {
+      mf_user_name: { _eq: $assignee }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    application_id
+    create_date_time
+    company_name
+    application_type
+    generate_subtype
+    sub_type_code
+    objective {
+      description
+    }
+    py_status_work
+    generalinfo {
+      thai_name
+    }
+    staff {
+      staff_id
+      oc_code
+    }
+  }
+}

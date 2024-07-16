@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "applicationToSearch": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "applicationSearchResult": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "accountNumber": {
+            "type": "string",
+            "readonly": true
+          },
+          "applicationId": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerName": {
+            "type": "array",
+            "readonly": true
+          },
+          "applicationStatus": {
+            "type": "string",
+            "readonly": true
+          },
+          "applicationGroup": {
+            "type": "string",
+            "readonly": true
+          },
+          "originalDocType": {
+            "type": "string",
+            "readonly": true
+          },
+          "dateInWarehouse": {
+            "type": "string",
+            "readonly": true
+          },
+          "noOfGuarantee": {
+            "type": "integer",
+            "readonly": true
+          }
+        }
+      }
+    }
+  },
+  "required": ["applicationToSearch"]
+}

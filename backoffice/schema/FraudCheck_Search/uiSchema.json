@@ -1,0 +1,19 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "Typography",
+      "label": "ค้นหา",
+      "_label": "Search",
+      "options": {
+        "variant": "h6"
+      }
+    }
+  ]
+}

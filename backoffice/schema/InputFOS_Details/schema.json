@@ -1,0 +1,204 @@
+{
+  "type": "object",
+  "properties": {
+    "applicationId": {
+      "type": ["string", "null"]
+    },
+    "customerInfo": {
+      "type": "object",
+      "properties": {
+        "borrowerType": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "relationship": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "customerType": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "titleTh": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "firstNameTh": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "middleNameTh": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "lastNameTh": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "titleEn": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "firstNameEn": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "middleNameEn": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "lastNameEn": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "mobileNo": {
+          "type": ["string", "null", "integer"]
+        },
+        "birthDate": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "age": {
+          "type": ["string", "null", "integer"],
+          "readOnly": true
+        }
+      },
+      "required": ["mobileNo"]
+    },
+    "radioEnum": {
+      "enum": ["เจ้าของ", "ผู้เช่า"],
+      "type": "string"
+    },
+    "formIndex": {
+      "type": "integer",
+      "default": 0
+    },
+    "consent_statuses": {
+      "type": "array"
+    },
+    "address": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "officeType": {
+            "type": ["string", "null"]
+          },
+          "employmentYear": {
+            "type": ["string", "null", "integer"],
+            "pattern": "^[0-9]+$"
+          },
+          "employmentMonth": {
+            "type": ["string", "null", "integer"],
+            "pattern": "^(1[0-1]|[1-9])$"
+          },
+          "income": {
+            "type": ["string", "null", "integer"],
+            "pattern": "^\\d+(\\.\\d+)?$"
+          },
+          "detail": {
+            "type": ["string", "null"]
+          },
+          "addressNo": {
+            "type": ["null", "string"],
+            "pattern": "^[0-9/]+$"
+          },
+          "moo": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙ ]+$"
+          },
+          "village": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙ ]+$"
+          },
+          "floor": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙ ]+$"
+          },
+          "room": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙ ]+$"
+          },
+          "soi": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙/ ]+$"
+          },
+          "trok": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙/ ]+$"
+          },
+          "road": {
+            "type": ["string", "null"],
+            "pattern": "^[A-Za-z0-9ก-๙ ]+$"
+          },
+          "province": {
+            "type": ["null", "string"]
+          },
+          "amphur": {
+            "type": ["null", "string"]
+          },
+          "tambon": {
+            "type": ["null", "string"]
+          },
+          "zipcode": {
+            "type": ["string", "null"]
+          },
+          "telephoneNo": {
+            "type": ["string", "null"],
+            "pattern": "[0-9]{2}-[0-9]{3}-[0-9]{4}$"
+          },
+          "mobileNo": {
+            "type": ["string", "null"],
+            "pattern": "[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+          },
+          "addressFormat": {
+            "type": ["string", "null"]
+          },
+          "addressType": {
+            "type": ["string", "null"]
+          },
+          "latitude": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9.-]+$"
+          },
+          "longitude": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9.-]+$"
+          },
+          "addressStatus": {
+            "type": ["string", "null"]
+          },
+          "liveYear": {
+            "type": ["string", "null", "integer"],
+            "pattern": "^[0-9]+$"
+          },
+          "isCurrentSameRegistration": {
+            "type": ["boolean", "null"]
+          },
+          "fosDetail": {
+            "type": "object",
+            "properties": {
+              "appointmentDate": {
+                "type": ["string", "null"]
+              },
+              "appointmentTime": {
+                "type": ["string", "null"]
+              },
+              "remark": {
+                "type": ["string", "null"],
+                "maxLength": 300
+              }
+            }
+          },
+          "addressUsage": {
+            "type": ["string", "null"]
+          }
+        },
+        "required": ["addressNo","province","amphur","tambon"]
+      }
+    },
+    "secondaryJobFlag": {
+      "type": ["string", "null"]
+    }
+  }
+}

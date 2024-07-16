@@ -1,0 +1,1231 @@
+{
+  "type": "GridLayout",
+  "options": {
+    "container": true,
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "HIDE",
+        "condition": {
+          "scope": "#/properties/occupation/properties/incomeType",
+          "schema": {
+            "const": "NotFullTime"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/borrowerType",
+              "schema": {
+                "const": "Juristic"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "คำนำหน้าชื่อสถานประกอบการ",
+              "scope": "#/properties/occupation/properties/title",
+              "options": {
+                "query": "Register/TitleENIndividualEnum",
+                "converter": "mapValueLabel",
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/borrowerType",
+              "schema": {
+                "const": "Juristic"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "คำนำหน้าชื่อสถานประกอบการ",
+              "scope": "#/properties/occupation/properties/title",
+              "options": {
+                "query": "Register/TitleENJuristicEnum",
+                "converter": "mapValueLabel",
+
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "ชื่อสถานที่ทำงาน",
+              "scope": "#/properties/occupation/properties/workName",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/PublicCompanies",
+                "converter": "mapValueLabel"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ระบุข้อมูลกรณีเลือก \"อื่นๆ\"",
+              "scope": "#/properties/occupation/properties/otherDetails",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "RadioGroupField",
+              "scope": "#/properties/occupation/properties/workPlace",
+              "label": "ที่ทำงาน/สถานประกอบการ",
+              "options": {
+                "radioSize": "small",
+                "row": "false",
+                "enum": [
+                  {
+                    "value": "HeadOffice",
+                    "label": "สำนักงานใหญ่"
+                  },
+                  {
+                    "value": "Branch",
+                    "label": "สาขา"
+                  },
+                  {
+                    "value": "NotRegistered",
+                    "label": "ไม่จดทะเบียน/ไม่ระบุ"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": []
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/occupation/properties/incomeType",
+          "schema": {
+            "const": "NotFullTime"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "คำนำหน้าชื่อสถานประกอบการ",
+              "scope": "#/properties/occupation/properties/title",
+              "options": {
+                "query": "Register/TitleTHIndividualEnum",
+                "converter": "mapValueLabel",
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/borrowerType",
+              "schema": {
+                "const": "Juristic"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "คำนำหน้าชื่อสถานประกอบการ",
+              "scope": "#/properties/occupation/properties/title",
+              "options": {
+                "query": "Register/TitleTHJuristicEnum",
+                "converter": "mapValueLabel",
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "ชื่อสถานที่ทำงาน",
+              "scope": "#/properties/occupation/properties/workName",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/PublicCompanies",
+                "converter": "mapValueLabel"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "RadioGroupField",
+              "scope": "#/properties/occupation/properties/workPlace",
+              "label": "ที่ทำงาน/สถานประกอบการ",
+              "options": {
+                "radioSize": "small",
+                "row": "false",
+                "enum": [
+                  {
+                    "value": "HeadOffice",
+                    "label": "สำนักงานใหญ่"
+                  },
+                  {
+                    "value": "Branch",
+                    "label": "สาขา"
+                  },
+                  {
+                    "value": "NotRegistered",
+                    "label": "ไม่จดทะเบียน/ไม่ระบุ"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "direction": "column",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/occupation/properties/incomeType",
+                  "schema": {
+                    "const": "NotFullTime"
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "ระบุข้อมูลกรณีเลือก \"อื่นๆ\"",
+                  "scope": "#/properties/occupation/properties/otherDetails",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "ประเภทธุรกิจ",
+          "scope": "#/properties/occupation/properties/businessType",
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "autocomplete": false,
+            "query": "CommonSearch/BusinessTypeIsic",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "รายละเอียด (จำนวนไร่)",
+          "scope": "#/properties/occupation/properties/otherDetailsRai",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "หมวดหมู่บริษัท",
+              "options": {
+                "variant": "label"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/occupation/properties/companyCategory",
+              "options": {
+                "variant": "body2Padding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "เข้าร่วม Package Loan",
+              "options": {
+                "variant": "label"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/occupation/properties/packageLoan",
+              "options": {
+                "variant": "body2Padding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "สถานะกิจการ",
+              "options": {
+                "variant": "label"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/occupation/properties/stateOfAffairs",
+              "options": {
+                "variant": "body2Padding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "งบการเงินปีล่าสุด",
+              "options": {
+                "variant": "label"
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/occupation/properties/financialStatement",
+              "options": {
+                "variant": "body2Padding"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "RadioGroupField",
+          "scope": "#/properties/occupation/properties/incomeType",
+          "label": "การรับรายได้",
+          "options": {
+            "radioSize": "small",
+            "row": "false",
+            "enum": [
+              {
+                "value": "FullTime",
+                "label": "เป็นพนักงานประจำ (SA)"
+              },
+              {
+                "value": "NotFullTime",
+                "label": "ไม่เป็นพนักงานประจำ (SE)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": []
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "กลุ่มอาชีพ",
+          "scope": "#/properties/occupation/properties/occupationType",
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "autocomplete": false,
+            "query": "CommonSearch/OccupationGroup",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "อาชีพ",
+          "scope": "#/properties/occupation/properties/occupation",
+          "rule": {
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#",
+              "schema": {
+                "properties": {
+                  "occupation": {
+                    "not": {
+                      "required": [
+                        "occupationType"
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "occupation"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined",
+            "autocomplete": false,
+            "query": "CommonSearch/OccupationByGroup",
+            "queryVariables": {
+              "occupation_group": "{occupation.occupationType}"
+            },
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "รายละเอียดอาชีพ",
+          "scope": "#/properties/occupation/properties/careerDetails",
+          "rule": {
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#",
+              "schema": {
+                "properties": {
+                  "occupation": {
+                    "not": {
+                      "required": [
+                        "occupationType",
+                        "occupation"
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "occupation"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "รายละเอียดอาชีพสำหรับ FOS",
+          "scope": "#/properties/occupation/properties/careerDetailsFOS",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "ตำแหน่ง",
+          "scope": "#/properties/occupation/properties/position",
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "autocomplete": true,
+            "query": "CommonSearch/JobPosition",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "Employment Status Code (BOT)",
+          "scope": "#/properties/occupation/properties/employmentStatusCode",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined",
+            "autocomplete": true,
+            "query": "CommonSearch/EmploymentStatusCode",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "Employment Characteristic Code (BOT)",
+          "scope": "#/properties/occupation/properties/employmentCode",
+          "rule": {
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#",
+              "schema": {
+                "properties": {
+                  "occupation": {
+                    "not": {
+                      "required": [
+                        "employmentStatusCode"
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "occupation"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "autocomplete": true,
+            "query": "CommonSearch/EmploymentCharacteristicCode",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "Occupation Code (BOT)",
+          "scope": "#/properties/occupation/properties/occupationCode",
+          "rule": {
+            "effect": "DISABLE",
+            "condition": {
+              "scope": "#",
+              "schema": {
+                "properties": {
+                  "occupation": {
+                    "not": {
+                      "required": [
+                        "employmentStatusCode"
+                      ]
+                    }
+                  },
+                  "not": {
+                    "required": [
+                      "occupation"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "autocomplete": true,
+            "query": "CommonSearch/OccupationCode",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "HIDE",
+        "condition": {
+          "scope": "#/properties/occupation/properties/incomeType",
+          "schema": {
+            "const": "NotFullTime"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "วันที่เริ่มทำงานครั้งแรก (พ.ศ.)",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "ExternalComponent",
+              "scope": "#/properties/occupation/properties/startDateOfFirstEmployment",
+              "options": {
+                "externalComponentName": "thai-calendar",
+                "externalComponentScope": "remote1",
+                "externalComponentModule": "./ThaiDatePicker",
+                "views": "year,month,day",
+                "variant": "outlined",
+                "sx": {
+                  "width": "100%"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "อายุงาน (ที่ทำงานแรก)",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/occupation/properties/yearsOfEmployment",
+                  "options": {
+                    "variant": "body2Padding"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "ปี",
+                  "options": {
+                    "variant": "body2Padding"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "วันที่เริ่มทำงานปัจจุบัน (พ.ศ.)",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "ExternalComponent",
+              "scope": "#/properties/occupation/properties/startDateOfCurrentEmployment",
+              "options": {
+                "externalComponentName": "thai-calendar",
+                "externalComponentScope": "remote1",
+                "externalComponentModule": "./ThaiDatePicker",
+                "views": "year,month,day",
+                "variant": "outlined",
+                "sx": {
+                  "width": "100%"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "อายุงาน (ที่ทำงานปัจจุบัน)",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/occupation/properties/yearsOfCurrentEmployment",
+                  "options": {
+                    "variant": "body2Padding"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "ปี",
+                  "options": {
+                    "variant": "body2Padding"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx": {
+          "padding-top": "16px",
+          "padding-left": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/occupation/properties/incomeType",
+          "schema": {
+            "const": "NotFullTime"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "NumberField",
+              "label": "อายุกิจการ",
+              "scope": "#/properties/occupation/properties/yearsInBusiness",
+              "options": {
+                "fullwidth": true,
+                "allowNegative": false,
+                "thousandSeparator": true,
+                "allowedDecimalSeparators": false,
+                "fixedDecimalScale": true,
+                "decimalScale": 0,
+                "endAdornmentTypography": {
+                  "text": " ปี"
+                },
+                "variant": "outlined",
+                "sx": {
+                  "width": "100%"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6,
+            "sx": {
+              "display": "flex",
+              "alignItems": "end"
+            }
+          },
+          "elements": [
+            {
+              "type": "NumberField",
+              "label": false,
+              "scope": "#/properties/occupation/properties/yearIncome",
+              "options": {
+                "fullwidth": true,
+                "allowNegative": false,
+                "thousandSeparator": true,
+                "allowedDecimalSeparators": false,
+                "fixedDecimalScale": true,
+                "decimalScale": 2,
+                "endAdornmentTypography": {
+                  "text": " เดือน"
+                },
+                "variant": "outlined",
+                "sx": {
+                  "width": "100%"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "NumberField",
+          "label": "รายได้ประจำ (Declare)",
+          "scope": "#/properties/occupation/properties/regularIncome",
+          "options": {
+            "fullwidth": true,
+            "allowNegative": false,
+            "thousandSeparator": true,
+            "allowedDecimalSeparators": false,
+            "fixedDecimalScale": true,
+            "decimalScale": 2,
+            "endAdornmentTypography": {
+              "text": "บาท"
+            },
+            "variant": "outlined",
+            "sx": {
+              "width": "100%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "แหล่งที่มาของรายได้ประจำ",
+          "scope": "#/properties/occupation/properties/regularIncomeSource",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "NumberField",
+          "label": "รายได้พิเศษต่อเดือน (Declare)",
+          "scope": "#/properties/occupation/properties/extraIncome",
+          "options": {
+            "fullwidth": true,
+            "allowNegative": false,
+            "thousandSeparator": true,
+            "allowedDecimalSeparators": false,
+            "fixedDecimalScale": true,
+            "decimalScale": 2,
+            "endAdornmentTypography": {
+              "text": "บาท"
+            },
+            "variant": "outlined",
+            "sx": {
+              "width": "100%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "แหล่งที่มาของรายได้พิเศษ",
+          "scope": "#/properties/occupation/properties/extraIncomeSource",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "หลักฐานรายได้",
+          "scope": "#/properties/occupation/properties/proofOfIncome",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined",
+            "autocomplete": false,
+            "query": "CommonSearch/ProofOfIncome",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "มูลค่าสินทรัพย์ (AUM)",
+          "scope": "#/properties/occupation/properties/assetValue",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 12
+      },
+      "elements": [
+        {
+          "type": "SelectField",
+          "label": "Credit Level",
+          "scope": "#/properties/occupation/properties/creditLevel",
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined",
+            "autocomplete": false,
+            "query": "CommonSearch/CreditLevel",
+            "converter": "mapValueLabel"
+          }
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/applicationGroup",
+          "schema": {
+            "const": "Unsecured"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+                {
+                  "type": "Typography",
+                  "label": "แผนก",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+            {
+              "type": "TextField",
+              "label": false,
+              "scope": "#/properties/occupation/properties/department",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6,
+            "sx": {
+              "align-content": "end"
+            }
+          },
+          "elements": [
+                {
+                  "type": "CheckboxField",
+                  "label": "รับเงินผ่านธนาคารไทยพาณิชย์",
+                  "scope": "#/properties/occupation/properties/isSiamBankMoney",
+                  "options": {
+                    "variant": "label"
+                  }
+                }
+          ]
+        }
+      ]
+    }
+  ]
+}

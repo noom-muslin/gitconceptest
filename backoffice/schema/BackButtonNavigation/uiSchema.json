@@ -1,0 +1,103 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "elements": [
+                    {
+                      "type": "Icon",
+                      "label": "ArrowBack"
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "{zboRouteObject.buckets.backnavigate.dataContext.payload.title_in_thai}",
+                      "options": {
+                        "variant": "h6White",
+                        "sx": {
+                          "fontSize": "0.95em",
+                          "fontWeight": "200"
+                        }
+                      }
+                    }
+                  ],
+                  "options": {
+                    "variant": "href",
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_BackButtonNavigation_Modal",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "{zboRouteObject.buckets.backnavigate.dataContext.payload.title_in_english}",
+                      "options": {
+                        "variant": "h6White",
+                        "sx": {
+                          "fontSize": "0.95em"
+                        }
+                      }
+                    }
+                  ],
+                  "options": {
+                    "variant": "href",
+                    "chain": [
+                      {
+                        "operationType" : "script",
+                        "converter" : "check_popup_visibility"                
+                      },
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_BackButtonNavigation_Modal",
+                        "subtype": "show",
+                        "if":{
+                          "type": "boolean",
+                          "const": true
+                        }
+                      },
+                      {
+                        "operationType": "open",
+                        "route": "{zboRouteObject.buckets.backnavigate.dataContext.payload.navigationUrl}",
+                        "if":{
+                          "else": true
+                        }                
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+subscription GetOriginalDocWorklist(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $assignee: String!
+) {
+  result: ngl_task(
+    where: {
+      application: {status_id: {_in: ["Approved", "Completed"]}}
+      performing_by: { _eq: $assignee }
+      task_type_id: { _eq: "OriginalDoc" }
+      status_id: {_eq: "InProgress"}
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+      id
+      application_id
+      performing_by
+      application {
+        approved_date_time
+        application_date_time_in
+        accounts {
+          sub_product {
+            description
+          }
+          product_type {
+            description
+          }
+          account_number
+        }
+      borrowers {
+        party {
+          full_name
+          enum_title {
+            code
+          }
+        }
+      }
+      }
+      status_id
+    }
+}

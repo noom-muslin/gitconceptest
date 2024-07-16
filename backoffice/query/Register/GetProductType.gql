@@ -1,0 +1,6 @@
+query GetProductType {
+  result: ngl_enum_product_type {
+    value: code
+    label: code
+  }
+}

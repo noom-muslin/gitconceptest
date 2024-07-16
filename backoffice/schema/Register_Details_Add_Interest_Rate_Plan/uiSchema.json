@@ -1,0 +1,766 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em",
+    "sx": {
+      "padding": "1em",
+      "minWidth": "800px",
+      "maxWidth": "800px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "0 1em 1em",
+          "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระยะเวลาเริ่มต้น",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "label",
+                            "sx": {
+                              "color": "red"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": false,
+                          "scope": "#/properties/period_from",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            },
+                            "hideRequiredAsterisk": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระยะเวลาสิ้นสุด",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "label",
+                            "sx": {
+                              "color": "red"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": false,
+                          "scope": "#/properties/period_to",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            },
+                            "hideRequiredAsterisk": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "หน่วยเวลา",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "label",
+                            "sx": {
+                              "color": "red"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/period_unit",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "unit_of_time_enum"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ประเภท Tier",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "label",
+                            "sx": {
+                              "color": "red"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/tier_type",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "tier_type_enum"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "อัตราดอกเบี้ยอ้างอิง",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "label",
+                            "sx": {
+                              "color": "red"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/base_factor_standard",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "interest_rate_standard_enum"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 4,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "อัตราดอกเบี้ย",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "label",
+                            "sx": {
+                              "color": "red"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "NumberField",
+                          "label": false,
+                          "scope": "#/properties/base_factor_interest_rates",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            },
+                            "hideRequiredAsterisk": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "+/- 1",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": false,
+                          "scope": "#/properties/diff_code",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "PCT 1",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "NumberField",
+                          "label": false,
+                          "scope": "#/properties/diff_value",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "+/- 2",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": false,
+                          "scope": "#/properties/diff_code2",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6,
+                "sx": {
+                  "padding": "0 16px 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "padding": "1em 0 0 0"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "PCT 2",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "1em"
+                      },
+                      "elements": [
+                        {
+                          "type": "NumberField",
+                          "label": false,
+                          "scope": "#/properties/diff_value2",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "38px"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em"
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "บันทึกข้อมูล",
+          "options": {
+            "size": "large",
+            "className": "primaryButton",
+            "operationType": "script",
+            "converter": "add_interest_rate_plan",
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "amount_tier_list": {
+                  "type": "array",
+                  "dataPath": "amount_tier_list"
+                },
+                "is_multi_amount_tier": {
+                  "type": "boolean",
+                  "dataPath": "is_multi_amount_tier"
+                },
+                "afterward_list": {
+                  "type": "array",
+                  "dataPath": "afterward_list"
+                },
+                "period_from": {
+                  "type": ["string", "null"],
+                  "dataPath": "period_from"
+                },
+                "period_to": {
+                  "type": ["string", "null"],
+                  "dataPath": "period_to"
+                },
+                "period_unit": {
+                  "type": ["string", "null"],
+                  "dataPath": "period_unit"
+                },
+                "tier_type": {
+                  "type": ["string", "null"],
+                  "dataPath": "tier_type"
+                },
+                "base_factor_standard": {
+                  "type": ["string", "null"],
+                  "dataPath": "base_factor_standard"
+                },
+                "base_factor_interest_rates": {
+                  "type": ["number", "null"],
+                  "dataPath": "base_factor_interest_rates"
+                },
+                "diff_code": {
+                  "type": ["string", "null"],
+                  "dataPath": "diff_code"
+                },
+                "diff_value": {
+                  "type": ["number", "null"],
+                  "dataPath": "diff_value"
+                },
+                "diff_code2": {
+                  "type": ["string", "null"],
+                  "dataPath": "diff_code2"
+                },
+                "diff_value2": {
+                  "type": ["number", "null"],
+                  "dataPath": "diff_value2"
+                },
+                "interest_rate_list":{
+                  "type": "array",
+                  "dataPath": "interest_rate_list"
+                },"ra_seq":{
+                  "type":["string", "null"],
+                  "dataPath": "ra_seq"
+                },"isPlanValid":{
+                  "type":"boolean",
+                  "dataPath": "isPlanValid"
+                },"id":{
+                  "type":["string", "null"],
+                  "dataPath": "id"
+                }
+              }
+            },
+
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "logContext"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["payload"],
+                  "properties": {
+                    "payload": {
+                      "type": "object",
+                      "required": ["data"],
+                      "properties": {
+                        "data": {
+                          "required": ["isPlanValid"],
+                          "type": "object",
+                          "properties": {
+                            "isPlanValid": {
+                              "type": "boolean",
+                              "const": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain":[{"operationType": "modal",
+                "subtype": "cancel"}]
+                
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

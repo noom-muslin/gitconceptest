@@ -1,0 +1,93 @@
+{
+    "type": "BoxLayout",
+    "elements": [
+      {
+        "type": "BoxLayout",
+        "options": {
+          "sx": {
+            "width": "400px",
+            "padding": "1em"
+          }
+        },
+        "elements": [
+          {
+            "type": "GridLayout",
+            "options": {
+              "container": true
+            },
+            "elements": [
+              {
+                "type": "GridLayout",
+                "options": {
+                  "xs": 2,
+                  "container": true,
+                  "justifyContent": "center"
+                },
+                "elements": [
+                  {
+                    "type": "Icon",
+                    "label": "ErrorOutline",
+                    "options": {
+                      "sx": {
+                        "fontSize": "40px",
+                        "color": "#EF4444",
+                        "background": "#FEF2F2",
+                        "borderRadius": "24px",
+                        "padding": "4px"
+                      }
+                    }
+                  }
+                ]
+              },
+  
+              {
+                "type": "GridLayout",
+                "options": {
+                  "xs": 10
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "ไม่สามารถดำเนินการต่อได้",
+                    "options": {
+                      "variant": "subtitle2Black"
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/message",
+                    "options": {
+                      "variant": "body2"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "StackLayout",
+        "options": {
+          "direction": "row",
+          "justifyContent": "flex-end",
+          "spacing": "0.5em",
+          "sx":{
+            "width": "400px",
+            "padding":"1em"
+          }
+        },
+        "elements": [
+          {
+            "type": "ActionButton",
+            "label": "ตกลง",
+            "options": {
+              "className": "primaryButton",
+              "operationType": "modal",
+              "subtype": "cancel"
+            }
+          }
+        ]
+      }
+    ]
+  }

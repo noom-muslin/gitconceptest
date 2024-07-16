@@ -1,0 +1,72 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "ข้อมูล Fraud",
+          "_label": "Fraud information",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "หน้าหลัก",
+          "_label": "Home page",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "FraudCheck_Home"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "ค้นหา",
+          "_label": "Search",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "FraudCheck_Search"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

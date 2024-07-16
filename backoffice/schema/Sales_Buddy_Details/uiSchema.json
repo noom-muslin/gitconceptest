@@ -1,0 +1,1808 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "กลับไป",
+                  "options": {
+                    "icon": "ArrowBack",
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_SalesBuddy_Details_Back",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Sales Buddy",
+                  "options": {
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_SalesBuddy_Details_Back",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "4px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/applicationDetail/properties/applicationId",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px 16px 86px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "Documentum"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true,
+            "sx": {
+              "minWidth": 0
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "type": "Accordion",
+                  "label": "สำหรับเจ้าหน้าที่ผู้ขาย",
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px 16px 16px 16px",
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "spacing": "8px"
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "options": {
+                                "fullwidth": true,
+                                "sx": {
+                                  "width": "100% !important"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "StackLayout",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "direction": "row",
+                                    "sx": {
+                                      "width": "100% !important",
+                                      "paddingBottom": "8px"
+                                    }
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ค้นหารหัสพนักงาน",
+                                      "options": {
+                                        "sx": {
+                                          "fontSize": "0.875rem",
+                                          "color": "#59606B"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "label": "*",
+                                      "options": {
+                                        "sx": {
+                                          "fontSize": "0.875rem",
+                                          "color": "red"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/staffId",
+                                  "options": {
+                                    "hideRequiredAsterisk": true,
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "variant": "secondary",
+                                "sx": {
+                                  "&.MuiButtonBase-root.MuiButton-root": {
+                                    "marginTop": "29px"
+                                  }
+                                },
+                                "chain": [
+                                  {
+                                    "operationType": "action",
+                                    "conditionTypeId": "Salesbuddy_Details_Search"
+                                  },
+                                  {
+                                    "if": {
+                                      "type": "object",
+                                      "required": [
+                                        "data"
+                                      ],
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "required": [
+                                            "payload"
+                                          ],
+                                          "properties": {
+                                            "payload": {
+                                              "type": "object",
+                                              "required": [
+                                                "data"
+                                              ],
+                                              "properties": {
+                                                "data": {
+                                                  "required": [
+                                                    "isSearchSuccess"
+                                                  ],
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "isSearchSuccess": {
+                                                      "type": "boolean",
+                                                      "const": false
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "operationType": "modal",
+                                    "dialogName": "m_BasicError_TryAgain",
+                                    "subtype": "show"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "16px 0 16px 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": true,
+                            "spacing": "16px"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 12
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "รหัสพนักงาน",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/empolyeeNumber",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ชื่อ",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/name",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "นามสกุล",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/familyName",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "เบอร์โทรศัพท์ 1",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/telephoneNumber1",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "เบอร์โทรศัพท์ 2",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/telephoneNumber2",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "เบอร์โทรศัพท์ 3",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/telephoneNumber3",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "OC Code",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/ocCode",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Booking Branch",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/saleInfo/properties/bookingBranch",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Accordion",
+                  "label": "ข้อมูลใบสมัคร",
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": true,
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px 0 16px 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "คำนำหน้า (ภาษาไทย)",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/customerTitleName",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ชื่อ-นามสกุล (ภาษาไทย)",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/customerName",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "คำนำหน้า (ภาษาอังกฤษ)",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/customerTitleNameEn",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ชื่อ-นามสกุล (ภาษาอังกฤษ)",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/customerNameEn",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Product Type",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/productType",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Sub Product Type",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/subProductType",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Campaign Code",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/campaignCode",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "เบอร์โทรศัพท์",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/applicationDetail/properties/telephone",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Accordion",
+                  "label": "ที่อยู่ปัจจุบัน",
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": true,
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px 0 16px 16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "เลขที่",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/addressNo",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "หมู่ที่",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/moo",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ชั้น",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/floor",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ห้อง",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/room",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "หมู่บ้าน/อาคาร/คอนโด",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/village",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ตรอก",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/trok",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ซอย/แยก",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/soi",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ถนน",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/road",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "ตำบล/แขวง",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/tambon",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "อำเภอ/เขต",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/amphur",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "จังหวัด",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/province",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "รหัสไปรษณีย์",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/address.0/properties/zipcode",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "scope": "#/properties/vehicleInfo",
+                  "type": "SchemedListView",
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "cellUiSchema": {
+                      "type": "Accordion",
+                      "label": "ข้อมูลรถคันที่ 1",
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "sx": {
+                              "padding": "16px 0 16px 16px",
+                              "borderBottom": "1px solid",
+                              "borderColor": "secondary.dark"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": true,
+                                "spacing": "16px"
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ประเภทรถ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/vehicleType",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "สถานะการจดทะเบียน",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/vehicleCondition",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "วันที่จดทะเบียน",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/registeredDate",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ประเภทเครื่องยนต์",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/engineType",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "รุ่น",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/vehicleModel",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "รุ่นย่อย",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/vehicleSubModel",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "รุ่นปี ค.ศ.",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/modelYear",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "CCKWH",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/horsePower",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "น้ำหนัก",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "StackLayout",
+                                          "options": {
+                                            "direction": "row",
+                                            "spacing": "4px"
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "scope": "#/properties/weight",
+                                              "options": {
+                                                "variant": "body2Padding"
+                                              }
+                                            },
+                                            {
+                                              "type": "Typography",
+                                              "label": "กิโลกรัม",
+                                              "options": {
+                                                "variant": "body2Padding"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "สี",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/color",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ยี่ห้อ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/vehicleBrand",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "ระยะทาง",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "StackLayout",
+                                          "options": {
+                                            "direction": "row",
+                                            "spacing": "4px"
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "scope": "#/properties/mileage",
+                                              "options": {
+                                                "variant": "body2Padding"
+                                              }
+                                            },
+                                            {
+                                              "type": "Typography",
+                                              "label": "กิโลเมตร",
+                                              "options": {
+                                                "variant": "body2Padding"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "เลขทะเบียนรถ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/licensePlate",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "จังหวัดที่จดทะเบียนรถ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/province",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "เลขตัวรถ",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/chasisNo",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "เลขเครื่องยนต์",
+                                          "options": {
+                                            "variant": "label"
+                                          }
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/engineNo",
+                                          "options": {
+                                            "variant": "body2Padding"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BoxLayout",
+                          "options": {
+                            "container": true,
+                            "sx": {
+                              "padding": "16px"
+                            }
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "ข้อมูลสินเชื่อ",
+                              "options": {
+                                "variant": "subtitle2Dark"
+                              }
+                            },
+                            {
+                              "type": "UniversalArrayView",
+                              "scope": "#/properties/loanInfo",
+                              "label": {
+                                "show": true
+                              },
+                              "options": {
+                                "alternativeRowClassConverter": "replaceTitleCarSection",
+                                "hideTableToolbar": true,
+                                "disableItemsRemove": true,
+                                "cells": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/title",
+                                    "options": {
+                                      "columnTitle": "รายการ"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/noVat",
+                                    "options": {
+                                      "sx": {
+                                        "textAlign": "right"
+                                      },
+                                      "columnTitle": "ไม่รวม VAT"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/vat",
+                                    "options": {
+                                      "sx": {
+                                        "textAlign": "right"
+                                      },
+                                      "columnTitle": "VAT"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/total",
+                                    "options": {
+                                      "sx": {
+                                        "textAlign": "right"
+                                      },
+                                      "columnTitle": "รวม VAT"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "end"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกข้อมูล",
+              "options": {
+                "variant": "primary",
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "Salesbuddy_Details_Save",
+                    "className": "secondaryButton",
+                    "payload": {
+                      "userId": "{user.login}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "required": [
+                                    "status"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "status": {
+                                      "type": "object",
+                                      "required": [
+                                        "code"
+                                      ],
+                                      "properties": {
+                                        "code": {
+                                          "type": "number",
+                                          "const": 1000
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "go_to_sales_buddy_homepage"
+                      }
+                    ]
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_BasicError_TryAgain",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

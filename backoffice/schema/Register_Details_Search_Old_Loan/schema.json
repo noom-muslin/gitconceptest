@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "credit_line_type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "account_number": {
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "required": [
+      "credit_line_type",
+      "account_number"
+    ]
+}

@@ -1,0 +1,9 @@
+query GetVatOrWhttax{
+  result: ngl_enum_vat_tax(
+    where: {
+      vat_tax_list: {_eq: "0001"}
+    }) {
+    code: vat_or_whttax
+    label: vat_or_whttax
+  }
+}

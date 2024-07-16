@@ -1,0 +1,6 @@
+query ProvinceQuery{
+    result: ngl_enum_location(distinct_on: province_name_en) {
+    value: province_name_th
+    label: province_name_th      
+    }
+}

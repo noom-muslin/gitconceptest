@@ -1,0 +1,61 @@
+subscription GetCustomerInformationWorkBasket(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $flagChecker: Boolean
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _is_null: true }
+      task_type_id: { _eq: "CI" }
+      status_id: { _eq: "Todo" }
+      op_loan: {
+        op_loans_customer_informations: {
+          flag_checker: { _eq: $flagChecker}
+          }
+        }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    create_date_time
+    deadline_at
+    status_id
+    application_id
+    application {
+      appl_parties {
+        full_name
+        name
+        last_name
+      }
+    }
+    op {
+      op_number
+      approved_date_time
+      op_objectives {
+        op_objective_desc
+      }
+    }
+    op_loan {
+      account_number
+      op_loans_customer_informations {
+        flag_checker
+      }
+    }
+    previous_task {
+      performing_by
+    }
+    primary_document {
+      document {
+        document_number
+        document_type {
+          code
+        }
+      }
+    }
+  }
+}

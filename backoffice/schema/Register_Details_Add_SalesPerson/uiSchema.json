@@ -1,0 +1,369 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "16px"
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "รหัสพนักงาน",
+              "scope": "#/properties/employeeIdToSearch",
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+              },
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ค้นหา",
+              "options": {
+                "variant": "secondary",
+                "operationType": "action",
+                "conditionTypeId": "Register_Details_SearchSalesPerson",
+                "validationSchema": false,
+                "sx": {
+                  "&.MuiButtonBase-root.MuiButton-root": {
+                    "marginTop": "24px"
+                  }
+                },
+                "payload": {
+                  "employeeIdToSearch": "{employeeIdToSearch}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "รหัสเจ้าหน้าที่",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "Typography",
+              "scope": "#/properties/salesPersonSearchResult/properties/saleId",
+              "options": {
+                "variant": "label",
+                "sx": {
+                  "marginTop": "8px"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ชื่อ-นามสกุล",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "Typography",
+              "scope": "#/properties/salesPersonSearchResult/properties/firstAndLastName",
+              "options": {
+                "variant": "label",
+                "sx": {
+                  "marginTop": "8px"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "ทีม/สาขา",
+              "scope": "#/properties/salesPersonSearchResult/properties/branch",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "OC Code หน่วยงานเจ้าของเรื่อง",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "Typography",
+              "scope": "#/properties/salesPersonSearchResult/properties/ocCode",
+              "options": {
+                "variant": "label",
+                "sx": {
+                  "marginTop": "8px"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์ 1",
+              "scope": "#/properties/salesPersonSearchResult/properties/phone1",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": [
+                  "00-000-000",
+                  "000-000-000",
+                  "000-000-0000"
+                ]
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "minLength": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์ 2",
+              "scope": "#/properties/salesPersonSearchResult/properties/phone2",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": [
+                  "00-000-000",
+                  "000-000-000",
+                  "000-000-0000"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์ 3",
+              "scope": "#/properties/salesPersonSearchResult/properties/phone3",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": [
+                  "00-000-000",
+                  "000-000-000",
+                  "000-000-0000"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/salesPersonSearchResult/properties/isSalesPersonInfoFound",
+          "schema": {
+            "const": true
+          }
+        }
+      },
+      "options": {
+        "direction": "row-reverse",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยืนยัน",
+          "options": {
+            "variant": "primary",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Register_Details_AddSalesPerson",
+                "validationSchema": false,
+                "payload": {
+                  "employeeId": "{employeeIdToSearch}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["submitted"],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+query MFProfileOcCodeSearch($searchValue: String = "", $limit: Int = 10) {
+  result: ngl_mfappl_staffs(where: {oc_code: {_ilike: $searchValue}}, limit: $limit, distinct_on: oc_code, order_by: {oc_code: asc}) {
+    value: oc_code
+    label: oc_code
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "hideExportButton": true,
+  "columns": [
+    {
+      "title": "ยี่ห้อ",
+      "field": "brand_code",
+      "name": "redbook_brand",
+      "minWidth": 150
+    },
+    {
+      "title": "รุ่น",
+      "field": "model_code",
+      "name": "redbook_model",
+      "minWidth": 150
+    },
+    {
+      "title": "รุ่นย่อย",
+      "field": "sub_model_code",
+      "name": "sub_model_code",
+      "minWidth": 180
+    },
+    {
+      "title": "ประเภทเครื่องยนต์",
+      "field": "engine_type_code",
+      "name": "engine_type_code",
+      "minWidth": 150
+    },
+    {
+      "title": "CCKWH",
+      "field": "cckwh",
+      "name": "cckwh",
+      "minWidth": 100
+    },
+    {
+      "title": "ประเภทรถ",
+      "field": "body_style_desc",
+      "name": "body_style_desc",
+      "minWidth": 150
+    },
+    {
+      "title": "รุ่นปี ค.ศ.",
+      "field": "sub_model_year",
+      "name": "sub_model_year",
+      "minWidth": 100
+    },
+    {
+      "title": "ราคาประเมิน",
+      "field": "price_list",
+      "name": "price_list",
+      "minWidth": 150
+    },
+    {
+      "title": " ",
+      "name": "",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "type": "ActionButton",
+          "label": "เลือก",
+          "options": {
+            "className": "primaryButton",
+            "operationType": "script",
+            "converter": "selected_register_vehicle",
+            "payload": {
+              "vehicle_type": "{data.body_style_desc}",
+              "vehicle_brand": "{data.brand_code}",
+              "vehicle_model": "{data.model_code}",
+              "vehicle_sub_model": "{data.sub_model_code}",
+              "cckwh": "{data.cckwh}",
+              "engine_type": "{data.engine_type_code}",
+              "model_year": "{data.sub_model_year}"
+            },
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "vehicles": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "vehicle": {
+                        "type": "object",
+                        "properties": {
+                          "vehicle_type": {
+                            "type": "string"
+                          },
+                          "vehicle_brand": {
+                            "type": "string"
+                          },
+                          "vehicle_model": {
+                            "type": "string"
+                          },
+                          "vehicle_sub_model": {
+                            "type": "string"
+                          },
+                          "cckwh": {
+                            "type": "string"
+                          },
+                          "engine_type": {
+                            "type": "string"
+                          },
+                          "gear_type": {
+                            "type": "string"
+                          },
+                          "model_year": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "chain": [
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "subtype": "cancel",
+                "payload": {
+                  "message": "test789"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "minWidth": 100
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "brand_code",
+      "dir": "desc"
+    }
+  ],
+  "selection": {
+    "type": "object",
+    "properties": {
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  }
+}

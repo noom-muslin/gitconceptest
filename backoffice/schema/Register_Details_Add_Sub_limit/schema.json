@@ -1,0 +1,497 @@
+{
+  "type": "object",
+  "properties": {
+    "search_repay": {
+      "type": "boolean"
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "test": {
+      "type": "integer"
+    },
+    "diff_code_enum": {
+      "type": "string",
+      "enum": ["+", "-"]
+    },
+    "is_find_pricing_data": {
+      "type": "boolean"
+    },
+    "pricingCode": {
+      "type": ["string", "null"]
+    },
+    "afterward_ca_id": {
+      "type": ["string", "null"]
+    },
+    "amount_tier_ca_id": {
+      "type": ["string", "null"]
+    },
+    "pricing_data": {
+      "type": "object",
+      "properties": {
+        "pricing_code": {
+          "type": ["string", "null"]
+        },
+        "pricing_code_desc": {
+          "type": "string"
+        },
+        "pricing_validity_from": {
+          "type": "string"
+        },
+        "pricing_validity_to": {
+          "type": "string"
+        },
+        "approval_date_from": {
+          "type": "string"
+        },
+        "approval_date_to": {
+          "type": "string"
+        },
+        "settle_date_from": {
+          "type": "string"
+        },
+        "settle_to_date": {
+          "type": "string"
+        },
+        "additional_information": {
+          "type": "string"
+        }
+      }
+    },
+    "payback_plan_type": {
+      "type": ["string", "null"]
+    },
+    "is_multi_amount_tier": {
+      "type": "boolean"
+    },
+    "from_amount": {
+      "type": ["number", "null"],
+      "maximum": 999999999999999,
+      "multipleOfPrecision": 0.01
+    },
+    "amount": {
+      "type": ["number", "null"],
+      "maximum": 999999999999999,
+      "multipleOfPrecision": 0.01
+    },
+    "ra_seq": {
+      "type": ["string", "null"]
+    },
+    "amount_tier_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "isDisplayRemoveBTN": {
+            "type": ["boolean", "null"]
+          },
+          "paper_header": {
+            "type": "string"
+          },
+          "from_amount": {
+            "type": "number",
+            "maximum": 999999999999999,
+            "multipleOfPrecision": 0.01
+          },
+          "amount": {
+            "type": "number",
+            "maximum": 999999999999999,
+            "multipleOfPrecision": 0.01
+          },
+          "id": {
+            "type": ["string", "null"]
+          },
+          "interest_rate_list": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": ["string", "null"]
+                },
+                "ra_seq": {
+                  "type": ["string", "null"]
+                },
+                "period_from": {
+                  "type": ["string", "null"]
+                },
+                "period_to": {
+                  "type": ["string", "null"]
+                },
+                "period_unit": {
+                  "type": ["string", "null"]
+                },
+                "period_unit_desc": {
+                  "type": ["string", "null"]
+                },
+                "tier_type": {
+                  "type": ["string", "null"]
+                },
+                "base_factor_standard": {
+                  "type": ["string", "null"]
+                },
+                "base_factor_interest_rates": {
+                  "type": ["number", "null"],
+                  "maximum": 999,
+                  "multipleOfPrecision": 0.01
+                },
+                "diff_code": {
+                  "type": ["string", "null"]
+                },
+                "diff_value": {
+                  "type": ["number", "null"],
+                  "maximum": 999,
+                  "multipleOfPrecision": 0.01
+                },
+                "diff_code2": {
+                  "type": ["string", "null"]
+                },
+                "diff_value2": {
+                  "type": ["number", "null"],
+                  "maximum": 999,
+                  "multipleOfPrecision": 0.01
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "interest_rate_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": ["string", "null"]
+          },
+          "ra_seq": {
+            "type": ["string", "null"]
+          },
+          "period_from": {
+            "type": ["string", "null"]
+          },
+          "period_to": {
+            "type": ["string", "null"]
+          },
+          "period_unit": {
+            "type": ["string", "null"]
+          },
+          "period_unit_desc": {
+            "type": ["string", "null"]
+          },
+          "tier_type": {
+            "type": ["string", "null"]
+          },
+          "base_factor_standard": {
+            "type": ["string", "null"]
+          },
+          "base_factor_interest_rates": {
+            "type": ["number", "null"],
+            "maximum": 999,
+            "multipleOfPrecision": 0.01
+          },
+          "diff_code": {
+            "type": ["string", "null"]
+          },
+          "diff_value": {
+            "type": ["number", "null"],
+            "maximum": 999,
+            "multipleOfPrecision": 0.01
+          },
+          "diff_code2": {
+            "type": ["string", "null"]
+          },
+          "diff_value2": {
+            "type": ["number", "null"],
+            "maximum": 999,
+            "multipleOfPrecision": 0.01
+          }
+        }
+      }
+    },
+    "afterward_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": ["string", "null"]
+          },
+          "ra_seq": {
+            "type": ["string", "null"]
+          },
+          "period_from": {
+            "type": ["string", "null"]
+          },
+          "period_to": {
+            "type": ["string", "null"]
+          },
+          "period_unit": {
+            "type": ["string", "null"]
+          },
+          "period_unit_desc": {
+            "type": ["string", "null"]
+          },
+          "tier_type": {
+            "type": ["string", "null"]
+          },
+          "base_factor_standard": {
+            "type": ["string", "null"]
+          },
+          "base_factor_interest_rates": {
+            "type": ["number", "null"],
+            "maximum": 999,
+            "multipleOfPrecision": 0.01
+          },
+          "diff_code": {
+            "type": ["string", "null"]
+          },
+          "diff_value": {
+            "type": ["number", "null"],
+            "maximum": 999,
+            "multipleOfPrecision": 0.01
+          },
+          "diff_code2": {
+            "type": ["string", "null"]
+          },
+          "diff_value2": {
+            "type": ["number", "null"],
+            "maximum": 999,
+            "multipleOfPrecision": 0.01
+          }
+        }
+      }
+    },
+    "isPlanValid": {
+      "type": "boolean"
+    },
+    "repayList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "bs_seq": {
+            "type": [
+              "integer",
+              "string"
+            ]
+          },
+          "payment_method": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "duration_from": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "duration_to": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "buffer_rate": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "calculate_amount": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "adjust_amount": {
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "amount": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "sublimit_type_desc": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "repayType": {
+      "type": "object",
+      "properties": {
+        "payment_method": {
+          "type": "string",
+          "enum": [
+            "INT/INT.3-PRI (LOAN, TDR)",
+            "Test Data 2"
+          ]
+        },
+        "timeType": {
+          "type": "string",
+          "enum": [
+            "วัน",
+            "เดือน",
+            "ปี"
+          ]
+        },
+        "duration_from": {
+          "type": "integer"
+        },
+        "duration_to": {
+          "type": "integer"
+        },
+        "buffer_rate": {
+          "type": "number",
+          "maximum": 999,
+          "multipleOfPrecision": 0.01
+        },
+        "calculate_amount": {
+          "type": "integer"
+        },
+        "adjust_amount": {
+          "type": "number"
+        },
+        "amount": {
+          "type": "integer"
+        },
+        "bs_seq": {
+          "type": "integer"
+        }
+      }
+    },
+    "appl_account_id": {
+      "type": "string"
+    },
+    "appl_account_sublimit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "sublimit_seq": {
+            "type": "string"
+          },
+          "appl_account_id": {
+            "type": "string"
+          },
+          "sublimit_type": {
+            "type": ["string", "null"]
+          },
+          "credit_limit": {
+            "type": ["string", "null"]
+          },
+          "tenor_year": {
+            "type": ["string", "null"]
+          },
+          "tenor_month": {
+            "type": ["string", "null"]
+          },
+          "base_factor_standard": {
+            "type": ["string", "null"]
+          },
+          "diff_code": {
+            "type": ["string", "null"]
+          },
+          "diff_value": {
+            "type": ["string", "null"]
+          },
+          "account_interest_monthly_amount": {
+            "type": ["number", "null"]
+          },
+          "dscr_spread": {
+            "type": ["number", "null"]
+          },
+          "dscr_installment_amount_calculated": {
+            "type": ["number", "null"]
+          },
+          "dscr_installment_amount_entry": {
+            "type": ["number", "null"]
+          }
+        }
+      }
+    },
+    "appl_account_sublimit_new": {
+      "type": "object",
+      "required": [
+        "sublimit_type",
+        "credit_limit",
+        "tenor_year",
+        "tenor_month",
+        "base_factor_standard",
+        "buffer_rate",
+        "installment_amount_entry",
+        "dscr_installment_amount_entry"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "sublimit_seq": {
+          "type": "integer"
+        },
+        "appl_account_id": {
+          "type": "string"
+        },
+        "sublimit_type": {
+          "type": "string"
+        },
+        "credit_limit": {
+          "type": "number"
+        },
+        "tenor_year": {
+          "type": "integer"
+        },
+        "tenor_month": {
+          "type": "integer"
+        },
+        "base_factor_standard": {
+          "type": "string"
+        },
+        "diff_code": {
+          "type": ["string", "null"],
+          "enum": ["+", "-"]
+        },
+        "diff_value": {
+          "type": ["number", "null"]
+        },
+        "buffer_rate": {
+          "type": "number",
+          "maximum": 999,
+          "multipleOfPrecision": 0.01
+        },
+        "dscr_spread": {
+          "type": ["number", "null"]
+        },
+        "installment_amount_entry": {
+          "type": "number"
+        },
+        "dscr_installment_amount_calculated": {
+          "type": ["number", "null"]
+        },
+        "dscr_installment_amount_entry": {
+          "type": "number"
+        }
+      },
+      "account_interest_monthly_amount": {
+        "type": ["number", "null"]
+      },
+      "installment_type": {
+        "type": ["string", "null"]
+      }
+    },
+    "saveFlag": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "deadline_at",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 100
+    },
+    {
+      "title": "เลขที่สัญญา",
+      "field": "application.accounts",
+      "name": "account_number",
+      "converter": "account_number_converter",
+      "sortable": false,
+      "minWidth": 120
+    },
+    {      
+      "title": "ชื่อลูกค้า",
+      "field": "application.borrowers",
+      "name": "customer_name",
+      "converter": "customer_name_multi_converter",
+      "sortable": false,
+      "minWidth": 120
+    },
+    {
+      "title": "Product Type",
+      "field": "application.accounts",
+      "name": "product_type",
+      "converter": "product_type_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "Sub Product Type",
+      "field": "application.accounts",
+      "name": "subproduct_type",
+      "converter": "sub_product_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "เลขทะเบียนรถ",
+      "field": "application.accounts",
+      "name": "license_plate",
+      "converter": "license_plate_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "จังหวัด",
+      "field": "application.accounts",
+      "name": "province",
+      "converter": "province_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "Unit",
+      "field": "application.accounts",
+      "name": "unit",
+      "converter": "unit_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "วันที่อนุมัติ",
+      "field": "application.approved_date_time",
+      "name": "approved_date_time",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "วันที่ตั้งหนี้",
+      "field": "application.accounts",
+      "name": "settlement_date",
+      "converter": "account_settlement_date_converter",
+      "minWidth": 150
+    },
+    {
+      "title": " ",
+      "name": "get_tast",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask_Original_Doc",
+            "permission": "p_OriginalDoc",
+            "payload": {
+              "taskId": "{data.id}",
+              "taskStatusId":"Todo",
+              "routeUrl": "/originaldoc/home/{data.id}/details"
+            }
+          }
+        }
+      ],
+      "width": 180
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

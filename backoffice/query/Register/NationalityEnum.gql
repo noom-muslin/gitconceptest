@@ -1,0 +1,6 @@
+query GetNationality {
+  result: ngl_enum_nationality(order_by: {order_num: asc}, where: {is_active: {_eq: true}}) {
+    label: description
+    value: code
+  }
+}

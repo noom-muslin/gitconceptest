@@ -1,0 +1,392 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number"
+        }
+      }
+    },
+    "enum_fee_type": {
+      "type": "array"
+    },
+    "enum_additional_service_group": {
+      "type": "array"
+    },
+    "enum_additional_service": {
+      "type": "array"
+    },
+    "insured_name_list": {
+      "type": "array"
+    },
+    "appl_account_sublimit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "sublimit_seq": {
+            "type": "string"
+          },
+          "sublimit_type_desc": {
+            "type": "string"
+          },
+          "appl_account_id": {
+            "type": "string"
+          },
+          "sublimit_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "credit_limit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tenor_year": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tenor_month": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "base_factor_standard": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "base_factor_standard_desc": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "diff_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "diff_value": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "account_interest_monthly_amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "dscr_spread": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "dscr_installment_amount_calculated": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "dscr_installment_amount_entry": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "appl_account_fee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_type_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_percent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "calculated_fee": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_condition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "collected_fee": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "appl_account_fee_edit": {
+      "type": "object",
+      "required": [
+        "collected_fee"
+      ],
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_type_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_type_desc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_percent": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "calculated_fee": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fee_condition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "collected_fee": {
+          "type": "number"
+        }
+      }
+    },
+    "appl_account_additionalservice": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "addition_service_group",
+          "addition_service_type",
+          "addition_service_group_desc",
+          "addition_service_type_desc",
+          "sum_insured_amount",
+          "insurance_period",
+          "insured_name",
+          "premium_amount"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "seq": {
+            "type": "string"
+          },
+          "application_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "addition_service_group": {
+            "type": "string"
+          },
+          "addition_service_type": {
+            "type": "string"
+          },
+          "addition_service_group_desc": {
+            "type": "string"
+          },
+          "addition_service_type_desc": {
+            "type": "string"
+          },
+          "sum_insured_amount": {
+            "type": "string"
+          },
+          "insurance_period": {
+            "type": "string"
+          },
+          "insured_name": {
+            "type": "string"
+          },
+          "premium_amount": {
+            "type": "string"
+          },
+          "sale_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "is_credit_line_included": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "credit_line_included": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "appl_account_additionalservice_new": {
+      "type": "object",
+      "required": [
+        "addition_service_group",
+        "addition_service_type",
+        "sum_insured_amount",
+        "insurance_period",
+        "insured_name",
+        "premium_amount",
+        "sale_id"
+      ],
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seq": {
+          "type": "integer"
+        },
+        "application_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addition_service_group": {
+          "type": "string"
+        },
+        "addition_service_type": {
+          "type": "string"
+        },
+        "addition_service_group_desc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addition_service_type_desc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sum_insured_amount": {
+          "type": "number"
+        },
+        "insurance_period": {
+          "type": "integer"
+        },
+        "insured_name": {
+          "type": "string"
+        },
+        "premium_amount": {
+          "type": "number"
+        },
+        "sale_id": {
+          "type": "string"
+        },
+        "sale_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_credit_line_included": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "credit_line_included": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "staff_profile": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "staff_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "staff_surname": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

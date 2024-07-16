@@ -1,0 +1,28 @@
+{
+  "type": "VerticalLayout",
+  "elements": [
+    {
+      "type": "Typography",
+      "label": "Welcome to NLEADS (Develop)",
+      "options": {
+        "variant": "h1",
+        "sx": {
+          "paddingTop": "50px",
+          "textAlign": "center"
+        }
+      }
+    },
+    {
+      "type": "Typography",
+      "label": "A role should be selected to proceed.",
+      "options": {
+        "variant": "h4",
+        "sx": {
+          "paddingBottom": "50px",
+          "textAlign": "center",
+          "fontSize": "1.1em"
+        }
+      }
+    }
+  ]
+}

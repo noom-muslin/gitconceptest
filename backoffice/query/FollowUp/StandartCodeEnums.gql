@@ -1,0 +1,8 @@
+query GetStandartCodes {
+  result: ngl_enum_standard_code {
+    id
+    code
+    standard_list_code
+    display_value
+  }
+}

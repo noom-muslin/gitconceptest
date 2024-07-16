@@ -1,0 +1,128 @@
+{
+    "hideColumnFilter": true,
+    "defaultPageSize": 20,
+    "columns": [
+      {
+        "title": "Total SLA",
+        "field": "create_date_time",
+        "name": "total_sla",
+        "converter": "sla_converter",
+        "minWidth": 80
+      },
+      {
+        "title": "WB SLA",
+        "field": "deadline_at",
+        "name": "wb_sla",
+        "converter": "sla_converter",
+        "minWidth": 80
+      },
+      {
+        "title": "Application No",
+        "field": "application_id",
+        "name": "application_no",
+        "minWidth": 100
+      },
+      {
+        "title": "ชื่อลูกค้า",
+        "field" : "appl_party.full_name",
+        "name": "customer_name",
+        "minWidth": 100
+      },
+      {
+        "title": "Application Group",
+        "field": "application.application_group.code",
+        "name": "application_group",
+        "width": 120
+      },
+      {
+        "title": "Product Type",
+        "field": "application.primary_account.account.product_type.description",
+        "name": "product_type",
+        "minWidth": 150
+      },
+      {
+        "title": "Sub Product Type",
+        "field": "application.primary_account.account.sub_product.description",
+        "name": "sub_product_type",
+        "minWidth": 120
+      },
+      {
+        "title": "FOS Status",
+        "converter":"filterFOSStatus",
+        "field": ["data","appl_party"],
+        "name": "fosStatus",
+        "minWidth": 150
+      },
+      {
+        "title": "FOS Interface Status",
+        "converter":"filterFOSInterfaceStatus",
+        "field": ["data","appl_party"],
+        "name": "fosInterfaceStatus",
+        "minWidth": 150
+      },
+      {
+        "title": "วันเวลาที่สร้างเอกสาร",
+        "field":"document_in_datetime",
+        "name": "doc_in_datetime",
+        "converter": "date_column_converter",
+        "minWidth": 120
+      },
+      {
+        "title": "วันเวลาที่เอกสารถึง WB",
+        "field":"application.application_date_time_in",
+        "name": "doc_in_datetime",
+        "converter": "date_column_converter",
+        "minWidth": 120
+      },
+      {
+        "title": " ",
+        "name": "fos_force_case",
+        "sortable": false,
+        "minWidth": 120,
+        "locked": true,
+        "resizable": false,
+        "rowActions": [
+          {
+            "label": "FOS Force Case",
+            "triggerType": "link",
+            "options": {
+              "operationType": "open",
+              "permission": "{zboRouteObject.permission}",
+              "route": "{zboRouteObject.route}/{data.id}/details/forcecase"
+            },
+            "validationSchema": false
+          }
+        ]
+      },
+      {
+        "title": " ",
+        "name": "get_task",
+        "sortable": false,
+        "locked": true,
+        "resizable": false,
+        "rowActions": [
+          {
+            "label": "Get Task",
+            "triggerType": "link",
+            "options": {
+              "operationType": "action",
+              "conditionTypeId": "WorkBasket_GetTask",
+              "permission": "p_FOS",
+              "payload": {
+                "taskId": "{data.id}",
+                "routeUrl": "{zboRouteObject.route}/{data.id}/details"
+              },
+              "validationSchema": false
+            }
+          }
+        ],
+        "width": 140
+      }
+    ],
+    "initialSort": [
+      {
+        "field": "create_date_time",
+        "dir": "desc"
+      }
+    ]
+}

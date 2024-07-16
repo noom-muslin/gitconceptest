@@ -1,0 +1,401 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "{zboRouteObject.label}",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_MainTab"
+      }
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_Warehouse_SubTab"
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "Group",
+          "options": {
+            "sx": {
+              "height": "0px"
+            }
+          },
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/status/properties/code",
+              "schema": {
+                "const": 2000
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Notification",
+              "scope": "#/properties/status/properties/message",
+              "label": "",
+              "options": {
+                "autoHideDuration": 5000,
+                "persist": false,
+                "variant": "success",
+                "hideCloseButton": true,
+                "anchorOrigin": {
+                  "horizontal": "center",
+                  "vertical": "top"
+                },
+                "style": {
+                  "color": "#166534",
+                  "display": "flex",
+                  "justifyContent": "center",
+                  "backgroundColor": "#F0FDF4",
+                  "min-width": "auto",
+                  "width": "189px",
+                  "height": "44px",
+                  "margin-left": "63.5px"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "Typography",
+          "label": "Year Destroy",
+          "options": {
+            "variant": "h6",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "variant": "section"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "Set ข้อมูลสำหรับปี เดือน ที่ทำลายเอกสาร"
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "padding": "16px 16px 0 16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": "true",
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "For Approved Application",
+                              "options": {
+                                "variant": "label"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "StackLayout",
+                              "options": {
+                                "direction": "row"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Year Destroy - ปี",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "*",
+                                  "options": {
+                                    "variant": "label",
+                                    "sx": {
+                                      "color": "error.main"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "NumberField",
+                              "label": false,
+                              "scope": "#/properties/destroyApproveYear",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "allowNegative": false
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "เดือน",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "NumberField",
+                              "label": false,
+                              "scope": "#/properties/destroyApproveMonth",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "allowNegative": false
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "For Rejected / Cancelled Application",
+                              "options": {
+                                "variant": "label"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "Year Destroy - ปี",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "NumberField",
+                              "label": false,
+                              "scope": "#/properties/destroyCancelYear",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "allowNegative": false
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "เดือน",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "NumberField",
+                              "label": false,
+                              "scope": "#/properties/destroyCancelMonth",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "allowNegative": false
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "No of Application per box: ทรัพย์ศรีไทย",
+                              "options": {
+                                "variant": "label"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "NumberField",
+                              "label": false,
+                              "scope": "#/properties/applicationPerBox",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "allowNegative": false
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": []
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "No of Contract per box: ห้องมั่นคง",
+                              "options": {
+                                "variant": "label"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": "4"
+                          },
+                          "elements": [
+                            {
+                              "type": "NumberField",
+                              "label": false,
+                              "scope": "#/properties/contractPerBox",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "allowNegative": false
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": true,
+                    "xs": "12",
+                    "sx": {
+                      "padding": "16px 16px 16px 16px"
+                    },
+                    "direction": "row",
+                    "justifyContent": "flex-end",
+                    "alignItems": "center"
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "Save",
+                      "options": {
+                        "className": "primaryButton",
+                        "chain": [
+                          {
+                            "operationType": "modal",
+                            "dialogName": "m_OriginalDoc_Warehouse_YearDestroy_Submit",
+                            "subtype": "show"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

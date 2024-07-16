@@ -1,0 +1,61 @@
+subscription GetCSENTWorkBasket(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _is_null: true }
+      task_type_id: { _eq: "CSENT" }
+      status_id: { _eq: "Todo" }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    sla_wb {
+      current_duration_minutes
+    }
+    sla_tty {
+      current_duration_minutes
+    }
+    document_in_datetime # Doc In Date Form
+    application {
+      application_id # Application No
+      create_date_time # Registration Date
+      primary_borrower {
+        borrower {
+          party_type_id
+          party {
+            name
+            last_name
+            full_name
+            customer_type_code
+          }
+        }
+      }
+      primary_account {
+        account {
+          product_type {
+            code #
+          }
+        }
+      }
+      application_group {
+        code #
+      }
+      application_type {
+        code #
+      }
+      application_class {
+        code #
+      }
+      application_channel {
+        code #
+      }
+    }
+  }
+}

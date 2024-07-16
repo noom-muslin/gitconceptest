@@ -1,0 +1,9 @@
+query GetEmploymentStatusCode {
+  result:  ngl_enum_standard_code (
+    order_by: {priority: asc}, 
+    where: {standard_list_code: {_eq: "N021"}, status:{_eq: true}}
+  ) {
+    value: code
+    label: display_value
+  }
+}

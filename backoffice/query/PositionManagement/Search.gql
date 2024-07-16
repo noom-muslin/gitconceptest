@@ -1,0 +1,24 @@
+subscription GetPositionManagementList(
+    $where: [ngl_enum_job_position_bool_exp]
+    $order_by: [ngl_enum_job_position_order_by!]
+    $limit: Int
+    $offset: Int
+  ) {
+  result: ngl_enum_job_position(
+      where: { _and: $where }
+      order_by: $order_by
+      limit: $limit
+      offset: $offset
+    ) {
+      id
+      is_active
+      occupation_group_code
+      order_num
+      update_date_time
+      updated_by
+      description
+      created_by
+      create_date_time
+      code
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconError"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ErrorOutline"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ไม่สามารถส่งข้อมูลได้",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "กรุณาเลือกสินเชื่อที่ต้องการส่งข้อมูล"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "OK",
+          "options": {
+            "className": "primaryButton",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        }
+      ]
+    }
+  ]
+}

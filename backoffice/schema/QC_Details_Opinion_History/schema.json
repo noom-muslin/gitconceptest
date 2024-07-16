@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "showComment": {
+      "type": "boolean"
+    },
+    "dataComment": {
+      "type": "object",
+      "properties": {
+        "additionalOpinion": {
+          "type": "string"
+        },
+        "downPercent": {
+          "type": "number"
+        },
+        "informationDetail": {
+          "type": ["string", "number", "null"]
+        },
+        "isNameRegistrationBookMatched": {
+          "type": "string"
+        },
+        "isSellingPriceChanged": {
+          "type": "string"
+        },
+        "ltvPercent": {
+          "type": ["string", "number", "null"]
+        },
+        "nameMatchedReason": {
+          "type": "string"
+        },
+        "nameUnmatchedReason": {
+          "type": "string"
+        },
+        "performingBy": {
+          "type": "string"
+        },
+        "principal": {
+          "type": "number"
+        },
+        "qcComment": {
+          "type": "string"
+        },
+        "saveDateTime": {
+          "type": "string"
+        },
+        "sellingPrice": {
+          "type": "number"
+        },
+        "seq": {
+          "type": "number"
+        },
+        "upPricePercent": {
+          "type": ["string", "number", "null", "object"]
+        }
+      }
+    },
+    "qcOpinionData": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": "number"
+          },
+          "performingBy": {
+            "type": "string"
+          },
+          "saveDateTime": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

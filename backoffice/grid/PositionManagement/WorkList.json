@@ -1,0 +1,101 @@
+{
+  "hideColumnFilter": true,
+  "hideExportButton": true,
+  "selectionColumnLocked": false,
+  "dataItemKey": "id",
+  "columns": [
+    {
+      "title": "รหัสตำแหน่ง",
+      "field": "code",
+      "name": "code",
+      "minWidth": 300,
+      "height": 200
+    },
+    {
+      "title": "ชื่อตำแหน่ง",
+      "field": "description",
+      "name": "name",
+      "minWidth": 300,
+      "height": 200
+    },
+    {
+      "title": "แก้ไขโดย",
+      "field": "updated_by",
+      "name": "updated_by",
+      "minWidth": 300,
+      "height": 200
+    },
+    {
+      "title": "วันเวลาที่แก้ไข",
+      "field": "update_date_time",
+      "name": "update_date_time",
+      "converter": "date_column_converter",
+      "minWidth": 300,
+      "height": 200
+    },
+    {
+      "title": "สถานะ",
+      "field": "is_active",
+      "name": "status",
+      "width": 50,
+      "minWidth": 100,
+      "height": 200,
+      "content": [
+        {
+          "container": {
+            "type": "badge",
+            "field": "is_active",
+            "options": {
+              "alternateOptions": {
+                "selector": "isActiveCell",
+                "case": {
+                  "Active": {
+                    "variant": "statusSuccess"
+                  },
+                  "Inactive": {
+                    "variant": "statusError"
+                  }
+                }
+              }
+            }
+          },
+          "content": [
+            {
+              "field": "is_active",
+              "converter": "isActiveCell"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "type": "ActionButton",
+          "label": " ",
+          "options": {
+            "icon": "EditOutlined",
+            "variant": "secondary",
+            "size": "smallIcon",
+            "operationType": "open",
+            "route": "/position-management/{data.id}/edit",
+            "validationSchema": false
+          }
+        }
+      ],
+      "minWidth": 50
+    }
+  ],
+  "selection": {
+    "type": "object",
+    "properties": {
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  }
+}

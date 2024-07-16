@@ -1,0 +1,6 @@
+query GetCustomerGroup {
+  result: ngl_enum_standard_code(where: {standard_list_code: {_eq: "N039"}}) {
+    value: code
+    label: display_value
+  }
+}

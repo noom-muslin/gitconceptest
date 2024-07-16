@@ -1,0 +1,23 @@
+query GetRegisterDetails($taskId: uuid!) {
+  result:ngl_view_register_loan_collateral_detail(where: {id: {_eq: $taskId}}) {
+    id
+    application_account_id
+    seq
+    loan_objective_description
+    product_type_code
+    product_group_code
+    sub_product_type_code
+    master_account_flag
+    account_name
+    account_number
+    sub_loan_type_description
+    credit_line_type
+    balance_credit_line_amount
+    old_credit_line_amount
+    approved_amount
+    requested_amount
+    tenor_month
+    campaign_description
+    account_installment_monthly_amount
+  }
+}

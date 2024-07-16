@@ -1,0 +1,3738 @@
+{
+  "revision": "2.0",
+  "api": {
+    "url": "/api2/graphql",
+    "updateConfigurationUrl": "/api3/graphql"
+  },
+  "product": {
+    "title": "LEADS Next"
+  },
+  "i18n": {
+    "timezone": "asia/bangkok",
+    "defaultLanguage": "th",
+    "languages": [
+      {
+        "label": "English",
+        "value": "en"
+      },
+      {
+        "label": "Thai",
+        "value": "th"
+      }
+    ],
+    "formatters": {
+      "date": "{0:d}",
+      "date-time": "{0:d} {0:t}",
+      "time": "{0:T}",
+      "short-time": "{0:t}",
+      "custom-date-time": "{0:MMM. dd}"
+    },
+    "inputFormatters": {
+      "date": "YYYY-MM-DD",
+      "date-time": "YYYY-MM-DD hh:mm"
+    },
+    "messages": {}
+  },
+  "styling": {
+    "theme": "styling/theme",
+    "css": [":assets/styling.css"],
+    "fonts": [
+      {
+        "family": "Noto Sans Thai Looped",
+        "url": ":assets/fonts/NotoSansThaiLooped-Bold.ttf",
+        "options": {
+          "weight": "700"
+        }
+      },
+      {
+        "family": "Noto Sans Thai Looped",
+        "url": ":assets/fonts/NotoSansThaiLooped-SemiBold.ttf",
+        "options": {
+          "weight": "600"
+        }
+      },
+      {
+        "family": "Noto Sans Thai Looped",
+        "url": ":assets/fonts/NotoSansThaiLooped-Medium.ttf",
+        "options": {
+          "weight": "500"
+        }
+      },
+      {
+        "family": "Noto Sans Thai Looped",
+        "url": ":assets/fonts/NotoSansThaiLooped-Regular.ttf",
+        "options": {
+          "weight": "400"
+        }
+      }
+    ]
+  },
+  "routing": {
+    "p_Root": {
+      "route": "/",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "_root"
+        }
+      }
+    },
+    "bo_not_found": {
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "_sys_NotFound"
+        }
+      }
+    },
+    "m_Basic_Error": {
+      "widget": "jsonforms",
+      "schemas": "basic_Error",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_BasicError_TryAgain": {
+      "widget": "jsonforms",
+      "schemas": "basic_Error_TryAgain",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Details_Reject": {
+      "widget": "jsonforms",
+      "schemas": "Details_Reject",
+      "options": {
+        "showCloseButton": true,
+        "disableBackdropClick": true,
+        "titleText": "ยกเลิกการส่งงาน",
+        "maxWidth": "sm",
+        "fullWidth": true
+      }
+    },
+    "p_Task_Done": {
+      "route": "/:station/:taskId/done",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "basicTaskSuccess",
+          "dataContext": {
+            "conditionTypeId": "Task_Done",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "station": "{route.station}"
+            }
+          }
+        }
+      }
+    },
+    "p_Followups_Details": {
+      "route": "/:station/pending-followup/:applicationId",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Followups_Details",
+          "dataContext": {
+            "conditionTypeId": "Followups_Details_Open",
+            "payload": {
+              "applicationId": "{route.applicationId}",
+              "station": "{route.station}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURLByApplication",
+            "payload": {
+              "applicationId": "{route.applicationId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "m_Followups_Details_Internal_View_History": {
+      "widget": "jsonforms",
+      "schemas": "Followups_Details_Internal_View_History",
+      "options": {
+        "showCloseButton": true,
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Followups_Details_External_View_History": {
+      "widget": "jsonforms",
+      "schemas": "Followups_Details_External_View_History",
+      "options": {
+        "showCloseButton": true,
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "p_TempIndexing": {
+      "route": "/temp-indexing",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "TempIndexing",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "TempIndexing"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "TempIndexing"
+        }
+      }
+    },
+    "p_TempIndexing_Details": {
+      "route": "/temp-indexing/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "TempIndexing_Details",
+          "dataContext": {
+            "conditionTypeId": "TempIndexing_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      },
+      "task_type": "TempIndexing"
+    },
+    "m_TempIndexing_Details_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "TempIndexing_Details_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_Indexing": {
+      "route": "/indexing",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Indexing",
+      "permission": "p_Indexing",
+      "buckets": {
+        "content": {
+          "schemas": "Indexing"
+        },
+        "content/tabContent": {
+          "schemas": "Indexing_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "Indexing"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "Indexing"
+        }
+      }
+    },
+    "p_Indexing_PendingFollowUp": {
+      "route": "/indexing/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Indexing",
+      "permission": "p_Indexing",
+      "buckets": {
+        "content": {
+          "schemas": "Indexing_PendingFollowUp"
+        },
+        "content/tabContent": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "PendingFollowUp_GetInitData",
+            "payload": {
+              "stationName": "Indexing"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "Indexing"
+        }
+      }
+    },
+    "p_Indexing_Details": {
+      "route": "/indexing/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Indexing_Details",
+          "dataContext": {
+            "conditionTypeId": "Indexing_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "p_IndexingTC": {
+      "route": "/indexing-tc",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Indexing Time to Cash",
+      "permission": "p_IndexingTC",
+      "buckets": {
+        "content": {
+          "schemas": "IndexingTC"
+        },
+        "content/tabContent": {
+          "schemas": "Indexing_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "IndexingTC"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "IndexingTC"
+        }
+      }
+    },
+    "p_IndexingTC_PendingFollowUp": {
+      "route": "/indexing-tc/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Indexing Time to Cash",
+      "permission": "p_IndexingTC",
+      "buckets": {
+        "content": {
+          "schemas": "IndexingTC_PendingFollowUp"
+        },
+        "content/tabContent": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "PendingFollowUp_GetInitData",
+            "payload": {
+              "stationName": "IndexingTC"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "IndexingTC"
+        }
+      }
+    },
+    "p_IndexingTC_Details": {
+      "route": "/indexing-tc/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "IndexingTC_Details",
+          "dataContext": {
+            "conditionTypeId": "IndexingTC_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "task_type": "IndexingTC"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "m_IndexingTC_Details_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "IndexingTC_Details_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_IndexingTC_Details_DataNotEntered": {
+      "widget": "jsonforms",
+      "schemas": "IndexingTC_Details_DataNotEntered",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_IndexingTC_Details_NoIndexSelected": {
+      "widget": "jsonforms",
+      "schemas": "IndexingTC_Details_NoIndexSelected",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_IndexingTC_Details_NoApprovedSelected": {
+      "widget": "jsonforms",
+      "schemas": "IndexingTC_Details_NoApprovedSelected",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_IndexingTC_Details_NoSelectedAll": {
+      "widget": "jsonforms",
+      "schemas": "IndexingTC_Details_NoSelectedAll",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_IndexingTC_Details_EnterDate": {
+      "widget": "jsonforms",
+      "schemas": "IndexingTC_Details_EnterDate",
+      "options": {
+        "showCloseButton": true
+      }
+    },
+    "m_IndexingTC_Details_FollowUp": {
+      "widget": "jsonforms",
+      "schemas": "Indexing_Details_FollowUp",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "Follow Up",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "12px",
+          "right": "8px"
+        },
+        "maxWidth": "lg",
+        "fullWidth": true
+      }
+    },
+    "p_IndexingCC": {
+      "route": "/indexing-cc",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Indexing CC",
+      "permission": "p_IndexingCC",
+      "buckets": {
+        "content": {
+          "schemas": "IndexingCC"
+        },
+        "content/tabContent": {
+          "schemas": "Indexing_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "IndexingCC"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "IndexingCC"
+        }
+      }
+    },
+    "p_IndexingCC_PendingFollowUp": {
+      "route": "/indexing-cc/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Indexing CC",
+      "permission": "p_IndexingCC",
+      "buckets": {
+        "content": {
+          "schemas": "IndexingCC_PendingFollowUp"
+        },
+        "content/tabContent": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "PendingFollowUp_GetInitData",
+            "payload": {
+              "stationName": "IndexingCC"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "IndexingCC"
+        }
+      }
+    },
+    "p_IndexingCC_Details": {
+      "route": "/indexing-cc/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "IndexingCC_Details",
+          "dataContext": {
+            "conditionTypeId": "IndexingCC_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "p_CSENT": {
+      "route": "/csent",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CSENT",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CSENT",
+              "currentThaiDate": true
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "CSENT"
+        }
+      }
+    },
+    "p_CSENT_Details": {
+      "route": "/csent/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CSENT_Details",
+          "dataContext": {
+            "conditionTypeId": "CSENT_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "p_CSENT_Details_AddBorrover": {
+      "route": "/csent/:taskId/addborrover",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CSENT_Details_AddBorrover",
+          "dataContext": {
+            "conditionTypeId": "CSENT_AddBorrover_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        }
+      }
+    },
+    "p_MFOfficer": {
+      "route": "/mf-profile",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "permission": "p_MFOfficer",
+      "buckets": {
+        "content": {
+          "schemas": "MFProfile"
+        },
+        "content/MFProfile_Home": {
+          "schemas": "MFProfile_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "MFProfile"
+            }
+          }
+        },
+        "content/MFProfile_Create": {
+          "schemas": "MFProfile_Create",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "MFProfile"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "MFProfile"
+        }
+      }
+    },
+    "p_MFManager": {
+      "route": "/mf-profile",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "permission": "p_MFManager",
+      "buckets": {
+        "content": {
+          "schemas": "MFProfile"
+        },
+        "content/MFProfile_Home": {
+          "schemas": "MFProfile_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "MFProfile"
+            }
+          }
+        },
+        "content/MFProfile_Create": {
+          "schemas": "MFProfile_Create",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "MFProfile"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "MFProfile"
+        }
+      }
+    },
+    "p_MFDirectSale": {
+      "route": "/mf-profile",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "permission": "p_MFDirectSale",
+      "label": "MF Profile Search",
+      "buckets": {
+        "content": {
+          "schemas": "MFProfile_Search"
+        },
+        "content/MFProfile_Create": {
+          "schemas": "MFProfile_Create",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "MFProfile"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "MFProfile"
+        }
+      }
+    },
+    "p_MFProfile_Details": {
+      "route": "/mf-profile/:applicationId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "MF Profile Details",
+      "buckets": {
+        "content": {
+          "schemas": "MFProfile_Details",
+          "dataContext": {
+            "conditionTypeId": "MFProfile_Details_Open",
+            "payload": {
+              "applicationId": "{route.applicationId}"
+            }
+          }
+        }
+      }
+    },
+    "m_MFProfile_Details_CancelApplication": {
+      "widget": "jsonforms",
+      "schemas": "MFProfile_Details_CancelApplication",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_MFProfile_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "MFProfile_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_MFProfile_Details_FollowUp": {
+      "route": "/mf-profile/:applicationId/follow-up",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "MF Profile Details Follow Up",
+      "buckets": {
+        "content": {
+          "schemas": "MFProfile_Details_FollowUp",
+          "dataContext": {
+            "conditionTypeId": "MFProfile_Details_FollowUp_Open",
+            "applicationId": "{route.applicationId}"
+          }
+        }
+      }
+    },
+    "m_MFProfile_CreateApplication": {
+      "widget": "jsonforms",
+      "schemas": "MFProfile_CreateApplication",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "สร้างใบสมัคร"
+      }
+    },
+    "p_FraudCheck": {
+      "route": "/fraud-check",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "FraudCheck"
+        },
+        "content/FraudCheck_Home": {
+          "schemas": "FraudCheck_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "FraudCheck"
+            }
+          }
+        },
+        "content/FraudCheck_Search": {
+          "schemas": "FraudCheck_Search"
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "FraudCheck"
+        }
+      }
+    },
+    "p_FraudCheck_Details": {
+      "route": "/fraud-check/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "FraudCheck_Details",
+          "dataContext": {
+            "conditionTypeId": "FraudCheck_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        }
+      }
+    },
+    "p_NCB": {
+      "route": "/ncb",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "NCB",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "NCB"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "NCB"
+        }
+      }
+    },
+    "p_NCB_PendingFollowUp": {
+      "route": "/ncb/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "NCB_PendingFollowUp"
+        },
+        "content/FollowUp_Pending_Home": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "NCB",
+              "followup": true
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "NCB"
+        }
+      }
+    },
+    "p_NCB_Details": {
+      "route": "/ncb/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "NCB_Details",
+          "dataContext": {
+            "conditionTypeId": "NCB_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/CIDDocumentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        },
+        "content/APPDocumentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "app",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        },
+        "content/CSENTDocumentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cos",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "p_NCB_Details_Edit_Salesperson": {
+      "route": "/ncb/:taskId/:employeeId/edit",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "NCB_Details_Edit_Salesperson",
+          "dataContext": {
+            "conditionTypeId": "NCB_Details_EditSalesPerson",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "employeeId": "{route.employeeId}"
+            }
+          }
+        }
+      }
+    },
+    "m_NCB_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "NCB_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_NCB_Details_Error_AddSalesPerson": {
+      "widget": "jsonforms",
+      "schemas": "NCB_Details_Error_AddSalesPerson",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_NCB_Details_SaveToDraft": {
+      "widget": "jsonforms",
+      "schemas": "NCB_Details_SaveToDraft",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_NCB_Details_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "NCB_Details_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_NCB_Details_Add_SalesPerson": {
+      "widget": "jsonforms",
+      "schemas": "NCB_Details_Add_SalesPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่มพนักงานขาย",
+        "maxWidth": "sm",
+        "fullWidth": true
+      }
+    },
+    "m_NCB_Details_View_History": {
+      "widget": "jsonforms",
+      "schemas": "NCB_Details_View_History",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ประวัติการส่งตรวจ NCB",
+        "maxWidth": "lg",
+        "fullWidth": true
+      }
+    },
+    "m_BasicError_TaskAlreadyAssigned": {
+      "widget": "jsonforms",
+      "schemas": "basic_Error_TaskAlreadyAssigned",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_BackButtonNavigation_Modal": {
+      "widget": "jsonforms",
+      "schemas": "BackButtonNavigation_Modal",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_FollowUp": {
+      "route": ":station/app/:applicationId/send-to-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "FollowUp_SendToFollowUp",
+          "dataContext": {
+            "conditionTypeId": "FollowUp_Open",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "applicationId": "{route.applicationId}",
+              "station": "{route.station}"
+            }
+          }
+        }
+      }
+    },
+    "m_FollowUp_SendToFollowUp_ConfirmBack": {
+      "widget": "jsonforms",
+      "schemas": "FollowUp_SendToFollowUp_ConfirmBack",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_Register": {
+      "route": "/register",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register"
+        },
+        "content/tabContent": {
+          "schemas": "Register_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "Register"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "Register"
+        }
+      }
+    },
+    "p_Register_PendingFollowUp": {
+      "route": "/register/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_PendingFollowUp"
+        },
+        "content/tabContent": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "PendingFollowUp_GetInitData",
+            "payload": {
+              "stationName": "Register"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "Register"
+        }
+      }
+    },
+    "p_Register_Search": {
+      "route": "/register/search",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Search"
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "Register"
+        }
+      }
+    },
+    "p_Register_Details": {
+      "route": "/register/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Details",
+          "dataContext": {
+            "conditionTypeId": "Register_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        }
+      }
+    },
+    "m_Register_Loan_Collateral_Details_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "Register_Loan_Collateral_Details_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Register_Loan_Collateral_Details_Loan_Delete": {
+      "widget": "jsonforms",
+      "schemas": "Register_Loan_Collateral_Details_Loan_Delete",
+      "options": {
+        "showCloseButton": false,
+        "maxWidth": "lg"
+      }
+    },
+    "p_Register_Details_Mortgage": {
+      "route": "/register/:taskId/details/:accountId/mortgage",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Loan_Collateral_Edit_Detail_Mortgage",
+          "dataContext": {
+            "conditionTypeId": "Register_Details_Loan",
+            "payload": {
+              "id": "{route.accountId}",
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Register_Loan_Collateral_Details": {
+          "schemas": "Register_Loan_Collateral_Details",
+          "dataContext": {
+            "conditionTypeId": "Register_Loan_Collateral_Details",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "staffId": "{user.user}",
+              "taskStatus": "Register"
+            }
+          }
+        }
+      }
+    },
+    "p_Register_Details_add_sub_limit": {
+      "route": "/register/limit/:taskId/details/addsublimit/:task",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Details_Add_Sub_limit",
+          "dataContext": {
+            "conditionTypeId": "Loan_Collateral_Edit_Sublimit_inquiry",
+            "payload": {
+              "id": "{route.taskId}",
+              "task": "{route.task}"
+            }
+          }
+        }
+      }
+    },
+    "m_Register_Details_Add_Loan": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Loan",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่ม/แก้ไขสินเชื่อ",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Add_Sub_limit_Show_Table": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Sub_limit_Show_Table",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ตารางผ่อนชำระ",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Search_Old_Loan": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Search_Old_Loan",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ดึงข้อมูลสินเชื่อเดิม",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Add_Sub_limit_Add_Plan": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Sub_limit_Add_Plan",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่ม/แก้ไขแผนการชำระคืน",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Add_SalesPerson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_SalesPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่มพนักงานขาย",
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_FollowUp_Submit_Add_SalesPerson": {
+      "widget": "jsonforms",
+      "schemas": "FollowUp_Submit_Add_SalesPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ข้อมูลพนักงานขาย",
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Add_RecommendedPerson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_RecommendedPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ข้อมูลผู้แนะนำจากธนาคาร",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "12px",
+          "right": "12px"
+        },
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Edit_Borrower_Order": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Edit_Borrower_Order",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "แก้ไขลำดับผู้กู้",
+        "_titleText": "Edit the borrower order",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "12px",
+          "right": "12px"
+        },
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Edit_RecommendedPerson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Edit_RecommendedPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ข้อมูลผู้แนะนำจากธนาคาร",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "12px",
+          "right": "12px"
+        },
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Edit_Salesperson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Edit_Salesperson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ข้อมูลพนักงานขาย",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "width": "800px",
+        "maxWidth": "md"
+      }
+    },
+    "m_Register_Details_Delete_Salesperson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Delete_SalesPerson",
+      "options": {
+        "showCloseButton": false,
+        "width": "500px",
+        "maxWidth": "sm",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Delete_RecommendedPerson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Delete_RecommendedPerson",
+      "options": {
+        "showCloseButton": false,
+        "width": "500px",
+        "maxWidth": "sm",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Add_ExternalRecommendedPerson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_ExternalRecommendedPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ข้อมูลผู้แนะนำจากภายนอก",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "12px",
+          "right": "12px"
+        },
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Edit_ExternalRecommendedPerson": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Edit_ExternalRecommendedPerson",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ข้อมูลผู้แนะนำจากภายนอก",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "12px",
+          "right": "12px"
+        },
+        "width": "800px",
+        "maxWidth": "md",
+        "fullWidth": true
+      }
+    },
+    "m_Register_Details_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Register_Details_Add_Sub_limit_Delete_Plan": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Sub_limit_Delete_Plan",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Register_Details_Add_Sub_limit_Delete": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Sub_limit_Delete",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Register_Details_Add_Sub_limit_Delete_Additional_Services": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Sub_limit_Delete_Additional_Services",
+      "options": {
+        "showCloseButton": false,
+        "maxWidth": "lg"
+      }
+    },
+    "p_Register_Details_Add_Borrower": {
+      "route": "/register/app/:applicationNumber/add-borrower",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Details_Add_Borrower",
+          "dataContext": {
+            "conditionTypeId": "Register_Details_Add_Borrower",
+            "payload": {
+              "applicationNumber": "{route.applicationNumber}"
+            }
+          }
+        }
+      }
+    },
+    "m_Register_Details_Add_Borrower_Addresses_Add": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Borrower_Addresses_Add",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่มที่อยู่",
+        "maxWidth": "sm",
+        "fullWidth": true
+      }
+    },
+    "p_Register_Details_Edit_Borrower": {
+      "route": "/register/app/:applicationNumber/edit-borrower/:borrowerId",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Details_Add_Borrower",
+          "dataContext": {
+            "conditionTypeId": "Register_Details_Add_Borrower",
+            "payload": {
+              "applicationNumber": "{route.applicationNumber}",
+              "borrowerId": "{route.borrowerId}"
+            }
+          }
+        }
+      }
+    },
+    "m_Register_Details_AddBorrowerConfirm": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_AddBorrowerConfirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_CheckList": {
+      "route": "/check-list",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CheckList",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CheckList"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "CheckList"
+        }
+      }
+    },
+    "p_CheckList_Details": {
+      "route": "/check-list/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CheckList_Details",
+          "dataContext": {
+            "conditionTypeId": "CheckList_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "m_CheckList_Details_Delete_Product": {
+      "widget": "jsonforms",
+      "schemas": "CheckList_Details_Delete_Product",
+      "options": {
+        "showCloseButton": false,
+        "width": "500px",
+        "maxWidth": "sm",
+        "fullWidth": true
+      }
+    },
+    "p_CollateralAppraisalManager": {
+      "route": "/collateral-appraisal",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CollateralAppraisal",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CollateralAppraisal"
+            }
+          }
+        },
+        "content/CollateralAppraisal_Auto": {
+          "schemas": "CollateralAppraisal_Auto",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CollateralAppraisal"
+            }
+          }
+        },
+        "content/CollateralAppraisal_Mortgage": {
+          "schemas": "CollateralAppraisal_Mortgage",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CollateralAppraisal"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "CollateralAppraisal"
+        }
+      }
+    },
+    "p_CollateralAppraisal_Details": {
+      "route": "/collateral-appraisal/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "CollateralAppraisal_Details",
+          "dataContext": {
+            "conditionTypeId": "CollateralAppraisal_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        }
+      }
+    },
+    "m_CollateralAppraisal_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "CollateralAppraisal_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_InputFOS_Task_Done": {
+      "route": "/inputFOS/:taskId/done",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "InputFOSTaskSuccess",
+          "dataContext": {
+            "conditionTypeId": "Task_Done",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "station": "inputFOS"
+            }
+          }
+        }
+      }
+    },
+    "p_InputFOS": {
+      "route": "/inputFOS",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Input Address for FOS",
+      "permission": "p_InputFOS",
+      "buckets": {
+        "content": {
+          "schemas": "InputFOS",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "InputFOS"
+            }
+          }
+        }
+      }
+    },
+    "p_InputFOS_Details": {
+      "route": "/inputFOS/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "InputFOS_Details",
+          "dataContext": {
+            "conditionTypeId": "Input_FOS_Detail_Open",
+            "payload": {
+              "userId": "{user.login}",
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "app",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "p_InputFOS_Success": {
+      "route": "/inputFOS/:taskId/success",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "basicTaskSuccess",
+          "dataContext": {
+            "processId": "{route.taskId}",
+            "eventName": "Success"
+          }
+        }
+      }
+    },
+    "m_InputFOS_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "InputFOS_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_InputFOS_Details_Save_Draft": {
+      "widget": "jsonforms",
+      "schemas": "InputFOS_Details_Save_Draft",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_InputFOS_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "InputFOS_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Position_Upload": {
+      "widget": "jsonforms",
+      "schemas": "Position_Upload",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Position_Delete": {
+      "widget": "jsonforms",
+      "schemas": "Position_Delete",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_GroupsAndPositions_Delete": {
+      "widget": "jsonforms",
+      "schemas": "GroupsAndPositions_Delete",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Position_Export": {
+      "widget": "jsonforms",
+      "schemas": "Position_Export",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "ดาวน์โหลดผลการค้นหา"
+      }
+    },
+    "inputFOS_Details_Company_Address_Information": {
+      "route": "/bp/:employeeId",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "inputFOS_Details_Company_Address_Information",
+          "dataContext": {
+            "conditionTypeId": "bp_par_1",
+            "payload": {
+              "userId": "{route.employeeId}"
+            }
+          }
+        }
+      }
+    },
+    "p_SalesBuddy": {
+      "route": "/sales-buddy",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "permission": "SalesBuddy",
+      "buckets": {
+        "content": {
+          "schemas": "SalesBuddy",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "SalesBuddy"
+            }
+          }
+        }
+      }
+    },
+    "p_SalesBuddy_Details": {
+      "route": "/sales-buddy/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "permission": "SalesBuddy",
+      "buckets": {
+        "content": {
+          "schemas": "Sales_Buddy_Details",
+          "dataContext": {
+            "conditionTypeId": "Salesbuddy_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "app",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "m_SalesBuddy_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "Sales_Buddy_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Register_Details_Add_AutoLifeInsurance": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_AutoLifeInsurance",
+      "options": {
+        "showCloseButton": true,
+        "maxWidth": "md",
+        "fullWidth": true,
+        "disableEscapeKeyDown": true,
+        "titleText": "เพิ่ม/แก้ไขประกันชีวิต"
+      }
+    },
+    "p_QCUser": {
+      "route": "/qc-user",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "QC User",
+      "permission": "p_QCUser",
+      "buckets": {
+        "content": {
+          "schemas": "QC"
+        },
+        "taskType": "QCUser",
+        "content/QC_Home": {
+          "schemas": "QC_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "QCUser"
+            }
+          }
+        },
+        "content/QC_Follow_Up": {
+          "schemas": "QC_Follow_Up"
+        },
+        "content/QC_Search": {
+          "schemas": "QC_Search"
+        }
+      }
+    },
+    "p_QCTM": {
+      "route": "/qc-tm",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "QCTM",
+      "permission": "p_QCTM",
+      "buckets": {
+        "content": {
+          "schemas": "QC"
+        },
+        "taskType": "QCTM",
+        "content/QC_Home": {
+          "schemas": "QC_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "QCTM"
+            }
+          }
+        },
+        "content/QC_Follow_Up": {
+          "schemas": "QC_Follow_Up"
+        },
+        "content/QC_Search": {
+          "schemas": "QC_Search"
+        }
+      }
+    },
+    "p_QCAM": {
+      "route": "/qc-am",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "QCAM",
+      "permission": "p_QCAM",
+      "buckets": {
+        "content": {
+          "schemas": "QC"
+        },
+        "taskType": "QCAM",
+        "content/QC_Home": {
+          "schemas": "QC_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "QCAM"
+            }
+          }
+        },
+        "content/QC_Follow_Up": {
+          "schemas": "QC_Follow_Up"
+        },
+        "content/QC_Search": {
+          "schemas": "QC_Search"
+        }
+      }
+    },
+    "p_QCHS": {
+      "route": "/qc-hs",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "QCHS",
+      "permission": "p_QCHS",
+      "buckets": {
+        "content": {
+          "schemas": "QC"
+        },
+        "taskType": "QCHS",
+        "content/QC_Home": {
+          "schemas": "QC_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "QCHS"
+            }
+          }
+        },
+        "content/QC_Follow_Up": {
+          "schemas": "QC_Follow_Up"
+        },
+        "content/QC_Search": {
+          "schemas": "QC_Search"
+        }
+      }
+    },
+    "p_QCError": {
+      "widget": "jsonforms",
+      "schemas": "QC_Error",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_Register_Loan_Details": {
+      "route": "/register/limit/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Register_Loan_Details",
+          "dataContext": {
+            "conditionTypeId": "Loan_Collateral_Sublimit_inquiry",
+            "payload": {
+              "id": "{route.taskId}"
+            }
+          }
+        }
+      }
+    },
+    "m_Register_Details_Add_Interest_Rate_Plan": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Add_Interest_Rate_Plan",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่ม/แก้ไขแผนอัตราดอกเบี้ย",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Loan_Details_Fee_Edit": {
+      "widget": "jsonforms",
+      "schemas": "Register_Loan_Details_Fee_Edit",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "แก้ไขรายละเอียดค่าธรรมเนียม",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Remove_Interest_Rate_Plan": {
+      "widget": "jsonforms",
+      "schemas": "Register_Detail_Remove_Interest_Rate_Plan",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_QC_Details": {
+      "route": "/qc-user/:workflowId/:applicationId/details",
+      "backPage": {
+        "title": "QC User",
+        "route": "/qc-user",
+        "role": "QC"
+      },
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "QC_Details",
+          "dataContext": {
+            "conditionTypeId": "QC_Details_Open",
+            "payload": {
+              "userId": "{user.login}",
+              "taskId": "{route.workflowId}",
+              "applicationId": "{route.applicationId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.workflowId}",
+              "documentType": "app",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "p_QCTM_Details": {
+      "route": "/qc-tm/:workflowId/:applicationId/details",
+      "backPage": {
+        "title": "QCTM",
+        "route": "/qc-tm",
+        "role": "TM"
+      },
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "QC_Details",
+          "dataContext": {
+            "conditionTypeId": "QC_Details_Open",
+            "payload": {
+              "userId": "{user.login}",
+              "taskId": "{route.workflowId}",
+              "applicationId": "{route.applicationId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.workflowId}",
+              "documentType": "app",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "p_QCAM_Details": {
+      "route": "/qc-am/:workflowId/:applicationId/details",
+      "backPage": {
+        "title": "QCAM",
+        "route": "/qc-am",
+        "role": "AM"
+      },
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "QC_Details",
+          "dataContext": {
+            "conditionTypeId": "QC_Details_Open",
+            "payload": {
+              "userId": "{user.login}",
+              "taskId": "{route.workflowId}",
+              "applicationId": "{route.applicationId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.workflowId}",
+              "documentType": "app",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "p_QCHS_Details": {
+      "route": "/qc-hs/:workflowId/:applicationId/details",
+      "backPage": {
+        "title": "QCHS",
+        "route": "/qc-hs",
+        "role": "HS"
+      },
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "QC_Details",
+          "dataContext": {
+            "conditionTypeId": "QC_Details_Open",
+            "payload": {
+              "userId": "{user.login}",
+              "taskId": "{route.workflowId}",
+              "applicationId": "{route.applicationId}"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.workflowId}",
+              "documentType": "app",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "m_QC_Details_Redbook_Search": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_Redbook_Search",
+      "options": {
+        "titleText": "Red Book Information",
+        "showCloseButton": true,
+        "maxWidth": "lg",
+        "fullWidth": true
+      }
+    },
+    "m_QC_Details_SaveToDraft": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_SaveToDraft",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_QC_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_QC_Details_Cancel": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_Cancel",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_QC_Details_SendBack": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_SendBack",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_QC_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_QC_Details_Opinion_History": {
+      "widget": "jsonforms",
+      "schemas": "QC_Details_Opinion_History",
+      "options": {
+        "showCloseButton": true
+      }
+    },
+    "m_Register_Details_Car_Information": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Car_Information",
+      "options": {
+        "titleText": "ดูข้อมูลรถ",
+        "showCloseButton": true,
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Old_Car_Information": {
+      "widget": "jsonforms",
+      "schemas": "Register_Details_Old_Car_Information",
+      "options": {
+        "titleText": "ดูข้อมูลรถ",
+        "showCloseButton": true,
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Loan_Details_Additional_Services": {
+      "widget": "jsonforms",
+      "schemas": "Register_Loan_Details_Additional_Services",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่ม/แก้ไขบริการเสริม",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "maxWidth": "lg"
+      }
+    },
+    "m_Register_Details_Remove_Amount_Tier": {
+      "widget": "jsonforms",
+      "schemas": "Register_Detail_Remove_Amount_Tier",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Register_Inquiry_Aging": {
+      "widget": "jsonforms",
+      "schemas": "Register_Inquiry_Aging",
+      "options": {
+        "maxWidth": "sm",
+        "fullWidth": true,
+        "titleText": "Inquiry Aging",
+        "showCloseButton": true,
+        "closeButtonSx": {
+          "position": "absolute",
+          "right": 8,
+          "top": 8
+        }
+      }
+    },
+    "p_Position_Management": {
+      "route": "/position-management",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "PositionManagement",
+          "dataContext": {}
+        }
+      },
+      "task_type": "PositionManagement"
+    },
+    "p_Position_Management_Upload": {
+      "route": "/position-management-upload",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "PositionManagement_Upload",
+          "dataContext": {
+            "conditionTypeId": "Position_Management_Upload_Open"
+          }
+        }
+      },
+      "task_type": "PositionManagement_Upload"
+    },
+    "p_Position_Management_Edit": {
+      "route": "/position-management/:id/edit",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "PositionManagement_Edit",
+          "dataContext": {
+            "conditionTypeId": "Position_Management_Edit",
+            "payload": {
+              "positionId": "{route.id}"
+            }
+          }
+        }
+      },
+      "task_type": "PositionManagement"
+    },
+    "p_Position_Management_Add": {
+      "route": "/position-management-add",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "PositionManagement_Add",
+          "dataContext": {}
+        }
+      },
+      "task_type": "PositionManagement_Add"
+    },
+    "p_GroupsAndPositions": {
+      "route": "/groups-and-positions",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "GroupsAndPositions",
+          "dataContext": {}
+        }
+      },
+      "task_type": "GroupsAndPositions"
+    },
+    "p_GroupsAndPositions_Upload": {
+      "route": "/groups-and-positions-upload",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "GroupsAndPositions_Upload",
+          "dataContext": {}
+        }
+      },
+      "task_type": "GroupsAndPositions_Upload"
+    },
+    "p_GroupsAndPositions_Add": {
+      "route": "/groups-and-positions-add",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "GroupsAndPositions_Add",
+          "dataContext": {}
+        }
+      },
+      "task_type": "GroupsAndPositions_Add"
+    },
+    "p_Groups_And_Positions_Edit": {
+      "route": "/groups-and-positions/:id/edit",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "GroupsAndPositions_Edit",
+          "dataContext": {
+            "conditionTypeId": "Groups_And_Positions_Edit",
+            "payload": {
+              "groupId": "{route.id}"
+            }
+          }
+        }
+      },
+      "task_type": "GroupsAndPositions"
+    },
+    "p_Groups_And_Positions_Set_Function": {
+      "route": "/groups-and-positions/:id/set-function",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "GroupsAndPositions_Set_Function",
+          "dataContext": {
+            "conditionTypeId": "Groups_And_Positions_Set_Functions",
+            "payload": {
+              "groupId": "{route.id}"
+            }
+          }
+        }
+      },
+      "task_type": "GroupsAndPositions"
+    },
+    "p_RCVerify": {
+      "route": "/rcverify",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "RCVerify",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "RCVerify"
+            }
+          }
+        }
+      }
+    },
+    "p_RCVerify_Details": {
+      "route": "/rcverify/:workflowId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "RCVerify_Details",
+          "dataContext": {
+            "conditionTypeId": "RCVerify_Details_Open",
+            "payload": {
+              "taskId": "{route.workflowId}",
+              "stationName": "RCVerify",
+              "is_rcverify": true
+            }
+          }
+        }
+      },
+      "content/Documentum": {
+        "schemas": "Documentum_View",
+        "dataContext": {
+          "conditionTypeId": "GetDocumentumURL",
+          "payload": {
+            "taskId": "{route.taskId}",
+            "documentType": "cid",
+            "documentTitle": "เอกสารอ้างอิง"
+          }
+        }
+      }
+    },
+    "m_RCVerify_Details_Reminder": {
+      "widget": "jsonforms",
+      "schemas": "RCVerify_Details_Reminder",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_RCVerify_Details_SaveToDraft": {
+      "widget": "jsonforms",
+      "schemas": "RCVerify_Details_SaveToDraft",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_RCVerify_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "RCVerify_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_RCVerify_Details_Error": {
+      "widget": "jsonforms",
+      "schemas": "RCVerify_Details_Error",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_webverify": {
+      "route": "/webverify",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "RC Web Verify",
+      "buckets": {
+        "content": {
+          "schemas": "RCWebVerify",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "Verify"
+            }
+          }
+        }
+      }
+    },
+    "p_RcWebVerify_main": {
+      "route": "/webverify/:taskId/list",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "dataContext": {
+        "conditionTypeId": "RCWebVerify_Details_Open",
+        "payload": {
+          "taskId": "{route.taskId}",
+          "task_type": "WebVerify"
+        }
+      },
+      "buckets": {
+        "content": {
+          "schemas": "RCWebVerify_List"
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสารอ้างอิง"
+            }
+          }
+        }
+      }
+    },
+    "p_RcWebVerify_Details": {
+      "route": "/webverify/:taskId/list-details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "RCVerifyHR_Details",
+          "dataContext": {
+            "conditionTypeId": "RCVerify_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "task_type": "WebVerify",
+              "is_rcverify": false
+            }
+          }
+        }
+      },
+      "content/Documentum": {
+        "schemas": "Documentum_View",
+        "dataContext": {
+          "conditionTypeId": "GetDocumentumURL",
+          "payload": {
+            "taskId": "{route.taskId}",
+            "documentType": "cid",
+            "documentTitle": "เอกสารอ้างอิง"
+          }
+        }
+      }
+    },
+    "p_OriginalDoc": {
+      "route": "/originaldoc",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Barcode Search",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Barcodesearch",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Main_Barcodesearch": {
+      "route": "/originaldoc/barcodesearch",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Barcode Search",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Barcodesearch",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Home": {
+      "route": "/originaldoc/dochome",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Original Home",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Pending": {
+      "route": "/originaldoc/pending",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Pending",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Pending",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Warehouse_Year_Destroy": {
+      "route": "/originaldoc/warehouseadmin/yeardestroy",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Year Destroy",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Warehouse_YearDestroy",
+          "dataContext": {
+            "conditionTypeId": "OriginalDoc_YearDestroy_InitData",
+            "payload": {
+              "userId": "{user.login}",
+              "applicationGroupId": "Auto"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        },
+        "content/OriginalDoc_Warehouse_SubTab": {
+          "schemas": "OriginalDoc_Warehouse_SubTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Warehouse_Warehouse_BoxNo": {
+      "route": "/originaldoc/warehouseadmin/boxno",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Box no",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Warehouse_BoxNo",
+          "dataContext": {
+            "conditionTypeId": "OriginalDoc_BoxNo_InitData",
+            "payload": {
+              "userId": "{user.login}",
+              "applicationGroupId": "Auto"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        },
+        "content/OriginalDoc_Warehouse_SubTab": {
+          "schemas": "OriginalDoc_Warehouse_SubTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Storage": {
+      "route": "/originaldoc/storage",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Storage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Storage",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Storage_Subsrithai": {
+      "route": "/originaldoc/storage/subsrithai",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Storage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Storage_Subsrithai",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        },
+        "content/OriginalDoc_Storage_SubTab": {
+          "schemas": "OriginalDoc_Storage_SubTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Storage_Subsrithai_Report": {
+      "route": "/originaldoc/storage/subsrithaireport",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Storage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Storage_Subsrithai_Report",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        },
+        "content/OriginalDoc_Storage_SubTab": {
+          "schemas": "OriginalDoc_Storage_SubTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Storage_CCMS": {
+      "route": "/originaldoc/storage/ccms",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Storage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Storage_CCMS",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        },
+        "content/OriginalDoc_Storage_SubTab": {
+          "schemas": "OriginalDoc_Storage_SubTab"
+        }
+      }
+    },
+    "p_OriginalDoc_Storage_CCMS_Report": {
+      "route": "/originaldoc/storage/ccmsreport",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Storage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Storage_CCMS_Report",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        },
+        "content/OriginalDoc_Storage_SubTab": {
+          "schemas": "OriginalDoc_Storage_SubTab"
+        }
+      }
+    },
+    "p_OriginalDoc_InProgress": {
+      "route": "/originaldoc/inprogress",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "In Progress",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_InProgress",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OriginalDoc"
+            }
+          }
+        },
+        "content/OriginalDoc_MainTab": {
+          "schemas": "OriginalDoc_MainTab"
+        }
+      }
+    },
+    "p_OriginalDoc_BoxNo_Config_Details": {
+      "route": "/originaldoc/boxno-config/details/:id",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Box no Detail.",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Warehouse_BoxNo_Details",
+          "dataContext": {
+            "conditionTypeId": "OriginalDoc_BoxNo_InitData",
+            "payload": {
+              "id": "{route.id}",
+              "userId": "{user.login}",
+              "applicationGroupId": "Auto"
+            }
+          }
+        }
+      }
+    },
+    "p_OriginalDoc_Home_Details": {
+      "route": "/originaldoc/home/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDoc_Home_Details",
+          "dataContext": {
+            "conditionTypeId": "OriginalDoc_Home_Details_Open",
+            "eventName": "Open",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "task_type": "OriginalDoc"
+            }
+          }
+        }
+      }
+    },
+    "p_OriginalDoc_Task_Done": {
+      "route": "/originaldoc/home/:taskId/done",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "OriginalDocTaskSuccess",
+          "dataContext": {
+            "conditionTypeId": "OriginalDoc_Task_Done",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "station": "OriginalDoc"
+            }
+          }
+        }
+      }
+    },
+    "m_OriginalDoc_Storage_Add": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Storage_Add",
+      "options": {
+        "showCloseButton": true,
+        "titleText": "เพิ่มพนักงานขาย",
+        "closeButtonSx": {
+          "position": "absolute",
+          "top": "4px",
+          "right": "8px"
+        },
+        "width": "600px",
+        "fullWidth": true
+      }
+    },
+    "m_OriginalDoc_Storage_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "OriganalDoc_Storage_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Storage_Subsrithai_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Storage_Subsrithai_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Warehouse_YearDestroy_Submit": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Warehouse_YearDestroy_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Warehouse_BoxNo_Submit": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Warehouse_BoxNo_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Warehouse_BoxNo_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Warehouse_BoxNo_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Warehouse_BoxNo_Details_Remove": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Warehouse_BoxNo_Details_Remove",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Details_Error": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Details_Error",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_OriginalDoc_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "OriginalDoc_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Original_Doc_Notification": {
+      "widget": "jsonforms",
+      "schemas": "Original_Doc_Notification",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_CustomerInformation": {
+      "route": "/ci",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Customer Information",
+      "buckets": {
+        "content": {
+          "schemas": "CustomerInformation",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CI"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "CI"
+        }
+      }
+    },
+    "p_CustomerInformation_PendingChecker": {
+      "route": "/ci/pending-checker",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Customer Information",
+      "buckets": {
+        "content": {
+          "schemas": "CustomerInformation_PendingChecker",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "CI"
+            }
+          }
+
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "CI"
+        }
+      }
+    },
+    "p_CI_Insurance_to_Documentum": {
+      "route": "/doc/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "Documentum_View",
+      "dataContext": {
+        "conditionTypeId": "GetDocumentumURL",
+        "payload": {
+          "taskId": "{route.taskId}",
+          "documentType": "cid",
+          "documentTitle": "เอกสารอ้างอิง"
+        }
+      }
+    },
+    "m_CustomerInformation_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "CustomerInformation_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_CustomerInformation_Input": {
+      "widget": "jsonforms",
+      "schemas": "CustomerInformation_Input",
+      "options": {
+        "maxWidth": "lg",
+        "fullWidth": true
+      }
+    },
+    "p_Insurance": {
+      "route": "/insurance",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Insurance",
+      "permission": "p_Insurance",
+      "buckets": {
+        "content": {
+          "schemas": "Insurance"
+        },
+        "content/tabContent": {
+          "schemas": "Insurance_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OPInsurance"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "Indexing"
+        }
+      }
+    },
+    "p_Insurance_Pending": {
+      "route": "/insurance/pending",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Insurance",
+      "permission": "p_Insurance",
+      "buckets": {
+        "content": {
+          "schemas": "Insurance"
+        },
+        "content/tabContent": {
+          "schemas": "Insurance_Pending",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "OPInsurance"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "OPInsurance"
+        }
+      }
+    },
+    "p_Insurance_Details": {
+      "route": "/insurance/:workflowId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "Insurance_Details",
+          "dataContext": {
+            "processId": "{route.workflowId}",
+            "eventName": "Open"
+          }
+        }
+      }
+    },
+    "m_Insurance_Confirm": {
+      "widget": "jsonforms",
+      "schemas": "Insurance_Confirm",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_Insurance_Input": {
+      "widget": "jsonforms",
+      "schemas": "Insurance_Input",
+      "options": {
+        "maxWidth": "lg",
+        "fullWidth": true,
+        "disableBackdropClick": true
+      }
+    },
+    "p_FOS": {
+      "route": "/fos",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "FOS",
+      "permission": "p_FOS",
+      "buckets": {
+        "content": {
+          "schemas": "FOS",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "FOS"
+            }
+          }
+        }
+      }
+    },
+    "p_FOS_Details": {
+      "route": "/fos/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "FOS_Details",
+          "dataContext": {
+            "conditionTypeId": "FOS_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "task_type": "FOS",
+              "actionType": "normal_case"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "p_FOS_Details_ForceCase": {
+      "route": "/fos/:taskId/details/forcecase",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "buckets": {
+        "content": {
+          "schemas": "FOS_Details",
+          "dataContext": {
+            "conditionTypeId": "FOS_Details_Open",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "task_type": "FOS",
+              "actionType": "force_case"
+            }
+          }
+        }
+      }
+    },
+    "m_FOS_Details_SaveToDraft": {
+      "widget": "jsonforms",
+      "schemas": "FOS_Details_SaveToDraft",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_FOS_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "FOS_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_FOS_Details_Error": {
+      "widget": "jsonforms",
+      "schemas": "FOS_Details_Error",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_FOS_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "FOS_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_CallVerify": {
+      "route": "/callverify",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Call Ver",
+      "permission": "p_CallVerify",
+      "buckets": {
+        "content": {
+          "schemas": "CallVerify",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "Verify"
+            }
+          }
+        }
+      }
+    },
+    "p_CallVerify_Details": {
+      "route": "/callverify/:taskId/details",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Call Verify Details",
+      "buckets": {
+        "content": {
+          "schemas": "CallVerify_Details",
+          "dataContext": {
+            "conditionTypeId": "Call_Verify_inquiry",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "task_type": "CallVerify"
+            }
+          }
+        },
+        "content/Documentum": {
+          "schemas": "Documentum_View",
+          "dataContext": {
+            "conditionTypeId": "GetDocumentumURL",
+            "payload": {
+              "taskId": "{route.taskId}",
+              "documentType": "cid",
+              "documentTitle": "เอกสาร"
+            }
+          }
+        }
+      }
+    },
+    "m_CallVerify_Details_Back": {
+      "widget": "jsonforms",
+      "schemas": "CallVerify_Details_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_CallVerify_Details_saveToDraft": {
+      "widget": "jsonforms",
+      "schemas": "CallVerify_Details_SaveToDraft",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_CallVerify_Details_Submit": {
+      "widget": "jsonforms",
+      "schemas": "CallVerify_Details_Submit",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "m_CallVerify_Details_Error": {
+      "widget": "jsonforms",
+      "schemas": "CallVerify_Details_Error",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_Register_Loan_Collateral_Edit_Detail_Mortgage_Back": {
+      "widget": "jsonforms",
+      "schemas": "Register_Loan_Collateral_Edit_Detail_Mortgage_Back",
+      "options": {
+        "showCloseButton": false
+      }
+    },
+    "p_FullFill_Maker": {
+      "route": "/full-fill",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Full Fill",
+      "permission": "p_FullFill_Maker",
+      "buckets": {
+        "content": {
+          "schemas": "FullFillMaker"
+        },
+        "content/tabContent": {
+          "schemas": "FullFillMaker_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "FullFillMaker"
+            }
+          }
+        },
+        "content/tabContent/FullFillMaker_Home_MG": {
+          "schemas": "FullFillMaker_Home_MG"
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "FullFillMaker"
+        }
+      }
+    },
+    "p_FullFill_Checker": {
+      "route": "/full-fill",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Full Fill",
+      "permission": "p_FullFill_Checker",
+      "buckets": {
+        "content": {
+          "schemas": "FullFillChecker"
+        },
+        "content/tabContent": {
+          "schemas": "FullFillChecker_Home",
+          "dataContext": {
+            "conditionTypeId": "HomePage_GetInitData",
+            "payload": {
+              "stationName": "FullFillChecker"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "FullFillChecker"
+        }
+      }
+    },
+    "p_FullFillMaker_PendingFollowUp": {
+      "route": "/full-fill/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Full Fill",
+      "permission": "p_FullFill_Maker",
+      "buckets": {
+        "content": {
+          "schemas": "FullFillMaker_PendingFollowUp"
+        },
+        "content/tabContent": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "PendingFollowUp_GetInitData",
+            "payload": {
+              "stationName": "FullFillMaker"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "FullFillMaker"
+        }
+      }
+    },
+    "p_FullFillChecker_PendingFollowUp": {
+      "route": "/full-fill/pending-followup",
+      "widget": "jsonforms",
+      "schemas": "basicPage",
+      "label": "Full Fill",
+      "permission": "p_FullFill_Checker",
+      "buckets": {
+        "content": {
+          "schemas": "FullFillChecker_PendingFollowUp"
+        },
+        "content/tabContent": {
+          "schemas": "FollowUp_Pending_Home",
+          "dataContext": {
+            "conditionTypeId": "PendingFollowUp_GetInitData",
+            "payload": {
+              "stationName": "FullFillChecker"
+            }
+          }
+        }
+      },
+      "defaults": {
+        "searchParams": {
+          "stationName": "FullFillChecker"
+        }
+      }
+    }
+  },
+  "grids": {},
+  "schemas": {},
+  "uiSchemas": {},
+  "queries": {},
+  "lookups": {},
+  "privacy": {
+    "hideUsers": true,
+    "hideRoles": true
+  },
+  "conditions": {
+    "WorkBasket_GetTask": {
+      "workflowName": "NGL_WorkBasket_GetTask"
+    },
+    "WorkBasket_GetTopTask": {
+      "workflowName": "NGL_WorkBasket_GetTopTask"
+    },
+    "MFProfile_GetTopTask": {
+      "workflowName": "NGL_MFProfile_GetTopTask"
+    },
+    "HomePage_GetInitData": {
+      "workflowName": "NGL_HomePage_GetInitData"
+    },
+    "PendingFollowUp_GetInitData": {
+      "workflowName": "NGL_PendingFollowUp_GetInitData"
+    },
+    "Input_FOS_Detail_Open": {
+      "workflowName": "INT_v1_input_fos_details_inquiry"
+    },
+    "Input_FOS_Detail_Save": {
+      "workflowName": "INT_v1_input_fos_worklist_save"
+    },
+    "Input_FOS_Detail_Submit": {
+      "workflowName": "INT_v1_input_fos_worklist_submit"
+    },
+    "Task_Done": {
+      "workflowName": "NGL_Task_Done"
+    },
+    "Followups_Details_Open": {
+      "workflowName": "NGL_Followups_Details_Open"
+    },
+    "TempIndexing_Details_Open": {
+      "workflowName": "NGL_TempIndexing_Details_Open"
+    },
+    "TempIndexing_Details_Reject": {
+      "workflowName": "NGL_TempIndexing_Details_Reject"
+    },
+    "TempIndexing_Details_Search": {
+      "workflowName": "NGL_TempIndexing_Details_Search"
+    },
+    "TempIndexing_Details_GenerateAppNo": {
+      "workflowName": "NGL_TempIndexing_Details_GenerateAppNo"
+    },
+    "TempIndexing_Details_Submit": {
+      "workflowName": "NGL_TempIndexing_Details_Submit"
+    },
+    "Indexing_Details_Open": {
+      "workflowName": "NGL_Indexing_Details_Open"
+    },
+    "Indexing_Details_Submit": {
+      "workflowName": "NGL_Indexing_Details_Submit"
+    },
+    "IndexingCC_Details_Open": {
+      "workflowName": "NGL_IndexingCC_Details_Open"
+    },
+    "IndexingCC_Details_Submit": {
+      "workflowName": "NGL_IndexingCC_Details_Submit"
+    },
+    "IndexingCC_Details_Reject": {
+      "workflowName": "NGL_IndexingCC_Details_Reject"
+    },
+    "IndexingTC_Details_Open": {
+      "workflowName": "NGL_IndexingTC_Details_Open"
+    },
+    "IndexingTC_Details_Cancel": {
+      "workflowName": "NGL_IndexingTC_Details_Cancel"
+    },
+    "IndexingTC_Details_Search": {
+      "workflowName": "NGL_IndexingTC_Details_Search"
+    },
+    "IndexingTC_Details_Submit": {
+      "workflowName": "NGL_IndexingTC_Details_Submit"
+    },
+    "CSENT_Details_AddBorrower": {
+      "workflowName": "NGL_CSENT_Details_AddBorrower"
+    },
+    "CSENT_Details_AddBorrover_Search": {
+      "workflowName": "NGL_CSENT_AddBorrover_Search"
+    },
+    "CSENT_Details_AddBorrover_Save": {
+      "workflowName": "NGL_CSENT_AddBorrover_Save"
+    },
+    "CSENT_Details_EditBorrower": {
+      "workflowName": "NGL_CSENT_Details_EditBorrower"
+    },
+    "CSENT_Details_DeleteBorrower": {
+      "workflowName": "NGL_CSENT_Details_DeleteBorrower"
+    },
+    "CSENT_Details_Save": {
+      "workflowName": "NGL_CSENT_Details_Save"
+    },
+    "CSENT_Details_Submit": {
+      "workflowName": "NGL_CSENT_Details_Submit"
+    },
+    "CSENT_Details_Open": {
+      "workflowName": "NGL_CSENT_Details_Open"
+    },
+    "CSENT_AddBorrover_Open": {
+      "workflowName": "NGL_CSENT_AddBorrover_Open"
+    },
+    "NCB_Details_Open": {
+      "workflowName": "NGL_NCB_Details_Open"
+    },
+    "NCB_Details_Submit": {
+      "workflowName": "NGL_NCB_Details_Submit"
+    },
+    "NCB_Details_SaveToDraft": {
+      "workflowName": "NGL_NCB_Details_Save_Draft"
+    },
+    "NCB_Details_EditSalesPerson": {
+      "workflowName": "NGL_NCB_Details_EditSalesPerson"
+    },
+    "NCB_Details_UpdateSalesPerson": {
+      "workflowName": "NGL_NCB_Details_UpdateSalesPerson"
+    },
+    "NCB_Details_DeleteSalesPerson": {
+      "workflowName": "NGL_NCB_Details_DeleteSalesPerson"
+    },
+    "NCB_Details_SearchSalesPerson": {
+      "workflowName": "NGL_NCB_Details_SearchSalesPerson"
+    },
+    "NCB_Details_AddSalesPerson": {
+      "workflowName": "NGL_NCB_Details_AddSalesPerson"
+    },
+    "NCB_Details_NCB_Request": {
+      "workflowName": "NGL_NCB_Details_NCB_Request"
+    },
+    "RejectApplication": {
+      "workflowName": "NGL_RejectApplication"
+    },
+    "MFProfile_GetTask": {
+      "workflowName": "NGL_WorkBasket_MFProfile_GetTask"
+    },
+    "MFProfile_CreateApplication": {
+      "workflowName": "NGL_MFProfile_CreateApplication"
+    },
+    "MFProfile_ReturnToBasket": {
+      "workflowName": "NGL_WorkBasket_MFProfile_ReturnToWorkBasket"
+    },
+    "MFProfile_Details_Open": {
+      "workflowName": "NGL_MFProfile_Details_Open"
+    },
+    "MFProfile_Details_SaveApplication": {
+      "workflowName": "NGL_MFProfile_Details_SaveApplication"
+    },
+    "MFProfile_Details_SubmitApplication": {
+      "workflowName": "NGL_MFProfile_Details_SubmitApplication"
+    },
+    "MFProfile_Details_CancelApplication": {
+      "workflowName": "NGL_MFProfile_Details_CancelApplication"
+    },
+    "MFProfile_Details_Search": {
+      "workflowName": "NGL_MFProfile_Details_Search"
+    },
+    "MFProfile_Details_FollowUp_Open": {
+      "workflowName": "NGL_MFProfile_Details_FollowUp_Open"
+    },
+    "FraudCheck_Details_Open": {
+      "workflowName": "NGL_FraudCheck_Details_Open"
+    },
+    "FollowUp_Open": {
+      "workflowName": "NGL_FollowUp_Open"
+    },
+    "FollowUp_Submit": {
+      "workflowName": "NGL_FollowUp_Submit"
+    },
+    "FollowUp_Submit_SearchSalesPerson": {
+      "workflowName": "NGL_FollowUp_Submit_SearchSalesPerson"
+    },
+    "FollowUp_Submit_AddSalesPerson": {
+      "workflowName": "NGL_FollowUp_Submit_AddSalesPerson"
+    },
+    "Register_Details_Open": {
+      "workflowName": "NGL_Register_Details_Open"
+    },
+    "Register_Details_EditSalesPerson": {
+      "workflowName": "NGL_Register_Details_EditSalesPerson"
+    },
+    "Register_Details_AddSalesPerson": {
+      "workflowName": "NGL_Register_Details_AddSalesPerson"
+    },
+    "Register_Details_SaveBorrowerOrder": {
+      "workflowName": "NGL_Register_Details_SaveBorrowerOrder"
+    },
+    "Register_Details_UpdateSalesPerson": {
+      "workflowName": "NGL_Register_Details_UpdateSalesPerson"
+    },
+    "Register_Details_DeleteSalesPerson": {
+      "workflowName": "NGL_Register_Details_Delete_SalesPerson"
+    },
+    "Register_Details_Delete_RecommendedPerson": {
+      "workflowName": "NGL_Register_Details_DeleteRecommendedPerson"
+    },
+    "Register_Details_SearchSalesPerson": {
+      "workflowName": "NGL_Register_Details_SearchSalesPerson"
+    },
+    "Register_Details_SaveDraft": {
+      "workflowName": "NGL_Register_Details_SaveDraft"
+    },
+    "CheckList_Details_Open": {
+      "workflowName": "NGL_CheckList_Details_Open"
+    },
+    "CheckList_Details_AddProduct": {
+      "workflowName": "NGL_CheckList_Details_AddProduct"
+    },
+    "Register_OfficerId_Search": {
+      "workflowName": "NGL_Register_OfficerId_Search"
+    },
+    "Register_Add_RecommendedPerson": {
+      "workflowName": "NGL_Register_Add_RecommenderPerson"
+    },
+    "Register_Edit_RecommendedPerson": {
+      "workflowName": "NGL_Register_Edit_RecommenderPerson"
+    },
+    "Register_Add_ExternalRecommendedPerson": {
+      "workflowName": "NGL_Register_Add_ExternalRecommenderPerson"
+    },
+    "Register_Edit_ExternalRecommendedPerson": {
+      "workflowName": "NGL_Register_Edit_ExternalRecommenderPerson"
+    },
+    "Register_Details_Add_Borrower": {
+      "workflowName": "NGL_Register_Details_Add_Borrower"
+    },
+    "Register_Details_Add_Borrower_Search": {
+      "workflowName": "NGL_Register_Details_Add_Borrower_Search"
+    },
+    "Register_Details_Add_Borrower_Search_Spouse": {
+      "workflowName": "NGL_Register_Details_Add_Borrower_Search_Spouse"
+    },
+    "Register_Details_Add_Borrower_Save": {
+      "workflowName": "NGL_Register_Details_Add_Borrower_Save"
+    },
+    "Register_Loan_Collateral_Details": {
+      "workflowName": "INT_Register_Loan_Collateral_inquiry"
+    },
+    "Register_Loan_Collateral_save": {
+      "workflowName": "INT_Register_Loan_Collateral_save"
+    },
+    "CollateralAppraisal_Details_Open": {
+      "workflowName": "NGL_CollateralAppraisal_Details_Open"
+    },
+    "GetDocumentumURL": {
+      "workflowName": "NGL_GetDocumentumURL"
+    },
+    "GetDocumentumURLByApplication": {
+      "workflowName": "NGL_GetDocumentumURLByApplication"
+    },
+    "poc_cache_data_provider": {
+      "workflowName": "poc_cache_data_provider"
+    },
+    "Sales_Buddy_Details": {
+      "workflowName": "Sales_Buddy_Details"
+    },
+    "Salesbuddy_Details_Search": {
+      "workflowName": "INT_v1_sales_buddy_Search"
+    },
+    "Salesbuddy_Details_Save": {
+      "workflowName": "INT_v1_sales_buddy_save"
+    },
+    "Salesbuddy_Details_Open": {
+      "workflowName": "INT_v1_sales_buddy_details_inquiry"
+    },
+    "QC_Details_Open": {
+      "workflowName": "NGL_QC_Details_Open"
+    },
+    "QC_Details_Save": {
+      "workflowName": "NGL_QC_Details_Save"
+    },
+    "QC_Details_MakerSubmit": {
+      "workflowName": "NGL_QC_Details_MakerSubmit"
+    },
+    "QC_Details_ApproverSubmit": {
+      "workflowName": "NGL_QC_Details_Approver_Submission"
+    },
+    "QC_Details_Cancel": {
+      "workflowName": "NGL_QC_Details_Cancel"
+    },
+    "QC_Details_SendBack": {
+      "workflowName": "NGL_QC_Details_SendBack"
+    },
+    "Details_Reject": {
+      "workflowName": "NGL_Details_Reject"
+    },
+    "Followups_Details_Save_Internal_FU_history": {
+      "workflowName": "NGL_Followups_Details_Save_Internal_FU_history"
+    },
+    "Followups_Details_Save_External_FU_history": {
+      "workflowName": "NGL_Followups_Details_Save_External_FU_history"
+    },
+    "Followups_Details_Complete_Internal_FU_history": {
+      "workflowName": "NGL_Followups_Details_Complete_Internal_FU_history"
+    },
+    "Followups_Details_Complete_External_FU_history": {
+      "workflowName": "NGL_Followups_Details_Complete_External_FU_history"
+    },
+    "Register_Details_Hire_Purchase_Detail_Get_Vat": {
+      "workflowName": "NGL_Register_Details_Hire_Purchase_Detail_Get_Vat"
+    },
+    "GetThaiAddresses": {
+      "workflowName": "NGL_GetThaiAddresses"
+    },
+    "Register_Loan_Collateral_Edit_Detail_Mortgage_Save": {
+      "workflowName": "INT_Register_Loan_Collateral_Product_Mortgage_save"
+    },
+    "Register_Details_Loan": {
+      "workflowName": "INT_Register_Loan_Collateral_Product_Mortgage_inquiry"
+    },
+    "Pricing_Data_Search": {
+      "workflowName": "INT_Register_Loan_Collateral_Pricing_Data_Search"
+    },
+    "Loan_Collateral_Sublimit_inquiry": {
+      "workflowName": "INT_Register_Loan_Collateral_Sublimit_inquiry"
+    },
+    "Loan_Collateral_Edit_Sublimit_inquiry": {
+      "workflowName": "INT_Register_Loan_Collateral_Edit_Sublimit_inquiry"
+    },
+    "Register_Loan_Collateral_Sublimit_Save": {
+      "workflowName": "INT_Register_Loan_Collateral_Sublimit_save"
+    },
+    "Register_Loan_Collateral_Sublimit_Delete": {
+      "workflowName": "INT_Register_Loan_Collateral_Sublimit_delete"
+    },
+    "Register_Loan_Collateral_Mortgage_Get_AccountName": {
+      "workflowName": "INT_Register_Loan_Collateral_Product_Mortgage_Get_AccountName"
+    },
+    "Register_Inquiry_Aging": {
+      "workflowName": "INT_Register_Loan_Collateral_inquiry_aging"
+    },
+    "Register_Inquiry_Aging_Save": {
+      "workflowName": "INT_Register_Loan_Collateral_inquiry_aging_save"
+    },
+    "OriginalDoc_GetTopTask": {
+      "workflowName": "NGL_OriginalDoc_GetTopTask"
+    },
+    "WorkBasket_GetTask_Original_Doc": {
+      "workflowName": "NGL_WorkBasket_GetTask_Original_Doc"
+    },
+    "OriginalDoc_YearDestroy_InitData": {
+      "workflowName": "INT_v1_original_doc_year_destroy_inquiry"
+    },
+    "OriginalDoc_YearDestroy_Save": {
+      "workflowName": "INT_v1_original_doc_year_destroy_save"
+    },
+    "OriginalDoc_BoxNo_InitData": {
+      "workflowName": "INT_v1_original_doc_box_no_inquiry"
+    },
+    "OriginalDoc_BoxNo_Save": {
+      "workflowName": "INT_v1_original_doc_box_no_save"
+    },
+    "OriginalDoc_BoxNo_Edit": {
+      "workflowName": "INT_v1_original_doc_box_no_edit"
+    },
+    "OriginalDoc_BoxNo_Delete": {
+      "workflowName": "INT_v1_original_doc_box_no_remove"
+    },
+    "OriginalDoc_BoxNoList_InitData": {
+      "workflowName": "INT_v1_original_doc_box_no_list_inquiry"
+    },
+    "OriginalDoc_SearchApplication": {
+      "workflowName": "NGL_original_doc_SearchApplication"
+    },
+    "OriginalDoc_Subsrithai_SearchApplication": {
+      "workflowName": "NGL_original_doc_Supsrithai_SearchApplication"
+    },
+    "OriginalDoc_Home_Details_Open": {
+      "workflowName": "NGL_Original_Doc_Details_Open"
+    },
+    "OriginalDoc_Barcode_Search": {
+      "workflowName": "INT_v1_original_doc_application_inquiry"
+    },
+    "OriginalDoc_Details_Submit": {
+      "workflowName": "NGL_Original_Doc_Details_Submit"
+    },
+    "OriginalDoc_Contract_Submit": {
+      "workflowName": "INT_v1_original_doc_contract_submit"
+    },
+    "Original_Doc_Details_Add_Checklist": {
+      "workflowName": "NGL_Original_Doc_Details_Add_Checklist"
+    },
+    "OriginalDoc_Subsrithai_Summit": {
+      "workflowName": "INT_v1_original_doc_subsrithai_submit"
+    },
+    "OriginalDoc_Task_Done": {
+      "workflowName": "NGL_Task_Done_Original_Doc"
+    },
+    "CI_input_detail_inquiry": {
+      "workflowName": "INT_v1_CI_input_detail_inquiry"
+    },
+    "CI_input_detail_save": {
+      "workflowName": "INT_v1_CI_input_detail_save"
+    },
+    "Check_User_GetTask": {
+      "workflowName": "Check_User_GetTask"
+    },
+    "Insurance_input_detail_inquiry": {
+      "workflowName": "INT_v1_Insurance_input_detail_inquiry"
+    },
+    "Insurance_CheckStatus": {
+      "workflowName": "INT_v1_Insurance_CheckStatus"
+    },
+    "Insurance_input_detail_save": {
+      "workflowName": "INT_v1_Insurance_input_detail_save"
+    },
+    "Insurance_Send_to_WorkBasket": {
+      "workflowName": "Insurance_Send_to_WorkBasket"
+    },
+    "FOS_Details_Open": {
+      "workflowName": "NGL_FOS_Details_Open"
+    },
+    "FOS_Details_Submit": {
+      "workflowName": "NGL_FOS_Details_Submit"
+    },
+    "FOS_Details_SendToFOS": {
+      "workflowName": "INT_v1_field_verify_worklist_send_to_fos"
+    },
+    "FOS_Details_SaveToDraft": {
+      "workflowName": "NGL_FOS_Details_SavetoDraft"
+    },
+    "Call_Verify_inquiry": {
+      "workflowName": "NGL_CallVerify_Details_Open"
+    },
+    "CallVerify_Details_SaveToDraft": {
+      "workflowName": "INT_v1_call_verify_worklist_save"
+    },
+    "CallVerify_Details_Submit": {
+      "workflowName": "INT_v1_call_verify_submit"
+    },
+    "Register_Loan_Collateral_Auto_inquiry": {
+      "workflowName": "INT_v1_register_loan_auto_detail_inquiry"
+    },
+    "NGL_Position_Management_Delete": {
+      "workflowName": "NGL_Position_Management_Delete_Position"
+    },
+    "PositionManagement_Details_SavePosition": {
+      "workflowName": "NGL_PositionManagement_Details_SavePosition"
+    },
+    "PositionManagement_Update": {
+      "workflowName": "NGL_PositionManagement_Update"
+    },
+    "Position_Management_Upload": {
+      "workflowName": "NGL_PositionManagement_Upload"
+    },
+    "Position_Management_Upload_Open": {
+      "workflowName": "NGL_PositionManagement_Upload_Open"
+    },
+    "Position_Management_Export": {
+      "workflowName": "NGL_PositionManagement_Export"
+    },
+    "PositionManagement_Upload_SelectFile": {
+      "workflowName": "NGL_PositionManagement_Upload_SelectFile"
+    },
+    "Position_Management_Upload_Submit": {
+      "workflowName": "NGL_PositionManagement_Upload_Submit"
+    },
+    "Position_Management_Edit": {
+      "workflowName": "NGL_Position_Management_Edit"
+    },
+    "BackButton_Data_Save": {
+      "workflowName": "NGL_BackButton_Data_Save"
+    },
+    "Groups_And_Positions_Details_Save": {
+      "workflowName": "NGL_Groups_And_Positions_Details_Save"
+    },
+    "Groups_And_Positions_Delete": {
+      "workflowName": "NGL_Groups_And_Positions_Delete"
+    },
+    "Groups_And_Positions_Edit": {
+      "workflowName": "NGL_Groups_And_Positions_Edit"
+    },
+    "Groups_And_Positions_Update": {
+      "workflowName": "NGL_Groups_And_Positions_Update"
+    },
+    "Register_Loan_Get_Account_Deposits": {
+      "workflowName": "INT_Register_Loan_Get_Account_Deposits"
+    },
+    "Groups_And_Positions_Set_Functions": {
+      "workflowName": "NGL_Groups_And_Positions_Set_Functions"
+    },
+    "privacy": {
+      "hideUsers": true,
+      "hideRoles": true
+    },
+    "Register_Loan_Collateral_Old_Loan_Inquiry": {
+      "workflowName": "INT_Register_Loan_Collateral_old_loan_inquiry"
+    }
+  }
+}

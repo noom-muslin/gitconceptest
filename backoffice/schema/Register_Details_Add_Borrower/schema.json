@@ -1,0 +1,221 @@
+{
+  "type": "object",
+  "properties": {
+    "borrowerType": {
+      "type": "string"
+    },
+    "applicationNumber": {
+      "type": "string"
+    },
+    "applicationGroup": {
+      "type": "string"
+    },
+    "dictionaries": {
+      "type": "object",
+      "properties": {
+        "addressUsageIndividualEnum": {
+          "type": "array"
+        },
+        "addressUsageJuristicEnum": {
+          "type": "array"
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "referenceDocumentTypeIndividual": {
+          "type": "string"
+        },
+        "referenceDocumentTypeJuristic": {
+          "type": "string"
+        },
+        "referenceDocumentNo": {
+          "type": "string"
+        }
+      }
+    },
+    "borrowersPersonalInformation": {
+      "type": "object",
+      "properties": {
+        "referenceDocumentType": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "referenceDocumentNo": {
+          "type": "string"
+        },
+        "titleTH": {
+          "type": "string"
+        },
+        "nameTH": {
+          "type": "string"
+        },
+        "middleNameTH": {
+          "type": "string"
+        },
+        "lastNameTH": {
+          "type": "string"
+        },
+        "titleEN": {
+          "type": "string"
+        },
+        "nameEN": {
+          "type": "string"
+        },
+        "middleNameEN": {
+          "type": "string"
+        },
+        "lastNameEN": {
+          "type": "string"
+        },
+        "nationality": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "integer"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "ages": {
+          "type": "string"
+        },
+        "referenceDocumentIssueDate": {
+          "type": "string"
+        },
+        "referenceDocumentExpirationDate": {
+          "type": "string"
+        },
+        "highestLevelOfEducation": {
+          "type": "string"
+        },
+        "customerGroup": {
+          "type": "string"
+        },
+        "specifyInformation": {
+          "type": "string"
+        },
+        "mobilePhoneNumber": {
+          "type": "string",
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "rmCustomerType": {
+          "type": "string"
+        },
+        "ocCode": {
+          "type": "string"
+        },
+        "kycLevel": {
+          "type": "string"
+        },
+        "kycReason": {
+          "type": "string"
+        },
+        "kycLevelRMCI": {
+          "type": "string"
+        },
+        "kycReasonRMCI": {
+          "type": "string"
+        },
+        "currentThaiDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "referenceDocumentType",
+        "referenceDocumentNo",
+        "nationality",
+        "gender",
+        "birthDate",
+        "highestLevelOfEducation",
+        "customerGroup",
+        "mobilePhoneNumber",
+        "rmCustomerType",
+        "ocCode"
+      ]
+    },
+    "addresses": {
+      "$ref": "urn:zbo:schema:Register_Details_Add_Borrower_Addresses"
+    },
+    "isAddressesEmpty": {
+      "type": "boolean"
+    },
+    "dialogVariables": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "spouse": {
+      "$ref": "urn:zbo:schema:Register_Details_Add_Borrower_Spouse"
+    },
+    "occupation": {
+      "$ref": "urn:zbo:schema:Register_Details_Add_Borrower_Occupation"
+    },
+    "haveSecondaryOccupation": {
+      "type": "string",
+      "enum": ["have", "do not have"]
+    },
+    "secondaryOccupations": {
+      "$ref": "urn:zbo:schema:Register_Details_Add_Borrower_SecondaryOccupations"
+    },
+    "additiaonalInforamtion": {
+      "type": "object",
+      "properties": {
+        "haveInsurance": {
+          "type": "boolean"
+        },
+        "consentOfLoanInterest": {
+          "type": "string"
+        },
+        "carInstallmentExpensesOutsideSCB": {
+          "type": "string"
+        },
+        "carInstallmentExpensesInSCB": {
+          "type": "string"
+        },
+        "creditCardInstallmentExpensesOutsideSCB": {
+          "type": "string"
+        },
+        "creditCardInstallmentExpensesInSCB": {
+          "type": "string"
+        },
+        "homeLoanSSMEInstallmentExpensesOutsideSCB": {
+          "type": "string"
+        },
+        "homeLoanSSMEInstallmentExpensesInSCB": {
+          "type": "string"
+        },
+        "totalExpenses": {
+          "type": "string"
+        },
+        "totalDebtBurden": {
+          "type": "string"
+        },
+        "contactEmail": {
+          "type": "string"
+        }
+      }
+    },
+    "documentDeliveryAddress": {
+      "type": "object",
+      "properties": {
+        "receiveDocumentChannel": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

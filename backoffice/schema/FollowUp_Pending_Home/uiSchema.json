@@ -1,0 +1,413 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "Typography",
+      "label": "Pending Follow Up", 
+      "options": {
+        "variant": "h6",
+        "sx": {
+          "padding": "4px 0"
+        }
+      }
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "variant": "section"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "Pending Follow Up"
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "spacing": "16px"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "padding": "16px 16px 0 16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": "true",
+                    "spacing": "16px"
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "Application No.",
+                          "scope": "#/properties/search/properties/application_number",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined"
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรภาษาอังกฤษ ตัวเลข - และ _ เท่านั้น",
+                            "minLength": "กรุณาระบุข้อมูลอย่างน้อย 5 ตัวอักษร"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "Application Class",
+                          "scope": "#/properties/search/properties/application_class",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "application_class_enum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "วันเที่สร้างใบสมัคร",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "ExternalComponent",
+                          "scope": "#/properties/search/properties/application_create_date",
+                          "options": {
+                            "externalComponentName": "thai-calendar",
+                            "externalComponentScope": "remote1",
+                            "externalComponentModule": "./ThaiDateRange",
+                            "views": "year,month,day",
+                            "variant": "outlined",
+                            "sx": {
+                              "width": "100%"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ชื่อลูกค้า",
+                          "scope": "#/properties/search/properties/customer_name",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "นามสกุลลูกค้า",
+                          "scope": "#/properties/search/properties/customer_lastname",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "Station ต้นทาง",
+                          "scope": "#/properties/search/properties/origin_station",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "station_requested_enum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "สถานะ Follow Up",
+                          "scope": "#/properties/search/properties/status",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "followup_status_enum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "จำนวนครั้งที่ Follow Up",
+                          "scope": "#/properties/search/properties/followup_times",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "autocomplete": false,
+                            "enum": [
+                              {
+                                "value": "1",
+                                "label": "1"
+                              },
+                              {
+                                "value": "2",
+                                "label": "2"
+                              },
+                              {
+                                "value": "3",
+                                "label": "3"
+                              },
+                              {
+                                "value": "4",
+                                "label": "Follow up > 3"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "space-between",
+                "sx": {
+                  "padding": "0 16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "ล้างค่า",
+                  "options": {
+                    "variant": "secondaryError",
+                    "operationType": "script",
+                    "converter": "clear_work_basket_search",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "search": {
+                          "type": "object",
+                          "properties": {
+                            "application_number": {},
+                            "application_class": {},
+                            "customer_name": {},
+                            "customer_lastname": {},
+                            "origin_station": {},
+                            "followup_times": {},
+                            "status": {},
+                            "application_create_date": {
+                              "type": "object",
+                              "properties": {
+                                "from": {},
+                                "to": {}
+                              }
+                            }
+                          }
+                        },
+                        "workbasket_grid": {
+                          "type": "object",
+                          "properties": {
+                            "filters": {
+                              "type": "array"
+                            },
+                            "pagination": {
+                              "type": "object",
+                              "properties": {
+                                "pageIndex": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ค้นหา",
+                  "options": {
+                    "variant": "primary",
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "check_work_basket_search_criteria",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "canSubmit": {
+                              "type": "boolean",
+                              "dataPath": "canSubmit"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": ["payload"],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "required": ["canSubmit"],
+                                  "type": "object",
+                                  "properties": {
+                                    "canSubmit": {
+                                      "type": "boolean",
+                                      "const": true
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "operationType": "script",
+                        "converter": "followup_workbasket_filter",
+                        "size": "large",
+                        "sx": {
+                          "backgroundColor": "#5b21b6"
+                        },
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "workbasket_grid": {
+                              "type": "object",
+                              "properties": {
+                                "filters": {
+                                  "type": "array"
+                                },
+                                "pagination": {
+                                  "type": "object",
+                                  "properties": {
+                                    "pageIndex": {
+                                      "type": "number"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "else": true
+                        },
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Basic_Error",
+                        "dialogVariables": {
+                          "title": "ไม่สามารถค้นหาได้",
+                          "text": "กรุณาระบุข้อมูลอย่างน้อย 1 รายการเพื่อค้นหา"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "htmlID": "WorkBasket"
+              },
+              "elements": [
+                {
+                  "type": "Datagrid",
+                  "scope": "#/properties/workbasket_grid",
+                  "options": {
+                    "grid": "FollowUp/WorkBasket",
+                    "dataContext": {
+                      "query": "FollowUp/WorkBasket",
+                      "queryVariables": {
+                        "stationName": "{searchParams.stationName}"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+query GetProductGroup($category: String = "Mortgage") {
+  result: ngl_enum_product_group(where: {product_category_id: {_eq: $category}}) {
+    value: code
+    label: code
+  }
+}

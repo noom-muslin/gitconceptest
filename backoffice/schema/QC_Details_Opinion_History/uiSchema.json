@@ -1,0 +1,587 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "padding": "0 0 0"
+    }
+  },
+  "elements": [
+    {
+      "type": "UniversalArrayView",
+      "scope": "#/properties/qcOpinionData",
+      "label": {
+        "show": false
+      },
+      "options": {
+        "hideTableToolbar": true,
+        "disableItemsRemove": true,
+        "cells": [
+          {
+            "type": "Typography",
+            "scope": "#/properties/seq",
+            "options": {
+              "variant": "body2",
+              "columnTitle": "ลำดับ",
+              "size": "small",
+              "fontWeight": "bold"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/performingBy",
+            "options": {
+              "variant": "body2",
+              "columnTitle": "ชื่อผู้บันทึกความเห็น",
+              "size": "small",
+              "fontWeight": "bold"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/saveDateTime",
+            "options": {
+              "variant": "body2",
+              "columnTitle": "วันเวลาที่บันทึกความเห็น",
+              "size": "small",
+              "fontWeight": "bold"
+            }
+          },
+          {
+            "type": "ActionButton",
+            "label": "ดูความเห็น",
+            "options": {
+              "operationType": "script",
+              "converter": "selectOpinion",
+              "columnTitle": " ",
+              "variant": "outlined",
+              "sx": {
+                "border": "0px",
+                ":hover": {
+                  "border": "0px",
+                  "background": "none"
+                }
+              },
+              "resultMappingSchema": {
+                "type": "object",
+                "properties": {
+                  "dataComment": {
+                    "type": "object",
+                    "properties": {
+                      "additionalOpinion": {
+                        "type": "string"
+                      },
+                      "downPercent": {
+                        "type": "number"
+                      },
+                      "informationDetail": {
+                        "type": ["string", "number", "null"]
+                      },
+                      "isNameRegistrationBookMatched": {
+                        "type": "string"
+                      },
+                      "isSellingPriceChanged": {
+                        "type": "string"
+                      },
+                      "ltvPercent": {
+                        "type": ["string", "number", "null"]
+                      },
+                      "nameMatchedReason": {
+                        "type": "string"
+                      },
+                      "nameUnmatchedReason": {
+                        "type": "string"
+                      },
+                      "performingBy": {
+                        "type": "string"
+                      },
+                      "principal": {
+                        "type": ["number", "object"]
+                      },
+                      "qcComment": {
+                        "type": "string"
+                      },
+                      "saveDateTime": {
+                        "type": "string"
+                      },
+                      "sellingPrice": {
+                        "type": "number"
+                      },
+                      "seq": {
+                        "type": "number"
+                      },
+                      "upPricePercent": {
+                        "type": ["string", "number", "null", "object"]
+                      }
+                    }
+                  },
+                  "showComment": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "BoxLayout",
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/showComment",
+          "schema": {
+            "const": true
+          }
+        }
+      },
+      "options": {
+        "sx": {
+          "marginTop": "1em",
+          "padding": "16px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "รายละเอียดความคิดเห็นที่ {dataComment.seq}",
+          "options": {
+            "variant": "subtitle2",
+            "sx": {
+              "color": "#59606B",
+              "marginBottom": "24px"
+            }
+          }
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ยืนยันการประเมิณราคาขาย",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/sellingPrice",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ยอดจัด",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/principal",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "เงินดาวน์",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/downPercent",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ราคา QC ไม่เท่ากับราคา Register หรือมีการเปลี่ยนแปลงจากราคา QC เดิม",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/dataComment/properties/isSellingPriceChanged",
+                          "schema": {
+                            "const": false
+                          }
+                        }
+                      },
+                      "label": "เปลี่ยน",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/dataComment/properties/isSellingPriceChanged",
+                          "schema": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "label": "ไม่เปลี่ยน",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "มีการ Up Price",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/dataComment/properties/sellingPrice",
+                          "schema": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "label": "Up Price",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/dataComment/properties/sellingPrice",
+                          "schema": {
+                            "const": false
+                          }
+                        }
+                      },
+                      "label": "ไม่ Up Price",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "% Up",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "{upPricePercent} %",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ข้อมูลเพิ่มเติม  ",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/informationDetail",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/taskTypeId",
+                  "schema": {
+                    "const": "QCUser"
+                  }
+                }
+              },
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ความเห็น QC",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/qcComment",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/taskTypeId",
+              "schema": {
+                "const": "QCUser"
+              }
+            }
+          },
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ความเห็นเพิ่มเติม",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/additionalOpinion",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "วันเวลาที่บันทึกความเห็น",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/saveDateTime",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ชื่อผู้บันทึกความเห็น",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/dataComment/properties/performingBy",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

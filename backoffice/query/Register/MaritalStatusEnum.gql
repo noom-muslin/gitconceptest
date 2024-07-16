@@ -1,0 +1,10 @@
+query MaritalStatusEnum {
+  result:  ngl_enum_standard_code (
+    order_by: {priority: asc},
+    where: {standard_list_code: {_eq: "N041"}, status: {_eq: true}}
+  ) {
+    value: code
+    id: id
+    label: display_value
+  }
+}

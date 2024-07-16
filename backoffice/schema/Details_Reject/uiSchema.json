@@ -1,0 +1,88 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px",
+          "borderBottom": "solid 1px #C1C3C8"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "กรุณาเลือกเหตุผลและระบุหมายเหตุ เพื่อยืนยันไม่ส่งงานนี้",
+          "options": {
+            "variant": "body2"
+          }
+        },
+        {
+          "type": "SelectField",
+          "scope": "#/properties/reason",
+          "label": "เหตุผล",
+          "errors": {
+            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+          },
+          "options": {
+            "variant": "outlined",
+            "autocomplete": false,
+            "fullwidth": true
+          }
+        },
+        {
+          "type": "TextField",
+          "scope": "#/properties/note",
+          "errors": {
+            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+          },
+          "label": "หมายเหตุ",
+          "options": {
+            "variant": "outlined",
+            "fullwidth": true,
+            "multi": true,
+            "minRows": 5,
+            "maxRows": 8
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยืนยัน",
+          "options": {
+            "variant": "primaryError",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Details_Reject",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              },
+              {
+                "operationType": "modal",
+                "subtype": "cancel"
+              },
+              {
+                "operationType": "open",
+                "route": "{zboRouteObject.homeRoute}"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

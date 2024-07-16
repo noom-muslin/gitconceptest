@@ -1,0 +1,82 @@
+{
+    "hideColumnFilter": true,
+    "hideGridPager": true,
+    "columns": [
+      {
+        "title": "Total SLA",
+        "field": "create_date_time",
+        "name": "total_sla",
+        "minWidth": 100
+      },
+      {
+        "title": "WB SLA",
+        "field": "create_date_time",
+        "name": "wb_sla",
+        "minWidth": 100
+      },
+      {
+        "title": "Application No",
+        "field": "application.application_id",
+        "name": "application_no",
+        "minWidth": 150
+      },
+      {
+        "title": "Application Class",
+        "field": "application.application_class.code",
+        "name": "application_class",
+        "width": 130
+      },
+      {
+        "title": "ชื่อลูกค้า",
+        "field": "application.primary_borrower.borrower.party.full_name_en",
+        "name": "customer_name",
+        "minWidth": 150
+      },
+      {
+        "title": "ประเภท Follow Up",
+        "field": "follow_up_type",
+        "name": "FollowUpType",
+        "minWidth": 120
+      },
+      {
+        "title": "Station ต้นทาง",
+        "field": "s_station",
+        "name": "station",
+        "minWidth": 120
+      },
+      {
+        "title": "Station ปลายทาง",
+        "field": "e_station",
+        "name": "stationf",
+        "minWidth": 120
+      },
+      {
+        "name": "",
+        "title": " ",
+        "sortable": false,
+        "locked": true,
+        "resizable": false,
+        "rowActions": [
+          {
+            "label": "Get Task",
+            "triggerType": "link",
+            "options": {
+              "operationType": "action",
+              "conditionTypeId": "WorkBasket_GetTask",
+              "payload": {
+                "taskId": "{data.id}",
+                "routeUrl": "{zboRouteObject.route}/{data.id}/details"
+              }
+            }
+          }
+        ],
+        "width": 120
+      }
+    ],
+    "initialSort": [
+      {
+        "field": "create_date_time",
+        "dir": "desc"
+      }
+    ]
+  }

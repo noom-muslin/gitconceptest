@@ -1,0 +1,130 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "_field": "",
+      "_TODO": "scope out",
+      "name": "total_sla",
+      "_converter": "sla_converter",
+      "minWidth": 118
+    },
+    {
+      "title": "WB SLA",
+      "_field": "",
+      "_TODO": "scope out",
+      "name": "wb_sla",
+      "_converter": "sla_converter",
+      "minWidth": 106
+    },
+    {
+      "title": "Application No.",
+      "field": "application_id",
+      "name": "application_number",
+      "minWidth": 142.5
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class",
+      "minWidth": 142.5
+    },
+    {
+      "title": "Channel",
+      "field": "application.application_channel.code",
+      "name": "application_channel",
+      "minWidth": 142.5
+    },
+
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "name": "customer_full_name",
+      "minWidth": 200
+    },
+    {
+      "title": "ประเภท Follow Up",
+      "field": "internal",
+      "name": "fu_type",
+      "converter": "followup_Type",
+      "minWidth": 174
+    },
+    {
+      "title": "Station ต้นทาง",
+      "field": "from_task.task_type.station_code",
+      "name": "request_station",
+      "minWidth": 152
+    },
+    {
+      "title": "Station ปลายทาง",
+      "field": "destination_tasks[0].task_type.station_code",
+      "name": "responsible_station",
+      "minWidth": 167
+    },
+    {
+      "title": "วันเวลาที่สร้างใบสมัคร",
+      "field": "receive_document_date_time",
+      "converter": "date_column_converter",
+      "name": "receive_document_date_time",
+      "minWidth": 191
+    },
+    {
+      "title": "วันเวลาที่มอบหมาย",
+      "field": "from_task.start_at",
+      "converter": "date_column_converter",
+      "name": "assignment_date_time",
+      "minWidth": 171
+    },
+    {
+      "title": "วันเวลาที่ Follow Up",
+      "field": "date_fu_time",
+      "converter": "date_column_converter",
+      "name": "elapsed_date_time",
+      "minWidth": 180
+    },
+    {
+      "title": "จำนวนครั้งที่ Follow Up",
+      "field": "no_of_followups",
+      "name": "no_of_followups",
+      "minWidth": 202
+    },
+    {
+      "title": "สถานะ Follow Up",
+      "field": "status",
+      "name": "status",
+      "minWidth": 167
+    },
+    {
+      "title": "FU Updated",
+      "field": "fu_updated",
+      "name": "fu_updated",
+      "converter": "followup_updated",
+      "minWidth": 136
+    },    
+    {
+      "name": "actions",
+      "title": " ",
+      "locked": true,
+      "resizable": false,
+      "sortable": false,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "route": "/{searchParams.stationName}/pending-followup/{data.application_id}",
+            "validationSchema": false
+          }
+        }
+      ],
+      "minWidth": 76
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

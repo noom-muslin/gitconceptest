@@ -1,0 +1,6 @@
+query CompanyNameSearch($searchValue: String = "", $limit: Int = 10) {
+  result: ngl_enum_company_name(where: {description: {_ilike: $searchValue}, is_active:{_eq: true} }, limit: $limit, distinct_on: code) {
+    value: code
+    label: description
+  }
+}

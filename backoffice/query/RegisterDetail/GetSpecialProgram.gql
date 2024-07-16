@@ -1,0 +1,8 @@
+query GetSpecialProgram{
+  result: ngl_enum_standard_code(where: 
+  {standard_list_code: {_eq: "0207"},status:{_eq:true}
+  }){
+    value: code
+    label: display_value
+  }
+}

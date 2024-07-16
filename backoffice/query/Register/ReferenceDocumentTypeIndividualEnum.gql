@@ -1,0 +1,6 @@
+query GetReferenceDocumentTypeIndividual {
+  result: ngl_enum_reference_type(order_by: {order_num: asc}, where: {is_active: {_eq: true}, type: {_eq: "P"}}) {
+    label: description
+    value: code
+  }
+}

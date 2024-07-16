@@ -1,0 +1,6 @@
+query GetBotIsic {
+  result: ngl_enum_isic(where: {dms: {_eq: "Y"}}, order_by: {}) {
+    value: description
+    label: code
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "TabStripMenu",
+  "options": {
+    "sx": {
+      "padding-top": "10px"
+    },
+    "menu": [
+      {
+        "link": "/originaldoc/storage/subsrithai",
+        "text": "ส่งเอกสารเก็บทรัพย์ศรีไทย",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/storage/subsrithaireport",
+        "text": "รายงานส่งทรัพย์ศรีไทย",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/storage/ccms",
+        "text": "ส่งเอกสารเก็บห้องมั่นคง",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/storage/ccmsreport",
+        "text": "รายงานส่งห้องมั่นคง",
+        "type": "link"
+      }
+    ]
+  }
+}

@@ -1,0 +1,620 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/insurance"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em",
+                "sx": {
+                  "padding": "0.5em 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack",
+                  "options": {
+                    "sx": {
+                      "color": "#ffffff"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป",
+                  "options": {
+                    "variant": "body2-grey"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "Insurance",
+                  "options": {
+                    "variant": "subtitle2"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/work_object",
+              "options": {
+                "variant": "h6"
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "0.5em"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "className": "secondaryButton",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "className": "secondaryButton",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "className": "secondaryButton",
+                    "sx": {
+                      "& svg": {
+                        "marginRight": "0.5em"
+                      }
+                    },
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em",
+          "marginBottom": "70px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 1em 1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "backgroundColor": "#f5f3ff",
+                      "margin": "0 -1em 1em"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "เอกสาร",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "maxHeight": "600px",
+                      "overflowY": "scroll"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Image",
+                      "options": {
+                        "src": ":assets/img/doc-sample-picture.png",
+                        "sx": {
+                          "width": "100%"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 1em 1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "1em",
+                    "sx": {
+                      "margin": "0 -1em"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "sx": {
+                          "backgroundColor": "#f5f3ff"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รายละเอียดงาน",
+                          "options": {
+                            "variant": "subtitle2Purple"
+                          }
+                        }
+                      ]
+                    },
+
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "0 1em 1em",
+                          "borderBottom": "1px solid var(--Content-divider, #eaebed)"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": true,
+                            "spacing": "1em"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Group",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_group",
+                                      "options": {
+                                        "variant": "body2"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Application Type",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/application_type",
+                                      "options": {
+                                        "variant": "body2"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "Indexing Type",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/indexing_type",
+                                      "options": {
+                                        "variant": "body2"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "0 1em"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Application No.",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row",
+                            "spacing": "1em"
+                          },
+                          "elements": [
+                            {
+                              "type": "TextField",
+                              "label": false,
+                              "scope": "#/properties/application_number",
+                              "options": {
+                                "fullwidth": true,
+                                "variant": "outlined",
+                                "sx": {
+                                  "height": "38px"
+                                }
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": "ค้นหา",
+                              "options": {
+                                "operationType": "action",
+                                "subtype": "search",
+                                "className": "secondaryButton"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "paddingLeft": "1em"
+                        }
+                      },
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/indexing_type_id",
+                          "schema": {
+                            "const": "TempIndexing"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "สร้าง Application No.",
+                          "options": {
+                            "operationType": "action",
+                            "subtype": "createApp",
+                            "className": "secondaryButton"
+                          }
+                        }
+                      ]
+                    },
+
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "padding": "0 1em",
+                          "borderTop": "1px solid var(--Content-divider, #eaebed)",
+                          "overflowX": "scroll"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "UniversalArrayView",
+                          "scope": "#/properties/search_result",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "disableItemsRemove": true,
+                            "sx": {
+                              "th": {
+                                "padding": "8px 3px"
+                              },
+                              "td": {
+                                "padding": "5px 3px"
+                              }
+                            },
+                            "cells": [
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_group",
+                                "options": {
+                                  "variant": "body2",
+                                  "columnTitle": "Application Group"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_type",
+                                "options": {
+                                  "variant": "body2",
+                                  "columnTitle": "Application Type"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/indexing_type",
+                                "options": {
+                                  "variant": "body2",
+                                  "columnTitle": "Indexing Type"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_number",
+                                "options": {
+                                  "variant": "body2",
+                                  "columnTitle": "Application No"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_channel",
+                                "options": {
+                                  "variant": "body2",
+                                  "columnTitle": "Channel"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/status_work",
+                                "options": {
+                                  "variant": "body2",
+                                  "columnTitle": "Status"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิกการส่งงาน",
+          "options": {
+            "operationType": "modal",
+            "subtype": "show",
+            "dialogName": "m_TempIndexing_Details_Cancel",
+            "className": "secondaryButton"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "className": "primaryButton",
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "tempIndexing_canSubmit",
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "canSubmit": {
+                      "type": "boolean",
+                      "dataPath": "canSubmit"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "payload"
+                  ],
+                  "properties": {
+                    "payload": {
+                      "type": "object",
+                      "required": [
+                        "data"
+                      ],
+                      "properties": {
+                        "data": {
+                          "required": [
+                            "canSubmit"
+                          ],
+                          "type": "object",
+                          "properties": {
+                            "canSubmit": {
+                              "type": "boolean",
+                              "const": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "operationType": "modal",
+                "dialogName": "m_TempIndexing_Details_Confirm",
+                "subtype": "show"
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "dialogName": "m_BasicError",
+                "subtype": "show"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

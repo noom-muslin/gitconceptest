@@ -1,0 +1,24 @@
+subscription GetGroupsAndPositions(
+  $where: [ngl_group_of_position_bool_exp]
+  $order_by: [ngl_group_of_position_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_group_of_position(
+    where: {
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id,
+    group_code
+    group_name
+    status,
+    create_date_time
+    create_by
+    update_date_time
+    update_by
+  }
+}

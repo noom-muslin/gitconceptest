@@ -1,0 +1,164 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options":{
+        "sx": {
+          "width": "400px",
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutline",
+                  "options": {
+                    "sx": {
+                      "fontSize": "40px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px",
+                      "padding": "4px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณต้องการส่งข้อมูลหรือไม่",
+                  "options": {
+                    "variant": "subtitle2Black"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "เมื่อกดส่งข้อมูลแล้ว ข้อมูลนี้จะถูกส่งไปยัง Station ถัดไป",
+                  "options": {
+                    "variant": "body2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "0.5em",
+        "sx":{
+          "width": "400px",
+          "padding":"1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "className": "secondaryButton",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "className": "primaryButton",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "CallVerify_Details_Submit",
+                "payload": {
+                  
+                }
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "dialogName": "m_CallVerify_Details_Error",
+                "subtype": "show"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "Valid"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/callverify/{route.taskId}/done"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

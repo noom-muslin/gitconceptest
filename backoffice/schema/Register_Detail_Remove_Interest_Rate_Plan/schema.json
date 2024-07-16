@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+
+      "selectedIndex":{
+        "type": ["integer", "null"]
+      },
+      "ra_seq":{
+        "type": ["string", "null"]
+      }
+    }
+  }
+  

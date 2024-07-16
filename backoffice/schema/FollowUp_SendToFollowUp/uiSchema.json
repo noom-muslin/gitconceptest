@@ -1,0 +1,1298 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "paddingBottom": "55px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "variant": "breadcrumbs",
+        "sx": {
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbsWhiteBg"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "กลับไป",
+                  "options": {
+                    "icon": "ArrowBack",
+                    "sx": {
+                      "color": "primary.deep"
+                    },
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_FollowUp_SendToFollowUp_ConfirmBack",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "operationType": "modal",
+                    "variant": "href",
+                    "dialogName": "m_FollowUp_SendToFollowUp_ConfirmBack",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "{applicationId}",
+                  "options": {
+                    "variant": "href",
+                    "sx": {
+                      "marginLeft": "10px",
+                      "fontWeight": "bold",
+                      "color": "primary.deep"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": { "padding": "1em" }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "ส่งไป Follow Up",
+          "options": {
+            "operationType": "open",
+            "variant": "h3",
+            "component": "section",
+            "sx": {
+              "fontWeight": "bold"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Group",
+      "options": {
+        "sx": {
+          "margin": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "RadioGroupField",
+          "scope": "#/properties/fu_type",
+          "label": false,
+          "options": {
+            "radioColor": "success",
+            "labelPlacement": "end",
+            "row": "false"
+          }
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "component": "section",
+      "elements": [
+        {
+          "type": "StackLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/fu_type",
+              "schema": {
+                "const": "Internal"
+              }
+            }
+          },
+          "options": {
+            "spacing": "1em",
+            "sx": {
+              "padding": "1em",
+              "backgroundColor": "primary.light",
+              "margin": "0 1em 0 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "รายละเอียด",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "fontWeight": "bold",
+
+                  "color": "primary.deep"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/fu_type",
+              "schema": {
+                "const": "Internal"
+              }
+            }
+          },
+          "options": {
+            "container": true,
+            "sx": {
+              "padding": "1em 1em 1em 0",
+              "margin": "0 1em 0 1em",
+              "backgroundColor": "secondary.main"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/fu_type",
+                      "schema": {
+                        "const": "Internal"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "Station ที่ต้องการส่งไป Follow Up",
+                      "scope": "#/properties/application_details/properties/previous_station",
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "enumDataPath": "application_details.previous_station_enum"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/fu_type",
+                      "schema": {
+                        "const": "Internal"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": "เหตุผล",
+                      "scope": "#/properties/application_details/properties/comment_category",
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "enumDataPath": "application_details.comment_category_enum"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/fu_type",
+                      "schema": {
+                        "const": "Internal"
+                      }
+                    }
+                  },
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "หมายเหตุ",
+                      "scope": "#/properties/application_details/properties/comment_details",
+                      "options": {
+                        "fullwidth": true,
+                        "autocomplete": false,
+                        "multi": true,
+                        "minRows": 2,
+                        "maxRows": 3,
+                        "variant": "outlined"
+                      },
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "overflowX": "auto",
+          "margin": "0 1em 0 1em"
+        }
+      },
+      "elements": [
+        {
+          "label": "ข้อมูลสินเชื่อ",
+          "type": "Accordion",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/fu_type",
+              "schema": {
+                "const": "External"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "UniversalArrayView",
+              "scope": "#/properties/application_details/properties/products_group_type",
+              "label": {
+                "show": false
+              },
+              "options": {
+                "hideTableToolbar": true,
+                "disableItemsRemove": false,
+                "sx": {
+                  "borderBottom": "1px solid",
+                  "borderColor": "secondary.dark"
+                },
+                "cells": [
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/product_group_id",
+                    "options": {
+                      "columnTitle": "Product Group",
+                      "variant": "body2",
+                      "sx": {
+                        "paddingLeft": "5px"
+                      }
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/product_type_id",
+                    "options": {
+                      "columnTitle": "Product Type",
+                      "variant": "body2",
+                      "sx": {
+                        "paddingLeft": "5px"
+                      }
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/sub_product_type_id",
+                    "options": {
+                      "columnTitle": "Sub Product Type",
+                      "variant": "body2",
+                      "sx": {
+                        "paddingLeft": "5px"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "BoxLayout",
+      "component": "section",
+      "options": {
+        "sx": {
+          "overflowX": "auto",
+          "margin": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/fu_type",
+              "schema": {
+                "const": "External"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "rule": {
+                "effect": "SHOW",
+                "condition": {
+                  "scope": "#/properties/borrowersNotFound",
+                  "schema": {
+                    "const": false
+                  }
+                }
+              },
+              "options": {
+                "spacing": "1em",
+                "sx": {
+                  "padding": "1em",
+                  "backgroundColor": "secondary.light"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เลือกชื่อลูกค้าที่ต้องการ Follow Up",
+                  "options": {
+                    "component": "section",
+                    "sx": { "fontSize": "16px", "color": "text.light" }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "margin": "16px",
+                      "overflowX": "auto"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "scope": "#/properties/borrowers",
+                      "type": "SchemedListView",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "sx": { "backgroundColor": "secondary.light" },
+                        "layoutOptions": {},
+                        "cellUiSchema": {
+                          "type": "BoxLayout",
+
+                          "elements": [
+                            {
+                              "type": "PaperLayout",
+                              "options": {
+                                "component": "section",
+                                "sx": {
+                                  "padding": "10px",
+                                  "margin": "0 0 10px 0",
+                                  "border": "none"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "StackLayout",
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/borrowersNotFound",
+                                      "schema": {
+                                        "const": false
+                                      }
+                                    }
+                                  },
+                                  "options": {
+                                    "direction": "row"
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "CheckboxField",
+                                      "label": "",
+                                      "scope": "#/properties/borrowerSelected",
+                                      "options": {
+                                        "sx": {
+                                          "marginLeft": "1em"
+                                        },
+                                        "variant": "outlined"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/referenceNo",
+                                      "options": {
+                                        "variant": "body2",
+                                        "sx": {
+                                          "padding": "10px"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/borrowersType",
+                                      "options": {
+                                        "variant": "body2",
+                                        "sx": {
+                                          "padding": "10px"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/firstAndLastName",
+                                      "options": {
+                                        "variant": "body2",
+                                        "sx": { "padding": "10px" }
+                                      }
+                                    },
+                                    {
+                                      "type": "ActionButton",
+                                      "rule": {
+                                        "effect": "HIDE",
+                                        "condition": {
+                                          "const": true
+                                        },
+                                        "_effect": "SHOW",
+                                        "_condition": {
+                                          "scope": "#/properties/borrowerSelected",
+                                          "schema": {
+                                            "const": true
+                                          }
+                                        }
+                                      },
+                                      "label": " ",
+                                      "options": {
+                                        "validationSchema": false,
+                                        "columnTitle": "",
+                                        "variant": "href",
+                                        "size": "smallIcon",
+                                        "sx": {
+                                          "marginLeft": "auto"
+                                        },
+                                        "operationType": "script",
+                                        "icon": {
+                                          "if": {
+                                            "properties": {
+                                              "borrowerSelected": {
+                                                "const": true
+                                              }
+                                            }
+                                          },
+                                          "then": { "const": "ExpandLess" },
+                                          "else": { "const": "ExpandMore" }
+                                        },
+                                        "_converter": "toggle_section_visibility",
+                                        "_resultMappingSchema": {
+                                          "type": "object",
+                                          "properties": {
+                                            "borrowers": {
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "documentOn": {
+                                                    "type": "boolean",
+                                                    "dataPath": "documentOn"
+                                                  },
+                                                  "id": {
+                                                    "type": "string"
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "_alternateOptions": {
+                                          "selector": "document_visibility",
+                                          "case": {
+                                            "on": {
+                                              "icon": "ExpandLess"
+                                            },
+                                            "off": {
+                                              "icon": "ExpandMore"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+
+                                {
+                                  "type": "StackLayout",
+                                  "rule": {
+                                    "effect": "SHOW",
+                                    "condition": {
+                                      "scope": "#/properties/borrowerSelected",
+                                      "schema": {
+                                        "const": true
+                                      }
+                                    }
+                                  },
+
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "เอกสารที่ต้อง Follow Up",
+                                      "options": {
+                                        "sx": {
+                                          "fontWeight": "bold",
+                                          "fontSize": "14px",
+                                          "color": "text.dark",
+                                          "margin": "25px 0 20px 10px"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "UniversalArrayView",
+                                          "scope": "#/properties/documents",
+
+                                          "options": {
+                                            "hideTableToolbar": true,
+                                            "disableItemsRemove": false,
+                                            "sx": {
+                                              "borderBottom": "1px solid",
+                                              "borderColor": "secondary.dark"
+                                            },
+                                            "cells": [
+                                              {
+                                                "type": "SelectField",
+                                                "label": " ",
+                                                "scope": "#/properties/document_name",
+
+                                                "options": {
+                                                  "columnTitle": "ประเภทเอกสาร",
+                                                  "fullwidth": true,
+                                                  "variant": "outlined",
+                                                  "autocomplete": true,
+                                                  "enumDataPath": "name_enum",
+                                                  "sx": {
+                                                    "width": "450px"
+                                                  }
+                                                }
+                                              },
+
+                                              {
+                                                "type": "Schema",
+                                                "scope": "#/properties/reason_status",
+                                                "label": "เหตุผลการติดตาม",
+                                                "options": {
+                                                  "uiSchema": {
+                                                    "type": "RadioGroupField",
+                                                    "label": false,
+                                                    "options": {
+                                                      "row": "false",
+                                                      "labelPlacement": "end",
+                                                      "hideRequiredAsterisk": true,
+                                                      "radioSize": "small",
+                                                      "_enumDataPath": "reason_statuses_enum"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "type": "SelectField",
+                                                "label": " ",
+                                                "scope": "#/properties/reason",
+                                                "errors": {
+                                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                                },
+                                                "options": {
+                                                  "fullwidth": true,
+                                                  "variant": "outlined",
+                                                  "_query": "FollowUp/StandartCodeEnums",
+                                                  "_converter": "autoCompleteStandartCodeEnumConverter",
+                                                  "autocomplete": true,
+                                                  "enumDataPath": "reasons_enum",
+                                                  "sx": {
+                                                    "width": "450px"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "type": "TextField",
+                                                "label": " ",
+                                                "scope": "#/properties/remark",
+                                                "errors": {
+                                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                                                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                                                },
+                                                "options": {
+                                                  "columnTitle": "หมายเหตุ",
+                                                  "fullwidth": true,
+                                                  "variant": "outlined"
+                                                }
+                                              },
+
+                                              {
+                                                "type": "ActionButton",
+                                                "label": " ",
+                                                "scope": "#",
+                                                "options": {
+                                                  "validationSchema": false,
+                                                  "columnTitle": "",
+                                                  "icon": "DeleteOutlined",
+                                                  "variant": "secondaryError",
+                                                  "size": "smallIcon",
+                                                  "columnSx": {
+                                                    "width": "50px"
+                                                  },
+                                                  "operationType": "system",
+                                                  "subtype": "remove_item"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "StackLayout",
+                                          "options": {
+                                            "spacing": "8px",
+                                            "direction": "row",
+                                            "sx": {
+                                              "padding": "16px"
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "ActionButton",
+                                              "label": "+ เพิ่มเอกสาร",
+                                              "options": {
+                                                "variant": "secondary",
+                                                "validationSchema": false,
+                                                "operationType": "script",
+                                                "chain": [
+                                                  {
+                                                    "operationType": "script",
+                                                    "converter": "addBorrowerDoc",
+                                                    "resultMappingSchema": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "borrowers": {
+                                                          "type": "array",
+                                                          "properties": {
+                                                            "documents": {
+                                                              "type": "object"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+
+                                    {
+                                      "type": "Typography",
+                                      "label": "ข้อมูลที่ต้อง Follow Up",
+                                      "options": {
+                                        "sx": {
+                                          "fontWeight": "bold",
+                                          "fontSize": "14px",
+                                          "color": "text.dark",
+                                          "margin": "25px 0 20px 10px"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "UniversalArrayView",
+                                          "scope": "#/properties/information",
+                                          "options": {
+                                            "hideTableToolbar": true,
+                                            "disableItemsRemove": false,
+                                            "sx": {
+                                              "borderBottom": "1px solid",
+                                              "borderColor": "secondary.dark"
+                                            },
+                                            "cells": [
+                                              {
+                                                "type": "SelectField",
+                                                "label": " ",
+                                                "scope": "#/properties/data_name",
+                                                "errors": {
+                                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                                },
+                                                "options": {
+                                                  "columnTitle": "ชื่อข้อมูล",
+                                                  "fullwidth": true,
+                                                  "variant": "outlined",
+                                                  "enumDataPath": "name_enum",
+                                                  "sx": {
+                                                    "width": "450px"
+                                                  }
+                                                }
+                                              },
+
+                                              {
+                                                "type": "Schema",
+                                                "scope": "#/properties/reason_status",
+                                                "errors": {
+                                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                                },
+                                                "label": "เหตุผลการติดตาม",
+                                                "options": {
+                                                  "uiSchema": {
+                                                    "type": "RadioGroupField",
+                                                    "scope": "#",
+                                                    "label": false,
+                                                    "options": {
+                                                      "radioColor": "success",
+                                                      "labelPlacement": "end",
+                                                      "row": "false"
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "type": "SelectField",
+                                                "label": " ",
+                                                "scope": "#/properties/reason",
+                                                "errors": {
+                                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                                },
+                                                "options": {
+                                                  "fullwidth": true,
+                                                  "variant": "outlined",
+                                                  "enumDataPath": "reasons_enum",
+                                                  "sx": {
+                                                    "width": "450px"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "type": "TextField",
+                                                "label": " ",
+                                                "scope": "#/properties/remark",
+                                                "errors": {
+                                                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                                                  "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                                                },
+                                                "options": {
+                                                  "columnTitle": "หมายเหตุ",
+                                                  "fullwidth": true,
+                                                  "variant": "outlined"
+                                                }
+                                              },
+
+                                              {
+                                                "type": "ActionButton",
+                                                "label": " ",
+                                                "scope": "#",
+                                                "options": {
+                                                  "validationSchema": false,
+                                                  "columnTitle": "",
+                                                  "icon": "DeleteOutlined",
+                                                  "variant": "secondaryError",
+                                                  "size": "smallIcon",
+                                                  "columnSx": {
+                                                    "width": "50px"
+                                                  },
+                                                  "operationType": "system",
+                                                  "subtype": "remove_item"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "StackLayout",
+                                          "options": {
+                                            "spacing": "8px",
+                                            "direction": "row",
+                                            "sx": {
+                                              "padding": "16px"
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "ActionButton",
+                                              "label": "+ เพิ่มข้อมูล",
+                                              "options": {
+                                                "variant": "secondary",
+                                                "validationSchema": false,
+                                                "operationType": "script",
+                                                "chain": [
+                                                  {
+                                                    "operationType": "script",
+                                                    "converter": "addBorrowerInfo",
+                                                    "resultMappingSchema": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "borrowers": {
+                                                          "type": "array",
+                                                          "properties": {
+                                                            "information": {
+                                                              "type": "object"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BoxLayout",
+                                      "rule": {
+                                        "effect": "SHOW",
+                                        "condition": {
+                                          "scope": "#/properties/isPrimaryBorrower",
+                                          "schema": {
+                                            "const": true
+                                          }
+                                        }
+                                      },
+                                      "elements": [
+                                        {
+                                          "type": "Typography",
+                                          "label": "Follow Up by RC/Reshape",
+
+                                          "options": {
+                                            "sx": {
+                                              "fontWeight": "bold",
+                                              "fontSize": "14px",
+                                              "color": "text.dark",
+                                              "margin": "25px 0 20px 10px"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "type": "BoxLayout",
+                                          "elements": [
+                                            {
+                                              "type": "UniversalArrayView",
+                                              "scope": "#/properties/rc_reshape",
+                                              "options": {
+                                                "hideTableToolbar": true,
+                                                "disableItemsRemove": false,
+                                                "sx": {
+                                                  "borderBottom": "1px solid",
+                                                  "borderColor": "secondary.dark"
+                                                },
+                                                "cells": [
+                                                  {
+                                                    "type": "SelectField",
+                                                    "label": " ",
+                                                    "scope": "#/properties/reason",
+                                                    "errors": {
+                                                      "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                                    },
+                                                    "options": {
+                                                      "columnTitle": "เหตุผล",
+                                                      "fullwidth": true,
+                                                      "variant": "outlined",
+                                                      "enumDataPath": "reasons_enum",
+                                                      "sx": {
+                                                        "width": "450px"
+                                                      }
+                                                    }
+                                                  },
+                                                  {
+                                                    "type": "TextField",
+                                                    "label": " ",
+                                                    "scope": "#/properties/remark",
+                                                    "errors": {
+                                                      "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                                                      "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                                                    },
+                                                    "options": {
+                                                      "columnTitle": "หมายเหตุ",
+                                                      "fullwidth": true,
+                                                      "variant": "outlined",
+                                                      "sx": {
+                                                        "width": "875px",
+                                                        "marginLeft": "auto"
+                                                      }
+                                                    }
+                                                  },
+
+                                                  {
+                                                    "type": "ActionButton",
+                                                    "label": " ",
+                                                    "scope": "#",
+                                                    "options": {
+                                                      "validationSchema": false,
+                                                      "columnTitle": "",
+                                                      "icon": "DeleteOutlined",
+                                                      "variant": "secondaryError",
+                                                      "size": "smallIcon",
+                                                      "columnSx": {
+                                                        "width": "50px"
+                                                      },
+                                                      "operationType": "system",
+                                                      "subtype": "remove_item"
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            {
+                                              "type": "StackLayout",
+                                              "options": {
+                                                "spacing": "8px",
+                                                "direction": "row",
+                                                "sx": {
+                                                  "padding": "16px"
+                                                }
+                                              },
+                                              "elements": [
+                                                {
+                                                  "type": "ActionButton",
+                                                  "label": "+ เพิ่มเหตุผล",
+                                                  "options": {
+                                                    "variant": "secondary",
+                                                    "validationSchema": false,
+                                                    "operationType": "script",
+                                                    "chain": [
+                                                      {
+                                                        "operationType": "script",
+                                                        "converter": "addBorrowerRcReshape",
+                                                        "resultMappingSchema": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "borrowers": {
+                                                              "type": "array",
+                                                              "properties": {
+                                                                "rc_reshape": {
+                                                                  "type": "object"
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "label": "เหตุผลในการ Follow Up",
+                                      "options": {
+                                        "sx": {
+                                          "fontWeight": "bold",
+                                          "fontSize": "14px",
+                                          "color": "text.dark",
+                                          "margin": "25px 0 20px 10px"
+                                        }
+                                      }
+                                    },
+
+                                    {
+                                      "type": "GridLayout",
+                                      "options": {
+                                        "container": true,
+                                        "sx": {
+                                          "padding": "16px"
+                                        }
+                                      },
+                                      "elements": [
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 2.9
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "เหตุผล",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 9.1
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "SelectField",
+                                              "label": " ",
+                                              "scope": "#/properties/comment_category",
+                                              "errors": {
+                                                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                                              },
+                                              "options": {
+                                                "fullwidth": true,
+                                                "variant": "outlined",
+                                                "enumDataPath": "comment_category_enum"
+                                              }
+                                            }
+                                          ]
+                                        },
+
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 2.9
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "หมายเหตุ",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "GridLayout",
+                                          "options": {
+                                            "xs": 9.1
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "BoxLayout",
+                                              "elements": [
+                                                {
+                                                  "type": "TextField",
+                                                  "label": " ",
+                                                  "scope": "#/properties/comment_details",
+                                                  "errors": {
+                                                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                                                    "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+                                                  },
+                                                  "options": {
+                                                    "multi": true,
+                                                    "minRows": 3,
+                                                    "fullwidth": true,
+                                                    "variant": "outlined"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/fu_type",
+          "schema": {
+            "type": "string",
+            "minLength": 2
+          }
+        }
+      },
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px",
+
+          "backgroundColor": "white",
+          "borderTopWidth": "1px",
+          "borderTopStyle": "solid",
+          "borderTopColor": "secondary.dark",
+          "position": "fixed",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/borrowersNotFound",
+              "schema": {
+                "const": false
+              }
+            }
+          },
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "_validationSchema": false,
+                "chain": [
+                  {
+                    "operationType": "action",
+                    "permission": "FollowUp_Submit",
+                    "conditionTypeId": "FollowUp_Submit",
+                    "payload": {
+                      "taskId": "{route.taskId}"
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": ["data"],
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "required": ["payload"],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "required": ["submitted"],
+                                  "type": "object",
+                                  "properties": {
+                                    "submitted": {
+                                      "type": "boolean",
+                                      "const": true
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "open",
+                        "permission": "FollowUp_Submit",
+                        "route": "/{station}/{taskId}/done"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/borrowersNotFound",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "_validationSchema": false,
+                "chain": [
+                  {
+                    "dialogName": "m_FollowUp_Submit_Add_SalesPerson",
+                    "operationType": "modal",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

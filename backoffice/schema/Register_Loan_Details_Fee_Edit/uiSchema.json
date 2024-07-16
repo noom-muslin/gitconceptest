@@ -1,0 +1,346 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "minWidth": "800px",
+      "maxWidth": "800px"
+    }
+  },
+  "elements": [
+    {
+      "type": "GridLayout",
+      "options": {
+        "sx": {
+          "padding": "1em"
+        },
+        "container": true
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "padding": "0 1em 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "display": "inline-flex"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ประเภทค่าธรรมเนียม",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "field-label-error"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "SelectField",
+                  "label": false,
+                  "scope": "#/properties/appl_account_fee_edit/properties/fee_type_id",
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  },
+                  "options": {
+                    "hideRequiredAsterisk": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "height": "38px"
+                    },
+                    "autocomplete": true,
+                    "enumDataPath": "enum_fee_type"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "padding": "0 1em 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "อัตราค่าธรรมเนียม (%)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "NumberField",
+                  "label": false,
+                  "scope": "#/properties/appl_account_fee_edit/properties/fee_percent",
+                  "options": {
+                    "thousandSeparator":",",
+                    "endAdornmentTypography": {
+                      "text": "%"
+                    },
+                    "hideRequiredAsterisk": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "height": "38px"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "padding": "1em 1em 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ค่าธรรมเนียมที่คำนวนได้",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "className":"itemGap"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/appl_account_fee_edit/properties/calculated_fee",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "บาท",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "padding": "1em 1em 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "display": "inline-flex"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ค่าธรรมเนียมที่เรียกเก็บ",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "field-label-error"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "NumberField",
+                  "label": false,
+                  "scope": "#/properties/appl_account_fee_edit/properties/collected_fee",
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  },
+                  "options": {
+                    "endAdornmentTypography": {
+                      "text": "บาท"
+                    },
+                    "thousandSeparator":",",
+                    "hideRequiredAsterisk": true,
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "height": "38px"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 12
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "sx": {
+                  "padding": "1em 1em 0 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เงื่อนไขพิเศษ",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "TextField",
+                  "label": false,
+                  "scope": "#/properties/appl_account_fee_edit/properties/fee_condition",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "right",
+        "sx": {
+          "backgroundColor": "white",
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "บันทึกข้อมูล",
+          "options": {
+            "className": "primaryButton",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Register_Loan_Collateral_Sublimit_Save",
+                "payload": {
+                  "user_id": "{user.login}",
+                  "db_name": "appl_account_fee"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload",
+                        "status"
+                      ],
+                      "properties": {
+                        "status": {
+                          "type": "object",
+                          "required": [
+                            "code"
+                          ],
+                          "properties": {
+                            "code": {
+                              "type": "number",
+                              "const": 1000
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "system",
+                    "subtype": "refresh"
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "dialogName": "m_BasicError_TryAgain",
+                "subtype": "show"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

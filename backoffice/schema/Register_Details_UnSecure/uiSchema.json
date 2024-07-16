@@ -1,0 +1,1328 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em"
+  },
+  "elements": [
+    {
+      "type": "Group",
+      "options": {
+        "sx": {
+          "height": "0px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/station/properties/showNotification",
+          "schema": {
+            "const": "Register_Loan_Collateral_Details"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "Notification",
+          "label": "ลบสินเชื่อแล้ว",
+          "options": {
+            "preventDuplicate": 1,
+            "autoHideDuration": "1750",
+            "persist": false,
+            "variant": "success",
+            "hideCloseButton": true,
+            "anchorOrigin": {
+              "horizontal": "center",
+              "vertical": "top"
+            },
+            "style": {
+              "color": "#166534",
+              "display": "flex",
+              "justifyContent": "center",
+              "backgroundColor": "#F0FDF4",
+              "min-width": "auto",
+              "width": "162px",
+              "height": "44px",
+              "margin-left": "63.5px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "FormMapperListener",
+      "options": {
+        "resultMappingSchema": {
+          "type": "object",
+          "properties": {
+            "station": {
+              "converter": "stationListenerRegister",
+              "type": "object",
+              "dataPath": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "overflowX": "auto"
+        }
+      },
+      "elements": [
+        {
+          "label": "ข้อมูลสินเชื่อ",
+          "type": "Accordion",
+          "elements": [
+            {
+              "type": "UniversalArrayView",
+              "scope": "#/properties/loanSection/properties/loans",
+              "label": {
+                "show": false
+              },
+              "options": {
+                "hideTableToolbar": true,
+                "hideColumnTitles": false,
+                "rowClick": false,
+                "sx": {
+                  "borderBottom": "1px solid",
+                  "borderColor": "secondary.dark",
+                  "td:nth-child(6)": {
+                    "width": "52px !important",
+                    "padding": "10px",
+                    "position": "sticky",
+                    "right": 54,
+                    "background": "#FFFFFF"
+                  },
+                  "th:nth-child(6)": {
+                    "width": "52px !important",
+                    "padding": "10px",
+                    "position": "sticky",
+                    "right": 54,
+                    "background": "#FFFFFF"
+                  },
+                  "td:nth-child(7)": {
+                    "width": "52px !important",
+                    "padding": "10px",
+                    "position": "sticky",
+                    "right": 0,
+                    "background": "#FFFFFF"
+                  },
+                  "th:nth-child(7)": {
+                    "width": "52px !important",
+                    "padding": "10px",
+                    "position": "sticky",
+                    "right": 0,
+                    "background": "#FFFFFF"
+                  }
+                },
+                "cells": [
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/seq",
+                    "options": {
+                      "variant": "body2",
+                      "columnTitle": "ลำดับ"
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/product_group",
+                    "options": {
+                      "variant": "body2",
+                      "columnTitle": "Product Group"
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/product_type",
+                    "options": {
+                      "variant": "body2",
+                      "columnTitle": "Product Type"
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/sub_product",
+                    "options": {
+                      "variant": "body2",
+                      "columnTitle": "Sub Product Type"
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "scope": "#/properties/contract_no",
+                    "options": {
+                      "variant": "body2",
+                      "columnTitle": "เลขที่สัญญาเดิม"
+                    }
+                  },
+                  {
+                    "type": "ActionButton",
+                    "label": " ",
+                    "scope": "#",
+                    "options": {
+                      "validationSchema": false,
+                      "columnTitle": "",
+                      "icon": "Edit",
+                      "variant": "secondary",
+                      "sx": {
+                        "color": "#5b21b6",
+                        "width": "32px !important",
+                        "height": "32px !important",
+                        "border": "1px solid #eaebed",
+                        "& span": {
+                          "margin": "0px"
+                        },
+                        "left": "0px"
+                      },
+                      "size": "smallIcon",
+                      "chain": [
+                        {
+                          "operationType": "script",
+                          "converter": "register_populate_AddLoan",
+                          "resultMappingSchema": {
+                            "type": "object",
+                            "required": [
+                              "loanSection"
+                            ],
+                            "properties": {
+                              "loanSection": {
+                                "type": "object",
+                                "properties": {
+                                  "newLoan": {
+                                    "type": "object",
+                                    "properties": {
+                                      "application_account_id": {
+                                        "type": "string"
+                                      },
+                                      "seq": {
+                                        "type": "string"
+                                      },
+                                      "contract_no": {
+                                        "type": "string"
+                                      },
+                                      "application_group": {
+                                        "type": "string"
+                                      },
+                                      "product_group": {
+                                        "type": "string"
+                                      },
+                                      "product_type": {
+                                        "type": "string"
+                                      },
+                                      "sub_product": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "operationType": "modal",
+                          "dialogName": "m_Register_Details_Add_Loan",
+                          "subtype": "show"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "ActionButton",
+                    "label": " ",
+                    "scope": "#",
+                    "options": {
+                      "validationSchema": false,
+                      "columnTitle": "",
+                      "icon": "Delete",
+                      "variant": "secondaryError",
+                      "size": "smallIcon",
+                      "operationType": "script",
+                      "converter": "selectLoan",
+                      "sx": {
+                        "color": "#ef4444",
+                        "width": "32px !important",
+                        "height": "32px !important",
+                        "border": "1px solid #eaebed",
+                        "& span": {
+                          "margin": "0px"
+                        }
+                      },
+                      "resultMappingSchema": {
+                        "type": "object",
+                        "properties": {
+                          "loans": {
+                            "type": "object",
+                            "properties": {
+                              "seq": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "application_account_id": {
+                                "type": "string"
+                              },
+                              "loan_objective_description": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "master_account_flag": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "account_name": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "account_number": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "sub_loan_type_description": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "credit_line_type": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "balance_credit_line_amount": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "old_credit_line_amount": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "approved_amount": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "tenor_month": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "campaign": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "account_installment_monthly_amount": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "application_group": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "product_group": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "product_type": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "sub_product": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "contract_no": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              }
+                            }
+                          },
+                          "delete_loans": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "chain": [
+                        {
+                          "operationType": "modal",
+                          "subtype": "show",
+                          "dialogName": "m_Register_Loan_Collateral_Details_Loan_Delete"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "rule": {
+                    "effect": "DISABLE",
+                    "condition": {
+                      "scope": "#/properties/loanSection/properties/loans.0.seq",
+                      "schema": {
+                        "const": 1
+                      }
+                    }
+                  },
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "+ เพิ่มสินเชื่อ",
+                      "options": {
+                        "variant": "secondary",
+                        "validationSchema": false,
+                        "chain": [
+                          {
+                            "operationType": "script",
+                            "converter": "register_populate_AddLoan",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "required": [
+                                "loanSection"
+                              ],
+                              "properties": {
+                                "loanSection": {
+                                  "type": "object",
+                                  "properties": {
+                                    "newLoan": {
+                                      "type": "object",
+                                      "properties": {
+                                        "application_account_id": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "seq": {
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ]
+                                        },
+                                        "contract_no": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "application_group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_group": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "product_type": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        },
+                                        "sub_product": {
+                                          "type": [
+                                            "string",
+                                            "null"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          {
+                            "operationType": "modal",
+                            "dialogName": "m_Register_Details_Add_Loan",
+                            "subtype": "show"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/loanSection/properties/loans.0.seq",
+          "schema": {
+            "const": 1
+          }
+        }
+      },
+      "type": "Accordion",
+      "label": "รายละเอียดสินเชื่อ",
+      "options": {
+        "variant": "subtitle2Purple"
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em",
+            "sx": {
+              "padding": "1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Product Type",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/appl_account/properties/product_type",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Sub Product Type",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/appl_account/properties/sub_product_type",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Option",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ชื่อบริษัทหลักทรัพย์จัดการกองทุน",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": false,
+                      "scope": "#/properties/appl_account/properties/company_code_pvd",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "enumDataPath": "enum_company_pvd"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รหัสบริษัท",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/appl_account/properties/company_code_pvd",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รหัสสมาชิก",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": "",
+                      "scope": "#/properties/appl_account/properties/member_code_pvd",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "hideRequiredAsterisk": true,
+                        "fullWidth": true,
+                        "variant": "outlined"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "จำนวนเงินทั้งหมด",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "NumberField",
+                  "label": false,
+                  "scope": "#/properties/appl_account/properties/net_amount_pvd",
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  },
+                  "options": {
+                    "thousandSeparator": ",",
+                    "hideRequiredAsterisk": true,
+                    "endAdornmentTypography": {
+                      "text": "บาท"
+                    },
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "sx": {
+                      "height": "38px",
+                      "& .MuiInputBase-input": {
+                        "textAlign": "right"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "วงเงินที่ขออนุมัติ",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "NumberField",
+                      "label": false,
+                      "scope": "#/properties/appl_account/properties/requested_amount",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "thousandSeparator": ",",
+                        "hideRequiredAsterisk": true,
+                        "endAdornmentTypography": {
+                          "text": "บาท"
+                        },
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "sx": {
+                          "height": "38px",
+                          "& .MuiInputBase-input": {
+                            "textAlign": "right"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/loanSection/properties/loans.0.seq",
+          "schema": {
+            "const": 1
+          }
+        }
+      },
+      "type": "Accordion",
+      "label": "บัญชีรับโอนเงินกู้/บัญชีรับโอนเงินกองทุน",
+      "options": {
+        "variant": "subtitle2Purple"
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": "1em",
+            "sx": {
+              "padding": "1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {},
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "เลขที่บัญชี",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "sx": {
+                          "gap": "1rem",
+                          "justifyContent": "space-between"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "",
+                          "scope": "#/properties/accountNumber",
+                          "options": {
+                            "variant": "outlined",
+                            "sx": {
+                              "width": "100%"
+                            }
+                          }
+                        },
+                        {
+                          "type": "ActionButton",
+                          "options": {
+                            "validationSchema": false,
+                            "variant": "secondary",
+                            "operationType": "script",
+                            "sx": {
+                              "width": "300px !important"
+                            },
+                            "className": "secondaryButton",
+                            "chain": [
+                              {
+                                "operationType": "action",
+                                "conditionTypeId": "Register_Loan_Get_Account_Deposits",
+                                "payload": {
+                                  "userId": "{user.login}",
+                                  "accountNumber": "{accountNumber}",
+                                  "enum_project": [],
+                                  "enum_organization": []
+                                }
+                              },
+                              {
+                                "if": {
+                                  "type": "object",
+                                  "required": [
+                                    "data"
+                                  ],
+                                  "properties": {
+                                    "data": {
+                                      "type": "object",
+                                      "required": [
+                                        "payload"
+                                      ],
+                                      "properties": {
+                                        "payload": {
+                                          "type": "object",
+                                          "required": [
+                                            "data"
+                                          ],
+                                          "properties": {
+                                            "data": {
+                                              "required": [
+                                                "appl_account"
+                                              ],
+                                              "type": "object",
+                                              "properties": {
+                                                "appl_account": {
+                                                  "type": "object",
+                                                  "required": [
+                                                    "is_show_account_name"
+                                                  ],
+                                                  "properties": {
+                                                    "is_show_account_name": {
+                                                      "type": "boolean",
+                                                      "const": true
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "else": true
+                                },
+                                "$ref": "urn:zbo:uischema:basic_Error_EmptySearchFields"
+                              }
+                            ]
+                          },
+                          "label": "ตรวจสอบสถานะบัญชี"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ชื่อบัญชี",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/appl_account/properties/accountName",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "สถานะบัญชี",
+                          "options": {
+                            "variant": "label"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/appl_account/properties/accountStatus",
+                      "options": {
+                        "variant": "body2"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ระยะเวลาที่ผ่อนชำระ (เดือน)",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": false,
+                      "scope": "#/properties/appl_account/properties/loan_tenor_month_pvd",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "enumDataPath": "enum_loan_tenor_month_pvd"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "วัตถุประสงค์ในการขอสินเชื่อ",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": false,
+                      "scope": "#/properties/appl_account/properties/loan_purpose_code",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "enumDataPath": "enum_loan_request_reason"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "วิธีการชำระเงิน",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "field-label-error"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "elements": [
+                    {
+                      "type": "SelectField",
+                      "label": false,
+                      "scope": "#/properties/appl_account/properties/pn_payment_method",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "autocomplete": true,
+                        "enumDataPath": "enum_pn_payment_method"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

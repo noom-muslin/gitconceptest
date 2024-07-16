@@ -1,0 +1,40 @@
+query CustomerNameSearch($customerName: String = "", $limit: Int = 10) {
+  ngl_appl_party(
+    where: {
+      full_name: { _ilike: $customerName }
+      borrowers: {
+        application: {
+          tasks: {
+            task_type_id: { _eq: "CollateralAppraisal" }
+            performing_by: { _is_null: true }
+            status_id: { _eq: "Todo" }
+          }
+        }
+      }
+    }
+    limit: $limit
+    distinct_on: full_name
+  ) {
+    full_name
+  }
+  ngl_appl_party_juristic_info(
+    where: {
+      juristic_name: { _ilike: $customerName }
+      party: {
+        borrowers: {
+          application: {
+            tasks: {
+              task_type_id: { _eq: "CollateralAppraisal" }
+              performing_by: { _is_null: true }
+              status_id: { _eq: "Todo" }
+            }
+          }
+        }
+      }
+    }
+    limit: $limit
+    distinct_on: juristic_name
+  ) {
+    juristic_name
+  }
+}

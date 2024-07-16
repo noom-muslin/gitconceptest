@@ -1,0 +1,744 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/indexing-tc"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Indexing Time to Cash"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number_parrent",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ซ่อนเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px 16px 86px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "spacing": 2
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 6
+              },
+              "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/documentOn",
+                  "schema": {
+                    "const": true
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "type": "Bucket",
+                  "options": {
+                    "name": "Documentum"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": true,
+                "sx": {
+                  "minWidth": 0
+                }
+              },
+              "elements": [
+                {
+                  "type": "PaperLayout",
+                  "options": {
+                    "component": "section",
+                    "variant": "section"
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ค้นหาข้อมูลใบสมัคร"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "16px",
+                        "sx": {
+                          "padding": "16px",
+                          "borderBottom": "1px solid",
+                          "borderColor": "secondary.dark"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "กรุณาระบุข้อมูลอย่างน้อย 1 รายการเพื่อค้นหาข้อมูล",
+                          "options": {
+                            "variant": "body2",
+                            "sx": {
+                              "color": "text.light"
+                            }
+                          }
+                        },
+                        {
+                          "type": "TextField",
+                          "label": "Application No.",
+                          "scope": "#/properties/application_number",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined"
+                          }
+                        },
+                        {
+                          "type": "TextField",
+                          "label": "เลขบัตรประชาชน/เลขทะเบียนการค้า/เลขที่พาสปอร์ต",
+                          "scope": "#/properties/card_id_number",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true
+                          }
+                        },
+                        {
+                          "type": "TextField",
+                          "label": "ชื่อลูกค้า",
+                          "scope": "#/properties/customer_name",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true
+                          }
+                        },
+                        {
+                          "type": "TextField",
+                          "label": "เลขที่บัญชีสินเชื่อ",
+                          "scope": "#/properties/loan_account_number",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true
+                          }
+                        },
+                        {
+                          "type": "ActionButton",
+                          "label": "ค้นหา",
+                          "options": {
+                            "variant": "secondary",
+                            "sx": {
+                              "alignSelf": "flex-end"
+                            },
+                            "chain": [
+                              {
+                                "operationType": "script",
+                                "converter": "indexingtc_checking_search_fields",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "status": {
+                                      "type": "string",
+                                      "dataPath": "status"
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "if": {
+                                  "type": "object",
+                                  "required": ["payload"],
+                                  "properties": {
+                                    "payload": {
+                                      "type": "object",
+                                      "required": ["data"],
+                                      "properties": {
+                                        "data": {
+                                          "required": ["status"],
+                                          "type": "object",
+                                          "properties": {
+                                            "status": {
+                                              "type": "string",
+                                              "const": "form_valid"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "operationType": "action",
+                                "conditionTypeId": "IndexingTC_Details_Search",
+                                "payload": {
+                                  "taskId": "{route.taskId}"
+                                }
+                              },
+                              {
+                                "if": {
+                                  "else": true
+                                },
+                                "operationType": "modal",
+                                "dialogName": "m_IndexingTC_Details_DataNotEntered",
+                                "subtype": "show"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "options": {
+                        "sx": {
+                          "overflowX": "auto"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "scope": "#/properties/applications",
+                          "type": "UniversalArrayView",
+                          "label": {
+                            "show": false
+                          },
+                          "options": {
+                            "hideTableToolbar": true,
+                            "hideColumnTitles": false,
+                            "rowClick": false,
+                            "selectedIndexScope": "#/properties/selectedIndex",
+                            "cells": [
+                              {
+                                "type": "SelectedItem",
+                                "options": {
+                                  "visible": "{isMortgage}",
+                                  "columnTitle": "เลือก",
+                                  "checkedIcon": "RadioButtonChecked",
+                                  "icon": "RadioButtonUnchecked"
+                                }
+                              },
+                              {
+                                "type": "CheckboxField",
+                                "scope": "#/properties/isChecked",
+                                "label": " ",
+                                "options": {
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/application_number",
+                                "options": {
+                                  "columnTitle": "Application No."
+                                }
+                              },
+                              {
+                                "type": "Schema",
+                                "scope": "#/properties/loan_accounts",
+                                "options": {
+                                  "columnTitle": "เลขที่บัญชีสินเชื่อ",
+                                  "uiSchema": {
+                                    "scope": "#",
+                                    "type": "SchemedListView",
+                                    "label": {
+                                      "show": false
+                                    },
+                                    "options": {
+                                      "layoutOptions": {
+                                        "spacing": "0"
+                                      },
+                                      "cellUiSchema": {
+                                        "type": "StackLayout",
+                                        "options": {
+                                          "direction": "column"
+                                        },
+                                        "elements": [
+                                          {
+                                            "type": "Typography",
+                                            "scope": "#/properties/account_number",
+                                            "options": {
+                                              "variant": "body2"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/purpose_of_loan",
+                                "options": {
+                                  "columnTitle": "วัตถุประสงค์ของการขอสินเชื่อ",
+                                  "visible": "{isMortgage}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/customer_name",
+                                "options": {
+                                  "columnTitle": "ชื่อลูกค้า"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/auto_model",
+                                "options": {
+                                  "columnTitle": "รถคันที่",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/auto_engine_no",
+                                "options": {
+                                  "columnTitle": "เลขเครื่องยนต์",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/auto_chasis_no",
+                                "options": {
+                                  "columnTitle": "เลขตัวถัง",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dealer_code",
+                                "options": {
+                                  "columnTitle": "Dealer Code",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dealer_name",
+                                "options": {
+                                  "columnTitle": "Dealer Name",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dealer_group",
+                                "options": {
+                                  "columnTitle": "Dealer Group",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/dealer_type",
+                                "options": {
+                                  "columnTitle": "Dealer Type",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/status_RCCO",
+                                "options": {
+                                  "columnTitle": "สถานะ RCCO"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/contract_status",
+                                "options": {
+                                  "columnTitle": "สถานะสัญญา",
+                                  "visible": "{isAuto}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/approved_date_and_time",
+                                "options": {
+                                  "columnTitle": "วันเวลาที่อนุมัติ",
+                                  "visible": "{isMortgage}"
+                                }
+                              },
+                              {
+                                "type": "Typography",
+                                "scope": "#/properties/view_ca_report",
+                                "options": {
+                                  "columnTitle": "ดู CA Report",
+                                  "href": "https://zorallabs.com/"
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "ยกเลิกการส่งงาน",
+                  "options": {
+                    "variant": "secondaryError",
+                    "operationType": "modal",
+                    "subtype": "show",
+                    "dialogName": "m_Details_Reject"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ส่งไป Follow Up",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "modal",
+                    "subtype": "show",
+                    "dialogName": "m_Details_Reject"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "indexingTC_selectedIndex",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "result": {
+                          "type": "boolean",
+                          "dataPath": "result"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["result"],
+                              "type": "object",
+                              "properties": {
+                                "result": {
+                                  "type": "boolean",
+                                  "const": false
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_IndexingTC_Details_NoIndexSelected",
+                    "subtype": "show"
+                  },
+                  {
+                    "operationType": "script",
+                    "converter": "indexingTC_selectedApproved",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "result": {
+                          "type": "boolean",
+                          "dataPath": "result"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["result"],
+                              "type": "object",
+                              "properties": {
+                                "result": {
+                                  "type": "boolean",
+                                  "const": false
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_IndexingTC_Details_NoApprovedSelected",
+                    "subtype": "show"
+                  },
+                  {
+                    "operationType": "script",
+                    "converter": "indexingTC_selectedAll",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "result": {
+                          "type": "boolean",
+                          "dataPath": "result"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["result"],
+                              "type": "object",
+                              "properties": {
+                                "result": {
+                                  "type": "boolean",
+                                  "const": false
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_IndexingTC_Details_NoSelectedAll",
+                    "subtype": "show"
+                  },
+                  {
+                    "operationType": "script",
+                    "converter": "indexingTC_isMortgageCheck",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "result": {
+                          "type": "boolean",
+                          "dataPath": "result"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": ["result"],
+                              "properties": {
+                                "result": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "dialogName": "m_IndexingTC_Details_EnterDate",
+                    "subtype": "show"
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "chain": [
+                      {
+                        "operationType": "action",
+                        "conditionTypeId": "IndexingTC_Details_Submit",
+                        "payload": {
+                          "taskId": "{route.taskId}"
+                        }
+                      },
+                      {
+                        "operationType": "open",
+                        "route": "/indexing-tc/{route.taskId}/done"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

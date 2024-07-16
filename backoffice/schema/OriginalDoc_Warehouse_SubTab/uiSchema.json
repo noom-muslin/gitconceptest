@@ -1,0 +1,20 @@
+{
+  "type": "TabStripMenu",
+  "options": {
+    "sx": {
+      "padding-top": "10px"
+    },
+    "menu": [
+      {
+        "link": "/originaldoc/warehouseadmin/yeardestroy",
+        "text": "Year Destroy",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/warehouseadmin/boxno",
+        "text": "Box No",
+        "type": "link"
+      }
+    ]
+  }
+}

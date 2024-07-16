@@ -1,0 +1,56 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "index": {
+        "type": "integer"
+      },
+      "creditLevel": {
+        "type": "string"
+      },
+      "number": {
+        "type": "string"
+      },
+      "village": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      },
+      "floor": {
+        "type": "string"
+      },
+      "room": {
+        "type": "string"
+      },
+      "alley": {
+        "type": "string"
+      },
+      "intersection": {
+        "type": "string"
+      },
+      "road": {
+        "type": "string"
+      },
+      "province": {
+        "type": "string"
+      },
+      "district": {
+        "type": "string"
+      },
+      "subdistrict": {
+        "type": "string"
+      },
+      "zipCode": {
+        "type": "string"
+      }
+    },
+    "required":[
+      "province",
+      "district",
+      "subdistrict",
+      "zipCode"
+    ]
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/originaldoc"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em",
+                "sx": {
+                  "padding": "0.5em 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack",
+                  "options": {
+                    "sx": {
+                      "color": "#ffffff"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป",
+                  "options": {
+                    "variant": "body2-grey"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "Original Doc",
+                  "options": {
+                    "variant": "subtitle2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "component": "section",
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "spacing": "1em",
+            "sx": {
+              "padding": "1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "sx": {
+                  "padding": "0 1em 1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "backgroundColor": "#f5f3ff",
+                      "margin": "0 -1em"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Set ข้อมูล Box No.",
+                      "options": {
+                        "variant": "subtitle2Purple"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "1em"
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": "true",
+                            "spacing": "1em"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Record No.",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/search/properties/recordNo",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "OC Code *",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/search/properties/ocCode",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "12"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "เดือนปีที่จัดเก็บ",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/search/properties/monthYear",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "6"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Box No. From",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/search/properties/boxNoFrom",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": "6"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "Box No. To",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "TextField",
+                                  "label": false,
+                                  "scope": "#/properties/search/properties/boxNoTo",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "justifyContent": "space-between"
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "Add",
+                          "options": {
+                            "operationType": "script",
+                            "converter": "workbasket_filter",
+                            "className": "primaryButton",
+                            "resultMappingSchema": {
+                              "type": "object",
+                              "properties": {
+                                "workbasket_grid": {
+                                  "type": "object",
+                                  "properties": {
+                                    "filters": {
+                                      "type": "array"
+                                    },
+                                    "pagination": {
+                                      "type": "object",
+                                      "properties": {
+                                        "pageIndex": {
+                                          "type": "number"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

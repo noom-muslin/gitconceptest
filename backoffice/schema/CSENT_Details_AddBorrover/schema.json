@@ -1,0 +1,81 @@
+{
+  "type": "object",
+  "properties": {
+    "individualReferenceTypes": {
+      "type": "array"
+    },
+    "juristicReferenceTypes": {
+      "type": "array"
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "error_search": {
+          "type": "string"
+        }
+      }
+    },
+    "borrower": {
+      "type": "object",
+      "properties": {
+        "customerType": {
+          "type": "string",
+          "oneOf": [
+            {
+              "const": "Individual",
+              "title": "บุคคลธรรมดา"
+            },
+            {
+              "const": "Juristic",
+              "title": "นิติบุคคล"
+            }
+          ]
+        },
+        "isSearchResultShown": {
+          "type": "boolean"
+        },
+        "referenceTypes": {
+          "type": "array"
+        },
+        "refDocumentType": {
+          "type": "string"
+        },
+        "refDocumentNo": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "juristicName": {
+          "type": "string"
+        },
+        "ocCode": {
+          "type": "string"
+        }
+      },
+      "required": ["customerType", "documentType", "documentNumber", "title"],
+      "if": {
+        "properties": {
+          "customerType": {
+            "const": "Individual"
+          }
+        }
+      },
+      "then": {
+        "required": ["firstName", "lastName"]
+      },
+      "else": {
+        "required": ["juristicName"]
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+query GetAdditionalService($where: [ngl_enum_additional_service_bool_exp!] = {}){
+  result: ngl_enum_additional_service(where: {_and : $where}){
+     additional_service_group
+     value: code
+     label: description
+   }
+}

@@ -1,0 +1,104 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "minWidth": "500px"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center",
+                "sx": {
+                  "paddingTop": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ErrorOutline",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EF4444",
+                      "background": "#FEF2F2",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ไม่สามารถดำเนินการต่อได้",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "กรุณาลองใหม่อีกครั้ง",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px",
+          "paddingTop": "12px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "OK",
+          "options": {
+            "variant": "primary",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        }
+      ]
+    }
+  ]
+}

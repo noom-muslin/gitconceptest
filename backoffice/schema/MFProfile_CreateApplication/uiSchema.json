@@ -1,0 +1,50 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "RadioGroupField",
+          "label": "เลือกประเภทใบสมัคร",
+          "scope": "#/properties/applicationType",
+          "options": {
+            "format": "radio",
+            "radioSize": "small",
+            "enumDataPath": "mf_application_type_enum"
+          },
+          "errors": {
+            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "สร้าง",
+          "options": {
+            "variant": "primary",
+            "size": "large",
+            "operationType": "action",
+            "conditionTypeId": "MFProfile_CreateApplication"
+          }
+        }
+      ]
+    }
+  ]
+}

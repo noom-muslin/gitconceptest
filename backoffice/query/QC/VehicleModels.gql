@@ -1,0 +1,26 @@
+query GetVehicleModel($redbook_brand: String = "", $application_date_time_in: date = "now()") {
+  result: ngl_view_redbook_vehicle_model_dropdown(
+    distinct_on: redbook_model,
+    where: {
+        redbook_brand: { _eq: $redbook_brand},
+        _or: [
+          	{_and: [
+                {start_date: {_is_null: true}}, 
+                {end_date: {_is_null: true}},
+          	]},
+          	{_and: [
+            	{start_date: {_lte: $application_date_time_in}, }, 
+            	{ _or: [
+                    {end_date: {_gte: $application_date_time_in}},
+                    {end_date: {_is_null: true}}
+                ]},
+            ]}
+  		]
+    }
+            ){
+    start_date
+    end_date
+    value: redbook_model
+    label: model_desc
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 100
+    },
+    {      
+      "title": "ชื่อลูกค้า",
+      "field": "application.borrowers",
+      "name": "customer_name",
+      "converter": "customer_name_multi_converter",
+      "sortable": false,
+      "minWidth": 120
+    },
+    {
+      "title": "Product Type",
+      "field": "application.accounts",
+      "name": "product_type",
+      "converter": "product_type_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "Application Status",
+      "field": "status_id",
+      "name": "status_id",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class_id",
+      "sortable": false,
+      "minWidth": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

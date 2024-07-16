@@ -1,0 +1,15 @@
+query GetQCDealer {
+  result: ngl_enum_dealer(where:{
+    is_active:{_eq: true}
+  }) {
+    label: dealer_code
+    value: dealer_code
+    dealerCode: dealer_code
+    dealerName: dealer_name
+    dealerGroup: dealer_group
+    dealerType: dealer_type
+    dealerGrade: dealer_grade
+    dealerSize: dealer_size
+    is_active
+  }
+}

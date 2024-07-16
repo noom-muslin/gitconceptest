@@ -1,0 +1,125 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.code",
+      "name": "application_class",
+      "minWidth": 120
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.code",
+      "name": "application_group",
+      "minWidth": 120
+    },
+    {
+      "title": "Product Type",
+      "field": "application.accounts[0].product_type_id",
+      "name": "product_type",
+      "minWidth": 120
+    },
+    {
+      "title": "Sub product type",
+      "field": "application.accounts[0].sub_product_type_id",
+      "name": "product_type",
+      "minWidth": 120
+    },
+    {
+      "title": "Application Type",
+      "field": "application.application_type.code",
+      "name": "application_type",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": "FU Updated",
+      "field": "applFollowupsByToTaskId[0].fu_updated",
+      "name": "fu_updated",
+      "minWidth": 150
+    },
+    {
+      "title": "FU Details",
+      "field": "applFollowupsByToTaskId[0].comment_value.code",
+      "name": "fu_details",
+      "minWidth": 150
+    },
+    {
+      "title": " ",
+      "name": "view_fu",
+      "sortable": false,
+      "resizable": false,
+      "minWidth": 120,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View FU",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_Register",
+            "route": "/register/pending-followup/{data.application.application_id}",
+            "validationSchema": false
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "name": "get_task",
+      "sortable": false,
+      "resizable": false,
+      "minWidth": 120,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_Register",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/register/{data.id}/details"
+            },
+            "validationSchema": false
+          }
+        }
+      ]
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "sla_tty.current_duration_minutes",
+      "dir": "desc"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "properties": {
+    "fuHistoryRow": {
+      "type": "object",
+      "properties": {
+        "commentCode": {
+          "type": ["string", "null"]
+        },
+        "commentDetails": {
+          "type": ["string", "null"]
+        },
+        "originStation": {
+          "type": ["string", "null"]
+        },
+        "remark": {
+          "type": ["string", "null"],
+          "maxLength": 128
+        },
+        "originTaskType": {
+          "type": ["string", "null"]
+        },
+        "fuId": {
+          "type": "string"
+        },
+        "fuUpdated": {
+          "type": ["boolean", "null"]
+        }
+      }
+    }
+  }
+}

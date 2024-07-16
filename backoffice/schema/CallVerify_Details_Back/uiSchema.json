@@ -1,0 +1,162 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconWarning"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "HelpOutlineOutlined"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "คุณกำลังจะออกจากหน้านี้",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "หากต้องการบันทึกข้อมูลที่ระบุหรือแก้ไขไว้ กรุณาเลือก “บันทึก”",
+              "options":{
+                "variant": "body2"
+              } 
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "variant": "secondary",
+            "operationType": "modal",
+            "subtype": "cancel",
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "cancel"
+              },
+              {
+                "operationType": "open",
+                "route": "/callverify"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "บันทึก",
+          "options": {
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "CallVerify_Details_SaveToDraft",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "dialogName": "m_CallVerify_Details_Error",
+                "subtype": "show"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "submitted"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/callverify"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

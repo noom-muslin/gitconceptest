@@ -1,0 +1,463 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "padding": "0 0 0"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 0 0"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "1em 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": "true",
+                    "spacing": "1em"
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "ยี่ห้อ",
+                          "scope": "#/properties/search/properties/brand_code",
+                          "options": {
+                            "query": "Register/VehicleBrand",
+                            "converter": "mapValueLabel",
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "required": "required"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "รุ่น",
+                          "scope": "#/properties/search/properties/model_code",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": [
+                                        "search"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "required": [
+                                      "search"
+                                    ],
+                                    "properties": {
+                                      "search": {
+                                        "not": {
+                                          "required": [
+                                            "brand_code"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "errors": {
+                            "required": "required"
+                          },
+                          "options": {
+                            "query": "Register/VehicleModels",
+                            "queryVariables": {
+                              "brand_code": "{search.brand_code}",
+                              "application_date_time_in": "{modalIn.applicationDateIn}"
+                            },
+                            "converter": "mapValueLabel",
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "readOnly": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "รุ่นย่อย",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/sub_model_code",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": [
+                                        "search"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "required": [
+                                      "search"
+                                    ],
+                                    "properties": {
+                                      "search": {
+                                        "not": {
+                                          "required": [
+                                            "brand_code",
+                                            "model_code"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "query": "Register/VehicleRedBookSubModelCode",
+                            "converter": "mapKeyValue",
+                            "queryVariables": {
+                              "brand_code": "{search.brand_code}",
+                              "model_code": "{search.model_code}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ประเภทเครื่องยนต์",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/engine_type_code",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": [
+                                        "search"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "required": [
+                                      "search"
+                                    ],
+                                    "properties": {
+                                      "search": {
+                                        "not": {
+                                          "required": [
+                                            "brand_code",
+                                            "model_code"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "converter": "mapKeyValue",
+                            "query": "Register/VehicleRedBookEngineType",
+                            "queryVariables": {
+                              "brand_code": "{search.brand_code}",
+                              "model_code": "{search.model_code}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": "4"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "CCKWH",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/search/properties/cckwh",
+                          "rule": {
+                            "effect": "DISABLE",
+                            "condition": {
+                              "scope": "#",
+                              "schema": {
+                                "anyOf": [
+                                  {
+                                    "not": {
+                                      "required": [
+                                        "search"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "required": [
+                                      "search"
+                                    ],
+                                    "properties": {
+                                      "search": {
+                                        "not": {
+                                          "required": [
+                                            "brand_code",
+                                            "model_code"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "options": {
+                            "converter": "mapValueLabelOneParameter",
+                            "query": "Register/VehicleRedBookCckwh",
+                            "queryVariables": {
+                              "brand_code": "{search.brand_code}",
+                              "model_code": "{search.model_code}"
+                            },
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "sx": {
+          "padding": "1em 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "spacing": "1em",
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "sx": {
+              "margin": "5"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ค้นหา",
+              "options": {
+                "variant": "secondary",
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "check_work_basket_search_criteria",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "canSubmit": {
+                          "type": "boolean",
+                          "dataPath": "canSubmit"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "required": [
+                                "canSubmit"
+                              ],
+                              "type": "object",
+                              "properties": {
+                                "canSubmit": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "script",
+                    "converter": "vehicle_filter",
+                    "size": "large",
+                    "sx": {
+                      "backgroundColor": "#5b21b6"
+                    },
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "redbook_grid": {
+                          "type": "object",
+                          "properties": {
+                            "filters": {
+                              "type": "array"
+                            },
+                            "pagination": {
+                              "type": "object",
+                              "properties": {
+                                "pageIndex": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "selection": {
+                              "type": "object",
+                              "properties": {
+                                "additionalProperties": {
+                                  "type": "boolean"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "$ref": "urn:zbo:uischema:basic_Error_EmptySearchFields"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "sx": {
+          "padding": "0 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "options": {
+            "htmlID": "Search"
+          },
+          "elements": [
+            {
+              "type": "Datagrid",
+              "scope": "#/properties/redbook_grid",
+              "options": {
+                "grid": "Register/RedBookSearch",
+                "dataContext": {
+                  "query": "Register/RedBookSearch"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

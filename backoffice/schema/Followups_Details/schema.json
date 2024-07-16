@@ -1,0 +1,181 @@
+{
+  "type": "object",
+  "properties": {
+    "documentOn": {
+      "type": "boolean"
+    },
+
+    "submitValidationSchemaStatus": {
+      "type": "string"
+    },
+
+    "selectedIndex": {
+      "type": "integer"
+    },
+
+    "application_number": {
+      "type": "string",
+      "readonly": true
+    },
+
+    "isCancelApplication": {
+      "type": "boolean"
+    },
+    "updated_by": {
+      "type": "string"
+    },
+    "updated_on": {
+      "type": "string"
+    },
+    "updated_on_formatted": {
+      "type": "string"
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readonly": true
+        },
+        "title": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+
+    "applicants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "string",
+            "readonly": true
+          },
+          "name": {
+            "type": "string",
+            "readonly": true
+          },
+          "customer_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "ref_document_no": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    },
+
+    "loans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "string",
+            "readonly": true
+          },
+          "product_group": {
+            "type": "string",
+            "readonly": true
+          },
+          "product_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "sub_product_type": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    },
+
+    "salesPersons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "string",
+            "readonly": true
+          },
+          "name": {
+            "type": "string",
+            "readonly": true
+          },
+          "branch": {
+            "type": "string",
+            "readonly": true
+          },
+          "agency_oc_code": {
+            "type": "string",
+            "readonly": true
+          },
+          "phone_number": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    },
+    "followUpInternal": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": ["string", "null"]
+          },
+          "sla": {
+            "type": ["string", "null"]
+          },
+          "requestDateTime": {
+            "type": ["string", "null"]
+          },
+          "completeDateTime": {
+            "type": ["string", "null"]
+          },
+          "receivedDocumentDateTime": {
+            "type": ["string", "null"]
+          },
+          "originStation": {
+            "type": ["string", "null"]
+          },
+          "destinationStation": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "followUpExternal": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": ["string", "null"]
+          },
+          "sla": {
+            "type": ["string", "null"]
+          },
+          "requestDateTime": {
+            "type": ["string", "null"]
+          },
+          "completeDateTime": {
+            "type": ["string", "null"]
+          },
+          "receivedDocumentDateTime": {
+            "type": ["string", "null"]
+          },
+          "originStation": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    }
+  }
+}

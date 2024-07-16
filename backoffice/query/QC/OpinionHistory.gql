@@ -1,0 +1,5 @@
+query getApplQcVehicleInfoData($applicationId: String) {
+  result : ngl_appl_qc_vehicle_info(where: {application_id: {_eq: $applicationId}}) {
+    qc_opinion
+  }
+}

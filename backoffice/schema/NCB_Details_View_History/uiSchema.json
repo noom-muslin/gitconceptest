@@ -1,0 +1,203 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "paddingBottom": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "overflowX": "auto"
+        }
+      },
+      "elements": [
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/ncbHistoryBorrowerInfo",
+          "label": {
+            "show": false
+          },
+          "options": {
+            "hideTableToolbar": true,
+            "sx": {
+              "borderBottom": "1px solid",
+              "borderColor": "secondary.dark"
+            },
+            "cells": [
+              {
+                "type": "Typography",
+                "scope": "#/properties/customerName",
+                "options": {
+                  "columnTitle": "ชื่อลูกค้า"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/dateOfBirth",
+                "options": {
+                  "columnTitle": "วันเกิด (พ.ศ.)",
+                  "visible": "{isIndividual}"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/businessRegistrationType",
+                "options": {
+                  "columnTitle": "ประเภททะเบียนธุรกิจ",
+                  "visible": "{isJuristic}"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/businessRegistrationDate",
+                "options": {
+                  "columnTitle": "วันที่จดทะเบียนนิติบุคคล",
+                  "visible": "{isJuristic}"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/ocCode",
+                "options": {
+                  "columnTitle": "OC Code ลูกค้า"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/customerSegment",
+                "options": {
+                  "columnTitle": "Segment Code"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "Typography",
+      "label": "ประวัติการส่งตรวจ NCB",
+      "options": {
+        "variant": "subtitle2Dark",
+        "sx": {
+          "padding": "14px 16px"
+        }
+      }
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "overflowX": "auto"
+        }
+      },
+      "elements": [
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/ncbHistory",
+          "label": {
+            "show": false
+          },
+          "options": {
+            "hideTableToolbar": true,
+            "sx": {
+              "borderBottom": "1px solid",
+              "borderColor": "secondary.dark"
+            },
+            "cells": [
+              {
+                "type": "Typography",
+                "scope": "#/properties/number",
+                "options": {
+                  "columnTitle": "ครั้งที่"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/consentDocument",
+                "options": {
+                  "columnTitle": "เอกสาร Consent"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/referenceDocumentNoIndividual",
+                "options": {
+                  "columnTitle": "เลขที่เอกสารอ้างอิง"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/referenceDocumentNoJuristic",
+                "options": {
+                  "columnTitle": "เลขที่เอกสารอ้างอิง",
+                  "visible": "{isJuristic}"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/consentDate",
+                "options": {
+                  "columnTitle": "วันลงนาม Consent"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/emsParcelNumber",
+                "options": {
+                  "columnTitle": "เลขพัสดุ EMS",
+                  "visible": "{isJuristic}"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/ncbSubmissionResult",
+                "options": {
+                  "columnTitle": "ผลการส่ง NCB"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/employeeId",
+                "options": {
+                  "columnTitle": "รหัสพนักงาน"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/ncbTestResult",
+                "options": {
+                  "columnTitle": "ผลตรวจ NCB"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/ncbGrade",
+                "options": {
+                  "columnTitle": "เกรด NCB"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/odGrade",
+                "options": {
+                  "columnTitle": "เกรด OD"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/ncbInspectionDate",
+                "options": {
+                  "columnTitle": "วันที่ตรวจ NCB"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

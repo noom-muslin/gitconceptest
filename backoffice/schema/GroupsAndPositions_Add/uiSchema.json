@@ -1,0 +1,335 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "breadcrumbsWhiteBg"
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/groups-and-positions"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ArrowBack"
+            },
+            {
+              "type": "Typography",
+              "label": "กลับไป"
+            },
+            {
+              "type": "Typography",
+              "label": "Groups and Positions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "display": "flex",
+          "justifyContent": "space-between"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "เพิ่มข้อมูล",
+          "options": {
+            "variant": "h6",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "อัปโหลดข้อมูล",
+          "options": {
+            "variant": "secondary",
+            "operationType": "open",
+            "route": "/groups-and-positions-upload"
+          }
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "variant": "section"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "Group Details"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "gap": "20px",
+              "margin": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "รหัสกลุ่ม",
+              "scope": "#/properties/groupsPositionCode",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            },
+            {
+              "type": "TextField",
+              "label": "ชื่อกลุ่ม",
+              "scope": "#/properties/groupsPositionName",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "margin": "16px",
+              "width": "50%",
+              "paddingRight": "24px"
+            }
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "สถานะ",
+              "scope": "#/properties/status",
+              "options": {
+                "fullwidth": true,
+                "autocomplete": true,
+                "variant": "outlined",
+                "enum": [
+                  {
+                    "value": true,
+                    "label": "Active"
+                  },
+                  {
+                    "value": false,
+                    "label": "Inactive"
+                  }
+                ],
+                "sx": {
+                  "width": "100%"
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row-reverse",
+                "spacing": "10px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "บันทึกข้อมูล",
+                  "options": {
+                    "variant": "primary",
+                    "validationSchema": true,
+                    "formValidationErrors": "show",
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "groupsAndPositions_checking_save_fields",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "dataPath": "status"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "required": [
+                                    "status"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "isFormValid": {
+                                      "type": "boolean",
+                                      "const": true
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "chain": [
+                          {
+                            "operationType": "action",
+                            "conditionTypeId": "Groups_And_Positions_Details_Save",
+                            "payload": {
+                              "taskId": "{route.taskId}"
+                            }
+                          },
+                          {
+                            "if": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "required": [
+                                    "validation"
+                                  ],
+                                  "properties": {
+                                    "validation": {
+                                      "type": "object",
+                                      "required": [
+                                        "validConnection"
+                                      ],
+                                      "properties": {
+                                        "validConnection": {
+                                          "type": "boolean",
+                                          "const": false
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "operationType": "modal",
+                            "subtype": "show",
+                            "dialogName": "m_Basic_Error",
+                            "dialogVariables": {
+                              "title": "ไม่สามารถดำเนินการต่อได้",
+                              "text": "กรุณาลองใหม่อีกครั้ง"
+                            }
+                          },
+                          {
+                            "if": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "required": [
+                                    "validation"
+                                  ],
+                                  "properties": {
+                                    "validation": {
+                                      "type": "object",
+                                      "required": [
+                                        "validSave"
+                                      ],
+                                      "properties": {
+                                        "validSave": {
+                                          "type": "boolean",
+                                          "const": false
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "operationType": "modal",
+                            "subtype": "show",
+                            "dialogName": "m_Basic_Error",
+                            "dialogVariables": {
+                              "title": "ไม่สามารถบันทึกข้อมูลได้",
+                              "text": "เนื่องจากมีรหัส Group Code นี้ในระบบแล้ว"
+                            }
+                          },
+                          {
+                            "if": {
+                              "else": true
+                            },
+                            "operationType": "open",
+                            "route": "/groups-and-positions"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

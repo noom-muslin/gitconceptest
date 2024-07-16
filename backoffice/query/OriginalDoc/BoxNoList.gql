@@ -1,0 +1,24 @@
+query GetOriginalDocDocBoxNo(
+  $applicationGroupId: String
+  $limit: Int = 10
+) {
+  result: ngl_appl_original_doc_box_no(
+    distinct_on: box_no_group
+    where: { 
+      application_group_id: { _eq: $applicationGroupId }
+    }
+    limit: $limit
+  ) {
+    id
+    record_no
+    oc_code
+    month_year
+    box_no_group
+    box_no_from
+    box_no_to
+    warehouse_box_no_from
+    warehouse_box_no_to
+    no_of_application
+    application_group_id
+  }
+}

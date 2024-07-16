@@ -1,0 +1,145 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconWarning"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "HelpOutlineOutlined"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "คุณต้องการส่งข้อมูลหรือไม่",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "เมื่อกดส่งข้อมูลแล้ว ข้อมูลนี้จะถูกส่งไปยัง Station ถัดไป",
+              "options":{
+                "variant": "body2"
+              } 
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "variant": "secondary",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ส่งข้อมูล",
+          "options": {
+            "className": "primaryButton",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "FOS_Details_Submit",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "dialogName": "m_FOS_Details_Error",
+                "subtype": "show"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "required": [
+                            "valid"
+                          ],
+                          "type": "object",
+                          "properties": {
+                            "valid": {
+                              "type": "boolean",
+                              "const": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "cancel"
+                  },
+                  {
+                    "operationType": "open",
+                    "route": "/fos/{route.taskId}/done"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "properties": {
+    "enum_additional_service": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "appl_account_additionalservice_new": {
+      "type": "object",
+      "required": [
+        "addition_service_group",
+        "addition_service_type",
+        "sum_insured_amount",
+        "insurance_period",
+        "insured_name",
+        "premium_amount",
+        "sale_id"
+      ],
+      "properties": {
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "application_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addition_service_group": {
+          "type": "string"
+        },
+        "addition_service_type": {
+          "type": "string"
+        },
+        "addition_service_group_desc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addition_service_type_desc": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sum_insured_amount": {
+          "type": "number"
+        },
+        "insurance_period": {
+          "type": "integer"
+        },
+        "insured_name": {
+          "type": "string"
+        },
+        "premium_amount": {
+          "type": "number"
+        },
+        "sale_id": {
+          "type": "string"
+        },
+        "sale_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_credit_line_included": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "credit_line_included": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

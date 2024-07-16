@@ -1,0 +1,171 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em",
+    "sx": {
+      "padding": "1em"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "Account Nuber",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "*",
+              "options": {
+                "sx": {
+                  "color": "#ef4444"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": false,
+              "scope": "#/properties/applicationToSearch",
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "pattern": "อนุญาตให้ใช้เฉพาะตัวอักษรภาษาอังกฤษ,ตัวเลข และ เครื่องหมาย _เท่านั้น"
+              },
+              "options": {
+                "hideRequiredAsterisk": true,
+                "fullwidth": true,
+                "variant": "outlined",
+                "readonly": false,
+                "sx": {
+                  "height": "38px"
+                }
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ค้นหา",
+              "options": {
+                "operationType": "action",
+                "conditionTypeId": "OriginalDoc_SearchApplication",
+                "className": "primaryButton",
+                "payload": {
+                  "applicationToSearch": "{applicationToSearch}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "UniversalArrayView",
+      "scope": "#/properties/applicationSearchResult",
+      "itemOperations": {
+        "remove": true
+      },
+      "label": {
+        "show": false
+      },
+      "options": {
+        "hideTableToolbar": true,
+        "disableItemsRemove": true,
+        "sx": {
+          "th": {
+            "padding": "10px",
+            "fontWeight": "700",
+            "fontSize": "14px",
+            "lineHeight": "20px"
+          },
+          "td": {
+            "padding": "0 10px"
+          }
+        },
+        "cells": [
+          {
+            "type": "Typography",
+            "scope": "#/properties/applicationId",
+            "options": {
+              "columnTitle": "Application ID",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/accountNumber",
+            "options": {
+              "columnTitle": "contractNo",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/customerName",
+            "options": {
+              "columnTitle": "customerName",
+              "converter": "name_converter_for_prescreen",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/applicationStatus",
+            "options": {
+              "columnTitle": "applicationStatus",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/applicationGroup",
+            "options": {
+              "columnTitle": "applicationGroup",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/originalDocType",
+            "options": {
+              "columnTitle": "originalDocType",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/dateInWarehouse",
+            "options": {
+              "columnTitle": "dateInWarehouse",
+              "variant": "body2"
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/noOfGuarantee",
+            "options": {
+              "columnTitle": "noOfGuarantee",
+              "variant": "body2"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

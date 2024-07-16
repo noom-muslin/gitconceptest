@@ -1,0 +1,6 @@
+query GetEducation {
+  result: ngl_enum_education(order_by: {order_num: asc}, where: {is_active: {_eq: true}}) {
+    label: description
+    value: code
+  }
+}

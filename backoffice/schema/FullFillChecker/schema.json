@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "application_group_enum": {
+      "type": "array"
+    },
+    "application_type_enum": {
+      "type": "array"
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "application_channel_enum": {
+      "type": "array"
+    },
+    "currentThaiDate": {
+      "type": "string"
+    },
+    "thaiDateAfterSubtraction": {
+      "type": "string"
+    },
+    "thaiDateAfterSubtractionWithTZ": {
+      "type": "string"
+    },
+
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "doc_in_one_datetime": {
+          "type": "string"
+        },
+        "registration_date": {
+          "type": "string"
+        },
+
+        "min_doc_in_datetime": {
+          "type": "string",
+          "dataPath": "thaiDateAfterSubtraction"
+        },
+        "max_doc_in_datetime": {
+          "type": "string"
+        },
+        "min_registration_date": {
+          "type": "string",
+          "dataPath": "thaiDateAfterSubtraction"
+        }
+      }
+    },
+
+    "workbasket_grid": {
+      "$ref": "urn:zbo:schema:basicStationHome#/grid_with_filters"
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_detail_flag": {
+          "type": "boolean"
+        },
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "task_status": {
+          "enum": [
+            "Todo",
+            "InProgress",
+            "Rejected",
+            "Done"
+          ],"type": "string"
+        },
+        "date_of_document": {
+          "type": "string"
+        },
+        "date_of_approve": {
+          "type": "string"
+        },
+        "customer_detail_flag": {
+          "type": "boolean"
+        },
+        "people_type_enum": {
+          "enum": [
+            "บุคคลธรรมดา",
+            "นิติบุคคล"
+          ],"type": "string"
+        },
+        "customer_type": {
+          "enum": [
+            "NTB",
+            "ETB",
+            "STP",
+            "NEAR STP"
+          ],"type": "string"
+        },
+        "customer_name": {
+          "enum": [
+            "MR.test and test",
+            "นายเทส เเละ เทส"
+          ],"type": "string"
+        },
+        "document_type": {
+          "enum": [
+            "Indexing",
+            "TempIndexing",
+            "CheckList",
+            "NCB",
+            "FOS",
+            "CSENT",
+            "QC"
+          ],"type": "string"
+        },
+        "document_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9|_]+$"
+        },
+        "account_no_flag": {
+          "type": "boolean"
+        },
+        "assurance_flag": {
+          "type": "boolean"
+        },
+        "mortgage_group_flag": {
+          "type": "boolean"
+        },
+        "auto_group_flag": {
+          "type": "boolean"
+        },
+        "staff_detail_flag": {
+          "type": "boolean"
+        }
+      }
+    },
+    "task_status_enum": {
+      "type": "array"
+    },
+    "customer_type_enum": {
+      "type": "array"
+    },
+    "customer_name_enum": {
+      "type": "array"
+    },
+    "document_type_enum": {
+      "type": "array"
+    },
+    "workbasket_grid": {
+      "type": "object",
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "logic": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "sorting": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dir": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        }
+      },
+      "selection": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

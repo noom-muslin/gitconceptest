@@ -1,0 +1,59 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "Record No.",
+      "field": "record_no",
+      "name": "recordNo",
+      "minWidth": 100
+    },
+    {
+      "title": "OC Code",
+      "field": "oc_code",
+      "name": "ocCode",
+      "minWidth": 100
+    },
+    {
+      "title": "Warehouse Box No. From",
+      "field": "warehouse_box_no_from",
+      "name": "warehouseBoxNoFrom",
+      "minWidth": 100
+    },
+    {
+      "title": "Warehouse Box No. To",
+      "field": "warehouse_box_no_to",
+      "name": "warehouseBoxNoTo",
+      "minWidth": 100
+    },
+    {
+      "title": "No of application",
+      "field": "no_of_application",
+      "name": "noOfApplication",
+      "minWidth": 100
+    },
+    {
+      "title": "View Detail",
+      "name": "view_detail",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View Detail",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_OriginalDoc_BoxNo_Config_Details",
+            "route": "/originaldoc/boxno-config/details/{data.id}"
+          }
+        }
+      ],
+      "width": 180
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "id",
+      "dir": "asc"
+    }
+  ]
+}

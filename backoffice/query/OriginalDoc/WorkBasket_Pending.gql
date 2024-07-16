@@ -1,0 +1,51 @@
+subscription GetOriginalDocPendingBasket(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int 
+) {
+  result: ngl_task(
+    where: {
+      application: {status_id: {_in: ["Approved", "Completed"]}}
+      task_type_id: { _eq: "OriginalDoc" }
+      status_id: {_eq: "FollowUpPending"}
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    application_id
+    create_date_time
+    deadline_at
+    performing_by
+    application {
+      approved_date_time
+      application_date_time_in
+      accounts {
+        account_settlement_date
+        account_number
+        account_collaterals {
+          autos {
+            license_plate
+            province
+          }
+        }
+        sub_product {
+          description
+        }
+        product_type {
+          description
+        }
+        unit
+      }
+      borrowers {
+        party {
+          full_name
+        }
+      }
+    }
+    status_id
+    }
+}

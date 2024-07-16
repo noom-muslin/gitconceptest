@@ -1,0 +1,9 @@
+query GetPublicCompanies {
+  result: ngl_enum_best_public_company(
+    order_by: {code: asc}, 
+    where: {is_active: {_eq: true}}
+  ) {
+    value: code
+    label: description
+  }
+}

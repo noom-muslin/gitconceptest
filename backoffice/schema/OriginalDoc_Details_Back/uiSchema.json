@@ -1,0 +1,117 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options":{
+        "sx": {
+          "width": "400px",
+          "padding": "1em 1em 1em 0em"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutline",
+                  "options": {
+                    "sx": {
+                      "fontSize": "40px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px",
+                      "padding": "4px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณกำลังจะออกจากหน้านี้",
+                  "options": {
+                    "variant": "subtitle2Black"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "หากต้องการบันทึกข้อมูลที่ระบุหรือแก้ไขไว้ กรุณาเลือก “บันทึก”",
+                  "options": {
+                    "variant": "body2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "0.5em",
+        "sx":{
+          "width": "400px",
+          "padding":"0em 1em 1em 1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ไม่บันทึก",
+          "options": {
+            "className": "secondaryButton",
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              },
+              {
+                "operationType": "open",
+                "route": "/FOS"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "บันทึก",
+          "options": {
+            "className": "primaryButton",
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              },
+              {
+                "operationType": "open",
+                "route": "/FOS"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

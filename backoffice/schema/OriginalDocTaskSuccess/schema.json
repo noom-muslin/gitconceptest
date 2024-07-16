@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "home_url": {
+      "type": "string"
+    },
+    "application_number": {
+      "type": "string"
+    },
+    "created_on": {
+      "type": "string"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "updated_on": {
+      "type": "string"
+    },
+    "updated_by": {
+      "type": "string"
+    }
+  }
+}

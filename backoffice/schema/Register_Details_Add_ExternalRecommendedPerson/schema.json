@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "properties": {
+    "externalReferral": {
+      "type": "object",
+      "properties": {
+        "saleId": {
+          "type": "string"
+        },
+        "firstAndLastName": {
+          "type": "string"
+        },
+        "affiliation": {
+          "type": ["string", "null"]
+        },
+        "phone1": {
+          "type": "string",
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "phone2": {
+          "type": "string"
+        },
+        "phone3": {
+          "type": "string"
+        }
+      },
+      "required": ["saleId", "firstAndLastName", "phone1"]
+    }
+  }
+}

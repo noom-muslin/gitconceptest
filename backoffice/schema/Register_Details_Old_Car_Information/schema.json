@@ -1,0 +1,125 @@
+{
+  "type": "object",
+  "properties": {
+    "modalIn": {
+      "type": "object",
+      "properties": {
+        "applicationDateIn": {
+          "type": "string"
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "redbook_brand": {
+          "type": "string"
+        },
+        "redbook_model": {
+          "type": "string"
+        },
+        "sub_model_year": {
+          "type": "string"
+        },
+        "cckwh": {
+          "type": "string"
+        },
+        "gear_type": {
+          "type": "string"
+        },
+        "redbook_sub_model": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "redbook_brand",
+        "redbook_model"
+      ]
+    },
+    "vehicle_info": {
+      "type": "object",
+      "properties": {
+        "brandDesc": {
+          "type": "string"
+        },
+        "modelDesc": {
+          "type": "string"
+        },
+        "yearOfModel": {
+          "type": "string"
+        },
+        "cckwh": {
+          "type": "string"
+        },
+        "gearType": {
+          "type": "string"
+        },
+        "bodyStyle": {
+          "type": "string"
+        },
+        "subModel": {
+          "type": "string"
+        },
+        "vehicleKey": {
+          "type": "string"
+        }
+      }
+    },
+    "redbook_grid": {
+      "type": "object",
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "logic": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "sorting": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dir": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

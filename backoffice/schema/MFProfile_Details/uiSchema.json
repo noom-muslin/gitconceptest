@@ -1,0 +1,632 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Go back",
+                  "options": {
+                    "icon": "ArrowBack",
+                    "variant": "href",
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_MFProfile_Details_Back",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "MF Profile",
+                  "options": {
+                    "variant": "href",
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_MFProfile_Details_Back",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "scope": "#/properties/applicationId",
+              "options": {
+                "variant": "h6White"
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Edit history",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "View CA",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Upload documents",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Hide documents",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "operationType": "script",
+                    "converter": "toggle_document_visibility",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "documentOn": {
+                          "type": "boolean",
+                          "dataPath": "documentOn"
+                        }
+                      }
+                    },
+                    "alternateOptions": {
+                      "selector": "document_visibility",
+                      "case": {
+                        "on": {
+                          "icon": "VisibilityOutlined"
+                        },
+                        "off": {
+                          "icon": "VisibilityOffOutlined"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "options": {
+        "spacing": "16px",
+        "container": true,
+        "sx": {
+          "padding": "16px 16px 86px 16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "rule": {
+            "effect": "HIDE",
+            "condition": {
+              "scope": "#/properties/documentOn",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "maxHeight": "600px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ExternalComponent",
+                  "scope": "#/properties/cidDocumentDetails",
+                  "options": {
+                    "externalComponentName": "doc-viewer",
+                    "externalComponentScope": "remote1",
+                    "externalComponentModule": "./PagePreview",
+                    "linkForNewWindow": "#/properties/cidDocumentDetails/url",
+                    "pageTitle": "#/properties/cidDocumentDetails/title",
+                    "url": "#/properties/cidDocumentDetails/url",
+                    "styles": {
+                      "width": "100%",
+                      "height": "400px"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": true,
+            "sx": {
+              "minWidth": 0
+            }
+          },
+          "elements": [
+            {
+              "label": "รายละเอียดงาน",
+              "type": "Accordion",
+              "elements": [
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "padding": "16px",
+                      "borderBottom": "1px solid",
+                      "borderColor": "secondary.deep"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "container": "true",
+                        "spacing": "16px"
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "วันที่สร้างใบสมัคร",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/general_info/properties/create_date",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 6
+                          },
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "label": "สถานะงาน",
+                                  "options": {
+                                    "variant": "label"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/general_info/properties/status_work",
+                                  "options": {
+                                    "variant": "body2Padding"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 12
+                          },
+                          "elements": [
+                            {
+                              "type": "SelectField",
+                              "scope": "#/properties/general_info/properties/objective",
+                              "label": "วัตถุประสงค์",
+                              "options": {
+                                "autocomplete": true,
+                                "variant": "outlined",
+                                "fullwidth": true,
+                                "enumDataPath": "mfappl_enum_objective"
+                              },
+                              "rule": {
+                                "effect": "ENABLE",
+                                "condition": {
+                                  "scope": "#/properties/general_info/properties/is_change_condition",
+                                  "schema": {
+                                    "const": true
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "xs": 12
+                          },
+                          "elements": [
+                            {
+                              "type": "TextField",
+                              "scope": "#/properties/general_info/properties/objective_detail",
+                              "label": "รายละเอียดวัตถุประสงค์",
+                              "options": {
+                                "variant": "outlined",
+                                "fullwidth": true,
+                                "multi": true,
+                                "minRows": 5,
+                                "maxRows": 8
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "spacing": "16px",
+                    "sx": {
+                      "borderBottom": "1px solid",
+                      "borderColor": "secondary.dark",
+                      "padding": "0 16px 16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ข้อมูลพนักงานขาย",
+                      "options": {
+                        "variant": "subtitle2Dark",
+                        "sx": {
+                          "padding": "14px 0"
+                        }
+                      }
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row",
+                        "spacing": "8px",
+                        "sx": {}
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "scope": "#/properties/employeeIdToSearch",
+                          "label": "ค้นหารหัสพนักงาน",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined"
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        },
+                        {
+                          "type": "ActionButton",
+                          "label": "ค้นหา",
+                          "options": {
+                            "variant": "secondary",
+                            "operationType": "action",
+                            "validationSchema": false,
+                            "formValidationErrors": "show",
+                            "conditionTypeId": "MFProfile_Details_Search",
+                            "sx": {
+                              "&.MuiButtonBase-root.MuiButton-root": {
+                                "marginTop": "24px"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/general_info/properties/employee",
+                          "schema": {
+                            "not": { "type": "null" }
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "GridLayout",
+                          "options": {
+                            "container": "true"
+                          },
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "รหัสพนักงาน",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/general_info/properties/employee/properties/employee_id",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "BoxLayout",
+                                  "elements": [
+                                    {
+                                      "type": "Typography",
+                                      "label": "ชื่อ-นามสกุล",
+                                      "options": {
+                                        "variant": "label"
+                                      }
+                                    },
+                                    {
+                                      "type": "Typography",
+                                      "scope": "#/properties/general_info/properties/employee/properties/name",
+                                      "options": {
+                                        "variant": "body2Padding"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "scope": "#/properties/general_info/properties/employee/properties/phone",
+                                  "label": "เบอร์โทรศัพท์",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 6
+                              },
+                              "elements": [
+                                {
+                                  "type": "TextField",
+                                  "scope": "#/properties/general_info/properties/employee/properties/email",
+                                  "label": "อีเมล",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "xs": 12
+                              },
+                              "elements": [
+                                {
+                                  "type": "SelectField",
+                                  "label": "OC Code หน่วยงานเจ้าของเรื่อง",
+                                  "scope": "#/properties/general_info/properties/employee/properties/oc_code",
+                                  "options": {
+                                    "fullwidth": true,
+                                    "variant": "outlined",
+                                    "query": "MFProfile/OcCodeEnums",
+                                    "converter": "autoCompleteOcCodeEnumConverter",
+                                    "autocomplete": true
+                                  }
+                                }                                
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BoxLayout",
+                  "options": {
+                    "sx": {
+                      "padding": "16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "scope": "#/properties/general_info/properties/created_by",
+                      "label": "เจ้าหน้าที่ MF",
+                      "options": {
+                        "fullwidth": true,
+                        "variant": "outlined",
+                        "displayOnly": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "Cancel application",
+              "options": {
+                "size": "large",
+                "variant": "secondaryError",
+                "validationSchema": false,
+                "permission": "MFProfile_Cancel",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_MFProfile_Details_CancelApplication",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "10px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Save a draft",
+                  "options": {
+                    "size": "large",
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "permission": "MFProfile_SaveDraft",
+                    "operationType": "action",
+                    "conditionTypeId": "MFProfile_Details_SaveApplication",
+                    "payload": {
+                      "applicationId": "{route.applicationId}"
+                    }
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ส่งข้อมูล",
+                  "options": {
+                    "size": "large",
+                    "variant": "primary",
+                    "permission": "MFProfile_Submit",
+                    "operationType": "action",
+                    "conditionTypeId": "MFProfile_Details_SubmitApplication",
+                    "payload": {
+                      "applicationId": "{route.applicationId}"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

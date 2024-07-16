@@ -1,0 +1,277 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.light"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbsWhiteBg"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/register/{taskId}/details"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ "
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/applicationNumber"
+                }
+              ]
+            },
+            {
+              "type": "Typography",
+              "label": "เพิ่มผู้กู้",
+              "options": {
+                "variant": "h6",
+                "sx": {
+                  "padding": "16px 0 0"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TabsLayout",
+      "options": {
+        "sx": {
+          "& .MuiTabs-root": {
+            "background": "#F5F3FF"
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "ข้อมูลส่วนบุคคล",
+          "elements": [
+            {
+              "type": "FormMapperListener",
+              "options": {
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "borrowersPersonalInformation": {
+                      "type": "object",
+                      "dataPath": "borrowersPersonalInformation",
+                      "converter": "registerBorrowerAgeListener"
+                    },
+                    "occupation": {
+                      "type": "object",
+                      "dataPath": "occupation",
+                      "converter": "intervalFromDateInYears"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "PaperLayout",
+              "options": {
+                "component": "section",
+                "variant": "section",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "column"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "ประเภทบุคคล"
+                    }
+                  ]
+                },
+                {
+                  "type": "RadioGroupField",
+                  "scope": "#/properties/borrowerType",
+                  "label": false,
+                  "options": {
+                    "radioSize": "small",
+                    "row": "false",
+                    "sx": {
+                      "padding": "16px"
+                    },
+                    "enum": [
+                      {
+                        "value": "Individual",
+                        "label": "บุคคลธรรมดา"
+                      },
+                      {
+                        "value": "Juristic",
+                        "label": "นิติบุคคล"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px",
+                "sx": {
+                  "padding": "0 16px 86px 16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Accordion",
+                  "label": "ข้อมูลลูกค้า",
+                  "elements": { "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_PersonalInformation" }
+                },
+                {
+                  "type": "Accordion",
+                  "label": "ข้อมูลคู่สมรส",
+                  "elements": [
+                    {
+                      "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_Spouse"
+                    }
+                  ],
+                  "options": {
+                    "startExpanded": false
+                  }
+                },
+                {
+                  "label": "ข้อมูลอาชีพหลัก",
+                  "type": "Accordion",
+                  "elements": [
+                    {
+                      "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_Occupation"
+                    }
+                  ]
+                },
+                {
+                  "type": "Accordion",
+                  "label": "ข้อมูลอาชีพรอง",
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "direction": "row",
+                      "options": {
+                        "sx": {
+                          "padding": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "RadioGroupField",
+                          "scope": "#/properties/haveSecondaryOccupation",
+                          "label": "มีอาชีพรอง",
+                          "options": {
+                            "radioSize": "small",
+                            "row": "false",
+                            "sx": {
+                              "padding-left": "16px"
+                            }
+                          }
+                        },
+                        {
+                          "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_SecondaryOccupation"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "Accordion",
+                  "label": "ที่อยู่",
+                  "elements": [
+                    {
+                      "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_Addresses"
+                    }
+                  ]
+                },
+                {
+                  "type": "Accordion",
+                  "label": "ข้อมูลเพิ่มเติม",
+                  "elements": {
+                    "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_AdditionalInformation"
+                  }
+                },
+                {
+                  "type": "Accordion",
+                  "label": "วิธีจัดส่งเอกสาร",
+                  "elements": {
+                    "$ref": "urn:zbo:uischema:Register_Details_Add_Borrower_DocumentDeliveryAddress"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "ข้อมูลรายละเอียดกิจการ",
+          "elements": []
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกข้อมูล",
+              "options": {
+                "validationSchema": true,
+                "operationType": "modal",
+                "dialogName": "m_Register_Details_AddBorrowerConfirm",
+                "subtype": "show"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

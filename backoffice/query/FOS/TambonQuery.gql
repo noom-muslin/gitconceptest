@@ -1,0 +1,11 @@
+query TambonQuery($province: String!, $amphur: String!){
+  result: ngl_enum_location(
+  where: {
+    province_name_th: {_eq: $province}, 
+    district_th: {_eq: $amphur}
+  }, 
+  distinct_on: sub_district_en
+  ){
+    sub_district_th
+  }
+}

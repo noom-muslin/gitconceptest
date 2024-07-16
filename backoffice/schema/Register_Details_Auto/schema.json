@@ -1,0 +1,852 @@
+{
+  "type": "object",
+  "properties": {
+    "application_number": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9]+$"
+    },
+    "product_group_id": {
+      "type": "string"
+    },
+    "application_details": {
+      "type": "object",
+      "properties": {
+        "created_on": {
+          "type": "string"
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_group_enum": {
+          "type": "array"
+        },
+        "application_type_enum": {
+          "type": "array"
+        },
+        "application_date_thai": {
+          "type": "string"
+        },
+        "application_date": {
+          "type": "string"
+        },
+        "product_group": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        },
+        "sub_product_type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "application_group",
+        "application_type",
+        "application_date"
+      ]
+    },
+    "new_loan": {
+      "type": "object",
+      "properties": {
+        "application_account_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "loan_number": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "application_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "product_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "product_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sub_product": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contract_no": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "application_group",
+        "product_group",
+        "product_type",
+        "sub_product"
+      ]
+    },
+    "loan_detail": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer"
+        },
+        "application_group": {
+          "type": "integer"
+        },
+        "product_group_id": {
+          "type": "string"
+        },
+        "product_type_id": {
+          "type": "string"
+        },
+        "sub_product_type_id": {
+          "type": "string"
+        },
+        "product_group_code": {
+          "type": "string"
+        },
+        "product_type_code": {
+          "type": "string"
+        },
+        "sub_product_type_code": {
+          "type": "string"
+        },
+        "contract_no": {
+          "type": "string"
+        },
+        "is_main_fleet": {
+          "type": "boolean"
+        }
+      }
+    },
+    "loan_account": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "application_group": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "product_group_id": {
+            "type": "string"
+          },
+          "product_type_id": {
+            "type": "string"
+          },
+          "sub_product_type_id": {
+            "type": "string"
+          },
+          "product_group_code": {
+            "type": "string"
+          },
+          "product_type_code": {
+            "type": "string"
+          },
+          "sub_product_type_code": {
+            "type": "string"
+          },
+          "contract_no": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "is_main_fleet": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "campaign": {
+      "type": "object",
+      "properties": {
+        "campiagn_id": {
+          "type": "string"
+        },
+        "campaign_code_desc": {
+          "type": "string"
+        },
+        "special_program": {
+          "type": "string"
+        },
+        "booking_branch": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "campiagn_id",
+        "campaign_code_desc"
+      ]
+    },
+    "dealer": {
+      "type": "object",
+      "properties": {
+        "dealer_code": {
+          "type": "string"
+        },
+        "dealer_name": {
+          "type": "string"
+        },
+        "dealer_group": {
+          "type": "string"
+        },
+        "dealer_type": {
+          "type": "string"
+        }
+      }
+    },
+    "input_number_of_car": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "pattern": "^[0-9]+$",
+          "maxLength": 2
+        }
+      },
+      "required": [
+        "seq"
+      ]
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "number"
+          },
+          "vehicle": {
+            "type": "object",
+            "properties": {
+              "is_registered": {
+                "type": "boolean"
+              },
+              "registered_date": {
+                "type": "string"
+              },
+              "vehicle_type": {
+                "type": "string"
+              },
+              "vehicle_brand": {
+                "type": "string"
+              },
+              "vehicle_model": {
+                "type": "string"
+              },
+              "vehicle_sub_model": {
+                "type": "string"
+              },
+              "cckwh": {
+                "type": "string"
+              },
+              "engine_type": {
+                "type": "string"
+              },
+              "gear_type": {
+                "type": "string"
+              },
+              "model_year": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              },
+              "mileage": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "string"
+              },
+              "license_plate": {
+                "type": "string"
+              },
+              "province": {
+                "type": "string"
+              },
+              "chasis_no": {
+                "type": "string"
+              },
+              "engine_no": {
+                "type": "string"
+              },
+              "check_customer_address_forklift": {
+                "type": "boolean"
+              },
+              "check_customer_address_l3": {
+                "type": "boolean"
+              },
+              "car_accessories": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "accessories_seq": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "accessories_code": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "amount": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "required": [
+              "vehicle_type",
+              "color",
+              "mileage",
+              "weight",
+              "license_plate",
+              "province",
+              "chasis_no",
+              "engine_no"
+            ]
+          },
+          "repayment": {
+            "type": "object",
+            "properties": {
+              "payment_method": {
+                "type": "string"
+              },
+              "account_number": {
+                "type": "string",
+                "maxLength": 10
+              },
+              "account_name_thai": {
+                "type": "string"
+              },
+              "account_name_english": {
+                "type": "string"
+              },
+              "account_status": {
+                "type": "string"
+              },
+              "base_account_num": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "payment_method",
+              "account_number"
+            ]
+          },
+          "hire_purchase": {
+            "type": "object",
+            "properties": {
+              "appl_account_id": {
+                "type": "string"
+              },
+              "installment_pay_type": {
+                "type": "string"
+              },
+              "no_of_prepaid_installment": {
+                "type": "number"
+              },
+              "down_payment": {
+                "type": "number"
+              },
+              "is_vat": {
+                "type": "boolean"
+              },
+              "vat_percent": {
+                "type": "string"
+              },
+              "total_principal_amount": {
+                "type": "number"
+              },
+              "principal_amount": {
+                "type": "number",
+                "minimum": 0.00,
+                "multipleOf": 0.01
+              },
+              "interest_rate": {
+                "type": "number"
+              },
+              "interest_rate_type": {
+                "type": "string"
+              },
+              "no_of_installment": {
+                "type": "number"
+              },
+              "normal_installment": {
+                "type": "number"
+              },
+              "selling_price": {
+                "type": "number"
+              },
+              "redbook_price": {
+                "type": "number"
+              },
+              "deposit_amount": {
+                "type": "number"
+              },
+              "outstanding_amount": {
+                "type": "number"
+              }
+            }
+          },
+          "repayment_plan": {
+            "type": "object",
+            "properties": {
+              "is_zero_percent_payment": {
+                "type": "string"
+              },
+              "is_balloon_payment": {
+                "type": "string"
+              },
+              "is_step_payment": {
+                "type": "string"
+              },
+              "is_specific_plan": {
+                "type": "boolean"
+              },
+              "zero_no_of_installment": {
+                "type": "number"
+              },
+              "zero_installment": {
+                "type": "number"
+              },
+              "balloon_installment_amount": {
+                "type": "number"
+              },
+              "balloon_start": {
+                "type": "integer"
+              },
+              "balloon_month_plan": {
+                "type": "integer"
+              },
+              "specific_balloon_percent": {
+                "type": "integer"
+              },
+              "specific_balloon_amount": {
+                "type": "number"
+              },
+              "account_payment_step": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "start_installment_no": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    },
+                    "end_installment_no": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "amount": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "insurance_details": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "generate_seq": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "the_insured_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "full_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "insurance_company_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "insurance_type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "insurance_plan_desc": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "insurance_application_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "insurance_duration": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "sum_insured": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "premium_amount": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "data_entry_date": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "ins_payment_method": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "payment_channel": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "agent_name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "car_insurance_details": {
+            "type": "object",
+            "properties": {
+              "insurance_type": {
+                "type": "string"
+              },
+              "vehicle_source_of_insurance": {
+                "type": "string"
+              },
+              "application_date": {
+                "type": "string"
+              },
+              "start_date": {
+                "type": "string"
+              },
+              "insurance_expire_date": {
+                "type": "string"
+              },
+              "class": {
+                "type": "string"
+              },
+              "insurer": {
+                "type": "string"
+              },
+              "insurance_repair_condition": {
+                "type": "string"
+              },
+              "insurance_app_no": {
+                "type": "string",
+                "maxLength": 32
+              },
+              "sales_person": {
+                "type": "string",
+                "maxLength": 64
+              },
+              "sum_insured": {
+                "type": "number"
+              },
+              "vehicle_premium_incl_vat": {
+                "type": "number"
+              },
+              "vehicle_default_deduct": {
+                "type": "number"
+              },
+              "vehicle_premium_excl_vat": {
+                "type": "string"
+              },
+              "vehicle_deduct_amount": {
+                "type": "number"
+              },
+              "vehicle_amount_to_pay": {
+                "type": "number"
+              },
+              "include_in_deductions": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "class",
+              "insurer",
+              "sum_insured",
+              "vehicle_premium_incl_vat"
+            ]
+          },
+          "payment_details": {
+            "type": "object",
+            "properties": {
+              "receipt": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "invoice_seq": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "invoice_code": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "invoice_or_loan_amount": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "amount": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "subsidy": {
+                "type": "object",
+                "properties": {
+                  "require_rate_of_return": {
+                    "type": "number"
+                  },
+                  "subsidy_amount": {
+                    "type": "number"
+                  },
+                  "standard_subsidy_interest": {
+                    "type": "number"
+                  },
+                  "subsidy_amount_system_cal": {
+                    "type": "number",
+                    "multipleOf": 0.01
+                  },
+                  "subsidy_include_in_deduction": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "standard_rate": {
+                "type": "object",
+                "properties": {
+                  "reason_for_using_interest_rate": {
+                    "type": "string"
+                  },
+                  "standard_rate_value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "receiving_account": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "payment_item": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "com_fin_percent": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "com_fin_installment": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "pay_to": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "amount_include_vat": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "amount_exclude_vat": {
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "payee_code": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "other_details": {
+      "type": "object",
+      "properties": {
+        "loan_purpose_code": {
+          "type": "string"
+        },
+        "bot_isic": {
+          "type": "string"
+        },
+        "loan_purpose_other": {
+          "type": "string"
+        },
+        "customer_type_code": {
+          "type": "string"
+        },
+        "reference_type": {
+          "type": "string"
+        },
+        "reference_country": {
+          "type": "string"
+        },
+        "reference_no": {
+          "type": "string"
+        },
+        "title_name_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "middle_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "tal_TBC": {
+          "type": "string"
+        },
+        "mobile_number": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "loan_purpose_code",
+        "bot_isic",
+        "loan_purpose_other",
+        "reference_type",
+        "reference_no",
+        "title_name_id",
+        "name",
+        "last_name"
+      ]
+    },
+    "refer_to_ca": {
+      "type": "object",
+      "properties": {
+        "refer_to_ca_number": {
+          "type": "string"
+        },
+        "ca_number_list": {
+          "type": "string"
+        },
+        "refer_credit_line_account": {
+          "type": "string"
+        },
+        "fleet_lot_number": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "refer_to_ca_number"
+      ]
+    }
+  }
+}

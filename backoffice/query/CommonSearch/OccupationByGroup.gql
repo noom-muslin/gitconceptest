@@ -1,0 +1,9 @@
+query GetOccupationByOccupationGroup($occupation_group: String! = "") {
+  result: ngl_enum_occupation (
+    order_by: {code: asc}, 
+    where: {occupation_group_code: {_eq: $occupation_group}, is_active: {_eq: true}}
+  ) {
+    value: code
+    label: description
+  }
+}

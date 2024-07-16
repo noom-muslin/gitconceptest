@@ -1,0 +1,6 @@
+query GetProductType($product_group_id: String = "Auto") {
+  result: ngl_enum_product_type(where: {product_group_id: {_eq: $product_group_id}}) {
+    value: code
+    label: code
+  }
+}

@@ -1,0 +1,994 @@
+{
+    "type": "object",
+    "properties": {
+        "currentThaiDate": {
+            "type": "string"
+        },
+        "qcOpinionData": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "seq": {
+                        "type": "number"
+                    },
+                    "performingBy": {
+                        "type": "string"
+                    },
+                    "saveDateTime": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "workObject": {
+            "type": "string"
+        },
+        "qcOpinionKeyIn": {
+            "type": "object",
+            "required": [
+                "sellingPrice",
+                "principal",
+                "qcComment"
+            ],
+            "properties": {
+                "sellingPrice": {
+                    "type": "number"
+                },
+                "principal": {
+                    "type": "number"
+                },
+                "ltvPercent": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "downPercent": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "isSellingPriceChanged": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "upPricePercent": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "informationDetail": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "isNameRegistrationBookMatched": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nameMatchedReason": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nameUnmatchedReason": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "qcComment": {
+                    "type": "string"
+                },
+                "additionalOpinion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "usedErrorMessage": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "MCMCErrorMessage": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "principalErrorMessage": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "isUpPrice": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "percentErrorMessage": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "qcOpinion": {
+            "type": "object",
+            "properties": {
+                "documents": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "seq": {
+                                "type": "number"
+                            },
+                            "role": {
+                                "type": "string"
+                            },
+                            "sellingPrice": {
+                                "type": "string"
+                            },
+                            "principal": {
+                                "type": [
+                                    "number",
+                                    "object"
+                                ]
+                            },
+                            "ltvPercent": {
+                                "type": "number"
+                            },
+                            "downPercent": {
+                                "type": "number"
+                            },
+                            "isSellingPriceChanged": {
+                                "type": "boolean"
+                            },
+                            "upPricePercent": {
+                                "type": "number"
+                            },
+                            "informationDetail": {
+                                "type": "string"
+                            },
+                            "isNameRegistrationBookMatched": {
+                                "type": "boolean"
+                            },
+                            "nameMatchedReason": {
+                                "type": "string"
+                            },
+                            "nameUnmatchedReason": {
+                                "type": "string"
+                            },
+                            "qcComment": {
+                                "type": "string"
+                            },
+                            "additionalOpinion": {
+                                "type": "string"
+                            },
+                            "performingBy": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "applicationDetail": {
+            "required": [
+                "saleTelephone1"
+            ],
+            "properties": {
+                "applicationId": {
+                    "type": "string"
+                },
+                "applicationDate": {
+                    "type": "string"
+                },
+                "applicationTypeDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "applicationGroupDesc": {
+                    "type": "string"
+                },
+                "channel": {
+                    "type": "string"
+                },
+                "productGroup": {
+                    "type": "string"
+                },
+                "productGroupDesc": {
+                    "type": "string"
+                },
+                "productType": {
+                    "type": "string"
+                },
+                "productTypeDesc": {
+                    "type": "string"
+                },
+                "subProductType": {
+                    "type": "string"
+                },
+                "subProductTypeDesc": {
+                    "type": "string"
+                },
+                "customerName": {
+                    "type": "string"
+                },
+                "saleId": {
+                    "type": "string"
+                },
+                "salesStaffName": {
+                    "type": "string"
+                },
+                "saleTeamName": {
+                    "type": "string"
+                },
+                "saleEmail": {
+                    "type": "string"
+                },
+                "saleTelephone1": {
+                    "type": "string"
+                },
+                "saleTelephone2": {
+                    "type": "string"
+                },
+                "saleTelephone3": {
+                    "type": "string"
+                }
+            }
+        },
+        "dealerInfo": {
+            "type": "object",
+            "required": [
+                "dealerCode"
+            ],
+            "properties": {
+                "dealerCode": {
+                    "type": "string"
+                },
+                "dealerName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dealerGroup": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dealerType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dealerGrade": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "dealerSize": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "vehicleInfo": {
+            "required": [
+                "color",
+                "registerNo",
+                "age",
+                "changeEngineFlag",
+                "vehicleRegisterBookStatusKey",
+                "registerProvinceKey"
+            ],
+            "properties": {
+                "registrationNo": {
+                    "type": "string"
+                },
+                "vehicleType": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "brand": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "premiumBrandFlag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modelDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "modelYear": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "cckwh": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gearTypeDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subModelDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "engineTypeDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "vehicleKey": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "color": {
+                    "type": "string"
+                },
+                "colorDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "registerFlag": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "registerDate": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "registerDateText": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "registerNo": {
+                    "type": "string"
+                },
+                "registerProvinceKey": {
+                    "type": "string"
+                },
+                "registerProvinceDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "age": {
+                    "type": "integer"
+                },
+                "mileageNumber": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "mileageNumberText": {
+                    "type": "string"
+                },
+                "vehicleRegisterBookStatusKey": {
+                    "type": "string"
+                },
+                "vehicleRegisterBookStatusDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "changeEngineFlag": {
+                    "type": "string"
+                },
+                "changeEngineReasonKey": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "changeEngineReasonDesc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "vehicleStateInfo": {
+            "type": "object",
+            "required": [
+                "isChassisNoMatched",
+                "isEngineNoMatched",
+                "gearType",
+                "breakSystem",
+                "hasNavigator",
+                "hasAirBag"
+            ],
+            "properties": {
+                "isEngineNoMatched": {
+                    "type": "string"
+                },
+                "isEngineNoMatchedText": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "isChassisNoMatchedText": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasNavigatorText": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasAirbagText": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "breakSystemText": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "isChassisNoMatched": {
+                    "type": "string"
+                },
+                "gearType": {
+                    "type": "string"
+                },
+                "isFourWheels": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "breakSystem": {
+                    "type": "string"
+                },
+                "hasNavigator": {
+                    "type": "string"
+                },
+                "hasAirBag": {
+                    "type": "string"
+                },
+                "noOfAirbags": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "additionalOption": {
+                    "maxLength": 1000,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "vehiclePriceInfo": {
+            "type": "object",
+            "properties": {
+                "sellingPrice": {
+                    "type": "number"
+                },
+                "principalPrice": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ltvPercent": {
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "isUpPrice": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "downPercent": {
+                    "type": "number"
+                },
+                "upPricePercent": {
+                    "type": "number"
+                },
+                "displayDownPercent": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "displayltvPercent": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "displayPrincipalPrice": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "displaySellingPrice": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "displayUpPricePercent": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "redbookInfo": {
+            "type": "object",
+            "brandCode": {
+                "type": "string"
+            },
+            "brandDesc": {
+                "type": "string"
+            },
+            "premiumBrand": {
+                "type": "boolean"
+            },
+            "modelCode": {
+                "type": "string"
+            },
+            "modelDesc": {
+                "type": "string"
+            },
+            "yearOfModel": {
+                "type": "nubmer"
+            },
+            "cckwh": {
+                "type": "string"
+            },
+            "cckwhShow": {
+                "type": "string"
+            },
+            "gearType": {
+                "type": "string"
+            },
+            "bodyStyle": {
+                "type": "string"
+            },
+            "noOfDoor": {
+                "type": "integer"
+            },
+            "noOfDoorShow": {
+                "type": "string"
+            },
+            "subModel": {
+                "type": "string"
+            },
+            "subModelDesc": {
+                "type": "string"
+            },
+            "engineTypeDesc": {
+                "type": "string"
+            },
+            "vehicleKey": {
+                "type": "string"
+            },
+            "redbookPrice": {
+                "type": "string"
+            },
+            "redbookPriceShow": {
+                "type": "string"
+            }
+        },
+        "registerType": {
+            "type": "string"
+        },
+        "dealerNumber": {
+            "type": "string"
+        },
+        "dealerName": {
+            "type": "string"
+        },
+        "dealerGroup": {
+            "type": "string"
+        },
+        "dealerType": {
+            "type": "string"
+        },
+        "grade": {
+            "type": "string"
+        },
+        "size": {
+            "type": "string"
+        },
+        "carType": {
+            "type": "string"
+        },
+        "brand": {
+            "type": "string"
+        },
+        "model": {
+            "type": "string"
+        },
+        "modelYear": {
+            "type": "string"
+        },
+        "cckwh": {
+            "type": "string"
+        },
+        "subModel": {
+            "type": "string"
+        },
+        "engineType": {
+            "type": "string"
+        },
+        "vehicleKey": {
+            "type": "string"
+        },
+        "color": {
+            "type": "string"
+        },
+        "registrationNumber": {
+            "type": "string"
+        },
+        "registrationProvince": {
+            "type": "string"
+        },
+        "carAge": {
+            "type": "string"
+        },
+        "mileage": {
+            "type": "string"
+        },
+        "registrationBook": {
+            "type": "string"
+        },
+        "engineChanged": {
+            "type": "string",
+            "enum": [
+                "ไม่มีการเปลี่ยน",
+                "มีการเปลี่ยน"
+            ]
+        },
+        "changedReason": {
+            "type": "string"
+        },
+        "cidDocumentDetails": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "readonly": true
+                },
+                "title": {
+                    "type": "string",
+                    "readonly": true
+                }
+            }
+        },
+        "registrationBookEnum": {
+            "type": "string",
+            "enum": [
+                "ปกติ",
+                "ชำรุด/สูญหาย/เต็ม/ระงับ/หยุดใช้",
+                "เล่มติดไฟแนนซ์/ธนาคารอื่น",
+                "ขาดหน้า 18"
+            ]
+        },
+        "carAndBookMatched": {
+            "type": "string",
+            "enum": [
+                "ตรง",
+                "ไม่ตรง"
+            ]
+        },
+        "gearCondition": {
+            "type": "string",
+            "enum": [
+                "Manual",
+                "Auto"
+            ]
+        },
+        "changeQcPrice": {
+            "type": "string",
+            "enum": [
+                "เปลี่ยน",
+                "ไม่เปลี่ยน"
+            ]
+        },
+        "qcMatch": {
+            "type": "string",
+            "enum": [
+                "ชื่อลูกค้าตรงกับเล่มทะเบียนรถ",
+                "ชื่อลูกค้าไม่ตรงกับเล่มทะเบียนรถ"
+            ]
+        },
+        "gearTypeEnum": {
+            "oneOf": [
+                {
+                    "const": "Manual",
+                    "title": "Manual"
+                },
+                {
+                    "const": "Auto",
+                    "title": "Auto"
+                }
+            ]
+        },
+        "breakSystem": {
+            "oneOf": [
+                {
+                    "const": "Normal",
+                    "title": "ปกติ"
+                },
+                {
+                    "const": "ABS",
+                    "title": "ABS"
+                }
+            ]
+        },
+        "hasNavigator": {
+            "oneOf": [
+                {
+                    "const": "true",
+                    "title": "มี"
+                },
+                {
+                    "const": "false",
+                    "title": "ไม่มี"
+                }
+            ]
+        },
+        "registerDate": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "optional": {
+            "type": "string"
+        },
+        "sellingPrice": {
+            "type": "string"
+        },
+        "principalPrice": {
+            "type": "string"
+        },
+        "ltvPercent": {
+            "type": "string"
+        },
+        "upPrice": {
+            "type": "string"
+        },
+        "upPricePercent": {
+            "type": "string"
+        },
+        "redbookBrand": {
+            "type": "string"
+        },
+        "redbookModel": {
+            "type": "string"
+        },
+        "redbookModelYear": {
+            "type": "string"
+        },
+        "redbookCckwh": {
+            "type": "string"
+        },
+        "redbookGearType": {
+            "type": "string"
+        },
+        "redbookBodyStyle": {
+            "type": "string"
+        },
+        "redbookNumberOfDoor": {
+            "type": "string"
+        },
+        "redbookSubModel": {
+            "type": "string"
+        },
+        "redbookVehicleKey": {
+            "type": "string"
+        },
+        "redbookPrice": {
+            "type": "string"
+        },
+        "premiumBrand": {
+            "type": "string"
+        },
+        "registered": {
+            "type": "boolean"
+        },
+        "engineAndBookMatched": {
+            "type": "string",
+            "enum": [
+                "ตรง",
+                "ไม่ตรง"
+            ]
+        },
+        "brake": {
+            "type": "string",
+            "enum": [
+                "ปกติ",
+                "ABS"
+            ]
+        },
+        "navigator": {
+            "type": "string",
+            "enum": [
+                "มี",
+                "ไม่มี"
+            ]
+        },
+        "airbag": {
+            "type": "string",
+            "enum": [
+                "มี",
+                "ไม่มี"
+            ]
+        },
+        "externalLink": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "registerTypeArray": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "standardCodeChangeEngineEnum": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "standardCodeProvinceEnum": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "standardCodeColorEnum": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "standardCodeVehicleRegisterBookStatusEnum": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "dealerEnum": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

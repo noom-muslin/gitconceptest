@@ -1,0 +1,37 @@
+{
+  "type": "TabStripMenu",
+  "options": {
+    "menu": [
+      {
+        "link": "/originaldoc/barcodesearch",
+        "text": "Barcode Search",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/dochome",
+        "text": "Home Original",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/pending",
+        "text": "Pending",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/warehouseadmin/yeardestroy",
+        "text": "Warehouse Admin",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/storage/subsrithai",
+        "text": "Storage",
+        "type": "link"
+      },
+      {
+        "link": "/originaldoc/inprogress",
+        "text": "In Progress",
+        "type": "link"
+      }
+    ]
+  }
+}

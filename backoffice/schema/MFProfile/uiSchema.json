@@ -1,0 +1,69 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "MF Profile",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "หน้าหลัก",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "MFProfile_Home"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "ค้นหาและสร้างใบสมัคร",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "MFProfile_Create"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

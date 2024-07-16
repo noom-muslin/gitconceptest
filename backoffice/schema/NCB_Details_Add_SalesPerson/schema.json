@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "employeeIdToSearch": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+$"
+    },
+    "salesPersonSearchResult": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string",
+            "readonly": true
+          },
+          "employeeName": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    }
+  },
+  "required": ["employeeIdToSearch"]
+}

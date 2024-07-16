@@ -1,0 +1,235 @@
+{
+  "type": "object",
+  "properties": {
+    "fu_type": {
+      "type": "string",
+      "enum": ["Internal", "External"]
+    },
+    "selectedIndexes": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "borrowersNotFound": {
+      "type": "boolean"
+    },
+    "borrowers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "borrowersNotFound": {
+            "type": "boolean"
+          },
+          "borrowerSelected": {
+            "type": "boolean"
+          },
+          "isPrimaryBorrower": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "referenceNo": {
+            "type": "string"
+          },
+          "borrowersType": {
+            "type": "string"
+          },
+          "firstAndLastName": {
+            "type": "string"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "document_name": {
+                  "type": "string"
+                },
+                "reason_status": {
+                  "type": ["string", "null"],
+                  "enum": ["มี", "ไม่มี", "ไม่ชัดเจน"]
+                },
+                "reason": {
+                  "type": "string"
+                },
+                "remark": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              }
+            }
+          },
+          "information": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "data_name": {
+                  "type": "string",
+                  "readonly": true
+                },
+                "reason_status": {
+                  "type": ["string", "null"],
+                  "enum": ["มี", "ไม่มี", "ไม่ชัดเจน"]
+                },
+                "reason": {
+                  "type": "string",
+                  "readonly": true
+                },
+                "remark": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              }
+            }
+          },
+          "rc_reshape": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "reason": {
+                  "type": "string",
+                  "readonly": true
+                },
+                "remark": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              }
+            }
+          },
+          "comment_category": {
+            "type": "string",
+            "readonly": true
+          },
+          "comment_details": {
+            "type": "string",
+            "maxLength": 128
+          }
+        }
+      }
+    },
+    "application_details": {
+      "type": "object",
+      "properties": {
+        "previous_station": {
+          "type": "string"
+        },
+        "comment_category": {
+          "type": "string"
+        },
+        "comment_details": {
+          "type": "string"
+        },
+        "products_group_type": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "product_group_id": {
+                "type": "string"
+              },
+              "product_type_id": {
+                "type": "string"
+              },
+              "sub_product_type_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "fu_type": {
+            "const": "Internal"
+          }
+        }
+      },
+      "then": {
+        "required": ["application_details"],
+        "properties": {
+          "application_details": {
+            "required": [
+              "previous_station",
+              "comment_details",
+              "comment_category"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "fu_type": {
+            "const": "External"
+          }
+        }
+      },
+      "then": {
+        "required": ["borrowers"],
+        "properties": {
+          "borrowers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["documents", "information"],
+              "properties": {
+                "documents": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "document_name": {
+                        "type": "string"
+                      },
+                      "reason_status": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["document_name", "reason_status", "reason"]
+                  }
+                },
+                "information": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "data_name": {
+                        "type": "string"
+                      },
+                      "reason_status": {
+                        "type": "string",
+                        "enum": ["มี", "ไม่มี", "ไม่ชัดเจน"]
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["data_name", "reason_status", "reason"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

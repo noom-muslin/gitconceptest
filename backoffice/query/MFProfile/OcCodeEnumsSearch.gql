@@ -1,0 +1,6 @@
+query MFProfileOcCodeSearch($searchValue: String = "", $limit: Int = 10) {
+  result: ngl_enum_occode(where: {code: {_ilike: $searchValue}}, limit: $limit, distinct_on: code, order_by: {code: asc}) {
+    value: code
+    label: description
+  }
+}

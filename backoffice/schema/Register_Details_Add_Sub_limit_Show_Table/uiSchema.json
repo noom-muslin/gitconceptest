@@ -1,0 +1,96 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "minWidth": "800px",
+      "maxWidth": "800px"
+    }
+  },
+  "elements": [
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true
+      },
+      "elements": [
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/docUpload",
+          "itemOperations": {
+            "remove": true
+          },
+          "label": {
+            "show": false
+          },
+          "options": {
+            "hideTableToolbar": true,
+            "disableItemsRemove": true,
+            "sx": {
+              "th": {
+                "fontWeight": 700
+              }
+            },
+            "cells": [
+              {
+                "type": "Typography",
+                "scope": "#/properties/seq",
+                "options": {
+                  "columnTitle": "งวดที่",
+                  "variant": "body2"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/docName",
+                "options": {
+                  "columnTitle": "เงินต้นยกมา",
+                  "variant": "body2"
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/updateBy",
+                "options": {
+                  "columnTitle": "% ดอกเบี้ย",
+                  "variant": "body2"
+                }
+              },
+              {
+                "type": "TextField",
+                "scope": "#/properties/docQty",
+                "label": "ค่างวดต่อเดือน",
+                "options": {
+                  "variant": "outlined"
+                }
+              },
+              {
+                "type": "TextField",
+                "scope": "#/properties/docQty",
+                "label": "ตัดเงินต้น",
+                "options": {
+                  "variant": "outlined"
+                }
+              },
+              {
+                "type": "TextField",
+                "scope": "#/properties/docQty",
+                "label": "ดอกเบี้ยต่องวด",
+                "options": {
+                  "variant": "outlined"
+                }
+              },
+              {
+                "type": "TextField",
+                "scope": "#/properties/docQty",
+                "label": "เงินต้นคงเหลือ",
+                "options": {
+                  "variant": "outlined"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

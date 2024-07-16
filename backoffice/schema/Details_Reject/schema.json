@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "reason": {
+      "type": "string",
+      "enum": [
+        "Reason 1",
+        "Reason 2"
+      ]
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [ "reason", "note" ]
+}

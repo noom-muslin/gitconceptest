@@ -1,0 +1,127 @@
+{
+  "type": "object",
+  "properties": {
+    "documentOn": {
+      "type": "boolean"
+    },
+    "isTaskInitCompleted": {
+      "type": "boolean"
+    },
+    "isPrevTaskRejectedFromTempIndexing": {
+      "type": "boolean"
+    },
+    "submitValidationSchemaStatus": {
+      "type": "string"
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "minDateOfSigningConsentDocument": {
+      "type": "string",
+      "readonly": true
+    },
+    "maxDateOfSigningConsentDocument": {
+      "type": "string",
+      "readonly": true
+    },
+    "application_number": {
+      "type": "string",
+      "readonly": true
+    },
+    "borrowers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "string",
+            "readonly": true
+          },
+          "csent_consent_status": {
+            "type": "string",
+            "readonly": true
+          },
+          "name": {
+            "type": "string",
+            "readonly": true
+          },
+          "customer_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "evident_document_type": {
+            "type": "string",
+            "readonly": true
+          },
+          "ref_document_no": {
+            "type": "string",
+            "readonly": true
+          },
+          "product_group": {
+            "type": "string",
+            "readonly": true
+          },
+          "date_of_receipt_document": {
+            "type": "string",
+            "readonly": true
+          },
+          "date_of_signing_consent_document": {
+            "type": "string"
+          },
+          "marketing_consent": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "versions": {
+                "type": "array",
+                "readonly": true
+              }
+            }
+          },
+          "crosssell_consent": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "versions": {
+                "type": "array",
+                "readonly": true
+              }
+            }
+          },
+          "model_consent": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "versions": {
+                "type": "array",
+                "readonly": true
+              }
+            }
+          },
+          "consent_statuses": {
+            "type": "array"
+          },
+          "party_id": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    }
+  }
+}

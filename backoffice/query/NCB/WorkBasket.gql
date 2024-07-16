@@ -1,0 +1,90 @@
+subscription GetNcbWorkBasket(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _is_null: true }
+      task_type_id: { _eq: "NCB" }
+      status_id: { _eq: "Todo" }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    sla_wb {
+      current_duration_minutes
+    }
+    sla_tty {
+      current_duration_minutes
+    }
+    appl_followups {
+      fu_updated
+    }
+    create_date_time
+    work_object
+    document_in_datetime
+    external_id
+    primary_document {
+      document {
+        document_number
+        document_type {
+          code
+        }
+      }
+    }
+    application {
+      application_id
+      application_date_time_in
+      application_group {
+        code
+      }
+      application_type {
+        code
+      }
+      application_class {
+        code
+      }
+      application_channel {
+        code
+      }
+      primary_borrower {
+        borrower {
+          party_type_id
+          party {
+            full_name_en
+            name
+            last_name
+            oc_code
+            customer_type_code
+            reference_type_code {
+              description
+            }
+          }
+        }
+      }
+      primary_account {
+        account {
+          product_group {
+            code
+          }
+          product_type {
+            code
+          }
+        }
+      }
+    }
+    indexing_type {
+      code
+    }
+    previous_task {
+      task_type {
+        code # Channel Station
+      }
+    }
+  }
+}

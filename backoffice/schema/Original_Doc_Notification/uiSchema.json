@@ -1,0 +1,63 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "minWidth": "500px"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/status/properties/description"
+                }
+
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ตกลง",
+          "options": {
+            "operationType": "modal",
+            "subtype": "close"
+          }
+        }
+      ]
+    }
+  ]
+}

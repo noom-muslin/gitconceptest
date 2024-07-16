@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "exportType": {
+      "oneOf": [
+        {
+          "const": "current",
+          "title": "ดาวน์โหลดเฉพาะหน้านี้"
+        },
+        {
+          "const": "all",
+          "title": "ดาวน์โหลดทั้งหมด"
+        }
+      ]
+    }
+  }
+}

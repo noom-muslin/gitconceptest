@@ -1,0 +1,6 @@
+query MyQuery($model_code: String = "", $brand_code: String = "") {
+  result: ngl_enum_vehicle_sub_model(distinct_on: sub_model_code, where: {brand_code: {_eq: $brand_code}, model_code: {_eq: $model_code}, is_active: {_eq: true}}, order_by: {sub_model_code: asc}) {
+    value :sub_model_code
+    label: sub_model_code
+  }
+}

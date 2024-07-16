@@ -1,0 +1,6 @@
+query MyQuery {
+   result: ngl_enum_vehicle_brand(distinct_on: brand_code, where: {is_active: {_eq: true}, brand_code: {_is_null: false}}) {
+    value: brand_code,
+    label: brand_desc
+  }
+}

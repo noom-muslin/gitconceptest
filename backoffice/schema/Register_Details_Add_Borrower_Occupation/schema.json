@@ -1,0 +1,107 @@
+{
+  "type": "object",
+  "required": ["title", "workName",  "workPlace"],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "workName": {
+      "type": "string"
+    },
+    "otherDetails": {
+      "type": "string"
+    },
+    "workPlace": {
+      "type": "string",
+      "enum": ["HeadOffice", "Branch", "NotRegistered"]
+    },
+    "businessType": {
+      "type": "string"
+    },
+    "companyCategory": {
+      "type": "string"
+    },
+    "packageLoan": {
+      "type": "string"
+    },
+    "stateOfAffairs": {
+      "type": "string"
+    },
+    "incomeType": {
+      "type": "string",
+      "enum": ["FullTime", "NotFullTime"]
+    },
+    "occupationType": {
+      "type": "string"
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "careerDetails": {
+      "type": "string"
+    },
+    "careerDetailsFOS": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "employmentStatusCode": {
+      "type": "string"
+    },
+    "employmentCode": {
+      "type": "string"
+    },
+    "occupationCode": {
+      "type": "string"
+    },
+    "startDateOfFirstEmployment": {
+      "type": "string",
+      "format": "date"
+    },
+    "yearsOfEmployment": {
+      "type": "integer"
+    },
+    "startDateOfCurrentEmployment": {
+      "type": "string",
+      "format": "date"
+    },
+    "yearsOfCurrentEmployment": {
+      "type": "integer"
+    },
+    "regularIncome": {
+      "type": "number"
+    },
+    
+    "yearsInBusiness": {
+      "type": "integer"
+    },
+    "yearIncome": {
+      "type": "number"
+    },
+    "regularIncomeSource": {
+      "type": "string"
+    },
+    "extraIncome": {
+      "type": "number"
+    },
+    "extraIncomeSource": {
+      "type": "string"
+    },
+    "proofOfIncome": {
+      "type": "string"
+    },
+    "assetValue": {
+      "type": "string"
+    },
+    "creditLevel": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "isSiamBankMoney": {
+      "type": "boolean"
+    }
+  }
+}

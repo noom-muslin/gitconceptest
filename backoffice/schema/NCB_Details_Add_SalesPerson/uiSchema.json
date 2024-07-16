@@ -1,0 +1,108 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "TextField",
+          "label": "รหัสพนักงาน",
+          "scope": "#/properties/employeeIdToSearch",
+          "errors": {
+            "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+            "pattern": "อนุญาตให้ใช้เฉพาะอักขระตัวพิมพ์เล็กและตัวเลขเท่านั้น"
+          },
+          "options": {
+            "fullwidth": true,
+            "variant": "outlined"
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "ค้นหา",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "NCB_Details_SearchSalesPerson",
+            "variant": "primary",
+            "sx": {
+              "&.MuiButtonBase-root.MuiButton-root": {
+                "marginTop": "24px"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "UniversalArrayView",
+      "scope": "#/properties/salesPersonSearchResult",
+      "itemOperations": {
+        "remove": true
+      },
+      "label": {
+        "show": false
+      },
+      "options": {
+        "hideTableToolbar": true,
+        "sx": {
+          "borderBottom": "1px solid",
+          "borderColor": "secondary.dark"
+        },
+        "cells": [
+          {
+            "type": "Typography",
+            "scope": "#/properties/employeeId",
+            "options": {
+              "columnTitle": "รหัสพนักงาน",
+              "columnSx": {
+                "width": "100px"
+              }
+            }
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/employeeName",
+            "options": {
+              "columnTitle": "ชื่อ-นามสกุล"
+            }
+          },
+          {
+            "type": "ActionButton",
+            "label": "บันทึกข้อมูล",
+            "scope": "#",
+            "options": {
+              "columnTitle": "",
+              "variant": "primary",
+              "columnSx": {
+                "width": "126px"
+              },
+              "chain": [
+                {
+                  "operationType": "action",
+                  "conditionTypeId": "NCB_Details_AddSalesPerson",
+                  "payload": {
+                    "employeeId": "{_rowData.employeeId}"
+                  }
+                },
+                {
+                  "operationType": "modal",
+                  "subtype": "close"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "ลำดับ",
+      "field": "seq",
+      "minWidth": 55
+    },
+    {
+      "title": "วัตถุประสงค์การกู้",
+      "field": "loan_objective_description",
+      "minWidth": 129
+    },
+    {
+      "title": "Product Type",
+      "field": "product_type_code",
+      "minWidth": 112
+    },
+    {
+      "title": "Sub Product Type",
+      "field": "sub_product_type_code",
+      "minWidth": 141
+    },
+    {
+      "title": "Master",
+      "field": "master_account_flag",
+      "minWidth": 100
+    },
+    {
+      "title": "ชื่อเจ้าของบัญชี",
+      "field": "account_name",
+      "minWidth": 115
+    },
+    {
+      "title": "เลขที่บัญชี",
+      "field": "account_number",
+      "minWidth": 120
+    },
+    {
+      "title": "ประเภทสินเชื่อ",
+      "field": "sub_loan_type_description",
+      "minWidth": 110
+    },
+    {
+      "title": "ประเภทวงเงิน",
+      "field": "credit_line_type",
+      "minWidth": 106
+    },
+    {
+      "title": "ยอดคงเหลือ",
+      "field": "balance_credit_line_amount",
+      "minWidth": 120
+    },
+    {
+      "title": "วงเงินเดิม",
+      "field": "old_credit_line_amount",
+      "minWidth": 120
+    },
+    {
+      "title": "วงเงินที่ได้รับอนุมัติ",
+      "field": "approved_amount",
+      "minWidth": 138
+    },
+    {
+      "title": "วงเงินที่ขออนุมัติ",
+      "field": "requested_amount",
+      "minWidth": 122
+    },
+    {
+      "title": "ระยะเวลาผ่อนชำระ (เดือน)",
+      "field": "tenor_month",
+      "minWidth": 182
+    },
+    {
+      "title": "ชื่อแคมเปญ",
+      "field": "campaign_description",
+      "minWidth": 120
+    },
+    {
+      "title": "ค่างวดต่อเดือน",
+      "field": "account_installment_monthly_amount",
+      "minWidth": 113
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "minWidth": 91,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "แก้ไขสินเชื่อ",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/register/{data.id}/details/{data.application_account_id}/mortgage"
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "minWidth": 81,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "วงเงินย่อย",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/register/limit/{data.application_account_id}/details"
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "minWidth": 109,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "เพิ่มสินเชื่อย่อย",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/"
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "minWidth": 110,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Inquiry Aging",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/"
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "minWidth": 147,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "เพิ่ม/แก้ไขหลักประกัน",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/"
+          }
+        }
+      ]
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "minWidth": 52,
+      "locked": true,
+      "rowActions": [
+        {
+          "icon": "Delete",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/"
+          }
+        }
+      ]
+    }
+  ]
+}

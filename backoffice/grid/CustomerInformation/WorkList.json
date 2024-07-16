@@ -1,0 +1,162 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WL SLA",
+      "field": "deadline_at",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No.",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "title": "เลขที่ OP.",
+      "field": "op.op_number",
+      "name": "",
+      "width": 100
+    },
+    { "sortable": false,
+      "title": "ชื่อลูกค้า",
+      "name": "customer_name",
+      "field": "application.appl_parties",
+      "converter": "customer_name_converter_ci_insurance",
+      "minWidth": 120
+    },
+    {
+      "title": "เลขที่บัญชี",
+      "field": "op_loan.account_number",
+      "name": "account_number",
+      "width": 130
+    },
+    {
+      "sortable": false,
+      "title": "วัตถุประสงค์ OP",
+      "field": "op.op_objectives",
+      "converter": "objectives_converter_ci_insurance",
+      "name": "op_objective_desc",
+      "minWidth": 150
+    },
+    {
+      "title": " Status ",
+      "field": "status_id",
+      "name": "",
+      "minWidth": 180
+    },
+    {
+      "title": "Date Approved/Rejected",
+      "field": "op.approved_date_time",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "_format": "date",
+      "minWidth": 190
+    },
+    {
+      "name": "",
+      "field": "id",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดูเอกสาร",
+          "type": "ActionButton",
+          "options": {
+            "variant" : "href",
+              "operationType": "script",
+              "converter": "openDocumentumLinkfromGrid",
+              "payload": {
+                "task_id": "{data.id}"              
+              }
+          }
+        }
+      ],
+      "width": 140
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "รายละเอียด OP",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CustomerInformation",
+            "route": "/ci/{data.id}/details"
+          }
+        }
+      ],
+      "width": 140
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "p_CustomerInformation",
+            "route": "/ci/{data.id}/details"
+          }
+        }
+      ],
+      "width": 80
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "View Detail",
+          "triggerType": "link",
+          "options": {
+            "chain": [
+              {
+                  "operationType": "action",
+                  "conditionTypeId": "CI_input_detail_inquiry",
+                    "payload": {
+                      "taskId": "{data.id}"
+                    }
+                  
+              },
+              {
+                  "operationType": "modal",
+                  "dialogName": "m_CustomerInformation_Input",
+                  "subtype": "show"
+              }
+          ]
+            
+          }
+        }
+      ],
+      "width": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

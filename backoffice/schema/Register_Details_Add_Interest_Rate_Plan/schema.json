@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "properties": {
+    "id":{
+      "type": ["string", "null"]
+    },
+    "period_from": {
+      "type": ["string", "null"]
+    },
+    "period_to": {
+      "type": ["string", "null"]
+    },
+    "period_unit": {
+      "type": ["string", "null"]
+    },
+    "tier_type": {
+      "type": ["string", "null"]
+    },
+    "base_factor_standard": {
+      "type": ["string", "null"]
+    },
+    "base_factor_interest_rates": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "maximum": 999,
+      "multipleOfPrecision": 0.01
+    },
+    "diff_code": {
+      "type": ["string", "null"]
+    },
+    "diff_value": {
+      "type": ["number", "null"],
+      "maximum": 999,
+      "multipleOfPrecision": 0.01
+    },
+    "diff_code2": {
+      "type": ["string", "null"]
+    },
+    "diff_value2": {
+      "type": ["number", "null"],
+      "maximum": 999,
+      "multipleOfPrecision": 0.01
+    },
+    "paper_header":{
+      "type": ["string", "null"]
+    },
+    "tier_type_enum": {
+      "type": "array"
+    },
+    "unit_of_time_enum": {
+      "type": "array"
+    },
+    "interest_rate_standard_enum": {
+      "type": "array"
+    },
+    "selectedIndex":{
+      "type": ["integer", "null"]
+    },
+    "ra_seq":{
+      "type": ["string", "null"]
+    },
+    "isPlanValid":{
+      "type":"boolean"
+    },
+    "isDisplayRemoveBTN":{
+      "type": ["boolean", "null"]
+    }
+  }
+}

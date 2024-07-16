@@ -1,0 +1,6 @@
+query GetSubProductType($product_type_id: String = "New") {
+  result: ngl_enum_sub_product(where: { product_type_id: { _eq: $product_type_id } }) {
+    value: id
+    label: id
+  }
+}

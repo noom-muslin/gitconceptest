@@ -1,0 +1,725 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "FormMapperListener",
+      "options": {
+        "resultMappingSchema": {
+          "type": "object",
+          "properties": {
+            "thaiPostalsDic": {
+              "type": "array",
+              "dataPath": "thaiPostalsDic",
+              "converter": "cacheThaiPostalsDic"
+            },
+            "addresses": {
+              "type": "array",
+              "dataPath": "addresses",
+              "converter": "thaiPostalEnumsForAddresses"
+            },
+            "isAddressesEmpty": {
+              "type": "boolean",
+              "dataPath": "borrowerType",
+              "converter": "checkIsAddressesEmpty"
+            }
+          }
+        }
+      }
+    },
+    {
+      "scope": "#/properties/addresses",
+      "type": "SchemedListView",
+      "rule": {
+        "effect": "HIDE",
+        "condition": {
+          "scope": "#properties/isAddressesEmpty",
+          "schema": {
+            "const": true
+          }
+        }
+      },
+      "options": {
+        "cellUiSchema": {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "padding": "16px 0 16px 16px",
+                  "borderBottom": "1px solid",
+                  "borderColor": "secondary.dark"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": true,
+                    "spacing": "16px"
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 12
+                      },
+                      "elements": [
+                        {
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/address_usageLabel",
+                              "options": {
+                                "variant": "subtitle2Dark",
+                                "sx": {
+                                  "paddingTop": "5px",
+                                  "paddingRight": "10px"
+                                }
+                              }
+                            },
+                            {
+                              "type": "ActionButton",
+                              "label": " ",
+                              "scope": "#",
+                              "options": {
+                                "operationType": "system",
+                                "subtype": "remove_item",
+                                "validationSchema": false,
+                                "columnTitle": "",
+                                "icon": "DeleteOutlined",
+                                "variant": "secondaryError",
+                                "size": "smallIcon"
+                              }
+                            }
+                          ],
+                          "options": {
+                            "direction": "row"
+                          },
+                          "type": "StackLayout"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "เลขที่",
+                          "_label": "Address Number",
+                          "scope": "#/properties/address_no",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขและ / เท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "หมู่ที่",
+                          "scope": "#/properties/moo",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "หมู่บ้าน/อาคาร/คอนโด",
+                          "_label": "Village/Building/Condo",
+                          "scope": "#/properties/village",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรและตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 3
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ชั้นที่",
+                          "_label": "Floor",
+                          "scope": "#/properties/floor",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรและตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 3
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ห้อง",
+                          "_label": "Room",
+                          "scope": "#/properties/room",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรและตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 3
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ตรอก",
+                          "_label": "Alley",
+                          "scope": "#/properties/trok",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษร ตัวเลข และ / เท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 3
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ซอย/แยก",
+                          "_label": "Soi/Separate",
+                          "scope": "#/properties/soi",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษร ตัวเลข และ / เท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ถนน",
+                          "_label": "Road ",
+                          "scope": "#/properties/road",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวอักษรและตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "จังหวัด",
+                          "_label": "Province",
+                          "scope": "#/properties/province",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "province_enum"
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "อำเภอ/เขต",
+                          "_label": "District",
+                          "scope": "#/properties/amphur",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "amphur_enum"
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "ตำบล/แขวง",
+                          "_label": "Sub-District",
+                          "scope": "#/properties/tambon",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "tambon_enum"
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "SelectField",
+                          "label": "รหัสไปรษณีย์",
+                          "_label": "Zip code",
+                          "scope": "#/properties/zip_code",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "enumDataPath": "zipcode_enum"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 2
+                      },
+                      "elements": [
+                        {
+                          "type": "MaskField",
+                          "label": "เบอร์โทรศัพท์",
+                          "_label": "Phone Number",
+                          "scope": "#/properties/telephone_number",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "mask": [
+                              "00-000-000",
+                              "000-000-000",
+                              "000-000-0000"
+                            ]
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                            "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 2
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ถึง",
+                          "_label": "to",
+                          "scope": "#/properties/telephone_to",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 2
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ต่อ",
+                          "_label": "continue",
+                          "scope": "#/properties/telephone_ext",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "MaskField",
+                          "label": "เบอร์โทรศัพท์มือถือ",
+                          "_label": "Mobile phone number",
+                          "scope": "#/properties/mobile_number",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "mask": [
+                              "00-000-000",
+                              "000-000-000",
+                              "000-000-0000"
+                            ]
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                            "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#properties/address_usage",
+                          "schema": {
+                            "const": "CurrentAddress"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "ประเภทที่อยู่อาศัย",
+                              "_label": "Housing type (Residence type?)",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": "*",
+                              "options": {
+                                "variant": "field-label-error"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/address_format",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "query": "CommonSearch/GetStandardCode",
+                            "queryVariables": {
+                              "standard_list_code": [
+                                "N026"
+                              ]
+                            },
+                            "converter": "mapValueLabel"
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#properties/address_usage",
+                          "schema": {
+                            "const": "CurrentAddress"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "สถานะการอยู่อาศัย",
+                              "_label": "Residence status",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": "*",
+                              "options": {
+                                "variant": "field-label-error"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/address_owner",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "query": "CommonSearch/GetStandardCode",
+                            "queryVariables": {
+                              "standard_list_code": [
+                                "N027"
+                              ]
+                            },
+                            "converter": "mapValueLabel"
+                          },
+                          "errors": {
+                            "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#properties/address_usage",
+                          "schema": {
+                            "const": "CurrentAddress"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ระยะเวลาที่อยู่อาศัย",
+                          "_label": "Period of residence",
+                          "scope": "#/properties/residence_period",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "endAdornmentTypography": {
+                              "text": "ปี"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#properties/address_usage",
+                          "schema": {
+                            "const": "CurrentAddress"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "TextField",
+                          "label": "ค่าใช้จ่ายในการอยู่อาศัย",
+                          "_label": "Living expenses",
+                          "scope": "#/properties/residence_expenses",
+                          "options": {
+                            "variant": "outlined",
+                            "fullwidth": true,
+                            "autocomplete": true,
+                            "endAdornmentTypography": {
+                              "text": "บาท"
+                            }
+                          },
+                          "errors": {
+                            "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขเท่านั้น"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "+ เพิ่มที่อยู่",
+          "options": {
+            "validationSchema": false,
+            "variant": "secondary",
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "registerAddBorrowerPopulateAddAddress",
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "addAddress": {
+                      "type": "object",
+                      "required": ["address_usage"],
+                      "properties": {
+                        "address_usage": {
+                          "type": "string"
+                        },
+                        "addressSource": {
+                          "type": ["string", "null"]
+                        },
+                        "addressUsageEnum": {
+                          "type": "array"
+                        },
+                        "addressSourceEnum": {
+                          "type": "array"
+                        },
+                        "addressSourceEnabled": {
+                          "type": "Boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Register_Details_Add_Borrower_Addresses_Add"
+              }
+            ]
+          },
+          "rule": {
+            "effect": "ENABLE",
+            "condition": {
+              "scope": "#",
+              "schema": {
+                "required": ["borrowerType"]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

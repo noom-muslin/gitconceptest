@@ -1,0 +1,210 @@
+{
+  "type": "object",
+  "required": ["employeeIdToSearch"],
+  "properties": {
+    "mfappl_enum_objective": {
+      "type": "array"
+    },
+    "employeeIdToSearch": {
+      "type": "string",
+      "pattern": "^[s,S]\\d{5,6}$"
+    },
+    "general_info": {
+      "type": "object",
+      "required": ["objective"],
+      "properties": {
+        "objective": {
+          "type": ["string"]
+        },
+        "objective_detail": {
+          "type": ["string", "null"]
+        },
+        "create_date": {
+          "type": "string",
+          "readOnly": true
+        },
+        "status_work": {
+          "type": ["string", "null"],
+          "readOnly": true
+        },
+        "employee": {
+          "type": ["object", "null"],
+          "required": ["phone", "email"],
+          "properties": {
+            "employee_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "oc_code": {
+              "type": "string"              
+            },
+            "oc_name": {
+              "type": "string",
+              "readOnly":true
+            },
+            "phone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            }
+          }
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "is_change_condition":{
+          "type": ["boolean", "null"]
+        }
+      }
+    },
+    "objectives": {
+      "type": "array"
+    },
+    "documentOn": {
+      "type": "boolean"
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "applicationId": {
+      "type": "string"
+    },
+    "applicationGroup": {
+      "type": "object",
+      "properties": {
+        "unsecuredOrAuto": {
+          "type": "boolean"
+        },
+        "auto": {
+          "type": "boolean"
+        }
+      }
+    },
+    "salesPersons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "employeeId": {
+            "type": "string"
+          },
+          "firstAndLastName": {
+            "type": "string"
+          },
+          "branch": {
+            "type": "string"
+          },
+          "ocCode": {
+            "type": "string"
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "incentiveOcCode": {
+            "type": "string"
+          },
+          "bookingBranch": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "borrowersInformation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "repeatNcbCheck": {
+            "type": "boolean",
+            "readonly": true
+          },
+          "number": {
+            "type": "integer",
+            "readonly": true
+          },
+          "documentConcent": {
+            "type": "string",
+            "readonly": true
+          },
+          "documentNumber": {
+            "type": "string",
+            "readonly": true
+          },
+          "consentSigningDay": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerName": {
+            "type": "string",
+            "readonly": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "readonly": true
+          },
+          "ocCode": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerSegment": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    },
+    "applicationDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "csentDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "rule_vars": {
+      "type": ["object", "null"],
+      "properties": {
+        "is_disabled_cancelApplication": {
+          "type": ["boolean", "null"]
+        },
+        "is_disabled_saveApplication": {
+          "type": ["boolean", "null"]
+        },
+        "is_disabled_submitApplication": {
+          "type": ["boolean", "null"]
+        }
+      }
+    }
+  }
+}

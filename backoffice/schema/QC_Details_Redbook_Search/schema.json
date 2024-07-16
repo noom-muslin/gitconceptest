@@ -1,0 +1,142 @@
+{
+  "type": "object",
+  "properties": {
+    "canSubmit": {
+      "type": "string"
+    },
+    "modalIn": {
+      "type": "object",
+      "properties": {
+        "applicationDateIn": {
+          "type": "string"
+        },
+        "redbook_brand": {
+          "type": "string"
+        },
+        "redbook_model": {
+          "type": "string"
+        },
+        "sub_model_code": {
+          "type": "string"
+        },
+        "sub_model_year": {
+          "type": "string"
+        },
+        "cckwh": {
+          "type": "string"
+        },
+        "gear_type": {
+          "type": "string"
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "redbook_brand": {
+          "type": "string"
+        },
+        "redbook_model": {
+          "type": "string"
+        },
+        "sub_model_year": {
+          "type": "string"
+        },
+        "cckwh": {
+          "type": "string"
+        },
+        "gear_type": {
+          "type": "string"
+        },
+        "redbook_sub_model": {
+          "type": "string"
+        }
+      }
+    },
+    "redbookInfo": {
+      "type": "object",
+      "properties": {
+        "brandDesc": {
+          "type": "string"
+        },
+        "modelDesc": {
+          "type": ["string", "null"]
+        },
+        "yearOfModel": {
+          "type": ["string", "null"]
+        },
+        "cckwh": {
+          "type": ["string", "null"]
+        },
+        "gearType": {
+          "type": ["string", "null"]
+        },
+        "bodyStyle": {
+          "type": ["string", "null"]
+        },
+        "subModel": {
+          "type": ["string", "null"]
+        },
+        "vehicleKey": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "redbook_grid": {
+      "type": "object",
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "logic": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "sorting": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dir": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

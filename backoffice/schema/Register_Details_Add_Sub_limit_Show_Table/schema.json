@@ -1,0 +1,73 @@
+{
+  "type": "object",
+  "properties": {
+    "docName": {
+      "type": "string",
+      "enum": [
+        "คำรับรองของผู้กู้",
+        "สัญญากู้เงิน สคบ",
+        "สัญญากู้เงิน อเนกประสงค์",
+        "สัญญากู้เงิน อเนกประสงค์ (สวัสดิการพนักงาน)"
+      ]
+    },
+    "docUpload": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "docName": {
+            "type": "string"
+          },
+          "updateBy": {
+            "type": "string"
+          },
+          "docDisplay": {
+            "type": "string"
+          },
+          "docDownload": {
+            "type": "string"
+          },
+          "docQty": {
+            "type": "string"
+          },
+          "singleUpload": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "resultMappingSchema": {
+      "type": "object",
+      "properties": {
+        "docUpload": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "docName": {
+                "type": "string"
+              },
+              "updateBy": {
+                "type": "string"
+              },
+              "docDisplay": {
+                "type": "string"
+              },
+              "docDownload": {
+                "type": "string"
+              },
+              "docQty": {
+                "type": "string"
+              },
+              "singleUpload": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "detailsFollowUp": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "string",
+            "readonly": true
+          },
+          "username": {
+            "type": "string",
+            "readonly": true
+          },
+          "reason": {
+            "type": "string",
+            "readonly": true
+          },
+          "date_and_time": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    }
+  }
+}

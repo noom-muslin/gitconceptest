@@ -1,0 +1,1217 @@
+{
+    "type": "StackLayout",
+    "options": {
+      "spacing": "16px",
+      "sx": {
+        "padding": "16px"
+      }
+    },
+    "elements": [
+      {
+        "type": "Typography",
+        "label": "Pending",
+        "options": {
+          "variant": "h6",
+          "sx": {
+            "padding": "4px 0"
+          }
+        }
+      },
+      {
+        "type": "PaperLayout",
+        "options": {
+          "component": "section",
+          "variant": "section"
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "Work List"
+              }
+            ]
+          },
+          {
+            "type": "StackLayout",
+            "options": {
+              "spacing": "16px"
+            },
+            "elements": [
+              {
+                "type": "BoxLayout",
+                "options": {
+                  "sx": {
+                    "padding": "16px 16px 0 16px"
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "GridLayout",
+                    "options": {
+                      "container": "true",
+                      "spacing": "16px"
+                    },
+                    "elements": [
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "Application No.",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WL/properties/application_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "Application number support only characters and numeric."
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "เลขที่ OP",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WL/properties/op_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "2"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "From date",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "ExternalComponent",
+                            "scope": "#/properties/search_WL/properties/from_date",
+                            "options": {
+                              "externalComponentName": "thai-calendar",
+                              "externalComponentScope": "remote1",
+                              "externalComponentModule": "./ThaiDatePicker",
+                              "views": "year,month,day",
+                              "variant": "outlined",
+                              "sx": {
+                                "width": "100%"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "2"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "To date",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "ExternalComponent",
+                            "scope": "#/properties/search_WL/properties/to_date",
+                            "options": {
+                              "externalComponentName": "thai-calendar",
+                              "externalComponentScope": "remote1",
+                              "externalComponentModule": "./ThaiDatePicker",
+                              "views": "year,month,day",
+                              "variant": "outlined",
+                              "sx": {
+                                "width": "100%"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "ชื่อลูกค้า",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WL/properties/customer_firstname",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "Application number support only characters and numeric."
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "นามสกุลลูกค้า",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WL/properties/customer_lastname",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "Application number support only characters and numeric."
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4",
+                          "container":"true",
+                          "direction":"row",
+                          "justifyContent":"flex-start",
+                          "alignItems":"flex-end",
+                          "sx": {
+                            "padding-left": "20px"
+                          }
+                        },
+                        "elements": [
+                          {
+                            "type": "CheckboxField",
+                            "label": "Exact Match",
+                            "scope": "#/properties/search_WL/properties/exact_match",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "ประเภทเอกสารอ้างอิง",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": false,
+                            "scope": "#/properties/search_WL/properties/document_type",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "enumDataPath": "document_type_enum"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "เลขที่เอกสารอ้างอิง",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WL/properties/document_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "StackLayout",
+                "options": {
+                  "direction": "row",
+                  "justifyContent": "space-between",
+                  "sx": {
+                    "padding": "0 16px"
+                  }
+                },
+                "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "ล้างค่า",
+                      "options": {
+                        "operationType": "script",
+                        "converter": "clear_filter_applications_grid_ci_insurance",
+                        "variant": "secondaryError",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "search_WL": {
+                              "type": "object",
+                              "properties": {
+                                "application_number": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9]+$"
+                                },
+                                "op_number": {
+                                  "type": "string"
+                                },
+                                "from_date": {
+                                  "type": "string"
+                                },
+                                "to_date": {
+                                  "type": "string"
+                                },
+                                "customer_firstname": {
+                                  "type": "string"
+                                },
+                                "customer_lastname": {
+                                  "type": "string"
+                                },
+                                "exact_match": {
+                                  "type": "boolean"
+                                },
+                                "document_type": {
+                                  "type": "string"
+                                },
+                                "document_number": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "worklist_grid": {
+                              "type": "object",
+                              "properties": {
+                                "filters": {
+                                  "type": "array"
+                                },
+                                "pagination": {
+                                  "type": "object",
+                                  "properties": {
+                                    "pageIndex": {
+                                      "type": "number"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                        "type": "ActionButton",
+                        "label": "ค้นหา",
+                        "options": {
+                          "className": "primaryButton",
+                          "chain": [
+                            {
+                              "operationType": "script",
+                              "converter": "check_search_criteria_WL",
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "properties": {
+                                  "canSubmit": {
+                                    "type": "boolean",
+                                    "dataPath": "canSubmit"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "if": {
+                                "type": "object",
+                                "required": ["payload"],
+                                "properties": {
+                                  "payload": {
+                                    "type": "object",
+                                    "required": ["data"],
+                                    "properties": {
+                                      "data": {
+                                        "required": ["canSubmit"],
+                                        "type": "object",
+                                        "properties": {
+                                          "canSubmit": {
+                                            "type": "boolean",
+                                            "const": true
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "operationType": "script",
+                              "converter": "insurance_worklist_filter",
+                              "size": "large",
+                              "sx": {
+                                "backgroundColor": "#5b21b6"
+                              },
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "properties": {
+                                  "worklist_grid": {
+                                    "type": "object",
+                                    "properties": {
+                                      "filters": {
+                                        "type": "array"
+                                      },
+                                      "pagination": {
+                                        "type": "object",
+                                        "properties": {
+                                          "pageIndex": {
+                                            "type": "number"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "if": {
+                                "else": true
+                              },
+                              "operationType": "modal",
+                              "dialogName": "m_BasicError_EmptySearchFields",
+                              "subtype": "show"
+                            }
+                          ]
+                        }
+                    }
+                  ]
+              },
+              {
+                "type": "BoxLayout",
+                "options": {
+                  "htmlID": "WorkList"
+                },
+                "elements": [
+                  {
+                    "type": "Datagrid",
+                    "scope": "#/properties/worklist_grid",
+                    "options": {
+                      "grid": "Insurance/WorkList",
+                      "dataContext": {
+                        "query": "Insurance/WorkList",
+                        "queryVariables": {
+                          "assignee": "{user.login}",
+                          "checkerFlag":"Pending"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "PaperLayout",
+        "options": {
+          "component": "section",
+          "variant": "section"
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "Work Basket"
+              }
+            ]
+          },
+          {
+            "type": "StackLayout",
+            "options": {
+              "spacing": "16px"
+            },
+            "elements": [
+              {
+                "type": "BoxLayout",
+                "options": {
+                  "sx": {
+                    "padding": "16px 16px 0 16px"
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "GridLayout",
+                    "options": {
+                      "container": "true",
+                      "spacing": "16px"
+                    },
+                    "elements": [
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "Application No.",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WB/properties/application_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "Application number support only characters and numeric."
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "เลขที่ OP",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WB/properties/op_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "2"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "From date",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "ExternalComponent",
+                            "scope": "#/properties/search_WB/properties/from_date",
+                            "options": {
+                              "externalComponentName": "thai-calendar",
+                              "externalComponentScope": "remote1",
+                              "externalComponentModule": "./ThaiDatePicker",
+                              "views": "year,month,day",
+                              "variant": "outlined",
+                              "sx": {
+                                "width": "100%"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "2"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "To date",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "ExternalComponent",
+                            "scope": "#/properties/search_WB/properties/to_date",
+                            "options": {
+                              "externalComponentName": "thai-calendar",
+                              "externalComponentScope": "remote1",
+                              "externalComponentModule": "./ThaiDatePicker",
+                              "views": "year,month,day",
+                              "variant": "outlined",
+                              "sx": {
+                                "width": "100%"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "ชื่อลูกค้า",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WB/properties/customer_firstname",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "Application number support only characters and numeric."
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "นามสกุลลูกค้า",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WB/properties/customer_lastname",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            },
+                            "errors": {
+                              "pattern": "Application number support only characters and numeric."
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4",
+                          "container":"true",
+                          "direction":"row",
+                          "justifyContent":"flex-start",
+                          "alignItems":"flex-end",
+                          "sx": {
+                            "padding-left": "20px"
+                          }
+                        },
+                        "elements": [
+                          {
+                            "type": "CheckboxField",
+                            "label": "Exact Match",
+                            "scope": "#/properties/search_WB/properties/exact_match",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "ประเภทเอกสารอ้างอิง",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "SelectField",
+                            "label": false,
+                            "scope": "#/properties/search_WB/properties/document_type",
+                            "options": {
+                              "variant": "outlined",
+                              "fullwidth": true,
+                              "autocomplete": true,
+                              "enumDataPath": "document_type_enum"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "GridLayout",
+                        "options": {
+                          "xs": "4"
+                        },
+                        "elements": [
+                          {
+                            "type": "Typography",
+                            "label": "เลขที่เอกสารอ้างอิง",
+                            "options": {
+                              "variant": "label"
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "label": false,
+                            "scope": "#/properties/search_WB/properties/document_number",
+                            "options": {
+                              "fullwidth": true,
+                              "variant": "outlined"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "StackLayout",
+                "options": {
+                  "direction": "row",
+                  "justifyContent": "space-between",
+                  "sx": {
+                    "padding": "0 16px"
+                  }
+                },
+                "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "ล้างค่า",
+                      "options": {
+                        "operationType": "script",
+                        "converter": "clear_filter_applications_grid_ci_insurance",
+                        "variant": "secondaryError",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "search_WB": {
+                              "type": "object",
+                              "properties": {
+                                "application_number": {
+                                  "type": "string",
+                                  "pattern": "^[A-Za-z0-9]+$"
+                                },
+                                "op_number": {
+                                  "type": "string"
+                                },
+                                "from_date": {
+                                  "type": "string"
+                                },
+                                "to_date": {
+                                  "type": "string"
+                                },
+                                "customer_firstname": {
+                                  "type": "string"
+                                },
+                                "customer_lastname": {
+                                  "type": "string"
+                                },
+                                "exact_match": {
+                                  "type": "boolean"
+                                },
+                                "document_type": {
+                                  "type": "string"
+                                },
+                                "document_number": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "workbasket_grid": {
+                              "type": "object",
+                              "properties": {
+                                "filters": {
+                                  "type": "array"
+                                },
+                                "pagination": {
+                                  "type": "object",
+                                  "properties": {
+                                    "pageIndex": {
+                                      "type": "number"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                        "type": "ActionButton",
+                        "label": "ค้นหา",
+                        "options": {
+                          "className": "primaryButton",
+                          "chain": [
+                            {
+                              "operationType": "script",
+                              "converter": "check_search_criteria_WB",
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "properties": {
+                                  "canSubmit": {
+                                    "type": "boolean",
+                                    "dataPath": "canSubmit"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "if": {
+                                "type": "object",
+                                "required": ["payload"],
+                                "properties": {
+                                  "payload": {
+                                    "type": "object",
+                                    "required": ["data"],
+                                    "properties": {
+                                      "data": {
+                                        "required": ["canSubmit"],
+                                        "type": "object",
+                                        "properties": {
+                                          "canSubmit": {
+                                            "type": "boolean",
+                                            "const": true
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "operationType": "script",
+                              "converter": "insurance_workbasket_filter",
+                              "size": "large",
+                              "sx": {
+                                "backgroundColor": "#5b21b6"
+                              },
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "properties": {
+                                  "workbasket_grid": {
+                                    "type": "object",
+                                    "properties": {
+                                      "filters": {
+                                        "type": "array"
+                                      },
+                                      "pagination": {
+                                        "type": "object",
+                                        "properties": {
+                                          "pageIndex": {
+                                            "type": "number"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "if": {
+                                "else": true
+                              },
+                              "operationType": "modal",
+                              "dialogName": "m_BasicError_EmptySearchFields",
+                              "subtype": "show"
+                            }
+                          ]
+                        }
+                      }
+                ]
+              },
+              {
+                "type": "BoxLayout",
+                "options": {
+                  "htmlID": "WorkBasket"
+                },
+                "elements": [
+                  {
+                    "type": "Datagrid",
+                    "scope": "#/properties/workbasket_grid",
+                    "options": {
+                      "grid": "Insurance/WorkBasket",
+                      "dataContext": {
+                        "query": "Insurance/WorkBasket",
+                        "queryVariables": {
+                          "checkerFlag":"Pending"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "options": {
+          "sx": {
+            "height": "0px"
+          }
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/save_status/properties/code",
+            "schema": {
+              "const": 1000
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "Notification",
+            "label": "",
+            "scope": "#/properties/save_status/properties/description",
+            "options": {
+              "preventDuplicate": 1,
+              "autoHideDuration": 5000,
+              "persist": false,
+              "variant": "success",
+              "hideCloseButton": true,
+              "anchorOrigin": {
+                "horizontal": "center",
+                "vertical": "top"
+              },
+              "style": {
+                "color": "#166534",
+                "display": "flex",
+                "justifyContent": "center",
+                "backgroundColor": "#F0FDF4",
+                "min-width": "auto",
+                "width": "189px",
+                "height": "44px",
+                "margin-left": "63.5px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "options": {
+          "sx": {
+            "height": "0px"
+          }
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/previous_user/properties/code",
+            "schema": {
+              "const": 9000
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "Notification",
+            "label": "",
+            "scope": "#/properties/previous_user/properties/description",
+            "options": {
+              "preventDuplicate": 1,
+              "autoHideDuration": 5000,
+              "persist": false,
+              "variant": "success",
+              "hideCloseButton": true,
+              "anchorOrigin": {
+                "horizontal": "center",
+                "vertical": "top"
+              },
+              "style": {
+                "color": "#FF0000",
+                "display": "flex",
+                "justifyContent": "center",
+                "backgroundColor": "#F0FDF4",
+                "min-width": "auto",
+                "width": "189px",
+                "height": "44px",
+                "margin-left": "63.5px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "options": {
+          "sx": {
+            "height": "0px"
+          }
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/previous_user/properties/code",
+            "schema": {
+              "const": 1000
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "Notification",
+            "label": "",
+            "scope": "#/properties/previous_user/properties/description",
+            "options": {
+              "preventDuplicate": 1,
+              "autoHideDuration": 5000,
+              "persist": false,
+              "variant": "success",
+              "hideCloseButton": true,
+              "anchorOrigin": {
+                "horizontal": "center",
+                "vertical": "top"
+              },
+              "style": {
+                "color": "#166534",
+                "display": "flex",
+                "justifyContent": "center",
+                "backgroundColor": "#F0FDF4",
+                "min-width": "auto",
+                "width": "189px",
+                "height": "44px",
+                "margin-left": "63.5px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "options": {
+          "sx": {
+            "height": "0px"
+          }
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/check_status/properties/code",
+            "schema": {
+              "const": 9000
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "Notification",
+            "label": "",
+            "scope": "#/properties/check_status/properties/description",
+            "options": {
+              "preventDuplicate": 1,
+              "autoHideDuration": 5000,
+              "persist": false,
+              "variant": "success",
+              "hideCloseButton": true,
+              "anchorOrigin": {
+                "horizontal": "center",
+                "vertical": "top"
+              },
+              "style": {
+                "color": "#FF0000",
+                "display": "flex",
+                "justifyContent": "center",
+                "backgroundColor": "#F0FDF4",
+                "min-width": "auto",
+                "width": "350px",
+                "height": "90px",
+                "margin-left": "63.5px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "options": {
+          "sx": {
+            "height": "0px"
+          }
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/check_status/properties/code",
+            "schema": {
+              "const": 1000
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "Notification",
+            "label": "",
+            "scope": "#/properties/check_status/properties/description",
+            "options": {
+              "preventDuplicate": 1,
+              "autoHideDuration": 5000,
+              "persist": false,
+              "variant": "success",
+              "hideCloseButton": true,
+              "anchorOrigin": {
+                "horizontal": "center",
+                "vertical": "top"
+              },
+              "style": {
+                "color": "#166534",
+                "display": "flex",
+                "justifyContent": "center",
+                "backgroundColor": "#F0FDF4",
+                "min-width": "auto",
+                "width": "350px",
+                "height": "90px",
+                "margin-left": "63.5px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "Group",
+        "options": {
+          "sx": {
+            "height": "0px"
+          }
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/send_wb/properties/code",
+            "schema": {
+              "const": 1000
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "Notification",
+            "label": "",
+            "scope": "#/properties/send_wb/properties/description",
+            "options": {
+              "preventDuplicate": 1,
+              "autoHideDuration": 5000,
+              "persist": false,
+              "variant": "success",
+              "hideCloseButton": true,
+              "anchorOrigin": {
+                "horizontal": "center",
+                "vertical": "top"
+              },
+              "style": {
+                "color": "#166534",
+                "display": "flex",
+                "justifyContent": "center",
+                "backgroundColor": "#F0FDF4",
+                "min-width": "auto",
+                "width": "350px",
+                "height": "44px",
+                "margin-left": "63.5px"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

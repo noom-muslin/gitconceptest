@@ -1,0 +1,1507 @@
+{
+  "type": "GridLayout",
+  "options": {
+    "container": true,
+    "sx": {
+      "padding": "16px 0 16px 16px"
+    }
+  },
+  "elements": [
+    {
+      "_name": "marital_status_id",
+      "type": "GridLayout",
+      "options": {
+        "xs": 12,
+        "sx": {
+          "borderBottom": "1px solid",
+          "borderColor": "secondary.dark",
+          "padding": "0 0 16px 0"
+        }
+      },
+      "elements": [
+        {
+          "type": "RadioGroupField",
+          "scope": "#/properties/spouse/properties/marital_status_id",
+          "label": "สถานภาพสมรส",
+          "options": {
+            "labelPlacement": "end",
+            "radioSize": "small",
+            "hideRequiredAsterisk": true,
+            "row": true,
+            "sx": {
+              "padding": "0 0 0 16px"
+            },
+            "_default": "1",
+            "_$ref": "schema/Register_Details_Add_Borrower/Enums/schema.json#/enum1",
+            "query": "Register/MaritalStatusEnum",
+            "converter": "mapIdLabel"
+          }
+        }
+      ]
+    },
+
+    {
+      "_name": "search",
+      "type": "GridLayout",
+      "options": {
+        "borderBottom": "1px solid",
+        "borderColor": "secondary.dark",
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "spouse": {
+                "type": "object",
+                "properties": {
+                  "marital_status_id": {
+                    "_enum": ["Married", "UnregisteredMarriage"],
+                    "enum": ["1260", "1261"]
+                  }
+                }
+              },
+              "borrowerType": {
+                "const": "Individual"
+              }
+            }
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 12
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ค้นหาข้อมูลคู่สมรส",
+              "options": {
+                "variant": "subtitle2Dark"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "ประเภทเอกสารอ้างอิง",
+              "scope": "#/properties/spouse/properties/search/properties/reference_type",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/ReferenceDocumentTypeIndividualEnum",
+                "converter": "mapValueLabel"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "flex-end",
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "เลขที่เอกสารอ้างอิง",
+                  "scope": "#/properties/spouse/properties/search/properties/reference_no",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ค้นหา",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "formValidationErrors": "show",
+                    "sx": {
+                      "&.MuiButtonBase-root.MuiButton-root": {
+                        "marginTop": "24px"
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "action",
+                        "conditionTypeId": "Register_Details_Add_Borrower_Search_Spouse"
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": ["payload"],
+                              "properties": {
+                                "payload": {
+                                  "type": "object",
+                                  "required": ["data"],
+                                  "properties": {
+                                    "data": {
+                                      "type": "object",
+                                      "required": ["spouse"],
+                                      "properties": {
+                                        "spouse": {
+                                          "required": ["_isFound"],
+                                          "type": "object",
+                                          "properties": {
+                                            "_isFound": {
+                                              "type": "boolean",
+                                              "const": false
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Basic_Error",
+                        "dialogVariables": {
+                          "title": "ไม่พบข้อมูลในระบบ",
+                          "text": "กรุณาระบุข้อมูลด้วยตนเอง"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_name": "mainSec",
+      "type": "GridLayout",
+      "options": {
+        "borderBottom": "1px solid",
+        "borderColor": "secondary.dark",
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/spouse/properties/marital_status_id",
+          "schema": {
+            "_enum": ["Married", "UnregisteredMarriage"],
+            "enum": ["1260", "1261"]
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "ประเภทเอกสารอ้างอิง",
+              "scope": "#/properties/spouse/properties/reference_type",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/ReferenceDocumentTypeIndividualEnum",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "ประเทศ",
+              "scope": "#/properties/spouse/properties/reference_country",
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/spouse/properties/reference_type",
+                  "schema": { "enum": ["P8"] }
+                }
+              },
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/CountryEnum",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "เลขที่เอกสารอ้างอิง",
+              "scope": "#/properties/spouse/properties/reference_no",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คำนำหน้า (ภาษาไทย)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/spouse/properties/reference_type",
+                      "schema": { "enum": ["P1", "P7"] }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "padding": "0px 0px 0px 4px",
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SelectField",
+              "_label": "คำนำหน้า (ภาษาไทย)",
+              "label": false,
+              "scope": "#/properties/spouse/properties/title_name_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/TitleTHIndividualEnum",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ชื่อ (ภาษาไทย)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/spouse/properties/reference_type",
+                      "schema": { "enum": ["P1", "P7"] }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "padding": "0px 0px 0px 4px",
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TextField",
+              "_label": "ชื่อ (ภาษาไทย)",
+              "label": false,
+              "scope": "#/properties/spouse/properties/name",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ชื่อกลาง (ภาษาไทย)",
+              "scope": "#/properties/spouse/properties/middle_name",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "นามสกุล (ภาษาไทย)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/spouse/properties/reference_type",
+                      "schema": { "enum": ["P1", "P7"] }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "padding": "0px 0px 0px 4px",
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TextField",
+              "_label": "นามสกุล (ภาษาไทย)",
+              "label": false,
+              "scope": "#/properties/spouse/properties/last_name",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คำนำหน้า (ภาษาอังกฤษ)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/spouse/properties/reference_type",
+                      "schema": { "enum": ["P8"] }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "padding": "0px 0px 0px 4px",
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SelectField",
+              "_label": "คำนำหน้า (ภาษาอังกฤษ)",
+              "label": false,
+              "scope": "#/properties/spouse/properties/title_name_en_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/TitleENIndividualEnum",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ชื่อ (ภาษาอังกฤษ)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/spouse/properties/reference_type",
+                      "schema": { "enum": ["P8"] }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "padding": "0px 0px 0px 4px",
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TextField",
+              "_label": "ชื่อ (ภาษาอังกฤษ)",
+              "label": false,
+              "scope": "#/properties/spouse/properties/name_en",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ชื่อกลาง (ภาษาอังกฤษ)",
+              "scope": "#/properties/spouse/properties/middle_name_en",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "นามสกุล (ภาษาอังกฤษ)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "BoxLayout",
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/spouse/properties/reference_type",
+                      "schema": { "enum": ["P8"] }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "padding": "0px 0px 0px 4px",
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TextField",
+              "_label": "นามสกุล (ภาษาอังกฤษ)",
+              "label": false,
+              "scope": "#/properties/spouse/properties/last_name_en",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "วันเกิด (พ.ศ.)",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "*",
+                  "options": {
+                    "variant": "label",
+                    "sx": {
+                      "padding": "0px 0px 0px 4px",
+                      "color": "error.main"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "ExternalComponent",
+              "scope": "#/properties/spouse/properties/dob",
+              "options": {
+                "externalComponentName": "thai-calendar",
+                "externalComponentScope": "remote1",
+                "externalComponentModule": "./ThaiDatePicker",
+                "views": "year,month,day",
+                "variant": "outlined",
+                "sx": {
+                  "width": "100%"
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "FormMapperListener",
+              "options": {
+                "resultMappingSchema": {
+                  "type": "object",
+                  "properties": {
+                    "spouse": {
+                      "type": "object",
+                      "dataPath": "spouse",
+                      "converter": "registerBorrowerAgeListener"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "อายุ",
+                  "options": {
+                    "variant": "label"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "Typography",
+              "scope": "#/properties/spouse/properties/ages",
+              "options": {
+                "variant": "label",
+                "sx": {
+                  "marginTop": "8px"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "สัญชาติ",
+              "scope": "#/properties/spouse/properties/nationality_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/NationalityEnum",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "นามสกุลเดิม (สำหรับชาวไทย)",
+              "scope": "#/properties/spouse/properties/old_last_name",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "กลุ่มอาชีพ",
+              "scope": "#/properties/spouse/properties/occupation_group_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/OccupationGroup",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "อาชีพ",
+              "scope": "#/properties/spouse/properties/occupation_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "converter": "mapValueLabel",
+                "query": "CommonSearch/OccupationByGroup",
+                "queryVariables": {
+                  "occupation_group": "{spouse.occupation_group_id}"
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              },
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/spouse",
+                  "schema": {
+                    "required": ["occupation_group_id"]
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "NumberField",
+              "label": "รายได้ต่อเดือน",
+              "scope": "#/properties/spouse/properties/monthly_income",
+              "options": {
+                "allowNegative": false,
+                "thousandSeparator": true,
+                "allowedDecimalSeparators": false,
+                "fixedDecimalScale": true,
+                "decimalScale": 2,
+                "_suffix": " บาท",
+                "variant": "outlined",
+                "endAdornmentTypography": {
+                  "text": "บาท"
+                },
+                "fullwidth": true
+              },
+              "errors": {
+                  "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 2
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์",
+              "scope": "#/properties/spouse/properties/telephone_number",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "mask": ["00-000-000", "000-000-000", "000-000-0000"]
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 2
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ถึง",
+              "scope": "#/properties/spouse/properties/telephone_to",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              },
+              "errors": {
+                "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขเท่านั้น"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 2
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ต่อ",
+              "scope": "#/properties/spouse/properties/telephone_ext",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              },
+              "errors": {
+                "pattern": "กรุณาระบุข้อมูลเป็นตัวเลขเท่านั้น"
+              }
+            }
+          ]
+        },
+
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์มือถือ",
+              "scope": "#/properties/spouse/properties/mobile_number",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "mask": ["00-000-000", "000-000-000", "000-000-0000"]
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "_name": "ocupation",
+      "type": "GridLayout",
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/spouse/properties/marital_status_id",
+          "schema": {
+            "_enum": ["Married"],
+            "enum": ["1260"]
+          }
+        }
+      },
+      "options": {
+        "borderBottom": "1px solid",
+        "borderColor": "secondary.dark",
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 12
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ที่อยู่ตามทะเบียนบ้านของคู่สมรส",
+              "options": {
+                "variant": "subtitle2Dark"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "จังหวัด",
+              "scope": "#/properties/spouse/properties/province",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "query": "CommonSearch/Address/ProvinceQuery",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "อำเภอ/เขต",
+              "scope": "#/properties/spouse/properties/amphur",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/Address/AmphurQuery",
+                "converter": "mapValueLabel",
+                "queryVariables": {
+                  "province": "{spouse.province}"
+                }
+              },
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/spouse",
+                  "schema": {
+                    "required": ["province"]
+                  }
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "แขวง/ตำบล",
+              "scope": "#/properties/spouse/properties/tambon",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/Address/TambonQuery",
+                "converter": "mapValueLabel",
+                "queryVariables": {
+                  "province": "{spouse.province}",
+                  "amphur": "{spouse.amphur}"
+                }
+              },
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/spouse",
+                  "schema": {
+                    "required": ["province", "amphur"]
+                  }
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "รหัสไปรษณีย์",
+              "scope": "#/properties/spouse/properties/zip_code",
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/spouse",
+                  "schema": {
+                    "required": ["province", "amphur", "tambon"]
+                  }
+                }
+              },
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/Address/ZipcodeQuery",
+                "converter": "mapValueLabel",
+                "queryVariables": {
+                  "province": "{spouse.province}",
+                  "amphur": "{spouse.amphur}",
+                  "tambon": "{spouse.tambon}"
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "GridLayout",
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/spouse/properties/marital_status_id",
+          "schema": {
+            "enum": ["1262", "1263"],
+            "_enum": ["Divorced", "Married"]
+          }
+        }
+      },
+      "options": {
+        "borderBottom": "1px solid",
+        "borderColor": "secondary.dark",
+        "container": true,
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "คำนำหน้า",
+              "scope": "#/properties/spouse/properties/title_name_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "Register/TitleTHIndividualEnum",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ชื่อ",
+              "scope": "#/properties/spouse/properties/name",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ชื่อกลาง",
+              "scope": "#/properties/spouse/properties/middle_name",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "นามสกุล",
+              "scope": "#/properties/spouse/properties/last_name",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "นามสกุลเดิม (สำหรับชาวไทย)",
+              "scope": "#/properties/spouse/properties/old_last_name",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "กลุ่มอาชีพ",
+              "scope": "#/properties/spouse/properties/occupation_group_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "query": "CommonSearch/OccupationGroup",
+                "converter": "mapValueLabel"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "SelectField",
+              "label": "อาชีพ",
+              "scope": "#/properties/spouse/properties/occupation_id",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true,
+                "autocomplete": true,
+                "_query": "CommonSearch/OccupationCode",
+                "converter": "mapValueLabel",
+                "query": "CommonSearch/OccupationByGroup",
+                "queryVariables": {
+                  "occupation_group": "{spouse.occupation_group_id}"
+                }
+              },
+              "rule": {
+                "effect": "ENABLE",
+                "condition": {
+                  "scope": "#/properties/spouse",
+                  "schema": {
+                    "required": ["occupation_group_id"]
+                  }
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 3
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "รายได้ต่อเดือน",
+              "scope": "#/properties/spouse/properties/monthly_income",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "endAdornmentTypography": {
+                  "text": "บาท"
+                }
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 2
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์",
+              "scope": "#/properties/spouse/properties/telephone_number",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": ["00-000-0000"]
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 2
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ถึง",
+              "scope": "#/properties/spouse/properties/telephone_to",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 2
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ต่อ",
+              "scope": "#/properties/spouse/properties/telephone_ext",
+              "options": {
+                "variant": "outlined",
+                "fullwidth": true
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เบอร์โทรศัพท์มือถือ",
+              "scope": "#/properties/spouse/properties/mobile_number",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": ["00-000-000", "000-000-000", "000-000-0000"]
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "RadioGroupField",
+          "scope": "#/properties/spouse/properties/has_child",
+          "label": "มีบุตรหรือไม่",
+          "options": {
+            "sx": {
+              "padding": "0 0 0 16px"
+            },
+            "hideRequiredAsterisk": true,
+            "radioSize": "small",
+            "row": true,
+            "enum": [
+              {
+                "value": "false",
+                "label": "ไม่มี"
+              },
+              {
+                "value": "true",
+                "label": "มี"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

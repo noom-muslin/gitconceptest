@@ -1,0 +1,1270 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "Group",
+      "options": {
+        "sx": {
+          "height": "0px"
+        }
+      },
+      "rule": {
+        "effect": "SHOW",
+        "condition": {
+          "scope": "#/properties/status/properties/code",
+          "schema": {
+            "const": 1000
+          }
+        }
+      },
+      "elements": [
+        {
+          "type": "Notification",
+          "label": "บันทึกข้อมูลแล้ว",
+          "options": {
+            "preventDuplicate": 1,
+            "autoHideDuration": 5000,
+            "persist": false,
+            "variant": "success",
+            "hideCloseButton": true,
+            "anchorOrigin": {
+              "horizontal": "center",
+              "vertical": "top"
+            },
+            "style": {
+              "color": "#166534",
+              "display": "flex",
+              "justifyContent": "center",
+              "backgroundColor": "#F0FDF4",
+              "min-width": "auto",
+              "width": "162px",
+              "height": "44px",
+              "margin-left": "63.5px"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/register/{task_id}/details"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1rem",
+                "alignItems": "flex-end",
+                "sx": {
+                  "padding": "0.5rem 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack",
+                  "options": {
+                    "sx": {
+                      "color": "#5b21b6"
+                    }
+                  }
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "spacing": "0.25rem"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "กลับไป",
+                      "options": {
+                        "variant": "body2-silver"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "เอกสารใบสมัครสินเชื่อ",
+                      "options": {
+                        "variant": "purpleBold"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/application_id",
+                      "options": {
+                        "variant": "purpleBold"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "chain": [
+                {
+                  "operationType": "modal",
+                  "dialogName": "m_SalesBuddy_Details_Back",
+                  "subtype": "show"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "sx": {
+              "color": "black"
+            },
+            "direction": "row",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "0.25em"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "วงเงินย่อย",
+                  "options": {
+                    "sx": {
+                      "fontWeight": 700
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 1rem 1rem 1rem"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "sx": {
+                  "backgroundColor": "#f5f3ff",
+                  "margin": "0 -1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "วงเงินย่อย",
+                  "options": {
+                    "variant": "subtitlePurplePaper"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "1em",
+                "sx": {
+                  "margin": "0 -1em",
+                  "width": "calc(100vw - 2rem)",
+                  "overflowX": "scroll"
+                }
+              },
+              "elements": [
+                {
+                  "type": "UniversalArrayView",
+                  "scope": "#/properties/appl_account_sublimit",
+                  "itemOperations": {
+                    "remove": true
+                  },
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "rowClick": false,
+                    "hideTableToolbar": true,
+                    "disableItemsRemove": true,
+                    "sx": {
+                      "borderBottom": "1px solid #eaebed",
+                      "& th:nth-child(3)": {
+                        "textAlign": "center"
+                      },
+                      "th:nth-child(3), th:nth-child(10)": {
+                        "textAlign": "right"
+                      },
+                      "td:nth-child(11)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 54,
+                        "background": "#FFFFFF"
+                      },
+                      "th:nth-child(11)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 54,
+                        "background": "#FFFFFF"
+                      },
+                      "td:nth-child(12)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 0,
+                        "background": "#FFFFFF"
+                      },
+                      "th:nth-child(12)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 0,
+                        "background": "#FFFFFF"
+                      }
+                    },
+                    "cells": [
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/sublimit_seq",
+                        "options": {
+                          "columnTitle": "ลำดับ",
+                          "sx": {
+                            "textAlign": "center"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/sublimit_type_desc",
+                        "options": {
+                          "columnTitle": "ประเภทวงเงินย่อย",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/credit_limit",
+                        "options": {
+                          "columnTitle": "จำนวนเงิน",
+                          "sx": {
+                            "textAlign": "right"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/tenor_year",
+                        "options": {
+                          "columnTitle": "ระยะเวลา (ปี)",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/tenor_month",
+                        "options": {
+                          "columnTitle": "ระยะเวลา (เดือน)",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/base_factor_standard_desc",
+                        "options": {
+                          "columnTitle": "อัตราดอกเบี้ยที่ใช้คำนวณ",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/base_factor_standard_desc",
+                        "options": {
+                          "columnTitle": "อัตราดอกเบี้ยอ้างอิง",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/diff_code",
+                        "options": {
+                          "columnTitle": "+/-",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/diff_value",
+                        "options": {
+                          "columnTitle": "Spread",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/installment_amount_entry",
+                        "options": {
+                          "columnTitle": "ค่างวดต่อเดือน",
+                          "sx": {
+                            "textAlign": "right"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ActionButton",
+                        "label": " ",
+                        "scope": "#",
+                        "options": {
+                          "validationSchema": false,
+                          "operationType": "script",
+                          "converter": "editSubLimit",
+                          "columnTitle": "",
+                          "icon": "Edit",
+                          "variant": "secondary",
+                          "sx": {
+                            "color": "#5b21b6",
+                            "width": "32px !important",
+                            "height": "32px !important",
+                            "border": "1px solid #eaebed",
+                            "& span": {
+                              "margin": "0px"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "type": "ActionButton",
+                        "label": " ",
+                        "scope": "#",
+                        "columnTitle": "",
+                        "options": {
+                          "validationSchema": false,
+                          "operationType": "script",
+                          "converter": "selectSubLimit",
+                          "resultMappingSchema": {
+                            "type": "object",
+                            "properties": {
+                              "appl_account_sublimit_new": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "chain": [
+                            {
+                              "operationType": "modal",
+                              "subtype": "show",
+                              "dialogName": "m_Register_Details_Add_Sub_limit_Delete"
+                            }
+                          ],
+                          "icon": "Delete",
+                          "variant": "secondary",
+                          "sx": {
+                            "color": "#ef4444",
+                            "padding": "6px",
+                            "minWidth": "0px",
+                            "border": "1px solid #eaebed",
+                            "& span": {
+                              "margin": "0px"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row",
+                    "sx": {
+                      "paddingLeft": "1em"
+                    }
+                  },
+                  "elements": []
+                }
+              ]
+            },
+            {
+              "type": "ActionButton",
+              "label": "+ เพิ่มวงเงินย่อย",
+              "options": {
+                "variant": "secondary",
+                "validationSchema": false,
+                "operationType": "open",
+                "route": "/register/limit/{route.taskId}/details/addsublimit/new"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 1rem 1rem 1rem"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "space-between",
+                "sx": {
+                  "backgroundColor": "#f5f3ff",
+                  "margin": "0 -1em 1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "รายละเอียดค่าธรรมเนียม",
+                  "options": {
+                    "variant": "subtitlePurplePaper"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": " ",
+                  "scope": "#",
+                  "options": {
+                    "validationSchema": false,
+                    "variant": "secondary",
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "tempAccountFee",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "appl_account_fee_edit": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "enum_fee_type": {
+                                  "type": "array"
+                                },
+                                "fee_type_id": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "fee_type_desc": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "code": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "fee_percent": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "calculated_fee": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "fee_condition": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "collected_fee": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Register_Loan_Details_Fee_Edit"
+                      }
+                    ],
+                    "icon": "EditOutlined",
+                    "sx": {
+                      "padding": "6px",
+                      "minWidth": "0px",
+                      "margin": "0.5em 1em 0.5em 0em",
+                      "& span": {
+                        "margin": "0px"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "padding": "1em 1em 1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "container": true,
+                    "spacing": "1em"
+                  },
+                  "elements": [
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "ประเภทค่าธรรมเนียม",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/appl_account_fee/properties/fee_type_desc",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "อัตราค่าธรรมเนียม (%)",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/appl_account_fee/properties/fee_percent",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "ค่าธรรมเนียมที่คำนวณได้",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "BoxLayout",
+                              "options": {
+                                "className": "itemGap"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/appl_account_fee/properties/calculated_fee",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "บาท",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "ค่าธรรมเนียมที่เรียกเก็บ",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "BoxLayout",
+                              "options": {
+                                "className": "itemGap"
+                              },
+                              "elements": [
+                                {
+                                  "type": "Typography",
+                                  "scope": "#/properties/appl_account_fee/properties/collected_fee",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                },
+                                {
+                                  "type": "Typography",
+                                  "label": "บาท",
+                                  "options": {
+                                    "variant": "body2"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "GridLayout",
+                      "options": {
+                        "xs": 6
+                      },
+                      "elements": [
+                        {
+                          "type": "BoxLayout",
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "เงื่อนไขพิเศษ",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/appl_account_fee/properties/fee_condition",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 1rem 1rem 1rem"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "sx": {
+                  "backgroundColor": "#f5f3ff",
+                  "margin": "0 -1em"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "บริการเสริม",
+                  "options": {
+                    "variant": "subtitlePurplePaper"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "1em",
+                "sx": {
+                  "margin": "0 -1em",
+                  "width": "calc(100vw - 2rem)",
+                  "overflowX": "scroll"
+                }
+              },
+              "elements": [
+                {
+                  "type": "UniversalArrayView",
+                  "scope": "#/properties/appl_account_additionalservice",
+                  "itemOperations": {
+                    "remove": true
+                  },
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "rowClick": false,
+                    "hideTableToolbar": true,
+                    "disableItemsRemove": true,
+                    "selectedIndexScope": "#/properties/selectedIndexScope",
+                    "sx": {
+                      "borderBottom": "1px solid #eaebed",
+                      "th:nth-child(4), th:nth-child(6)": {
+                        "textAlign": "right"
+                      },
+                      "td:nth-child(10)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 54,
+                        "background": "#FFFFFF"
+                      },
+                      "th:nth-child(10)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 54,
+                        "background": "#FFFFFF"
+                      },
+                      "td:nth-child(11)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 0,
+                        "background": "#FFFFFF"
+                      },
+                      "th:nth-child(11)": {
+                        "width": "52px !important",
+                        "padding": "10px",
+                        "position": "sticky",
+                        "right": 0,
+                        "background": "#FFFFFF"
+                      }
+                    },
+                    "cells": [
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/seq",
+                        "options": {
+                          "columnTitle": "ลำดับ",
+                          "variant": "body2",
+                          "sx": {
+                            "textAlign": "center"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/addition_service_group_desc",
+                        "options": {
+                          "columnTitle": "ประเภทบริการเสริม",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/addition_service_type_desc",
+                        "options": {
+                          "columnTitle": "ประเภทการทำประกัน",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/sum_insured_amount",
+                        "options": {
+                          "columnTitle": "ทุนประกัน",
+                          "variant": "body2",
+                          "sx": {
+                            "textAlign": "right"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/insurance_period",
+                        "options": {
+                          "columnTitle": "ระยะเวลาประกัน (ปี)",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/premium_amount",
+                        "options": {
+                          "columnTitle": "เบี้ยประกัน",
+                          "variant": "body2",
+                          "sx": {
+                            "textAlign": "right"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/sale_name",
+                        "options": {
+                          "columnTitle": "พนักงานขาย",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/insured_name",
+                        "options": {
+                          "columnTitle": "ชื่อผู้เอาประกัน",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/credit_line_included",
+                        "options": {
+                          "columnTitle": "รวมในวงเงินสินเชื่อ",
+                          "variant": "body2"
+                        }
+                      },
+                      {
+                        "type": "ActionButton",
+                        "label": " ",
+                        "scope": "#",
+                        "options": {
+                          "chain": [
+                            {
+                              "operationType": "script",
+                              "converter": "selectSubLimitAdditionalService",
+                              "resultMappingSchema": {
+                                "type": "object",
+                                "properties": {
+                                  "appl_account_additionalservice_new": {
+                                    "type": "object",
+                                    "required": [
+                                      "addition_service_group",
+                                      "addition_service_type",
+                                      "sum_insured_amount",
+                                      "insurance_period",
+                                      "insured_name",
+                                      "premium_amount"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "seq": {
+                                        "type": "integer"
+                                      },
+                                      "application_id": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "addition_service_group": {
+                                        "type": "string"
+                                      },
+                                      "addition_service_type": {
+                                        "type": "string"
+                                      },
+                                      "addition_service_group_desc": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "addition_service_type_desc": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "sum_insured_amount": {
+                                        "type": "number"
+                                      },
+                                      "insurance_period": {
+                                        "type": "integer"
+                                      },
+                                      "insured_name": {
+                                        "type": "string"
+                                      },
+                                      "premium_amount": {
+                                        "type": "number"
+                                      },
+                                      "sale_id": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "sale_name": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      },
+                                      "is_credit_line_included": {
+                                        "type": [
+                                          "boolean",
+                                          "null"
+                                        ]
+                                      },
+                                      "credit_line_included": {
+                                        "type": [
+                                          "string",
+                                          "null"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "operationType": "modal",
+                              "subtype": "show",
+                              "dialogName": "m_Register_Loan_Details_Additional_Services"
+                            }
+                          ],
+                          "validationSchema": false,
+                          "className": "secondaryButton",
+                          "columnTitle": "",
+                          "icon": "Edit",
+                          "variant": "secondary",
+                          "sx": {
+                            "color": "#5b21b6",
+                            "width": "32px !important",
+                            "height": "32px !important",
+                            "border": "1px solid #eaebed",
+                            "& span": {
+                              "margin": "0px"
+                            },
+                            "left": "0px"
+                          }
+                        }
+                      },
+                      {
+                        "type": "ActionButton",
+                        "label": " ",
+                        "scope": "#",
+                        "options": {
+                          "validationSchema": false,
+                          "icon": "Delete",
+                          "variant": "secondary",
+                          "sx": {
+                            "color": "#ef4444",
+                            "width": "32px !important",
+                            "height": "32px !important",
+                            "border": "1px solid #eaebed",
+                            "& span": {
+                              "margin": "0px"
+                            }
+                          },
+                          "operationType": "script",
+                          "converter": "selectSubLimitAdditionalService",
+                          "resultMappingSchema": {
+                            "type": "object",
+                            "properties": {
+                              "appl_account_additionalservice_new": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "seq": {
+                                    "type": "integer"
+                                  },
+                                  "application_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "addition_service_group": {
+                                    "type": "string"
+                                  },
+                                  "addition_service_type": {
+                                    "type": "string"
+                                  },
+                                  "addition_service_group_desc": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "addition_service_type_desc": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "sum_insured_amount": {
+                                    "type": "number"
+                                  },
+                                  "insurance_period": {
+                                    "type": "integer"
+                                  },
+                                  "insured_name": {
+                                    "type": "string"
+                                  },
+                                  "premium_amount": {
+                                    "type": "number"
+                                  },
+                                  "sale_id": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "sale_name": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "is_credit_line_included": {
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
+                                  },
+                                  "credit_line_included": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "chain": [
+                            {
+                              "operationType": "modal",
+                              "dialogName": "m_Register_Details_Add_Sub_limit_Delete_Additional_Services",
+                              "subtype": "show"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "sx": {
+                  "paddingTop": "1rem"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "+ เพิ่มบริการเสริม",
+                  "options": {
+                    "variant": "secondary",
+                    "validationSchema": false,
+                    "formValidationErrors":"hide",
+                    "operationType": "script",
+                    "converter": "clearAddtionalService",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "appl_account_additionalservice_new": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "seq": {
+                              "type": "integer"
+                            },
+                            "application_id": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "addition_service_group": {
+                              "type": "string"
+                            },
+                            "addition_service_type": {
+                              "type": "string"
+                            },
+                            "addition_service_group_desc": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "addition_service_type_desc": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "sum_insured_amount": {
+                              "type": "number"
+                            },
+                            "insurance_period": {
+                              "type": "integer"
+                            },
+                            "insured_name": {
+                              "type": "string"
+                            },
+                            "premium_amount": {
+                              "type": "number"
+                            },
+                            "sale_id": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "sale_name": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "is_credit_line_included": {
+                              "type": [
+                                "boolean",
+                                "null"
+                              ]
+                            },
+                            "credit_line_included": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Register_Loan_Details_Additional_Services",
+                        "className": "secondaryButton"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

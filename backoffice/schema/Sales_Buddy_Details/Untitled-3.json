@@ -1,0 +1,106 @@
+
+  "data": {
+    "ngl_appl_party_rcverify_juristicenlite": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "skip_reason": null,
+        "verify_status": "verified",
+        "company_name": "ABC Corp",
+        "reference_no": "REF123",
+        "business_status": "active",
+        "has_statements": true,
+        "last_statements_year": 2022,
+        "registration_date": "2010-01-15",
+        "isic": "12345"
+      }
+    ],
+    "ngl_appl_party_rcverify_personalenlite": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "skip_reason": null,
+        "verify_status": "verified"
+      }
+    ],
+    "ngl_appl_party_rcverify_dbd": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "skip_reason": null,
+        "verify_status": "verified",
+        "company_name": "ABC Corp",
+        "registration_date": "2010-01-15",
+        "reference_no": "DBD123",
+        "business_status": "active",
+        "registered_capital": 1000000,
+        "location": "123 Business St",
+        "last_statements_year": 2022,
+        "year_not_send_statement": 0,
+        "isic": "12345",
+        "opinion": "Positive"
+      }
+    ],
+    "ngl_appl_party_rcverify_com_regis": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "veriy_status": "verified",
+        "company_name": "ABC Corp",
+        "owner_name": "John Doe",
+        "registration_date": "2010-01-15",
+        "company_type": "LLC",
+        "hq_location": "123 Business St",
+        "register_at": "Main Office",
+        "business_status": "active",
+        "website": "www.abccorp.com"
+      }
+    ],
+    "ngl_appl_party_rcverify_nhso": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "verify_status": "verified"
+      }
+    ],
+    "ngl_appl_party_rcverify_professional": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "verify_status": "verified",
+        "opinion": "Positive"
+      }
+    ],
+    "ngl_appl_party_rcverify_rdtax": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "verify_status1": "verified",
+        "form_type1": "Type A",
+        "year1": 2022,
+        "verify_status2": "verified",
+        "form_type2": "Type B",
+        "year2": 2021,
+        "opinion": "No issues"
+      }
+    ],
+    "ngl_appl_party_rcverify_hr": [
+      {
+        "id": "1",
+        "is_verify": true,
+        "employee_type": "Full-time",
+        "position": "Manager",
+        "job_start_date": "2015-06-01",
+        "months_at_current_job": 108,
+        "monthly_income": 5000,
+        "salary_credited_date": "2022-05-01",
+        "bank_name": "ABC Bank",
+        "guarantee_bonus": 1000,
+        "guarantee_bonus_paid_month": "December",
+        "business_type": "Finance",
+        "no_of_employee": 50,
+        "remark": "Good performance"
+      }
+    ]
+  }
+}

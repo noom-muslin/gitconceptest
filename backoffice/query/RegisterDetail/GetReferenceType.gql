@@ -1,0 +1,11 @@
+query GetReferenceType($customer_type_code: bpchar!){
+  result: ngl_enum_reference_type(
+    where: {
+      is_active: {_eq: true},
+      type: {_eq: $customer_type_code}
+    }
+  ) {
+    code: code
+    label: description
+  }
+}

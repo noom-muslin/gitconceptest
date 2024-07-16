@@ -1,0 +1,134 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "origin_station": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "customer_lastname": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "followup_times": {
+          "type": "string"
+        },
+        "application_create_date": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "followup_status_enum": {
+      "type": "array"
+    },
+    "station_requested_enum": {
+      "type": "array"
+    },
+    "application_channel_enum": {
+      "type": "array"
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "stationName": {
+      "type": "string"
+    },
+    "userInfo": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "workbasket_grid": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "logic": {
+                "type": "string"
+              },
+              "filters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "operator": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sorting": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "dir": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer"
+            },
+            "pageSize": {
+              "type": "integer"
+            }
+          }
+        },
+        "selection": {
+          "type": "object",
+          "properties": {
+            "additionalProperties": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

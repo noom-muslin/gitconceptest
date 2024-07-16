@@ -1,0 +1,210 @@
+{
+  "hideColumnFilter": true,
+  "hideExportButton": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "ยี่ห้อ",
+      "field": "brand_desc",
+      "name": "redbook_brand",
+      "minWidth": 250
+    },
+    {
+      "title": "รุ่น",
+      "field": "model_desc",
+      "name": "redbook_model",
+      "minWidth": 150
+    },
+    {
+      "title": "รุ่นปี ค.ศ.",
+      "field": "sub_model_year",
+      "name": "sub_model_year",
+      "minWidth": 200
+    },
+    {
+      "title": "CCKWH",
+      "field": "cckwh",
+      "name": "cckwh",
+      "converter": "qcConvertNumber0Digit",
+      "minWidth": 150
+    },
+    {
+      "title": "ประเภทเกียร์",
+      "field": "gear_type",
+      "name": "gear_type",
+      "minWidth": 150
+    },
+    {
+      "title": "รุ่นย่อย",
+      "field": "sub_model_desc",
+      "name": "redbook_sub_model",
+      "minWidth": 180
+    },
+    {
+      "title": "Body Style",
+      "field": "body_style_desc",
+      "name": "body_style_desc",
+      "minWidth": 150
+    },
+    {
+      "title": "จำนวนประตู",
+      "field": "door_num",
+      "name": "door_num",
+      "converter": "concatQcDoorNum",
+      "minWidth": 50
+    },
+    {
+      "title": "ประเภทเครื่องยนต์",
+      "field": "engine_type_desc",
+      "name": "engine_type",
+      "minWidth": 150
+    },
+    {
+      "title": "Vehicle Key",
+      "field": ["redbook_brand", "redbook_model", "sub_model_code"],
+      "converter": "filterVehicleKey",
+      "name": "vehicle_key",
+      "minWidth": 150
+    },
+    {
+      "title": "Red Book Price",
+      "field": "new_price",
+      "name": "new_price",
+      "converter": "qcConvertNumber2Digit",
+      "minWidth": 150
+    },
+    {
+      "title": " ",
+      "name": "",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "type": "ActionButton",
+          "label": "เลือก",
+          "options": {
+            "validationSchema": false,
+            "className": "primaryButton",
+            "operationType": "script",
+            "converter": "selected_redbook_vehicle",
+            "payload": {
+              "brandCode": "{data.brand_code}",
+              "brandDesc": "{data.brand_desc}",
+              "premiumBrand": "{data.premium_brand}",
+              "modelDesc": "{data.model_desc}",
+              "yearOfModel": "{data.sub_model_year}",
+              "cckwh": "{data.cckwh}",
+              "gearType": "{data.gear_type}",
+              "bodyStyle": "{data.body_style_desc}",
+              "noOfDoor": "{data.door_num}",
+              "subModel": "{data.sub_model_code}",
+              "subModelDesc": "{data.sub_model_desc}",
+              "vehicleKey": "{data.vehicle_key}",
+              "redbookPrice": "{data.new_price}",
+              "engineTypeDesc": "{data.engine_type_desc}",
+              "brandLevel": "{data.brand_level}",
+              "modelLevel": "{data.model_level}",
+              "redbookBrand": "{data.brand_desc}",
+              "redbookModel": "{data.model_desc}",
+              "subModelCode": "{data.sub_model_code}"
+            },
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "canSubmit": {
+                  "type": "string"
+                },
+                "redbookInfo": {
+                  "type": "object",
+                  "properties": {
+                    "brandCode": {
+                      "type": "string"
+                    },
+                    "brandDesc": {
+                      "type": "string"
+                    },
+                    "premiumBrand": {
+                      "type": "boolean"
+                    },
+                    "modelDesc": {
+                      "type": "string"
+                    },
+                    "yearOfModel": {
+                      "type": "string"
+                    },
+                    "cckwh": {
+                      "type": "string"
+                    },
+                    "gearType": {
+                      "type": "string"
+                    },
+                    "bodyStyle": {
+                      "type": "string"
+                    },
+                    "noOfDoor": {
+                      "type": "number"
+                    },
+                    "subModel": {
+                      "type": "string"
+                    },
+                    "subModelDesc": {
+                      "type": "string"
+                    },
+                    "vehicleKey": {
+                      "type": "string"
+                    },
+                    "redbookPrice": {
+                      "type": "number"
+                    },
+                    "engineTypeDesc": {
+                      "type": "string"
+                    },
+                    "brandLevel": {
+                      "type": "string"
+                    },
+                    "modelLevel": {
+                      "type": "string"
+                    },
+                    "redbookBrand": {
+                      "type": "string"
+                    },
+                    "redbookModel": {
+                      "type": "string"
+                    },
+                    "subModelCode": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "chain": [
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "subtype": "cancel"
+              }
+            ]
+          }
+        }
+      ],
+      "minWidth": 100
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "brand_code",
+      "dir": "desc"
+    }
+  ],
+  "selection": {
+    "type": "object",
+    "properties": {
+      "additionalProperties": {
+        "type": "object"
+      }
+    }
+  }
+}

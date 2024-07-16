@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "properties": {
+    "recommendedPersonForEdit": {
+      "type": "object",
+      "properties": {
+        "saleId": {
+          "type": "string"
+        },
+        "oldSaleId": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "firstAndLastName": {
+          "type": "string"
+        },
+        "affiliation": {
+          "type": ["string", "null"]
+        },
+        "phone1": {
+          "type": "string",
+          "minLength": 10,
+          "pattern": "^0"
+        },
+        "phone2": {
+          "type": ["string", "null"]
+        },
+        "phone3": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["saleId", "firstAndLastName", "phone1"]
+    }
+  }
+}

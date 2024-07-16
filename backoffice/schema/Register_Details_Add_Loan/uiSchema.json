@@ -1,0 +1,399 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "1em",
+    "sx": {
+      "padding": "1em",
+      "minWidth": "800px",
+      "maxWidth": "800px"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": "true",
+            "spacing": "1em"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "Application Group",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/loanSection/properties/newLoan/properties/application_group",
+                  "options": {
+                    "fullwidth": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Product Group",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "red"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "rule": {
+                    "effect": "DISABLE",
+                    "condition": {
+                      "scope": "#/properties/loanSection/properties/loans.0.seq",
+                      "schema": {
+                        "const": 1
+                      }
+                    }
+                  },
+                  "type": "SelectField",
+                  "label": false,
+                  "scope": "#/properties/loanSection/properties/newLoan/properties/product_group",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "query": "CommonSearch/GetProductGroup",
+                    "queryVariables": {
+                      "category": "{loanSection.newLoan.application_group}"
+                    },
+                    "converter": "mapValueLabel"
+                  },
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Product Type",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "red"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "SelectField",
+                  "label": false,
+                  "scope": "#/properties/loanSection/properties/newLoan/properties/product_type",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "query": "CommonSearch/GetProductType",
+                    "queryVariables": {
+                      "product_group_id": "{loanSection.newLoan.product_group_id}"
+                    },
+                    "converter": "mapValueLabel"
+                  },
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Sub Product Type",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "red"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "SelectField",
+                  "label": false,
+                  "scope": "#/properties/loanSection/properties/newLoan/properties/sub_product",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined",
+                    "autocomplete": true,
+                    "query": "CommonSearch/GetSubProductType",
+                    "queryVariables": {
+                      "product_type_id": "{loanSection.newLoan.product_type}"
+                    },
+                    "converter": "mapValueLabel"
+                  },
+                  "errors": {
+                    "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เลขที่สัญญาเดิม",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "TextField",
+                  "label": false,
+                  "scope": "#/properties/loanSection/properties/newLoan/properties/contract_no",
+                  "rule": {
+                    "effect": "ENABLE",
+                    "condition": {
+                      "scope": "#/properties/loanSection/properties/newLoan",
+                      "schema": {
+                        "properties": {
+                          "product_group": {
+                            "const": "Auto"
+                          },
+                          "product_type": {
+                            "enum": [
+                              "MCMC",
+                              "Top up",
+                              "Assignment"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "product_group",
+                          "product_type"
+                        ]
+                      }
+                    }
+                  },
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกข้อมูล",
+              "options": {
+                "variant": "primary",
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "register_save_loan",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "emptyLoans": {
+                          "type": "boolean"
+                        },
+                        "loanSection": {
+                          "type": "object",
+                          "properties": {
+                            "loans": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "seq": {
+                                    "type": "string"
+                                  },
+                                  "application_group": {
+                                    "type": "string"
+                                  },
+                                  "product_group": {
+                                    "type": "string"
+                                  },
+                                  "product_type": {
+                                    "type": "string"
+                                  },
+                                  "sub_product": {
+                                    "type": "string"
+                                  },
+                                  "contract_no": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "hasError": {
+                              "type": "boolean"
+                            },
+                            "error_modal": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "appl_account": {
+                          "type": "object",
+                          "properties": {
+                            "product_type": {
+                              "type": "string"
+                            },
+                            "sub_product_type": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "if": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": [
+                                "loanSection"
+                              ],
+                              "properties": {
+                                "loanSection": {
+                                  "type": "object",
+                                  "required": [
+                                    "hasError"
+                                  ],
+                                  "properties": {
+                                    "hasError": {
+                                      "type": "boolean",
+                                      "const": false
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "operationType": "modal",
+                    "subtype": "close"
+                  },
+                  {
+                    "if": {
+                      "else": true
+                    },
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_Basic_Error",
+                        "dataContext": "#/properties/payload/properties/data/properties/loanSection",
+                        "subtype": "show"
+                      },
+                      {
+                        "operationType": "modal",
+                        "subtype": "cancel"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

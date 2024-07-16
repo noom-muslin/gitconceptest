@@ -1,0 +1,151 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "FormMapperListener",
+          "options": {
+            "resultMappingSchema": {
+              "type": "object",
+              "properties": {
+                "orderBorrowers": {
+                  "converter": "resetRelationshipEditBorrowerOrder",
+                  "type": "array",
+                  "dataPath": "orderBorrowers"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "UniversalArrayView",
+          "scope": "#/properties/orderBorrowers",
+          "label": {
+            "show": false
+          },
+          "options": {
+            "cells": [
+              {
+                "type": "Typography",
+                "scope": "#/properties/documentNumber",
+                "options": {
+                  "columnTitle": "เลขที่เอกสารอ้างอิง",
+                  "_columnTitle": "Reference document number",
+                  "sx": {
+                    "minWidth": "15px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/customerName",
+                "options": {
+                  "columnTitle": "ชื่อลูกค้า",
+                  "_columnTitle": "Customer name",
+                  "sx": {
+                    "minWidth": "15px"
+                  }
+                }
+              },
+              {
+                "type": "Typography",
+                "scope": "#/properties/dateOfBirth",
+                "options": {
+                  "columnTitle": "วันเกิด",
+                  "_columnTitle": "Birthday",
+                  "sx": {
+                    "minWidth": "15px"
+                  }
+                }
+              },
+              {
+                "label": "ลำดับผู้กู้",
+                "_label": "Order of borrowers",
+                "options": {
+                  "autocomplete": true,
+                  "enumDataPath": "borrowerNumberOptions",
+                  "variant": "outlined"
+                },
+                "scope": "#/properties/number",
+                "type": "SelectField"
+              },
+              {
+                "label": "ความสัมพันธ์กับผู้กู้ลำดับที่ 1",
+                "_label": "Relationship with No. 1 borrower",
+                "options": {
+                  "autocomplete": false,
+                  "enumDataPath": "borrowerRelationshipOptions",
+                  "variant": "outlined"
+                },
+                "scope": "#/properties/relationship",
+                "type": "SelectField"
+              }
+            ]
+          }
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "spacing": "2em",
+            "_sx": {
+              "padding": "24px",
+              "paddingRight": "32px"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "บันทึกข้อมูล",
+              "_label": "Save data",
+              "options": {
+                "variant": "primary",
+                "size": "large",
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "checkForValidationErrorEditBorrowerOrder"
+                  },
+                  {
+                    "ifError": true,
+                    "operationType": "script",
+                    "converter": "getValidationResponseEditBorrowerOrder"
+                  },
+                  {
+                    "operationType": "script",
+                    "converter": "returnOrderedBorrowers",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "borrowers": {
+                          "dataPath": "borrowers"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "operationType": "action",
+                    "conditionTypeId": "Register_Details_SaveBorrowerOrder"
+                  },
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            }
+         ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "type": "object",
+  "properties": {
+    "work_list_search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        },
+        "sub_product_type": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "document_number": {
+          "type": "string"
+        },
+        "oc_code_owner_agency": {
+          "type": "string"
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "doc_in_one_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+$",
+          "minLength": 5,
+          "maxLength": 40
+        },
+        "application_type": {
+          "type": "string"
+        },
+        "application_group": {
+          "type": "string"
+        },
+        "application_class": {
+          "type": "string"
+        },
+        "product_type": {
+          "type": "string"
+        },
+        "sub_product_type": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "document_number": {
+          "type": "string"
+        },
+        "oc_code_owner_agency": {
+          "type": "string"
+        },
+        "application_channel": {
+          "type": "string"
+        },
+        "doc_in_one_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "application_group_enum": {
+      "type": "array"
+    },
+    "application_type_enum": {
+      "type": "array"
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "document_type": {
+      "type": "array"
+    },
+    "application_channel_enum": {
+      "type": "array"
+    },
+    "stationName": {
+      "type": "string"
+    },
+    "userInfo": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "workbasket_grid": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "logic": {
+                "type": "string"
+              },
+              "filters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "operator": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sorting": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "dir": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer"
+            },
+            "pageSize": {
+              "type": "integer"
+            }
+          }
+        },
+        "selection": {
+          "type": "object",
+          "properties": {
+            "additionalProperties": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "worklist_grid": {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "logic": {
+                "type": "string"
+              },
+              "filters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "field": {
+                      "type": "string"
+                    },
+                    "operator": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sorting": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "dir": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pagination": {
+          "type": "object",
+          "properties": {
+            "pageIndex": {
+              "type": "integer"
+            },
+            "pageSize": {
+              "type": "integer"
+            }
+          }
+        },
+        "selection": {
+          "type": "object",
+          "properties": {
+            "additionalProperties": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

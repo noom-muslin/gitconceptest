@@ -1,0 +1,193 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "padding": "40px 24px 24px 24px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "alignItems": "center",
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconSuccess"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "CheckCircleOutlined"
+            }
+          ]
+        },
+        {
+          "type": "Typography",
+          "label": "ส่งข้อมูลแล้ว",
+          "options": {
+            "variant": "body2",
+            "sx": {
+              "color": "text.light"
+            }
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "กลับไปหน้าหลัก",
+          "options": {
+            "operationType": "open",
+            "route": "/inputFOS"
+          }
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "backgroundColor": "secondary.main",
+              "width": "100%"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "รายละเอียดงาน",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "padding": "14px 16px",
+                  "display": "flex"
+                }
+              }
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "Application No.",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/application_number",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "สร้างเมื่อ",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/created_on",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "สร้างโดย",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/created_by",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 3
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "อัปเดตล่าสุด",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/updated_on",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "อัปเดตโดย",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/updated_by",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

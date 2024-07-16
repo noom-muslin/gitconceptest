@@ -1,0 +1,182 @@
+{
+  "type": "object",
+  "properties": {
+    "is_urgency_work": {
+      "type": "boolean"
+    },
+    "create_date_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deadline_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "application_id": {
+      "type": "string"
+    },
+    "application": {
+      "type": "object",
+      "properties": {
+        "application_id": {
+          "type": "string"
+        },
+        "accounts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "product_type": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              },
+              "sub_product": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "application_group": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "application_class": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "channel_id": {
+          "type": "string"
+        },
+        "status_work": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "followups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "comment_details": {
+                "type": "string"
+              },
+              "receive_document_date_time": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "borrowers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "party": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "party_id": {
+                    "type": "string"
+                  },
+                  "full_name": {
+                    "type": "string"
+                  },
+                  "full_name_en": {
+                    "type": "string"
+                  },
+                  "reference_type": {
+                    "type": "string"
+                  },
+                  "reference_no": {
+                    "type": "string"
+                  },
+                  "personal_infos": {
+                    "type": "object",
+                    "properties": {
+                      "dob": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "party_id": {
+                        "type": "string"
+                      },
+                      "occupation_id": {
+                        "type": "string"
+                      },
+                      "company_name_id": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "customer_type": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "document_in_datetime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "id": {
+      "type": "string"
+    },
+    "external_id": {
+      "type": "string"
+    },
+    "appl_party": {
+      "type": "object",
+      "properties": {
+        "party_id": {
+          "type": "string"
+        },
+        "appl_party_rcverify": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

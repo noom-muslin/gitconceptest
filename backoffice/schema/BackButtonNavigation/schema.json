@@ -1,0 +1,11 @@
+{
+    "type" : "object",
+    "properties" : {
+        "navigationUrl" : {
+            "type" : "string"
+        },
+        "title" : {
+            "type" : "string"
+        }
+    }
+}

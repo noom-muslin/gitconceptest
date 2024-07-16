@@ -1,0 +1,54 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "No.",
+      "name": "no",
+      "sortable": false,
+      "converter": "originaldoc_storage_serial_no_generator",
+      "minWidth": 100
+    },
+    {
+      "title": "เลขที่สัญญา",
+      "field": "account_number",
+      "name": "contract_no",
+      "minWidth": 120
+    },
+    {      
+      "title": "ชื่อ นามสกุล ลูกค้า",
+      "field": "application.borrowers",
+      "name": "customer_name",
+      "converter": "customer_name_multi_converter",
+      "sortable": false,
+      "minWidth": 120
+    },
+    {
+      "title": "วันที่ตั้งหนี้",
+      "field": "application.accounts",
+      "name": "date_to_station",
+      "converter": "account_settlement_date_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "วันที่จัดส่ง",
+      "field": "date_in_warehouse",
+      "name": "date_to_station",
+      "converter": "date_column_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "จำนวนผู้ค้ำประกัน",
+      "field": "application.borrowers",
+      "name": "customer_name",
+      "converter": "guarantee_number_converter",
+      "minWidth": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "account_number",
+      "dir": "desc"
+    }
+  ]
+}

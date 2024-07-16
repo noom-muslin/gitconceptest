@@ -1,0 +1,74 @@
+{
+  "hideColumnFilter": true,
+  "columns": [
+    {
+      "title": "No.",
+      "name": "no",
+      "sortable": false,
+      "converter": "originaldoc_subsrithai_serial_no_generator",
+      "minWidth": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application.application_id",
+      "name": "application_no",
+      "minWidth": 100
+    },
+    {
+      "title": "เลขที่สัญญา",
+      "field": "application.accounts",
+      "name": "account_number",
+      "converter": "account_number_converter",
+      "sortable": false,
+      "minWidth": 120
+    },
+    {      
+      "title": "ชื่อ นามสกุล ลูกค้า",
+      "field": "application.borrowers",
+      "name": "customer_name",
+      "converter": "customer_name_multi_converter",
+      "sortable": false,
+      "minWidth": 120
+    },
+    {
+      "title": "วันที่ตั้งหนี้",
+      "field": "application.accounts",
+      "name": "date_to_station",
+      "converter": "account_settlement_date_converter",
+      "sortable": false,
+      "minWidth": 150
+    },
+    {
+      "title": "Warehouse Box No.",
+      "field": "warehouse_box_no",
+      "name": "warehouse_box_no",
+      "minWidth": 150
+    },
+    {
+      "title": "Date In warehouse",
+      "field": "date_in_warehouse",
+      "name": "date_in_warehouse",
+      "converter": "date_column_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "Application Status",
+      "field": "application.status_id",
+      "name": "status_id",
+      "minWidth": 100
+    },
+    {
+      "title": "Destroy Date",
+      "field": "destroy_date",
+      "name": "destroy_date",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "application.application_id",
+      "dir": "desc"
+    }
+  ]
+}

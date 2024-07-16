@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "singleUpload": {
+      "type": "string",
+      "format": "uri"
+    },
+    "passedValidation": {
+      "type": "string"
+    }
+  }
+}

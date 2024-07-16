@@ -1,0 +1,1099 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "กลับไป",
+                  "options": {
+                    "icon": "ArrowBack",
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_CollateralAppraisal_Details_Back",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "Collateral Appraisal",
+                  "options": {
+                    "variant": "href",
+                    "operationType": "modal",
+                    "dialogName": "m_CollateralAppraisal_Details_Back",
+                    "subtype": "show",
+                    "validationSchema": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "space-between",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number",
+                  "options": {
+                    "variant": "h6White"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "8px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "Audit Trail",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ประวัติการแก้ไข",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ดู FU",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "สร้างเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": "ดูเอกสาร",
+                  "options": {
+                    "variant": "secondary",
+                    "operationType": "script"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "label": "ข้อมูลลูกค้า",
+                  "options": {
+                    "variant": "h6",
+                    "sx": {
+                      "padding": "16px 16px 0 16px"
+                    }
+                  },
+                  "type": "Typography"
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingBottom": "86px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "component": "section",
+                        "sx": {
+                          "marginBottom": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "label": "รายละเอียดใบสมัคร",
+                          "type": "Accordion",
+                          "elements": [
+                            {
+                              "type": "GridLayout",
+                              "options": {
+                                "container": true,
+                                "sx": {
+                                  "padding": "16px 0 16px 16px"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "BoxLayout",
+                                          "options": {
+                                            "sx": {
+                                              "display": "inline-flex"
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "วันเวลาที่สร้างใบสมัคร",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            },
+                                            {
+                                              "type": "Typography",
+                                              "label": "*",
+                                              "options": {
+                                                "sx": {
+                                                  "color": "red"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#properties/application_details/properties/created_on",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "BoxLayout",
+                                          "options": {
+                                            "sx": {
+                                              "display": "inline-flex"
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "วันที่ลูกค้าลงนาม",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            },
+                                            {
+                                              "type": "Typography",
+                                              "label": "*",
+                                              "options": {
+                                                "sx": {
+                                                  "color": "red"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#/properties/application_details/properties/register_date",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "BoxLayout",
+                                          "options": {
+                                            "sx": {
+                                              "display": "inline-flex"
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "Application Group",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            },
+                                            {
+                                              "type": "Typography",
+                                              "label": "*",
+                                              "options": {
+                                                "sx": {
+                                                  "color": "red"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#properties/application_details/properties/application_group",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "GridLayout",
+                                  "options": {
+                                    "xs": 6
+                                  },
+                                  "elements": [
+                                    {
+                                      "type": "BoxLayout",
+                                      "elements": [
+                                        {
+                                          "type": "BoxLayout",
+                                          "options": {
+                                            "sx": {
+                                              "display": "inline-flex"
+                                            }
+                                          },
+                                          "elements": [
+                                            {
+                                              "type": "Typography",
+                                              "label": "Application Type",
+                                              "options": {
+                                                "variant": "label"
+                                              }
+                                            },
+                                            {
+                                              "type": "Typography",
+                                              "label": "*",
+                                              "options": {
+                                                "sx": {
+                                                  "color": "red"
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "Typography",
+                                          "scope": "#properties/application_details/properties/application_type",
+                                          "options": {
+                                            "variant": "body2"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "component": "section",
+                        "sx": {
+                          "marginBottom": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "label": "เงื่อนไขพิเศษ NCB และ RC Verify",
+                          "type": "Accordion",
+                          "elements": [
+                            {
+                              "type": "BoxLayout",
+                              "options": {
+                                "sx": {
+                                  "padding": "16px 0 0 16px"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "CheckboxField",
+                                  "label": "มีเงื่อนไขพิเศษ",
+                                  "scope": "#/properties/special_condition"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "component": "section",
+                        "sx": {
+                          "marginBottom": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "label": "ข้อมูลพนักงานขาย",
+                          "type": "Accordion",
+                          "elements": [
+                            {
+                              "type": "UniversalArrayView",
+                              "scope": "#/properties/salespersonInfo",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "hideTableToolbar": true,
+                                "disableItemsRemove": true,
+                                "hideColumnTitles": false,
+                                "cells": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/employeeId",
+                                    "options": {
+                                      "columnTitle": "รหัสพนักงาน",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/firstAndLastName",
+                                    "options": {
+                                      "columnTitle": "ชื่อ-นามสกุล",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/branch",
+                                    "options": {
+                                      "columnTitle": "ทีม/สาขา",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/ocCode",
+                                    "options": {
+                                      "columnTitle": "OC Code หน่วยงานเจ้าของเรื่อง",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Schema",
+                                    "scope": "#/properties/phoneNumbers",
+                                    "options": {
+                                      "variant": "body2",
+                                      "columnTitle": "เบอร์โทรศัพท์",
+                                      "uiSchema": {
+                                        "scope": "#",
+                                        "type": "SchemedListView",
+                                        "label": {
+                                          "show": false
+                                        },
+                                        "options": {
+                                          "layoutOptions": {
+                                            "spacing": "0"
+                                          },
+                                          "cellUiSchema": {
+                                            "type": "StackLayout",
+                                            "options": {
+                                              "direction": "column"
+                                            },
+                                            "elements": [
+                                              {
+                                                "type": "Typography",
+                                                "scope": "#",
+                                                "options": {
+                                                  "variant": "body2-noPadding"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/view_details",
+                                    "options": {
+                                      "href": "https://zorallabs.com/",
+                                      "columnTitle": " ",
+                                      "sx": {
+                                        "color": "primary.deep"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "BoxLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#properties/application_details/properties/application_group",
+                                  "schema": {
+                                    "const": "Mortgage"
+                                  }
+                                }
+                              },
+                              "options": {
+                                "sx": {
+                                  "padding": "16px 0 16px 16px",
+                                  "borderTop": "1px solid #eaebed"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "ActionButton",
+                                  "label": "+ เพิ่มพนักงานขาย",
+                                  "options": {
+                                    "variant": "secondary",
+                                    "operationType": "action",
+                                    "conditionTypeId": "",
+                                    "payload": {
+                                      "taskId": "{route.taskId}"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "component": "section",
+                        "sx": {
+                          "marginBottom": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "label": "ข้อมูลผู้แนะนำ",
+                          "type": "Accordion",
+                          "elements": [
+                            {
+                              "type": "UniversalArrayView",
+                              "scope": "#/properties/recommenderInfo",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "hideTableToolbar": true,
+                                "disableItemsRemove": true,
+                                "hideColumnTitles": false,
+                                "cells": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/employeeId",
+                                    "options": {
+                                      "columnTitle": "รหัสพนักงาน",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/firstAndLastName",
+                                    "options": {
+                                      "columnTitle": "ชื่อ-นามสกุล",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/branch",
+                                    "options": {
+                                      "columnTitle": "ทีม/สาขา",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/ocCode",
+                                    "options": {
+                                      "columnTitle": "OC Code หน่วยงานเจ้าของเรื่อง",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Schema",
+                                    "scope": "#/properties/phoneNumbers",
+                                    "options": {
+                                      "variant": "body2",
+                                      "columnTitle": "เบอร์โทรศัพท์",
+                                      "uiSchema": {
+                                        "scope": "#",
+                                        "type": "SchemedListView",
+                                        "label": {
+                                          "show": false
+                                        },
+                                        "options": {
+                                          "layoutOptions": {
+                                            "spacing": "0"
+                                          },
+                                          "cellUiSchema": {
+                                            "type": "StackLayout",
+                                            "options": {
+                                              "direction": "column"
+                                            },
+                                            "elements": [
+                                              {
+                                                "type": "Typography",
+                                                "scope": "#",
+                                                "options": {
+                                                  "variant": "body2-noPadding"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/view_details",
+                                    "options": {
+                                      "columnTitle": " ",
+                                      "href": "https://zorallabs.com/",
+                                      "sx": {
+                                        "color": "primary.deep"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "StackLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#properties/application_details/properties/application_group",
+                                  "schema": {
+                                    "const": "Mortgage"
+                                  }
+                                }
+                              },
+                              "options": {
+                                "direction": "row",
+                                "spacing": "8px",
+                                "sx": {
+                                  "padding": "16px 0 16px 16px",
+                                  "borderTop": "1px solid #eaebed"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "ActionButton",
+                                  "label": "+ เพิ่มผู้แนะนำจากธนาคาร",
+                                  "options": {
+                                    "variant": "secondary",
+                                    "operationType": "action",
+                                    "conditionTypeId": "",
+                                    "payload": {
+                                      "taskId": "{route.taskId}"
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "ActionButton",
+                                  "label": "+ เพิ่มผู้แนะนำจากภายนอก",
+                                  "options": {
+                                    "variant": "secondary",
+                                    "operationType": "action",
+                                    "conditionTypeId": "",
+                                    "payload": {
+                                      "taskId": "{route.taskId}"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "component": "section",
+                        "sx": {
+                          "marginBottom": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "label": "ข้อมูลผู้กู้",
+                          "type": "Accordion",
+                          "elements": [
+                            {
+                              "type": "UniversalArrayView",
+                              "scope": "#/properties/borroverInfo",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "hideTableToolbar": true,
+                                "disableItemsRemove": true,
+                                "hideColumnTitles": false,
+                                "cells": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/number",
+                                    "options": {
+                                      "columnTitle": "ลำดับ",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/referenceNum",
+                                    "options": {
+                                      "columnTitle": "เลขที่เอกสารอ้างอิง",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/customerName",
+                                    "options": {
+                                      "columnTitle": "ชื่อลูกค้า",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/spouse",
+                                    "options": {
+                                      "columnTitle": "คู่สมรส",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/dob_registrationDate",
+                                    "options": {
+                                      "columnTitle": "วันเกิด/วันที่จดทะเบียนนิติบุคคล (พ.ศ.)",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/ocCode",
+                                    "options": {
+                                      "columnTitle": "OC Code ลูกค้า",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/segmentCode",
+                                    "options": {
+                                      "columnTitle": "รหัส Segment",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/view_details",
+                                    "options": {
+                                      "columnTitle": " ",
+                                      "href": "https://zorallabs.com/",
+                                      "sx": {
+                                        "color": "primary.deep"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "StackLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#properties/application_details/properties/application_group",
+                                  "schema": {
+                                    "const": "Mortgage"
+                                  }
+                                }
+                              },
+                              "options": {
+                                "direction": "row",
+                                "spacing": "8px",
+                                "sx": {
+                                  "padding": "16px 0 16px 16px",
+                                  "borderTop": "1px solid #eaebed"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "ActionButton",
+                                  "label": "+ เพิ่ม/แก้ไขผู้กู้",
+                                  "options": {
+                                    "variant": "secondary",
+                                    "operationType": "action",
+                                    "conditionTypeId": "",
+                                    "payload": {
+                                      "taskId": "{route.taskId}"
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "ActionButton",
+                                  "label": "แก้ไขลำดับผู้กู้",
+                                  "options": {
+                                    "variant": "secondary",
+                                    "operationType": "action",
+                                    "conditionTypeId": "",
+                                    "payload": {
+                                      "taskId": "{route.taskId}"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "StackLayout",
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#properties/application_details/properties/application_group",
+                          "schema": {
+                            "const": "Auto"
+                          }
+                        }
+                      },
+                      "options": {
+                        "component": "section",
+                        "sx": {
+                          "marginBottom": "16px"
+                        }
+                      },
+                      "elements": [
+                        {
+                          "label": "ข้อมูลผู้ค้ำประกัน",
+                          "type": "Accordion",
+                          "elements": [
+                            {
+                              "type": "UniversalArrayView",
+                              "scope": "#/properties/guarantorInfo",
+                              "label": {
+                                "show": false
+                              },
+                              "options": {
+                                "hideTableToolbar": true,
+                                "disableItemsRemove": true,
+                                "hideColumnTitles": false,
+                                "cells": [
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/number",
+                                    "options": {
+                                      "columnTitle": "ลำดับ",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/referenceDocNum",
+                                    "options": {
+                                      "columnTitle": "เลขที่เอกสารอ้างอิง",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/customerName",
+                                    "options": {
+                                      "columnTitle": "ชื่อลูกค้า",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/referenceDocType",
+                                    "options": {
+                                      "columnTitle": "ประเภทเอกสารอ้างอิง",
+                                      "variant": "body2"
+                                    }
+                                  },
+                                  {
+                                    "type": "Typography",
+                                    "scope": "#/properties/view_details",
+                                    "options": {
+                                      "columnTitle": " ",
+                                      "href": "https://zorallabs.com/",
+                                      "sx": {
+                                        "color": "primary.deep"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "BoxLayout",
+                              "rule": {
+                                "effect": "SHOW",
+                                "condition": {
+                                  "scope": "#properties/application_details/properties/application_group",
+                                  "schema": {
+                                    "const": "Mortgage"
+                                  }
+                                }
+                              },
+                              "options": {
+                                "sx": {
+                                  "padding": "16px 0 16px 16px",
+                                  "borderTop": "1px solid #eaebed"
+                                }
+                              },
+                              "elements": [
+                                {
+                                  "type": "ActionButton",
+                                  "label": "+ เพิ่มผู้ค้ำประกัน",
+                                  "options": {
+                                    "variant": "secondary",
+                                    "operationType": "action",
+                                    "conditionTypeId": "",
+                                    "payload": {
+                                      "taskId": "{route.taskId}"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "label": "ข้อมูลลูกค้า",
+          "type": "TabPage"
+        },
+        {
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "16px"
+              },
+              "elements": [
+                {
+                  "label": "ข้อมูลสินเชื่อและหลักประกัน",
+                  "options": {
+                    "variant": "h6Dark",
+                    "sx": {
+                      "padding": "16px"
+                    }
+                  },
+                  "type": "Typography"
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "component": "section",
+                    "sx": {
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px"
+                    }
+                  },
+                  "elements": [
+                    {
+                      "label": "เข้อมูลสินเชื่อ",
+                      "type": "Accordion",
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "label": "ข้อมูลสินเชื่อและหลักประกัน",
+          "type": "TabPage"
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "space-between",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "white",
+          "borderTop": "1px solid #eaebed",
+          "position": "fixed",
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ยกเลิกใบสมัคร",
+              "options": {
+                "variant": "primaryError",
+                "operationType": "modal",
+                "subtype": "show",
+                "dialogName": "m_Details_Reject"
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "ส่งไป Follow Up",
+              "options": {
+                "variant": "secondary",
+                "operationType": "action",
+                "conditionTypeId": "Task_FollowUp",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse",
+            "spacing": "8px"
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "variant": "primary",
+                "operationType": "action",
+                "conditionTypeId": "Register_Task_Submit",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "บันทึกแบบร่างp",
+              "options": {
+                "variant": "secondary",
+                "operationType": "action",
+                "conditionTypeId": "Register_Task_Save",
+                "payload": {
+                  "taskId": "{route.taskId}"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "type": "object",
+  "properties": {
+    "loanSection": {
+      "type": "object",
+      "properties": {
+        "newLoan": {
+          "type": "object",
+          "properties": {
+            "application_account_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "loan_number": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "application_group": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "product_group": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "product_type": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "sub_product": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "contract_no": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "application_group",
+            "product_group",
+            "product_type",
+            "sub_product"
+          ]
+        }
+      }
+    },
+    "new_loan": {
+      "type": "object",
+      "properties": {
+        "application_account_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "loan_number": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "application_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "product_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "product_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sub_product": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contract_no": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "application_group",
+        "product_group",
+        "product_type",
+        "sub_product"
+      ]
+    }
+  }
+}

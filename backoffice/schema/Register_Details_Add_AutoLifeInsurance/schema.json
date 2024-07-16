@@ -1,0 +1,118 @@
+{
+  "type": "object",
+  "properties": {
+    "application_number": {
+      "type": "string"
+    },
+    "application_details": {
+      "type": "object",
+      "properties": {
+        "application_group": {
+          "type": "string"
+        }
+      }
+    },
+    "loan_account": {
+      "type": "object",
+      "properties": {
+        "product_type_id": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            }
+          }
+        },
+        "sub_product_type_id": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "life_insurance": {
+      "type": "object",
+      "properties": {
+        "the_insured_type": {
+          "type": "string"
+        },
+        "the_insured_name": {
+          "type": "string"
+        },
+        "insurance_company_name": {
+          "type": "string"
+        },
+        "insurance_type": {
+          "type": "string"
+        },
+        "insurance_plan": {
+          "type": "string"
+        },
+        "insurance_application_id": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "insurance_duration": {
+          "type": "string"
+        },
+        "sum_insured": {
+          "type": "number"
+        },
+        "premium_amount": {
+          "type": "number"
+        },
+        "data_entry_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "ins_payment_method": {
+          "type": "string"
+        },
+        "payment_channel": {
+          "type": "string"
+        },
+        "agent_code": {
+          "type": "string"
+        },
+        "isAutoCalculation": {
+          "type": "boolean"
+        },
+        "auto_cal_insurance_borrower": {
+          "type": "string"
+        },
+        "auto_cal_insurance_guarantor": {
+          "type": "string"
+        },
+        "insurance_type_code": {
+          "type": "object",
+          "properties": {
+            "insurance_plan_code": {
+              "type": "string"
+            },
+            "insurance_duration_code": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": [
+        "the_insured_type",
+        "the_insured_name",
+        "insurance_company_name",
+        "insurance_application_id",
+        "sum_insured",
+        "premium_amount",
+        "data_entry_date"
+      ]
+    }
+  }
+}

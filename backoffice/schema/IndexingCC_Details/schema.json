@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "properties": {
+    "application_number": {
+      "type": "string"
+    },
+    "account_number": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "customer_name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rcco_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approved_date_time": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contract_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "documentOn": {
+      "type": "boolean"
+    }
+  },
+  "cidDocumentDetails": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "readonly": true
+      },
+      "title": {
+        "type": "string",
+        "readonly": true
+      }
+    }
+  }
+}

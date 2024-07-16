@@ -1,0 +1,169 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "HelpOutlineOutlined",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EAB308",
+                      "background": "#FEFCE8",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "คุณกำลังจะออกจากหน้านี้",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "หากต้องการบันทึกข้อมูลที่ระบุหรือแก้ไขไว้ กรุณาเลือก \"บันทึก\"",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ไม่บันทึก",
+          "options": {
+            "variant": "outlined",
+            "size": "large",
+            "operationType": "modal",
+            "subtype": "cancel",
+            "chain": [
+              {
+                "operationType": "script",
+                "converter": "navigate_register"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "บันทึก",
+          "options": {
+            "variant": "outlined",
+            "className": "primaryButton",
+            "size": "large",
+            "sx": {},
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Register_Loan_Collateral_Edit_Detail_Mortgage_Save",
+                "className": "secondaryButton",
+                "payload": {
+                  "userId": "{user.login}"
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["status"],
+                              "type": "object",
+                              "properties": {
+                                "status": {
+                                  "type": "object",
+                                  "required": ["code"],
+                                  "properties": {
+                                    "code": {
+                                      "type": "number",
+                                      "const": 1000
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "script",
+                    "converter": "navigate_register"
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "operationType": "modal",
+                "dialogName": "m_BasicError_TryAgain",
+                "subtype": "show"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

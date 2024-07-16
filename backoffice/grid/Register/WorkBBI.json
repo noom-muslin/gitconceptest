@@ -1,0 +1,62 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "columns": [
+    {
+      "title": "รายการ",
+      "field": "application.accounts.appl_bbi_accounts.product_seq"
+    },
+    {
+      "title": "ชื่อบัญชี",
+      "field": "application.accounts.appl_bbi_accounts.acct_pname"
+    },
+    {
+      "title": "เลขที่บัญชี",
+      "field": "application.accounts.appl_bbi_accounts.acct_no"
+    },
+    {
+      "title": "วงเงิน",
+      "field": "application.accounts.appl_bbi_accounts.credit_line"
+    },
+    {
+      "title": "ยอดคงเหลือ",
+      "field": "application.accounts.appl_bbi_accounts.balance"
+    },
+    {
+      "title": "วงเงินที่ได้รับอนุมัติ",
+      "field": "application.accounts.appl_bbi_accounts.approved_amount"
+    },
+    {
+      "title": "วันที่เปิดบัญชี",
+      "field": "application.accounts.appl_bbi_accounts.open_account_date"
+    },
+    {
+      "title": "สถานะบัญชี",
+      "field": "application.accounts.appl_bbi_accounts.account_status"
+    },
+    {
+      "title": "สินเชื่อที่ต้องรวมวงเงิน",
+      "field": "application.accounts.appl_bbi_accounts.is_not_related"
+    },
+    {
+      "title": "ไม่รวมอำนาจอนุมัติ",
+      "field": "application.accounts.appl_bbi_accounts.is_not_related"
+    },
+    {
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Convert",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "Register",
+            "route": "/"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 20,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "sla_tty.current_duration_minutes",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "WB SLA",
+      "field": "sla_wb.current_duration_minutes",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 80
+    },
+    {
+      "title": "Application No.",
+      "field": "application.application_id",
+      "name": "application_id",
+      "minWidth": 200
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class_id",
+      "name": "application_class_id",
+      "minWidth": 150
+    },
+    {
+      "title": "ชื่อลูกค้า",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "name": "full_name",
+      "width": 200
+    },
+    {
+      "title": "วันเวลาที่ได้รับเอกสาร",
+      "field": "document_in_datetime",
+      "name": "document_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 120
+    },
+    {
+      "title": " ",
+      "name": "get_tast",
+      "sortable": false,
+      "resizable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "Get Task",
+          "triggerType": "link",
+          "options": {
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "SalesBuddy",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/sales-buddy/{data.id}/details"
+            }
+
+          }
+        }
+      ],
+      "width": 180
+    }
+  ]
+}

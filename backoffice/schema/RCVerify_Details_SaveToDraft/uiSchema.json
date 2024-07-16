@@ -1,0 +1,173 @@
+{
+    "type": "BoxLayout",
+    "elements": [
+      {
+        "type": "BoxLayout",
+        "options":{
+          "sx": {
+            "width": "400px",
+            "padding": "1em 1em 1em 0em"
+          }
+        },
+        "elements": [
+          {
+            "type": "GridLayout",
+            "options": {
+              "container": true
+            },
+            "elements": [
+              {
+                "type": "GridLayout",
+                "options": {
+                  "xs": 2,
+                  "container": true,
+                  "justifyContent": "center"
+                },
+                "elements": [
+                  {
+                    "type": "Icon",
+                    "label": "HelpOutline",
+                    "options": {
+                      "sx": {
+                        "fontSize": "40px",
+                        "color": "#EAB308",
+                        "background": "#FEFCE8",
+                        "borderRadius": "24px",
+                        "padding": "4px"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "GridLayout",
+                "options": {
+                  "xs": 10
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "คุณต้องการบันทึกแบบร่างหรือไม่",
+                    "options": {
+                      "variant": "subtitle2Black"
+                    }
+                  },
+                  {
+                    "type": "Typography",
+                    "label": "เมื่อกดส่งเมื่อกดบันทึกแล้ว ระบบจะบันทึกข้อมูล และคุณจะกลับไปที่หน้าหลัก",
+                    "options": {
+                      "variant": "body2"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "StackLayout",
+        "options": {
+          "direction": "row",
+          "justifyContent": "flex-end",
+          "spacing": "0.5em",
+          "sx":{
+            "width": "400px",
+            "padding":"0em 1em 1em 1em"
+          }
+        },
+        "elements": [
+          {
+            "type": "ActionButton",
+            "label": "ยกเลิก",
+            "options": {
+              "className": "secondaryButton",
+              "operationType": "modal",
+              "subtype": "cancel"
+            }
+          },
+          {
+            "type": "ActionButton",
+            "label": "บันทึก",
+            "options": {
+              "className": "primaryButton",
+              "chain": [
+                {
+                  "operationType": "action",
+                  "subtype": "saveToDraft"
+                },
+                {
+                  "if": {
+                    "type": "object",
+                    "required": [
+                      "data"
+                    ],
+                    "properties": {
+                      "data": {
+                        "type": "object",
+                        "required": [
+                          "payload"
+                        ],
+                        "properties": {
+                          "payload": {
+                            "type": "object",
+                            "required": [
+                              "data"
+                            ],
+                            "properties": {
+                              "data": {
+                                "required": [
+                                  "submitted"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                  "submitted": {
+                                    "type": "boolean",
+                                    "const": true
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "chain": [
+                    {
+                      "operationType": "modal",
+                      "subtype": "cancel"
+                    },
+                    {
+                      "operationType": "open",
+                      "route": "/FOS/{route.workflowId}/success"
+                    }
+                  ]
+                },
+                {
+                  "if": {
+                    "else": true
+                  },
+                  "chain": [
+                    {
+                      "operationType": "modal",
+                      "subtype": "cancel"
+                    },
+                    {
+                      "operationType": "modal",
+                      "dialogName": "m_BasicError_TryAgain",
+                      "payload": {
+                        "name1": "name1",
+                        "Name2": "name2"
+                      },
+                      "subtype": "show"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }

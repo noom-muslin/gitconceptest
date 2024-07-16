@@ -1,0 +1,204 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "GridLayout",
+      "options": {
+        "container": true,
+        "sx":{
+          "paddingRight": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "รหัสเจ้าหน้าที่",
+              "scope": "#/properties/externalReferral/properties/saleId",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "ชื่อ-นามสกุล",
+              "scope": "#/properties/externalReferral/properties/firstAndLastName",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "TextField",
+              "label": "เสังกัด",
+              "scope": "#/properties/externalReferral/properties/affiliation",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เเบอร์โทรศัพท์ 1",
+              "scope": "#/properties/externalReferral/properties/phone1",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": [
+                  "00-000-000",
+                  "000-000-000",
+                  "000-000-0000"
+                ]
+              },
+              "errors": {
+                "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "minLength": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เเบอร์โทรศัพท์ 2",
+              "scope": "#/properties/externalReferral/properties/phone2",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": [
+                  "00-000-000",
+                  "000-000-000",
+                  "000-000-0000"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "xs": 6
+          },
+          "elements": [
+            {
+              "type": "MaskField",
+              "label": "เเบอร์โทรศัพท์ 3",
+              "scope": "#/properties/externalReferral/properties/phone3",
+              "options": {
+                "fullwidth": true,
+                "variant": "outlined",
+                "mask": [
+                  "00-000-000",
+                  "000-000-000",
+                  "000-000-0000"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row-reverse",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยืนยัน",
+          "options": {
+            "variant": "primary",
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "Register_Add_ExternalRecommendedPerson"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["data"],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": ["payload"],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": ["data"],
+                          "properties": {
+                            "data": {
+                              "required": ["submitted"],
+                              "type": "object",
+                              "properties": {
+                                "submitted": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

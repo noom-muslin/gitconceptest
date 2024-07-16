@@ -1,0 +1,1104 @@
+[
+  {
+    "type": "GridLayout",
+    "options": {
+      "container": true,
+      "sx": {
+        "padding": "16px"
+      }
+    },
+    "elements": [
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 12
+        },
+        "elements": [
+          {
+            "type": "Typography",
+            "label": "ค้นหาข้อมูลลูกค้า",
+            "options": {
+              "variant": "subtitle2Dark"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/borrowerType",
+            "schema": {
+              "const": "Individual"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "ประเภทเอกสารอ้างอิง",
+            "scope": "#/properties/search/properties/referenceDocumentTypeIndividual",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/ReferenceDocumentTypeIndividualEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "rule": {
+          "effect": "SHOW",
+          "condition": {
+            "scope": "#/properties/borrowerType",
+            "schema": {
+              "const": "Juristic"
+            }
+          }
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "ประเภทเอกสารอ้างอิง",
+            "scope": "#/properties/search/properties/referenceDocumentTypeJuristic",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/ReferenceDocumentTypeJuristicEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row",
+              "justifyContent": "flex-end",
+              "spacing": "16px"
+            },
+            "elements": [
+              {
+                "type": "TextField",
+                "label": "เลขที่เอกสารอ้างอิง",
+                "scope": "#/properties/search/properties/referenceDocumentNo",
+                "options": {
+                  "fullwidth": true,
+                  "variant": "outlined"
+                }
+              },
+              {
+                "type": "ActionButton",
+                "label": "ค้นหา",
+                "options": {
+                  "variant": "secondary",
+                  "validationSchema": false,
+                  "sx": {
+                    "&.MuiButtonBase-root.MuiButton-root": {
+                      "marginTop": "24px"
+                    }
+                  },
+                  "chain": [
+                    {
+                      "operationType": "action",
+                      "conditionTypeId": "Register_Details_Add_Borrower_Search"
+                    },
+                    {
+                      "if": {
+                        "type": "object",
+                        "required": ["data"],
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "required": ["payload"],
+                            "properties": {
+                              "payload": {
+                                "type": "object",
+                                "required": ["data"],
+                                "properties": {
+                                  "data": {
+                                    "type": "object",
+                                    "required": ["borrowersPersonalInformation"],
+                                    "properties": {
+                                      "borrowersPersonalInformation": {
+                                        "required": ["isFound"],
+                                        "type": "object",
+                                        "properties": {
+                                          "isFound": {
+                                            "type": "boolean",
+                                            "const": false
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "operationType": "modal",
+                      "subtype": "show",
+                      "dialogName": "m_Basic_Error",
+                      "dialogVariables": {
+                        "title": "ไม่พบข้อมูลในระบบ",
+                        "text": "กรุณาระบุข้อมูลด้วยตนเอง"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "GridLayout",
+    "options": {
+      "container": true,
+      "sx": {
+        "padding": "16px"
+      }
+    },
+    "elements": [
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "ประเภทเอกสารอ้างอิง",
+            "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/ReferenceDocumentTypeIndividualEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "ประเทศ",
+            "scope": "#/properties/borrowersPersonalInformation/properties/countryCode",
+            "rule": {
+              "effect": "ENABLE",
+              "condition": {
+                "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                "schema": { "enum": ["P7", "P8"] }
+              }
+            },
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/CountryEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "เลขที่เอกสารอ้างอิง",
+            "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentNo",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "คำนำหน้า (ภาษาไทย)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                    "schema": { "enum": ["P1", "P7"] }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SelectField",
+            "label": false,
+            "scope": "#/properties/borrowersPersonalInformation/properties/titleTH",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/TitleTHIndividualEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "ชื่อ (ภาษาไทย)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                    "schema": { "enum": ["P1", "P7"] }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TextField",
+            "scope": "#/properties/borrowersPersonalInformation/properties/nameTH",
+            "label": false,
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ชื่อกลาง (ภาษาไทย)",
+            "scope": "#/properties/borrowersPersonalInformation/properties/middleNameTH",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "นามสกุล (ภาษาไทย)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                    "schema": { "enum": ["P1", "P7"] }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TextField",
+            "label": false,
+            "scope": "#/properties/borrowersPersonalInformation/properties/lastNameTH",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "คำนำหน้า (ภาษาอังกฤษ)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                    "schema": { "const": "P8" }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "SelectField",
+            "label": false,
+            "scope": "#/properties/borrowersPersonalInformation/properties/titleEN",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/TitleENIndividualEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "ชื่อ (ภาษาอังกฤษ)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                    "schema": { "const": "P8" }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TextField",
+            "label": false,
+            "scope": "#/properties/borrowersPersonalInformation/properties/nameEN",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "TextField",
+            "label": "ชื่อกลาง (ภาษาอังกฤษ)",
+            "scope": "#/properties/borrowersPersonalInformation/properties/middleNameEN",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "นามสกุล (ภาษาอังกฤษ)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentType",
+                    "schema": { "const": "P8" }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TextField",
+            "label": false,
+            "scope": "#/properties/borrowersPersonalInformation/properties/lastNameEN",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "สัญชาติ",
+            "scope": "#/properties/borrowersPersonalInformation/properties/nationality",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/NationalityEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "เพศ",
+            "scope": "#/properties/borrowersPersonalInformation/properties/gender",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/GenderEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "วันเกิด (พ.ศ.)",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "Typography",
+                "label": "*",
+                "options": {
+                  "variant": "label",
+                  "sx": {
+                    "color": "error.main"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "ExternalComponent",
+            "scope": "#/properties/borrowersPersonalInformation/properties/birthDate",
+            "options": {
+              "externalComponentName": "thai-calendar",
+              "externalComponentScope": "remote1",
+              "externalComponentModule": "./ThaiDatePicker",
+              "views": "year,month,day",
+              "variant": "outlined",
+              "sx": {
+                "width": "100%"
+              }
+            },
+            "errors": {
+              "required": "กรุณาระบุข้อมูลให้ครบถ้วน"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "อายุ",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/borrowersPersonalInformation/properties/ages",
+            "options": {
+              "variant": "label",
+              "sx": {
+                "marginTop": "8px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "วันที่ออกเอกสารอ้างอิง",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "ExternalComponent",
+            "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentIssueDate",
+            "options": {
+              "externalComponentName": "thai-calendar",
+              "externalComponentScope": "remote1",
+              "externalComponentModule": "./ThaiDatePicker",
+              "views": "year,month,day",
+              "variant": "outlined",
+              "maxDate": "#/properties/borrowersPersonalInformation/properties/currentThaiDate",
+              "sx": {
+                "width": "100%"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "วันที่เอกสารอ้างอิงหมดอายุ",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "ExternalComponent",
+            "scope": "#/properties/borrowersPersonalInformation/properties/referenceDocumentExpirationDate",
+            "options": {
+              "externalComponentName": "thai-calendar",
+              "externalComponentScope": "remote1",
+              "externalComponentModule": "./ThaiDatePicker",
+              "views": "year,month,day",
+              "minDate": "#/properties/borrowersPersonalInformation/properties/currentThaiDate",
+              "variant": "outlined",
+              "sx": {
+                "width": "100%"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "ระดับการศึกษาสูงสุด",
+            "scope": "#/properties/borrowersPersonalInformation/properties/highestLevelOfEducation",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/EducationEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "กลุ่มลูกค้า",
+            "scope": "#/properties/borrowersPersonalInformation/properties/customerGroup",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/CustomerGroupEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "ระบุข้อมูลกรณีเลือก \"อื่นๆ\"",
+                "options": {
+                  "variant": "label"
+                }
+              },
+              {
+                "type": "BoxLayout",
+                "rule": {
+                  "effect": "SHOW",
+                  "condition": {
+                    "scope": "#/properties/borrowersPersonalInformation/properties/customerGroup",
+                    "schema": { "const": 1298 }
+                  }
+                },
+                "elements": [
+                  {
+                    "type": "Typography",
+                    "label": "*",
+                    "options": {
+                      "variant": "label",
+                      "sx": {
+                        "color": "error.main"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "TextField",
+            "label": false,
+            "scope": "#/properties/borrowersPersonalInformation/properties/specifyInformation",
+            "rule": {
+              "effect": "ENABLE",
+              "condition": {
+                "scope": "#/properties/borrowersPersonalInformation/properties/customerGroup",
+                "schema": { "const": 1298 }
+              }
+            },
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "MaskField",
+            "label": "เบอร์โทรศัพท์มือถือ",
+            "scope": "#/properties/borrowersPersonalInformation/properties/mobilePhoneNumber",
+            "options": {
+              "fullwidth": true,
+              "variant": "outlined",
+              "mask": ["00-000-000", "000-000-000", "000-000-0000"]
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 6
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "ประเภทลูกค้า (RM)",
+            "scope": "#/properties/borrowersPersonalInformation/properties/rmCustomerType",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/RmCustomerTypeEnum",
+              "converter": "mapValueLabel"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 12
+        },
+        "elements": [
+          {
+            "type": "SelectField",
+            "label": "OC Code ลูกค้า",
+            "scope": "#/properties/borrowersPersonalInformation/properties/ocCode",
+            "options": {
+              "variant": "outlined",
+              "fullwidth": true,
+              "autocomplete": true,
+              "query": "Register/OcCodeEnums",
+              "converter": "autoCompleteOcCodeEnumConverter"
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "KYC Level",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/borrowersPersonalInformation/properties/kycLevel",
+            "options": {
+              "variant": "label",
+              "sx": {
+                "marginTop": "8px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "KYC Reason",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/borrowersPersonalInformation/properties/kycReason",
+            "options": {
+              "variant": "label",
+              "sx": {
+                "marginTop": "8px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "KYC Level (RM_CI)",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/borrowersPersonalInformation/properties/kycLevelRMCI",
+            "options": {
+              "variant": "label",
+              "sx": {
+                "marginTop": "8px"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GridLayout",
+        "options": {
+          "xs": 3
+        },
+        "elements": [
+          {
+            "type": "StackLayout",
+            "options": {
+              "direction": "row"
+            },
+            "elements": [
+              {
+                "type": "Typography",
+                "label": "KYC Reason (RM_CI)",
+                "options": {
+                  "variant": "label"
+                }
+              }
+            ]
+          },
+          {
+            "type": "Typography",
+            "scope": "#/properties/borrowersPersonalInformation/properties/kycReasonRMCI",
+            "options": {
+              "variant": "label",
+              "sx": {
+                "marginTop": "8px"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

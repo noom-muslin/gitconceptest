@@ -1,0 +1,36 @@
+query GetRedBookSearch(
+  $addWhere: [ngl_view_vehicle_redbook_brand_model_bool_exp!]
+  $order_by: [ngl_view_vehicle_redbook_brand_model_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_view_vehicle_redbook_brand_model(
+    where: {
+      brand_code: {_neq: ""}
+      _and: $addWhere
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    brand_code
+    brand_desc
+    model_code
+    sub_model_code
+    sub_model_desc
+    model_desc
+    sub_model_year
+    cckwh
+    gear_type
+    redbook_sub_model
+    body_style_desc
+    door_num
+    engine_type_desc
+    new_price
+    redbook_brand
+    redbook_model
+    brand_level
+    model_level
+    good_retail
+  }
+}

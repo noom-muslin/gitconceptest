@@ -1,0 +1,6 @@
+query MyQuery {
+   result: ngl_enum_vehicle_brand(distinct_on: redbook_brand, where: {is_active: {_eq: true}, redbook_brand: {_is_null: false}}) {
+    value: redbook_brand,
+    label: brand_desc
+  }
+}

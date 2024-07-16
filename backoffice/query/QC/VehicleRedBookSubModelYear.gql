@@ -1,0 +1,5 @@
+query GetVehicleRedbookSubModelYear($redbook_model: String = "", $redbook_brand: String = "") {
+  result: ngl_enum_vehicle_redbook(distinct_on: sub_model_year, where: {brand_code: {_eq: $redbook_brand}, model_code: {_eq: $redbook_model}, is_active: {_eq: true}}, order_by: {sub_model_year: asc}) {
+    label: sub_model_year
+  }
+}

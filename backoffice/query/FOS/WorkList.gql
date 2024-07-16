@@ -1,0 +1,61 @@
+subscription GetFOSWorkList(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $assignee: String!
+  $taskType: String!
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _eq: $assignee }
+      task_type_id: { _eq: $taskType }
+      status_id: { _eq: "InProgress" }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    data
+    create_date_time
+    deadline_at
+    document_in_datetime
+    application_id
+    application {
+      primary_account{
+        account{
+          product_type{
+            description
+          }
+          sub_product{
+            description
+          } 
+        }
+      }
+      application_date_time_in
+      application_id
+      application_group {
+        code
+      }
+      application_class {
+        code
+      }
+    }
+    appl_party{
+      reference_type
+      reference_no
+      name
+      last_name
+      full_name
+      appl_party_rcverify{
+        appl_party_rcverify_fos{
+          address_usage
+          fos_status
+          fos_interface_status
+        }
+      }
+    }
+  }
+}

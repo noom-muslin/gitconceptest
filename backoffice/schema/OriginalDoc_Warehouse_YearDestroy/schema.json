@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "userId": {
+      "type": "string"
+    },
+    "applicationGroupId": {
+      "type": "string"
+    },
+    "destroyApproveYear": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 99
+    },
+    "destroyApproveMonth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 99
+    },
+    "destroyCancelYear": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 99
+    },
+    "destroyCancelMonth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 99
+    },
+    "applicationPerBox": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "contractPerBox": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999
+    },
+    "recordNo": {
+      "type": "string"
+    },
+    "ocCode": {
+      "type": "number"
+    },
+    "monthYear": {
+      "type": "integer"
+    },
+    "boxNoFrom": {
+      "type": "integer"
+    },
+    "boxNoTo": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}

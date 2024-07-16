@@ -1,0 +1,42 @@
+subscription GetOriginalDocWorklist(
+  $where: [ngl_appl_original_doc_bool_exp]
+  $order_by: [ngl_appl_original_doc_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_appl_original_doc(
+    where: {
+      original_doc_type: {_eq: "2"}
+      application: {tasks: {status_id: {_eq: "Done"}}}
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    destroy_date
+    date_in_warehouse
+    warehouse_box_no
+    original_doc_type
+    account_number
+    application {
+      application_id
+      accounts {
+        account_number
+        account_settlement_date
+      }
+      borrowers {
+        party {
+          full_name
+          appl_guarantees {
+            party_type_id
+          }
+        }
+      }
+      status_id
+      tasks {
+        status_id
+      }
+    }
+  }
+}

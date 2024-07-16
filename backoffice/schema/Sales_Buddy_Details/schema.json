@@ -1,0 +1,400 @@
+{
+  "type": "object",
+  "properties": {
+    "staffId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readonly": true
+        },
+        "title": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "applicationDetail": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "applicationDate": {
+          "type": "string"
+        },
+        "applicationType": {
+          "type": "string"
+        },
+        "applicationGroup": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "productGroup": {
+          "type": "string"
+        },
+        "productType": {
+          "type": "string"
+        },
+        "subProductType": {
+          "type": "string"
+        },
+        "campaignCode": {
+          "type": "string"
+        },
+        "customerTitleName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "customerTitleNameEn": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "customerNameEn": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "saleInfo": {
+      "type": "object",
+      "properties": {
+        "empolyeeNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "familyName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "telephoneNumber1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "telephoneNumber2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "telephoneNumber3": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ocCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "bookingBranch": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "address": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "addressNo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "moo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "village": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "floor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "room": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "soi": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "trok": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "road": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tambon": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "amphur": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "province": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "zipcode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "vehicleInfo": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vehicleType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleBrand": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleModel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleSubModel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleCondition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleInsuranceType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleInsuranceCompany": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehicleAge": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "vehiclePrice": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "modelYear": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ]
+          },
+          "isRegistered": {
+            "type": ["boolean", "null"]
+          },
+          "registeredDate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "licensePlate": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "province": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "chasisNo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "engineType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "horsePower": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "weight": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "color": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mileage": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accountId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "engineNo": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "partnerBrandRb": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "partnerModelRb": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "loanInfo": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "noVat": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "vat": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "total": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status":{
+      "type":"object",
+      "properties":{
+        "code":{
+          "type": "number"
+        }
+      }
+    }
+  }
+}

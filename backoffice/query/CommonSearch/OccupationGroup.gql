@@ -1,0 +1,9 @@
+query GetOccupationByOccupationGroup {
+  result: ngl_enum_occupation_group(
+    order_by: {order_num: asc}, 
+    where: {is_active: {_eq: true}}
+  ) {
+    value: code
+    label: description
+  }
+}

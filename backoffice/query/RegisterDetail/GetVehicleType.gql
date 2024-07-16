@@ -1,0 +1,11 @@
+query GetVehicleType {
+  result: ngl_enum_standard_code(
+    where: {
+      standard_list_code: {_eq: "0011"},
+      check_special: {_in: ["PA", "PU", "VA"]},
+      status:{_eq:true}
+  }){
+    value: code
+    label: display_value
+  }
+}

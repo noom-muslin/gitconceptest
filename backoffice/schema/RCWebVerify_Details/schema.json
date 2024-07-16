@@ -1,0 +1,690 @@
+{
+  "type": "object",
+  "properties": {
+    "documentOn": {
+      "type": "boolean"
+    },
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "application_id": {
+      "type": "string",
+      "readonly": true
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "readonly": true
+        },
+        "title": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "nhso_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "checkvalue": {
+            "type": "boolean"
+          },
+          "displayValue": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rc_comments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "station": {
+            "type": "string",
+            "readonly": true
+          },
+          "operator": {
+            "type": "string",
+            "readonly": true
+          },
+          "commentTimestamp": {
+            "type": "string",
+            "readonly": true
+          },
+          "commentDetail": {
+            "type": "string",
+            "readonly": true
+          }
+        }
+      }
+    },
+    "borrowers": {
+      "type": "object",
+      "properties": {
+        "no": {
+          "type": "string",
+          "readonly": true
+        },
+        "customer_type": {
+          "type": "string",
+          "readonly": true
+        },
+        "title_name": {
+          "type": "string",
+          "readonly": true
+        },
+        "name": {
+          "type": "string",
+          "readonly": true
+        },
+        "middle_name": {
+          "type": "string",
+          "readonly": true
+        },
+        "last_name": {
+          "type": "string",
+          "readonly": true
+        },
+        "reference_no": {
+          "type": "string",
+          "readonly": true
+        },
+        "dob": {
+          "type": "string",
+          "readonly": true
+        },
+        "phone_number": {
+          "type": "string",
+          "readonly": true
+        },
+        "mobile_number": {
+          "type": "string",
+          "readonly": true
+        },
+        "application_group": {
+          "type": "string",
+          "readonly": true
+        },
+        "product_type": {
+          "type": "string",
+          "readonly": true
+        },
+        "sub_product_type": {
+          "type": "string",
+          "readonly": true
+        },
+        "work_place": {
+          "type": "string",
+          "readonly": true
+        }
+      }
+    },
+    "juristicenlite": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "company_name": {
+          "type": "string"
+        },
+        "reference_no": {
+          "type": "string"
+        },
+        "business_status": {
+          "type": "string"
+        },
+        "has_statements": {
+          "type": "string",
+          "enum": [
+            "มี",
+            "ไม่มี"
+          ]
+        },
+        "ัlast_statements_year": {
+          "type": "string"
+        },
+        "registration_date": {
+          "type": "string"
+        },
+        "min_registration_date": {
+          "type": "string",
+          "readonly": true
+        },
+        "isic": {
+          "type": "string"
+        },
+        "authorizePerson": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "full_name": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "personalenlite": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "shareholders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "company_code": {
+                "type": "string"
+              },
+              "company_name": {
+                "type": "string"
+              },
+              "has_authorized": {
+                "type": "string"
+              },
+              "quantity_of_share": {
+                "type": "integer"
+              },
+              "business_status": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "company_code"
+            ]
+          }
+        }
+      }
+    },
+    "shareHolders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "shareHolders_number": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "company_code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "company_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "has_authorized": {
+            "type": "string"
+          },
+          "quantity_of_share": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "business_status": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "showNewShareholder": {
+      "type": "boolean"
+    },
+    "newShareholder": {
+      "type": "object",
+      "properties": {
+        "company_code": {
+          "type": "string"
+        },
+        "company_name": {
+          "type": "string"
+        },
+        "has_authorized": {
+          "type": "string"
+        },
+        "quantity_of_share": {
+          "type": "integer"
+        },
+        "business_status": {
+          "type": "string"
+        }
+      }
+    },
+    "dbd": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "company_name": {
+          "type": "string"
+        },
+        "register_date": {
+          "type": "string"
+        },
+        "reference_no": {
+          "type": "string"
+        },
+        "business_status": {
+          "type": "string"
+        },
+        "registered_capital": {
+          "type": "number"
+        },
+        "location": {
+          "type": "string"
+        },
+        "last_statements_year": {
+          "type": "number"
+        },
+        "year_not_send_statement": {
+          "type": "number"
+        },
+        "isic": {
+          "type": "string"
+        },
+        "opinion": {
+          "type": "string"
+        }
+      }
+    },
+    "com_regis": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "company_name": {
+          "type": "string"
+        },
+        "owner_name": {
+          "type": "string"
+        },
+        "registration_date": {
+          "type": "string"
+        },
+        "min_registration_date": {
+          "type": "string"
+        },
+        "company_type": {
+          "type": "string"
+        },
+        "hq_location": {
+          "type": "string"
+        },
+        "register_at": {
+          "type": "string"
+        },
+        "business_status": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        }
+      }
+    },
+    "rdtax": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status1": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "tax_type1": {
+          "type": "string"
+        },
+        "year1": {
+          "type": "string"
+        },
+        "verify_status2": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "tax_type2": {
+          "type": "string"
+        },
+        "year2": {
+          "type": "string"
+        },
+        "opinion": {
+          "type": "string"
+        }
+      }
+    },
+    "nhso": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "social_security": {
+          "type": "boolean"
+        },
+        "government_official_benefit": {
+          "type": "boolean"
+        },
+        "government_agency_benefit": {
+          "type": "boolean"
+        },
+        "social_security3": {
+          "type": "boolean"
+        },
+        "social_security4": {
+          "type": "boolean"
+        },
+        "social_security5": {
+          "type": "boolean"
+        },
+        "social_security6": {
+          "type": "boolean"
+        },
+        "social_security7": {
+          "type": "boolean"
+        },
+        "social_security8": {
+          "type": "boolean"
+        },
+        "social_security9": {
+          "type": "boolean"
+        },
+        "social_security10": {
+          "type": "boolean"
+        },
+        "social_security11": {
+          "type": "boolean"
+        },
+        "social_security12": {
+          "type": "boolean"
+        }
+      }
+    },
+    "professional": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verify_status": {
+          "type": "string",
+          "enum": [
+            "พบข้อมูล",
+            "ไม่พบข้อมูล",
+            "เว็บไซต์ขัดข้อง"
+          ]
+        },
+        "opinion": {
+          "type": "string"
+        }
+      }
+    },
+    "hr": {
+      "type": "object",
+      "properties": {
+        "is_verify": {
+          "type": "string",
+          "enum": [
+            "ต้องตรวจสอบ",
+            "ไม่ต้องตรวจสอบ"
+          ]
+        },
+        "skip_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "verified_by": {
+          "type": "string"
+        },
+        "verified_person_phone": {
+          "type": "string"
+        },
+        "employee_type": {
+          "type": "string"
+        },
+        "position": {
+          "type": "string"
+        },
+        "job_start_date": {
+          "type": "string"
+        },
+        "min_job_start_date": {
+          "type": "string"
+        },
+        "years": {
+          "type": "integer"
+        },
+        "months": {
+          "type": "integer"
+        },
+        "salary_payment_method": {
+          "type": "string",
+          "enum": [
+            "ผ่านบัญชีธนาคาร",
+            "เงินสด"
+          ]
+        },
+        "monthly_income": {
+          "type": "integer"
+        },
+        "salary_credited_date": {
+          "type": "string"
+        },
+        "bank_name": {
+          "type": "string"
+        },
+        "have_guarantee_bonus": {
+          "type": "string",
+          "enum": [
+            "ใช่",
+            "ไม่ใช่"
+          ]
+        },
+        "guarantee_bonus_paid_month": {
+          "type": "string"
+        },
+        "business_type": {
+          "type": "string"
+        },
+        "no_of_employee": {
+          "type": "integer"
+        },
+        "opinion": {
+          "type": "string"
+        },
+        "verify_date": {
+          "type": "string"
+        },
+        "min_verify_date": {
+          "type": "string"
+        },
+        "verification_result": {
+          "type": "string",
+          "enum": [
+            "ตรง",
+            "ไม่ตรง"
+          ]
+        },
+        "calling_remark1": {
+          "type": "string"
+        },
+        "calling_remark2": {
+          "type": "string"
+        },
+        "calling_remark3": {
+          "type": "string"
+        },
+        "calling_remark_addon": {
+          "type": "string"
+        }
+      }
+    },
+    "remark": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "description": "remark",
+          "type": "string"
+        }
+      }
+    },
+    "isAutodialChecking_enum": {
+      "type": "array"
+    },
+    "business_status_enum": {
+      "type": "array"
+    },
+    "isic_code_enum": {
+      "type": "array"
+    },
+    "has_authorized_enum": {
+      "type": "array"
+    }
+  }
+}

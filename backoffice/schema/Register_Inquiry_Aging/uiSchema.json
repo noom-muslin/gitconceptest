@@ -1,0 +1,707 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "sx": {
+      "padding": "0 0 0"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {}
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "variant": "h1",
+            "sx": {
+              "lineHeight": "38px",
+              "padding": "16px 16px 16px 16px"
+            },
+            "panelMode": true
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "rule": {
+                "effect": "HIDE",
+                "condition": {
+                  "scope": "#/properties/status/properties/code",
+                  "schema": {
+                    "minimum": 1000,
+                    "exclusiveMaximum": 2000
+                  }
+                }
+              },
+              "elements": [
+                {
+                  "type": "Notification",
+                  "label": "เกิดข้อผิดพลาด",
+                  "options": {
+                    "preventDuplicate": 1,
+                    "autoHideDuration": 3000,
+                    "persist": false,
+                    "variant": "error",
+                    "hideCloseButton": true
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6,
+                    "sx": {
+                      ".MuiGrid-root.MuiGrid-item": {
+                        "display": "content"
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "scope": "#/properties/effectiveDate",
+                      "options": {
+                        "sx": {
+                          "display": "none"
+                        }
+                      }
+                    },
+                    {
+                      "type": "ActionButton",
+                      "label": "Aging",
+                      "options": {
+                        "sx": {
+                          "display": "none"
+                        },
+                        "validationSchema": false,
+                        "htmlID": "hiddenRefreshButton",
+                        "variant": "secondary",
+                        "chain": [
+                          {
+                            "operationType": "action",
+                            "conditionTypeId": "Register_Inquiry_Aging",
+                            "payload": {
+                              "userId": "{user.login}",
+                              "accountNumber": "{accountNumber}"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "FormMapperListener",
+                      "options": {
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "operationType": "script",
+                              "converter": "selectEffectiveDate",
+                              "dataPath": "date"
+                            },
+                            "inputDependent": {
+                              "type": "string",
+                              "converter": "initialAging",
+                              "dataPath": "accountNumber"
+                            },
+                            "potFixed": {
+                              "type": "string",
+                              "operationType": "script",
+                              "converter": "convertNumber",
+                              "dataPath": "pot"
+                            },
+                            "pisFixed": {
+                              "type": "string",
+                              "operationType": "script",
+                              "converter": "convertNumber",
+                              "dataPath": "pis"
+                            },
+                            "priFixed": {
+                              "type": "string",
+                              "operationType": "script",
+                              "converter": "convertNumber",
+                              "dataPath": "pri"
+                            },
+                            "amountUnpaidFixed": {
+                              "type": "string",
+                              "operationType": "script",
+                              "converter": "convertNumber",
+                              "dataPath": "amountUnpaid"
+                            },
+                            "effectiveDate": {
+                              "type": "string",
+                              "operationType": "script",
+                              "converter": "validateCurrentData",
+                              "dataPath": "date"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "เลขที่บัญชี",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/accountNumber",
+                          "options": {
+                            "variant": "body2"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6,
+                    "sx": {
+                      ".MuiGrid-root.MuiGrid-item": {
+                        "display": "content"
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ยอดคงเหลือ ณ วันที่",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "ExternalComponent",
+                          "scope": "#/properties/date",
+                          "options": {
+                            "htmlID": "selectEffectiveDate",
+                            "externalComponentName": "thai-calendar",
+                            "externalComponentScope": "remote1",
+                            "externalComponentModule": "./ThaiDatePicker",
+                            "views": "year,month,day",
+                            "variant": "outlined",
+                            "sx": {
+                              "width": "100%"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "จำนวนงวดค้าง",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "0.5em",
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/numberPeriodUnpaid",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " งวด",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ยอดค้างชำระ",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "0.5em",
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/amountUnpaidFixed",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " บาท",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ยอดคงเหลือ",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "NumberField",
+                          "label": false,
+                          "scope": "#/properties/outstandingBalance",
+                          "options": {
+                            "decimalScale": "2",
+                            "fixedDecimalScale": true,
+                            "showUnfocusedDescription": true,
+                            "thousandSeparator": ",",
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "36px",
+                              ".MuiTypography-root": {
+                                "margin": "10px 10px 10px 0"
+                              },
+                              ".MuiInputBase-input": {
+                                "textAlign": "right"
+                              }
+                            },
+                            "endAdornmentTypography": {
+                              "text": "บาท"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Available Amount",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "NumberField",
+                          "label": false,
+                          "scope": "#/properties/availableBalance",
+                          "options": {
+                            "decimalScale": "2",
+                            "fixedDecimalScale": true,
+                            "showUnfocusedDescription": true,
+                            "thousandSeparator": ",",
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "sx": {
+                              "height": "36px",
+                              ".MuiTypography-root": {
+                                "margin": "10px 10px 10px 0"
+                              },
+                              ".MuiInputBase-input": {
+                                "textAlign": "right"
+                              }
+                            },
+                            "endAdornmentTypography": {
+                              "text": "บาท"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "เกรด",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "SelectField",
+                          "label": false,
+                          "scope": "#/properties/grade",
+                          "options": {
+                            "fullwidth": true,
+                            "variant": "outlined",
+                            "query": "Register/StandardCode",
+                            "queryVariables": {
+                              "ListCode": "N104"
+                            },
+                            "converter": "mapCodeLabel"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "PRI",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "0.5em",
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/priFixed",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " บาท",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "PIS",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "0.5em",
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/pisFixed",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " บาท",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "1em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "POT",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "spacing": "0.5em",
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "scope": "#/properties/potFixed",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": " บาท",
+                              "options": {
+                                "variant": "body2"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "sx": {
+              "padding": "1em",
+              "backgroundColor": "white",
+              "borderTop": "1px solid #eaebed"
+            }
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "0.5em"
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "ActionButton",
+                      "label": "บันทึกข้อมูล",
+                      "options": {
+                        "sx": {
+                          "minWidth": "110px !important",
+                          "marginTop": "-16px !important"
+                        },
+                        "className": "primaryButton",
+                        "justifyContent": "flex-end",
+                        "chain": [
+                          {
+                            "operationType": "action",
+                            "conditionTypeId": "Register_Inquiry_Aging_Save",
+                            "payload": {
+                              "accountNumber": "{accountNumber}",
+                              "effectiveDate": "{effectiveDate}",
+                              "numberPeriodUnpaid": "{numberPeriodUnpaid}",
+                              "amountUnpaid": "{amountUnpaid}",
+                              "outstandingBalance": "{outstandingBalance}",
+                              "availableBalance": "{availableBalance}",
+                              "grade": "{grade}",
+                              "pri": "{pri}",
+                              "pis": "{pis}",
+                              "pot": "{pot}"
+                            }
+                          },
+                          {
+                            "if": {
+                              "type": "object",
+                              "required": ["data"],
+                              "properties": {
+                                "data": {
+                                  "type": "object",
+                                  "required": ["payload"],
+                                  "properties": {
+                                    "payload": {
+                                      "type": "object",
+                                      "required": ["data"],
+                                      "properties": {
+                                        "data": {
+                                          "required": ["status"],
+                                          "type": "object",
+                                          "properties": {
+                                            "status": {
+                                              "type": "object",
+                                              "required": ["code"],
+                                              "properties": {
+                                                "code": {
+                                                  "type": "number",
+                                                  "const": 1000
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "chain": [
+                              {
+                                "operationType": "modal",
+                                "subtype": "cancel"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

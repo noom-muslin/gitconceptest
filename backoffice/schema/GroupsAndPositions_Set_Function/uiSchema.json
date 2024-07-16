@@ -1,0 +1,612 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px 16px 86px 16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "breadcrumbsWhiteBg"
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/groups-and-positions"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ArrowBack"
+            },
+            {
+              "type": "Typography",
+              "label": "กลับไป"
+            },
+            {
+              "type": "Typography",
+              "label": "Groups and Positions"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Typography",
+      "label": "แก้ไขหน้าที่",
+      "options": {
+        "variant": "h6",
+        "sx": {
+          "padding": "4px 0"
+        }
+      }
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "variant": "section"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "spacing": "16px",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "Groups and Positions Details"
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true,
+            "sx": {
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "รหัสตำแหน่ง",
+                  "scope": "#/properties/groupsPositionCode",
+                  "options": {
+                    "displayOnly": true,
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "รหัสตำแหน่ง",
+                  "scope": "#/properties/groupsPositionName",
+                  "options": {
+                    "displayOnly": true,
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "direction": "row"
+                  },
+                  "elements": [
+                    {
+                      "type": "Typography",
+                      "label": "วันที่มีผล",
+                      "options": {
+                        "variant": "label"
+                      }
+                    },
+                    {
+                      "type": "Typography",
+                      "label": "*",
+                      "options": {
+                        "variant": "label",
+                        "sx": {
+                          "color": "error.main"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "ExternalComponent",
+                  "scope": "#",
+                  "options": {
+                    "externalComponentName": "thai-calendar",
+                    "externalComponentScope": "remote1",
+                    "externalComponentModule": "./ThaiDateRange",
+                    "views": "year,month,day",
+                    "variant": "outlined",
+                    "sx": {
+                      "width": "100%"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "6"
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "วันที่มีผลก่อนหน้า",
+                  "scope": "#/properties/groupsPositionName",
+                  "options": {
+                    "displayOnly": true,
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "spacing": "16px",
+            "sx": {
+              "padding": "0 16px 10px 16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "flex": 1,
+                  "display": "flex",
+                  "flexDirection": "column"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ตำแหน่งทั้งหมด",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "sx": {
+                      "border": "1px solid",
+                      "borderColor": "secondary.deep",
+                      "padding": "0 16px 0 4px",
+                      "height": "400px",
+                      "overflow": "auto",
+                      "& thead th": {
+                        "border": 0,
+                        "padding": 0
+                      },
+                      "& tbody td": {
+                        "padding": "3px 0"
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/unselected",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "cells": [
+                          {
+                            "type": "CheckboxField",
+                            "label": "มีเงื่อนไขพิเศษ",
+                            "scope": "#/properties/checked",
+                            "options": {
+                              "columnTitle": "",
+                              "columnSx": {
+                                "width": "30px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ลำดับ",
+                            "scope": "#/properties/code",
+                            "options": {
+                              "columnTitle": ""
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "spacing": "8px",
+                "sx": {
+                  "justifyContent": "center",
+                  "margitTop": "24px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": " ",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "moveAllToSelectedCheckbox",
+                    "variant": "secondary",
+                    "size": "wideIcon",
+                    "icon": "KeyboardDoubleArrowRightOutlined",
+                    "validationSchema": false,
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "selected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "unselected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": " ",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "moveUnselectedToSelectCheckbox",
+                    "variant": "secondary",
+                    "size": "wideIcon",
+                    "icon": "KeyboardArrowRightOutlined",
+                    "validationSchema": false,
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "selected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "unselected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": " ",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "moveSelectedToUnselectCheckbox",
+                    "variant": "secondary",
+                    "size": "wideIcon",
+                    "icon": "KeyboardArrowLeftOutlined",
+                    "validationSchema": false,
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "selected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "unselected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label": " ",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "moveAllToUnselectedCheckbox",
+                    "variant": "secondary",
+                    "size": "wideIcon",
+                    "icon": "KeyboardDoubleArrowLeftOutlined",
+                    "validationSchema": false,
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "selected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "unselected": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "number"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "occupation_group_code": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "flex": 1,
+                  "display": "flex",
+                  "flexDirection": "column"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ตำแหน่งที่เลือก",
+                  "options": {
+                    "variant": "label"
+                  }
+                },
+                {
+                  "type": "StackLayout",
+                  "options": {
+                    "sx": {
+                      "border": "1px solid",
+                      "borderColor": "secondary.deep",
+                      "padding": "0 16px 0 4px",
+                      "height": "400px",
+                      "overflow": "auto",
+                      "& thead th": {
+                        "border": 0,
+                        "padding": 0
+                      },
+                      "& tbody td": {
+                        "padding": "3px 0"
+                      }
+                    }
+                  },
+                  "elements": [
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/selected",
+                      "label": {
+                        "show": false
+                      },
+                      "options": {
+                        "hideTableToolbar": true,
+                        "cells": [
+                          {
+                            "type": "CheckboxField",
+                            "label": "มีเงื่อนไขพิเศษ",
+                            "scope": "#/properties/checked",
+                            "options": {
+                              "columnTitle": "",
+                              "columnSx": {
+                                "width": "30px"
+                              }
+                            }
+                          },
+                          {
+                            "type": "Typography",
+                            "label": "ลำดับ",
+                            "scope": "#/properties/code",
+                            "options": {
+                              "columnTitle": ""
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row-reverse",
+                "spacing": "10px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "บันทึกข้อมูล",
+                  "options": {
+                    "variant": "primary",
+                    "validationSchema": true,
+                    "formValidationErrors": "show"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "hideColumnFilter": true,
+  "hideGridPager": true,
+  "defaultPageSize": 2,
+  "columns": [
+    {
+      "title": "ลำดับ",
+      "field": "seq",
+      "name": "seq",
+      "minWidth": 50
+    },
+    {
+      "title": "ชื่อผู้บันทึกความเห็น",
+      "field": "performingBy",
+      "name": "performingBy",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่บันทึกความเห็น",
+      "field": "saveDateTime",
+      "name": "saveDateTime",
+      "minWidth": 200
+    },
+    {
+      "title": " ",
+      "name": "",
+      "sortable": false,
+      "locked": true,
+      "resizable": false,
+      "rowActions": [
+        {
+          "label": "ดูความเห็น",
+          "triggerType": "link",
+          "options": {
+            "operationType": "script",
+            "converter": "consoleLog",
+            "payload": {
+              "name": "{data}"
+            }
+          }
+        }
+      ],
+      "minWidth": 100
+    }
+  ],
+  "selection": {
+      "type": "object",
+      "properties": {
+          "additionalProperties": {
+              "type": "object"
+          }
+      }
+  }
+}

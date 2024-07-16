@@ -1,0 +1,103 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconWarning"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "HelpOutlineOutlined"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "คุณกำลังจะออกจากหน้านี้",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "หากต้องการบันทึกข้อมูลที่ระบุหรือแก้ไขไว้ กรุณาเลือก “บันทึก”"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ไม่บันทึก",
+          "options": {
+            "variant": "secondary",
+            "chain": [
+              {
+                "operationType": "open",
+                "route": "/ncb"
+              },
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "บันทึก",
+          "options": {
+            "variant": "primary",
+            "chain": [
+              {
+                "operationType": "open",
+                "route": "/ncb"
+              },
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

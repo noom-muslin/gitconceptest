@@ -1,0 +1,531 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbsWhiteBg"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/ncb/{route.taskId}/details"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "เอกสารใบสมัครสินเชื่อ"
+                },
+                {
+                  "type": "Typography",
+                  "scope": "#/properties/application_number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "alignItems": "flex-end"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "แก้ไขข้อมูลพนักงานขาย",
+              "options": {
+                "variant": "h6"
+              }
+            }
+          ]
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "variant": "section"
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ข้อมูลพนักงานขาย"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "container": true,
+                "spacing": "16px",
+                "sx": {
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 12
+                  },
+                  "elements": [
+                    {
+                      "type": "BoxLayout",
+                      "elements": [
+                        {
+                          "type": "StackLayout",
+                          "options": {
+                            "direction": "row"
+                          },
+                          "elements": [
+                            {
+                              "type": "Typography",
+                              "label": "รหัสพนักงาน",
+                              "options": {
+                                "variant": "label"
+                              }
+                            },
+                            {
+                              "type": "Typography",
+                              "label": "*",
+                              "options": {
+                                "variant": "subtitle2Red"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/editSalesPerson/properties/employeeId",
+                          "options": {
+                            "variant": "body2Padding"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "คำนำหน้า",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "subtitle2Red"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/editSalesPerson/properties/title",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ชื่อ",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "subtitle2Red"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/editSalesPerson/properties/name",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "ชื่อกลาง",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/editSalesPerson/properties/middleName",
+                          "options": {
+                            "variant": "body2Padding"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "นามสกุล",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "label": "*",
+                          "options": {
+                            "variant": "subtitle2Red"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Typography",
+                      "scope": "#/properties/editSalesPerson/properties/lastName",
+                      "options": {
+                        "variant": "body2Padding"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "MaskField",
+                      "label": "เบอร์โทรศัพท์ 1",
+                      "scope": "#/properties/editSalesPerson/properties/phoneNumber1",
+                      "errors": {
+                        "required": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                        "minLength": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                        "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "mask": [
+                          "00-000-000",
+                          "000-000-000",
+                          "000-000-0000"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "MaskField",
+                      "label": "เบอร์โทรศัพท์ 2",
+                      "scope": "#/properties/editSalesPerson/properties/phoneNumber2",
+                      "errors": {
+                        "minLength": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                        "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "mask": [
+                          "00-000-000",
+                          "000-000-000",
+                          "000-000-0000"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "MaskField",
+                      "label": "เบอร์โทรศัพท์ 3",
+                      "scope": "#/properties/editSalesPerson/properties/phoneNumber3",
+                      "errors": {
+                        "minLength": "กรุณาระบุข้อมูลให้ครบถ้วน",
+                        "pattern": "กรุณาระบุข้อมูลให้ครบถ้วน"
+                      },
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "mask": [
+                          "00-000-000",
+                          "000-000-000",
+                          "000-000-0000"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "TextField",
+                      "label": false,
+                      "scope": "#/properties/empty_field",
+                      "options": {
+                        "variant": "outlined",
+                        "fullwidth": true,
+                        "hideIfEmpty": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "สาขา",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/editSalesPerson/properties/branch",
+                          "options": {
+                            "variant": "body2Padding"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "OC Code หน่วยงานเจ้าของเรื่อง",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/editSalesPerson/properties/ocCode",
+                          "options": {
+                            "variant": "body2Padding"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/applicationGroup/properties/unsecuredOrAuto",
+                          "schema": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Incentive OC Code",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/editSalesPerson/properties/incentiveOcCode",
+                          "options": {
+                            "variant": "body2Padding"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "GridLayout",
+                  "options": {
+                    "xs": 6
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "rule": {
+                        "effect": "SHOW",
+                        "condition": {
+                          "scope": "#/properties/applicationGroup/properties/auto",
+                          "schema": {
+                            "const": true
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label": "Booking Branch",
+                          "options": {
+                            "variant": "label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/editSalesPerson/properties/bookingBranch",
+                          "options": {
+                            "variant": "body2Padding"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "justifyContent": "end",
+                "sx": {
+                  "padding": "16px",
+                  "borderTop": "1px solid",
+                  "borderColor": "secondary.dark"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "บันทึกข้อมูล",
+                  "options": {
+                    "variant": "primary",
+                    "chain": [
+                      {
+                        "operationType": "action",
+                        "conditionTypeId": "NCB_Details_UpdateSalesPerson",
+                        "payload": {
+                          "employeeId": "{route.employeeId}"
+                        }
+                      },
+                      {
+                        "operationType": "open",
+                        "route": "/ncb/{route.taskId}/details"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

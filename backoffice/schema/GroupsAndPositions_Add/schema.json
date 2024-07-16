@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "groupsPositionCode": {
+      "type": "string"
+    },
+    "groupsPositionName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "groupsPositionCode",
+    "groupsPositionName",
+    "status"
+  ]
+}

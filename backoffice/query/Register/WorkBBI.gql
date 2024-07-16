@@ -1,0 +1,19 @@
+query GetRegisterDetails($taskId: uuid!) {
+  result:ngl_task(where: {id: {_eq: $taskId}}) {
+    application {
+      accounts {
+        appl_bbi_accounts {
+          product_seq
+          acct_pname
+          acct_no
+          credit_line
+          balance
+          approved_amount
+          open_account_date
+          account_status
+          is_not_related
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+subscription GetCollateralAppraisalWorklistAuto(
+  $where: [ngl_task_bool_exp]
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+  $assignee: String!
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _eq: $assignee }
+      task_type_id: { _eq: "CollateralAppraisal" }
+      status_id: { _eq: "InProgress" }
+      application: { application_group: { code: { _eq: "Auto" } } }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    sla_wb {
+      current_duration_minutes
+    }
+    sla_tty {
+      current_duration_minutes
+    }
+    document_in_datetime
+    external_id
+    primary_document {
+      document {
+        document_number
+        document_type {
+          code
+        }
+      }
+    }
+    followup{
+      fu_updated
+    }
+    application {
+      application_id
+      application_group {
+        code
+      }
+      application_type {
+        code
+      }
+      application_date_time_in
+      status_id
+      created_by
+      saleinfos {
+        email
+        phone
+      }
+      primary_borrower {
+        borrower {
+          party_type_id
+          party {
+            name
+            last_name
+            full_name
+            contacts {
+              mobile_phone
+              email
+            }
+            customer_type_code
+          }
+        }
+      }
+      primary_account {
+        account {
+          sub_product_type_id
+          product_group {
+            code
+          }
+          product_type {
+            code
+          }
+          collaterals {
+            autos {
+              vehicle_brand
+              vehicle_model
+              model_year
+              vehicle_sub_model
+              chasis_no
+              engine_type
+              horse_power
+              gear_type
+              vehicle_price
+            }
+          }
+        }
+      }
+    }
+    previous_task {
+      task_type {
+        code
+      }
+    }
+  }
+}

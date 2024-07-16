@@ -1,0 +1,87 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "{zboRouteObject.label}",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "หน้าหลัก",
+          "options": {
+            "sx": {
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type" : "Bucket",
+              "options" : {
+                "name" : "QC_Home"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Pending Follow Up",
+          "options": {
+            "sx": {
+              ".MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type" : "Bucket",
+              "options" : {
+                "name" : "QC_Follow_Up"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "ค้นหา",
+          "options": {
+            "sx": {
+              ".MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type" : "Bucket",
+              "options" : {
+                "name" : "QC_Search"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

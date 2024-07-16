@@ -1,0 +1,11 @@
+query AmphurQuery($province: String!){
+  result: ngl_enum_location(
+  where: {
+    province_name_th: {_eq: $province}
+  },
+  distinct_on: district_en
+  ){
+    value: district_th
+    label: district_th      
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "{zboRouteObject.label}",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "TabStripMenu",
+      "options": {
+        "menu": [
+          {
+            "type": "link",
+            "text": "หน้าหลัก",
+            "link": "/insurance"
+          },
+          {
+            "type": "link",
+            "text": "Pending",
+            "link": "/insurance/pending"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "tabContent"
+      }
+    }
+  ]
+}

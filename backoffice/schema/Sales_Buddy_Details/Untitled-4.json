@@ -1,0 +1,194 @@
+{
+  "applications": [
+    {
+      "application_id": "APP1906202400000001",
+      "application_system_type_id": "Regular",
+      "application_class_id": "Normal",
+      "application_type_id": "SCBP",
+      "application_group_id": "Auto",
+      "application_date_time_in": "2024-05-23T09:12:58.728Z",
+      "application_register_type_id": "FullPack",
+      "channel_id": "Paper",
+      "status_id": "InProgress",
+      "created_by": "sittinanp",
+      "updated_by": "sittinanp",
+      "approved_date_time": null,
+      "tasks": {
+        "data": [
+          {
+            "task_type_id": "WebVerify",
+            "indexing_type_id": null,
+            "work_object": "AL-APP1906202400000001",
+            "document_in_datetime": "2024-05-23T09:12:58.729Z",
+            "status_id": "Todo",
+            "previous_task_id": null,
+            "documents": {
+              "data": {
+                "document": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "document_type_id": "PASSPORT",
+                    "document_status_id": "InformationOnly",
+                    "document_number": "document_number1"
+                  }
+                }
+              }
+            },
+            "party_type": "BorrowerIndividual",
+            "appl_party": {
+              "data": {
+                "name_en": "John",
+                "middle_name_en": "",
+                "last_name_en": "Doe",
+                "name": "John",
+                "middle_name": "",
+                "last_name": "Doe",
+                "full_name_en": "John Doe",
+                "full_name": "John Doe",
+                "application_id": "APP1906202400000001",
+                "reference_no": "1234",
+                "party_juristic_infos": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "juristic_name": "Juristic_name"
+                  }
+                },
+                "accountlistncbs": {
+                  "data": {
+                    "ncb_account_status": "Unknown",
+                    "application_id": "APP1906202400000001",
+                    "updated_by": "Bank"
+                  }
+                },
+                "borrowers": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "party_type_id": "BorrowerIndividual",
+                    "seq": 1
+                  }
+                },
+                "appl_guarantees": {
+                  "data": {
+                    "application_id": "APP1906202400000001",
+                    "party_type_id": "BorrowerIndividual",
+                    "seq": 1
+                  }
+                },
+                "appl_party_rcverify": {
+                  "data": {
+                    "updated_by": "sittinanp",
+                    "created_by": "sittinanp",
+                    
+                      "ngl_appl_party_rcverify_juristicenlite": {
+                        "data": {
+                          "is_verify": true,
+                          "skip_reason": null,
+                          "verify_status": "verified",
+                          "company_name": "ABC Corp",
+                          "reference_no": "REF123",
+                          "business_status": "active",
+                          "has_statements": true,
+                          "last_statements_year": 2022,
+                          "registration_date": "2010-01-15",
+                          "isic": "12345"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_personalenlite": {
+                        "data": {
+                          "is_verify": true,
+                          "skip_reason": null,
+                          "verify_status": "verified"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_dbd": {
+                        "data": {
+                          "is_verify": true,
+                          "skip_reason": null,
+                          "verify_status": "verified",
+                          "company_name": "ABC Corp",
+                          "registration_date": "2010-01-15",
+                          "reference_no": "DBD123",
+                          "business_status": "active",
+                          "registered_capital": 1000000,
+                          "location": "123 Business St",
+                          "last_statements_year": 2022,
+                          "year_not_send_statement": 0,
+                          "isic": "12345",
+                          "opinion": "Positive"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_com_regis": {
+                        "data": {
+                          "is_verify": true,
+                          "veriy_status": "verified",
+                          "company_name": "ABC Corp",
+                          "owner_name": "John Doe",
+                          "registration_date": "2010-01-15",
+                          "company_type": "LLC",
+                          "hq_location": "123 Business St",
+                          "register_at": "Main Office",
+                          "business_status": "active",
+                          "website": "www.abccorp.com"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_nhso": {
+                        "data": {
+                          "is_verify": true,
+                          "verify_status": "verified"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_professional": {
+                        "data": {
+                          "is_verify": true,
+                          "verify_status": "verified",
+                          "opinion": "Positive"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_rdtax": {
+                        "data": {
+                          "is_verify": true,
+                          "verify_status1": "verified",
+                          "form_type1": "Type A",
+                          "year1": 2022,
+                          "verify_status2": "verified",
+                          "form_type2": "Type B",
+                          "year2": 2021,
+                          "opinion": "No issues"
+                        }
+                      },
+                      "ngl_appl_party_rcverify_hr": {
+                        "data": {
+                          "is_verify": true,
+                          "employee_type": "Full-time",
+                          "position": "Manager",
+                          "job_start_date": "2015-06-01",
+                          "months_at_current_job": 108,
+                          "monthly_income": 5000,
+                          "salary_credited_date": "2022-05-01",
+                          "bank_name": "ABC Bank",
+                          "guarantee_bonus": 1000,
+                          "guarantee_bonus_paid_month": "December",
+                          "business_type": "Finance",
+                          "no_of_employee": 50,
+                          "remark": "Good performance"
+                        }
+                      }
+                    
+                    
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "accounts": {
+        "data": {
+          "product_group_id": "Auto",
+          "product_type_id": "New",
+          "rccoloan_status": null
+        }
+      }
+    }
+  ]
+}

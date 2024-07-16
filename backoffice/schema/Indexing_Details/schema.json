@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "properties": {
+    "application_number": {
+      "type": "string"
+    },
+    "application_group": {
+      "type": "string"
+    },
+    "application_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "indexing_type": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "cidDocumentDetails": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "register_type": {
+      "type": "string"
+    },
+    "register_types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "register_type"
+  ]
+}

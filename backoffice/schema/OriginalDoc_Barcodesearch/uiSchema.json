@@ -1,0 +1,256 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "{zboRouteObject.label}",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_MainTab"
+      }
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "justifyContent": "center",
+            "direction": "row",
+            "spacing": 2,
+            "container": "true",
+            "alignItems": "center",
+            "sx": {
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx":{
+                  "padding":"16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "Application No.",
+                  "options": {
+                    "variant": "body2",
+                    "sx": {
+                      "textAlign": "end",
+                      "color": "text.secondary",
+                      "lineHeight": "4em"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx":{
+                  "padding":"16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "variant": "outlined",
+                    "fullwidth": true,
+                    "sx": {
+                      "textAlign": "center",
+                      "color": "text.secondary"
+                    }
+                  },
+                  "scope": "#/properties/application_id"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx":{
+                  "padding":"16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "ค้นหา",
+                  "options": {
+                    "className": "primaryButton",
+                    "chain": [
+                      {
+                        "operationType": "action",
+                        "conditionTypeId": "OriginalDoc_Barcode_Search",
+                        "payload": {
+                          "userId": "{user.login}",
+                          "application_id": "{application_id}"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GridLayout",
+          "options": {
+            "justifyContent": "center",
+            "direction": "row",
+            "alignItems": "center",
+            "spacing": 2,
+            "container": "true"
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx":{
+                  "padding":"16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "สถานะใบสมัคร",
+                  "options": {
+                    "variant": "body2",
+                    "sx": {
+                      "textAlign": "end",
+                      "color": "text.secondary",
+                      "lineHeight": "4em"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx":{
+                  "padding":"16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "options": {
+                    "variant": "body2",
+                    "sx": {
+                      "textAlign": "center",
+                      "color": "text.secondary"
+                    }
+                  },
+                  "scope": "#/properties/statusId"
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": "2",
+                "sx":{
+                  "padding":"16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "Check",
+                  "options": {
+                    "sx": {
+                      "color": "green"
+                    }
+                  },
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/statusIcon",
+                      "schema": {
+                        "const": "green"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "Icon",
+                  "label": "Close",
+                  "options": {
+                    "sx": {
+                      "color": "red"
+                    }
+                  },
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/statusIcon",
+                      "schema": {
+                        "const": "red"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "Icon",
+                  "label": "TripOrigin",
+                  "options": {
+                    "sx": {
+                      "color": "yellow"
+                    }
+                  },
+                  "rule": {
+                    "effect": "SHOW",
+                    "condition": {
+                      "scope": "#/properties/statusIcon",
+                      "schema": {
+                        "const": "yellow"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

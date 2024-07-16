@@ -1,0 +1,346 @@
+{
+  "type": "StackLayout",
+  "options": {
+    "spacing": "16px",
+    "sx": {
+      "padding": "16px"
+    }
+  },
+  "elements": [
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "breadcrumbsWhiteBg"
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/position-management-add"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "ArrowBack"
+            },
+            {
+              "type": "Typography",
+              "label": "กลับไป"
+            },
+            {
+              "type": "Typography",
+              "label": "เพิ่มข้อมูล"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "display": "flex",
+          "justifyContent": "space-between"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "อัปโหลดข้อมูล",
+          "options": {
+            "variant": "h6",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "gap": "16px",
+              "justifyContent": "space-between"
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ดาวน์โหลด Template",
+              "options": {
+                "operationType": "action",
+                "variant": "secondary",
+                "validationSchema": false
+              }
+            },
+            {
+              "type": "ActionButton",
+              "label": "เลือกไฟล์",
+              "options": {
+                "operationType": "action",
+                "variant": "secondary",
+                "validationSchema": false,
+                "conditionTypeId": "PositionManagement_Upload_SelectFile"
+              }
+            },
+            {
+              "type": "FileField",
+              "scope": "#/properties/singleUpload",
+              "label": false,
+              "options": {
+                "placeholder": "Upload required document",
+                "variant": "outlined"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "component": "section",
+        "variant": "section"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row"
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ผลการตรวจสอบไฟ"
+            },
+            {
+              "type": "ActionButton",
+              "label": "ดาวน์โหลดผลการตรวจสอบ",
+              "options": {
+                "operationType": "action",
+                "variant": "disabled",
+                "validationSchema": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/passedValidation",
+              "schema": {
+                "const": false
+              }
+            }
+          },
+          "options": {
+            "sx": {
+              "display": "flex",
+              "justifyContent": "left",
+              "gap": "20px",
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ไฟล์ไม่ผ่านการตรวจสอบ กรุณาดาวน์โหลดผลการตรวจสอบและแก้ไขข้อมูลในไฟล์ก่อนอัปโหลดอีกครั้ง",
+              "options": {
+                "sx": {
+                  "color": "error.main"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/passedValidation",
+              "schema": {
+                "const": true
+              }
+            }
+          },
+          "options": {
+            "sx": {
+              "display": "flex",
+              "justifyContent": "left",
+              "gap": "20px",
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "ไฟล์ผ่านการตรวจสอบแล้ว กรุณากด “อัปโหลด”",
+              "options": {
+                "sx": {
+                  "color": "success.main"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "rule": {
+            "effect": "SHOW",
+            "condition": {
+              "scope": "#/properties/passedValidation",
+              "schema": {
+                "const": "default"
+              }
+            }
+          },
+          "options": {
+            "sx": {
+              "display": "flex",
+              "justifyContent": "center",
+              "gap": "20px",
+              "padding": "16px"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "กรุณากด \"เลือกไฟล์\" เพื่ออัปโหลดข้อมู",
+              "options": {
+                "sx": {
+                  "color": "text.light"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "PaperLayout",
+      "options": {
+        "variant": "bottomFixed"
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row-reverse",
+            "justifyContent": "space-between"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row-reverse",
+                "spacing": "10px"
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label": "อัปโหลด",
+                  "options": {
+                    "variant": "primary",
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "action",
+                        "conditionTypeId": "Position_Management_Upload_Submit",
+                        "payload": {}
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": [
+                                "validation"
+                              ],
+                              "properties": {
+                                "validation": {
+                                  "type": "object",
+                                  "required": [
+                                    "isSelectedFile"
+                                  ],
+                                  "properties": {
+                                    "isSelectedFile": {
+                                      "type": "boolean",
+                                      "const": false
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Basic_Error",
+                        "dialogVariables": {
+                          "title": "ไม่สามารถอัปโหลดข้อมูลได้",
+                          "text": "กรุณาลอกรุณากด “เลือกไฟล์” และรอการตรวจสอบเพื่ออัปโหลดข้อมูลงใหม่อีกครั้ง"
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": [
+                                "validation"
+                              ],
+                              "properties": {
+                                "validation": {
+                                  "type": "object",
+                                  "required": [
+                                    "fileValidPassed"
+                                  ],
+                                  "properties": {
+                                    "fileValidPassed": {
+                                      "type": "boolean",
+                                      "const": false
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "operationType": "modal",
+                        "subtype": "show",
+                        "dialogName": "m_Basic_Error",
+                        "dialogVariables": {
+                          "title": "ไฟล์ไม่ผ่านการตรวจสอบ",
+                          "text": "กรุณาแก้ไขข้อมูลในไฟล์ให้ถูกต้อง หรือเลือกไฟล์ใหม่เพื่ออัปโหลด"
+                        }
+                      },
+                      {
+                        "if": {
+                          "else": true
+                        },
+                        "operationType": "modal",
+                        "dialogName": "m_Position_Upload",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

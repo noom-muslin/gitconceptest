@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "orderBorrowers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "documentNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "customerName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "dateOfBirth": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "number": {
+            "type": [
+              "integer"
+            ],
+            "minimum": 1
+          },
+          "borrowerNumberOptions": {
+            "type": "array"
+          },
+          "borrowerRelationshipOptions": {
+            "type": "array"
+          },
+          "relationship": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

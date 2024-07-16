@@ -1,0 +1,190 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "variant": "breadcrumbs",
+        "sx": {
+          "padding": "1em"
+        }
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/mf-profile"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em",
+                "sx": {
+                  "padding": "0.5em 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack",
+                  "options": {
+                    "sx": {
+                      "color": "primary.deep"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป",
+                  "options": {
+                    "sx": {
+                      "color": "text.light",
+                      "textDecoration": "none"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "MF Profile",
+
+                  "options": {
+                    "sx": {
+                      "fontWeight": "bold",
+                      "color": "primary.deep",
+                      "textDecoration": "none"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": { "padding": "1em" }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "รายละเอียด Follow Up",
+          "options": {
+            "variant": "h3",
+            "component": "section",
+            "sx": {
+              "fontWeight": "bold"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "type": "GridLayout",
+      "options": {
+        "xs": 6
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "sx": {
+              "padding": "0 1em 1em",
+              "marginBottom": "1em",
+              "display": "grid"
+            }
+          },
+          "elements": [
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "padding": "0 1em",
+                  "marginBottom": "1em",
+                  "borderTop": "1px solid #eaebed",
+                  "overflowX": "scroll"
+                }
+              },
+              "elements": [
+                {
+                  "type": "UniversalArrayView",
+                  "scope": "#/properties/detailsFollowUp",
+                  "label": {
+                    "show": false
+                  },
+                  "options": {
+                    "hideTableToolbar": true,
+                    "disableItemsRemove": true,
+                    "sx": {
+                      "th, td": {
+                        "padding": "8px 4px",
+                        "& p": {
+                          "textWrap": "nowrap"
+                        }
+                      },
+                      "minWidth": "1200px"
+                    },
+                    "cells": [
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/no",
+                        "options": {
+                          "columnTitle": "ลำดับ",
+                          "variant": "body2",
+                          "sx": {
+                            "width": "40px"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/username",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "ชื่อผู้ใช้งาน",
+                          "sx": {
+                            "minWidth": "400px"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/reason",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "เหตุผลในการ Follow Up",
+                          "sx": {
+                            "minWidth": "400px"
+                          }
+                        }
+                      },
+                      {
+                        "type": "Typography",
+                        "scope": "#/properties/date_and_time",
+                        "options": {
+                          "variant": "body2",
+                          "columnTitle": "วันเวลาที่ Follow Up",
+                          "sx": {
+                            "minWidth": "60px"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

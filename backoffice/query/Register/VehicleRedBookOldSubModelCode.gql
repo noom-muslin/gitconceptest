@@ -1,0 +1,5 @@
+query MyQuery($redbook_model: String = "", $redbook_brand: String = "") {
+  result: ngl_enum_vehicle_redbook(distinct_on: sub_model_code, where: {brand_code: {_eq: $redbook_brand}, model_code: {_eq: $redbook_model}, is_active: {_eq: true}}, order_by: {sub_model_code: asc}) {
+    label: sub_model_code
+  }
+}

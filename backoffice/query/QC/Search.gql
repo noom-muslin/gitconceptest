@@ -1,0 +1,66 @@
+query GetNcbWorkBasket(
+  $where: [ngl_task_bool_exp]
+  $taskType: String
+  $order_by: [ngl_task_order_by!]
+  $limit: Int
+  $offset: Int
+) {
+  result: ngl_task(
+    where: {
+      performing_by: { _is_null: true }
+      task_type_id: { _eq: $taskType }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    created_by
+    deadline_at
+    work_object
+    document_in_datetime
+    external_id
+    primary_document {
+      document {
+        document_number
+        document_type {
+          code
+        }
+      }
+    }
+    application {
+      application_id
+      application_group {
+        code
+      }
+      application_type {
+        code
+      }
+      application_class {
+        code
+      }
+      application_channel {
+        code
+      }
+      primary_account {
+        account {
+          product_group {
+            code
+          }
+          product_type {
+            code
+          }
+        }
+      }
+    }
+    indexing_type {
+      code
+    }
+    previous_task {
+      task_type {
+        code # Channel Station
+      }
+    }
+  }
+}

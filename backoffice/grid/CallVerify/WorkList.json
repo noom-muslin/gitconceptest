@@ -1,0 +1,176 @@
+{
+  "hideColumnFilter": true,
+  "defaultPageSize": 5,
+  "columns": [
+    {
+      "title": "Total SLA",
+      "field": "create_date_time",
+      "name": "total_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "WB SLA",
+      "field": "deadline_at",
+      "name": "wb_sla",
+      "converter": "sla_converter",
+      "minWidth": 100
+    },
+    {
+      "title": "งานด่วน",
+      "field": "is_urgency_work",
+      "name": "urgent_work",
+      "width": 100
+    },
+    {
+      "title": "Application No",
+      "field": "application_id",
+      "name": "application_no",
+      "minWidth": 150
+    },
+    {
+      "name": "customer_name",
+      "field": "application.primary_borrower.borrower.party.full_name",
+      "title": "ชื่อลูกค้า",
+      "minWidth": 120
+    },
+    {
+      "title": "Application Group",
+      "field": "application.application_group.description",
+      "name": "application_group",
+      "width": 190
+    },
+    {
+      "title": "Application Class",
+      "field": "application.application_class.description",
+      "name": "application_class",
+      "minWidth": 190
+    },
+    {
+      "title": "Product Type",
+      "field": "application.primary_account.account.product_type.description",
+      "name": "product_type",
+      "minWidth": 130
+    },
+    {
+      "title": "Sub Product Type",
+      "field": "application.primary_account.account.sub_product.description",
+      "name": "sub_product_type",
+      "minWidth": 190
+    },
+    {
+      "title": "Lane/Level",
+      "field": "application.lane",
+      "name": "lane",
+      "minWidth": 150
+    },
+    {
+      "title": "Status",
+      "field": "application.status_work.description",
+      "name": "status",
+      "minWidth": 150
+    },
+    {
+      "title": "วันเวลาที่สร้างเอกสาร",
+      "field": "document_in_datetime",
+      "name": "doc_in_datetime",
+      "converter": "date_column_converter",
+      "minWidth": 190
+    },
+    {
+      "title": "วันเวลาที่มอบหมาย",
+      "field": "create_date_time",
+      "name": "assignment_date_time",
+      "converter": "date_column_converter",
+      "minWidth": 190
+    },
+    {
+      "title": "FU Updated",
+      "field": "application.followups",
+      "name": "fu_updated",
+      "converter": "receive_document_date_time_multi_converter",
+      "minWidth": 150
+    },
+    {
+      "title": "รายละเอียด Follow Up",
+      "field": "application.followups",
+      "name": "follow_up_comment",
+      "converter": "comment_details_multi_converter",
+      "minWidth": 190
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "label": "ดู FU",
+          "triggerType": "link",
+          "options": {
+            "sx": {
+              "background": "white"
+            },
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_CallVerify",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/CallVerify/#Id/details"
+            }
+          }
+        }
+      ],
+      "width": 100
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": false,
+      "rowActions": [
+        {
+          "label": "ดู CA",
+          "triggerType": "link",
+          "options": {
+            "sx": {
+              "background": "white"
+            },
+            "operationType": "action",
+            "conditionTypeId": "WorkBasket_GetTask",
+            "permission": "p_CallVerify",
+            "payload": {
+              "taskId": "{data.id}",
+              "routeUrl": "/CallVerify/#Id/details"
+            }
+          }
+        }
+      ],
+      "width": 100
+    },
+    {
+      "name": "",
+      "title": " ",
+      "sortable": false,
+      "locked": true,
+      "rowActions": [
+        {
+          "label": "ดูรายละเอียด",
+          "triggerType": "link",
+          "options": {
+            "operationType": "open",
+            "permission": "{zboRouteObject.permission}",
+            "route": "{zboRouteObject.route}/{data.id}/details"
+          }
+        }
+      ],
+      "width": 150
+    }
+  ],
+  "initialSort": [
+    {
+      "field": "create_date_time",
+      "dir": "desc"
+    }
+  ]
+}

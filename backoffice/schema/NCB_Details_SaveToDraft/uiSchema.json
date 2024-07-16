@@ -1,0 +1,168 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "maxWidth": "400px",
+      "minWidth": "400px"
+    }
+  },
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "container": true,
+        "direction": "row",
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "iconWarning"
+          },
+          "elements": [
+            {
+              "type": "Icon",
+              "label": "HelpOutlineOutlined"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "คุณต้องการบันทึกแบบร่างหรือไม่",
+              "options": {
+                "variant": "subtitle2Dark",
+                "sx": {
+                  "marginBottom": "8px",
+                  "display": "block"
+                }
+              }
+            },
+            {
+              "type": "Typography",
+              "label": "เมื่อกดบันทึกแล้ว ระบบจะบันทึกข้อมูล และคุณจะกลับไปที่หน้าหลัก",
+              "options": {
+                "variant": "body2",
+                "sx": {
+                  "whiteSpace": "pre-line"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "8px",
+        "sx": {
+          "padding": "16px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "ยกเลิก",
+          "options": {
+            "variant": "secondary",
+            "chain": [
+              {
+                "operationType": "modal",
+                "subtype": "close"
+              }
+            ]
+          }
+        },
+        {
+          "type": "ActionButton",
+          "label": "บันทึก",
+          "options": {
+            "chain": [
+              {
+                "operationType": "action",
+                "conditionTypeId": "NCB_Details_SaveToDraft"
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "payload"
+                      ],
+                      "properties": {
+                        "payload": {
+                          "type": "object",
+                          "required": [
+                            "data"
+                          ],
+                          "properties": {
+                            "data": {
+                              "type": "object",
+                              "required": [
+                                "isSaveDraftErrorModalShown"
+                              ],
+                              "properties": {
+                                "isSaveDraftErrorModalShown": {
+                                  "type": "boolean",
+                                  "const": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  },
+                  {
+                    "operationType": "modal",
+                    "subtype": "show",
+                    "dialogName": "m_Basic_Error",
+                    "dialogVariables": {
+                      "title": "ไม่สามารถดำเนินการต่อได้",
+                      "text": "กรุณาลองใหม่อีกครั้ง"
+                    }
+                  }
+                ]
+              },
+              {
+                "if": {
+                  "else": true
+                },
+                "chain": [
+                  {
+                    "operationType": "open",
+                    "route": "/ncb"
+                  },
+                  {
+                    "operationType": "modal",
+                    "subtype": "close"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

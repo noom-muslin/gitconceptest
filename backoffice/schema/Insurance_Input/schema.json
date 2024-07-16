@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "save_status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "header": {
+          "type": "string"
+        }
+      }
+    },
+    "input_status_enum": {
+      "type": "array"
+    },
+    "option": {
+      "type": ["string","null"]
+    },
+    "remark": {
+      "type": ["string","null"]
+    },
+    "checker_flag": {
+      "type": "string"
+    },
+    "nextStep": {
+      "type": "string"
+    },
+    "opInsuranceId": {
+      "type": "string"
+    },
+    "op_number": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "status_show_button": {
+      "type": "boolean"
+    }
+  }
+}

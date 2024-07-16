@@ -1,0 +1,5 @@
+query GetVehicleRedbookGearType($redbook_model: String = "", $redbook_brand: String = "") {
+  result: ngl_enum_vehicle_redbook(distinct_on: gear_type, where: {brand_code: {_eq: $redbook_brand}, model_code: {_eq: $redbook_model}, is_active: {_eq: true}}, order_by: {gear_type: asc}) {
+    label: gear_type
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "Typography",
+          "label": "{zboRouteObject.label}",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_MainTab"
+      }
+    },
+    {
+      "type": "Bucket",
+      "options": {
+        "name": "OriginalDoc_Barcodesearch"
+      }
+    },
+    {
+      "type": "TabsLayout",
+      "elements": [
+        {
+          "type": "TabPage",
+          "label": "Barcode Search",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "OriginalDoc_Barcodesearch"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Home Original",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "OriginalDoc_Home"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Pending",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "OriginalDoc_Pending"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Warehouse Admin",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "OriginalDoc_Warehouse"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Storage",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "OriginalDoc_Storage"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "In progress",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "Bucket",
+              "options": {
+                "name": "OriginalDoc_InProgress"
+              }
+            }
+          ]
+        },
+        {
+          "type": "TabPage",
+          "label": "Search",
+          "options": {
+            "sx": {
+              "& .MuiGrid-direction-xs-column": {
+                "display": "block"
+              }
+            }
+          },
+          "elements": []
+        }
+      ]
+    }
+  ]
+}

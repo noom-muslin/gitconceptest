@@ -1,0 +1,318 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "1em",
+        "sx": {
+          "padding": "1em",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "HrefLayout",
+          "options": {
+            "href": "/originaldoc"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row",
+                "spacing": "1em",
+                "sx": {
+                  "padding": "0.5em 0"
+                }
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack",
+                  "options": {
+                    "sx": {
+                      "color": "#ffffff"
+                    }
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป",
+                  "options": {
+                    "variant": "body2-grey"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "Original Doc",
+                  "options": {
+                    "variant": "subtitle2"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type":"StackLayout",
+      "options": {
+        "component": "section",
+        "spacing": "1em",
+        "sx": {
+          "padding": "0 1em 1em"
+        }
+      },
+      "elements":[
+        {
+          "type":"StackLayout",
+          "options":{
+            "direction": "row",
+            "spacing": "1em",
+            "sx": {
+              "padding": "2em"
+            }
+          },
+          "elements":[
+            {
+              "type":"Typography",
+              "label":"Application No ",
+              "options": {
+                "variant": "label"
+              }
+            },
+            {
+              "type":"Typography",
+              "scope": "#/properties/application_number"
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "scope": "#/properties/originalDocList",
+              "type": "SchemedListView",
+              "label": {
+                "show": false
+              },                        
+              "options": {
+                "selectedIndexScope": "#/properties/selectedIndex",
+                "layoutOptions": {
+                  "spacing": "6px"
+                },
+                "cellUiSchema": {
+                  "type": "BoxLayout",
+                  "options": {
+                  },
+                  "elements": [
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "1em",
+                        "sx": {
+                          "padding": "2em"
+                        },
+                        "direction": "row"
+                      },
+                      "elements": [
+                        {
+                          "type": "Typography",
+                          "label":"ชื่อลูกค้า",
+                          "options": {
+                            "variant": "Label"
+                          }
+                        },
+                        {
+                          "type": "Typography",
+                          "scope": "#/properties/customerName",
+                          "options": {
+                            "variant": "Label"
+                          }
+                        },
+                        {
+                          "type": "Control",
+                          "scope": "#/properties/status",
+                          "label": "ได้รับเอกสารต้นฉบับ*",
+                          "options": {
+                            "format": "radio",
+                            "variant": "Label"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "UniversalArrayView",
+                      "scope": "#/properties/originalDocCheckList",
+                      "label": "เอกสารที่ไม่ได้รับ",
+                      "options": {
+                        "itemOperations": {
+                          "remove": true,
+                          "add": true
+                        },
+                        "cells":[
+                          {
+                            "type": "SelectField",
+                            "scope": "#/properties/addCheckListDoc",
+                            "label": "ประเภทเอกสาร",
+                            "options": {
+                              "enum": [
+                                {
+                                  "value": 1,
+                                  "label": "เอกสาร 1"
+                                },
+                                {
+                                  "value": 2,
+                                  "label": "เอกสาร 2"
+                                },
+                                {
+                                  "value": 3,
+                                  "label": "เอกสาร 3"
+                                },
+                                {
+                                  "value": 4,
+                                  "label": "เอกสาร 4"
+                                },
+                                {
+                                  "value": 5,
+                                  "label": "เอกสาร 5"
+                                }
+                              ],
+                              "autocomplete": false
+                            }
+                          },
+                          {
+                            "type": "TextField",
+                            "scope": "#/properties/reason",
+                            "label": "หมายเหตุ"
+                          }
+                        ]
+                      },
+                      "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/status",
+                          "schema": {
+                            "const": "Complete"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "StackLayout",
+                      "options": {
+                        "spacing": "1em",
+                        "sx": {
+                          "padding": "2em"
+                        },
+                        "direction": "row"
+                      },
+                      "rule": {
+                        "effect": "HIDE",
+                        "condition": {
+                          "scope": "#/properties/status",
+                          "schema": {
+                            "const": "Complete"
+                          }
+                        }
+                      },
+                      "elements": [
+                        {
+                          "type": "ActionButton",
+                          "label": "+ เพิ่มเอกสาร",
+                          "options": {
+                            "chain": [
+                              {
+                                "validationSchema": false,
+                                "operationType": "script",
+                                "converter": "addChecklistDocumnet",
+                                "resultMappingSchema": {
+                                  "type": "object",
+                                  "properties": {
+                                    "originalDocList":{      
+                                      "type": "array",
+                                      "items": {
+                                        "type":"object",
+                                        "properties":{
+                                          "seq":{
+                                            "type":"integer"
+                                          },
+                                          "customerName":{
+                                            "type":"string"
+                                          },
+                                          "status": {
+                                            "type": "string"
+                                          },
+                                          "originalDocCheckList":{
+                                            "type":"array",
+                                            "items":{
+                                              "type":"object",
+                                              "properties":{
+                                                "id":{
+                                                  "type":"string",
+                                                  "readonly": true
+                                                },
+                                                "addCheckListDoc":{
+                                                  "type":"string"
+                                                },
+                                                "reason":{
+                                                  "type":"string"
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }                    
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "StackLayout",
+          "options": {
+            "direction": "row",
+            "justifyContent": "flex-end",
+            "sx": {
+              "padding": "1em",
+              "backgroundColor": "white",
+              "bottom": 0,
+              "left": 0,
+              "right": 0
+            }
+          },
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label": "ส่งข้อมูล",
+              "options": {
+                "className": "primaryButton",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_OriginalDoc_Details_Submit",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+      
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "minWidth": "500px"
+    }
+  },
+  "elements": [
+    {
+      "type": "BoxLayout",
+      "options": {
+        "sx": {
+          "padding": "20px 24px"
+        }
+      },
+      "elements": [
+        {
+          "type": "GridLayout",
+          "options": {
+            "container": true
+          },
+          "elements": [
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 2,
+                "container": true,
+                "justifyContent": "center"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ErrorOutline",
+                  "options": {
+                    "sx": {
+                      "fontSize": "48px",
+                      "color": "#EF4444",
+                      "background": "#FEF2F2",
+                      "borderRadius": "24px"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "GridLayout",
+              "options": {
+                "xs": 10
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ไม่สามารถค้นหาข้อมูลได้",
+                  "options": {
+                    "variant": "h4"
+                  }
+                },
+                {
+                  "type": "Typography",
+                  "label": "กรุณาระบุเลขที่บัญชีสินเชื่อ เลขบัตรประชาชน/เลขทะเบียนการค้า/เลขที่พาสปอร์ต หรือชื่อลูกค้าเพื่อค้นหา",
+                  "options": {
+                    "sx": {
+                      "marginTop": "1em"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "StackLayout",
+      "options": {
+        "direction": "row",
+        "justifyContent": "flex-end",
+        "spacing": "2em",
+        "sx": {
+          "padding": "24px",
+          "paddingRight": "32px"
+        }
+      },
+      "elements": [
+        {
+          "type": "ActionButton",
+          "label": "OK",
+          "options": {
+            "className": "primaryButton",
+            "operationType": "modal",
+            "subtype": "cancel"
+          }
+        }
+      ]
+    }
+  ]
+}

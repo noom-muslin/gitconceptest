@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "properties": {
+    "selectedIndex": {
+      "type": "integer"
+    },
+    "add_check_list_doc_enum":{
+        "type": "array"
+    },
+    "id":{
+      "type":"string",
+      "readonly": true
+    },
+    "application_number":{
+      "type":"string",
+      "readonly": true
+    },
+    "statusId":{
+      "type":"string",
+      "readonly": true
+    },
+    "message": {
+      "type": "string"
+    },
+    "originalDocList":{      
+      "type": "array",
+      "items": {
+        "type":"object",
+        "properties":{
+          "seq":{
+            "type":"integer"
+          },
+          "customerName":{
+            "type":"string"
+          },
+          "status": {
+            "oneOf": [
+              {
+                "const": "Complete",
+                "title": "Complete"
+              },
+              {
+                "const": "Incomplete",
+                "title": "Incomplete"
+              }
+            ]
+          },
+          "originalDocCheckList":{
+            "type":"array",
+            "items":{
+              "type":"object",
+              "properties":{
+                "id":{
+                  "type":"string",
+                  "readonly": true
+                },
+                "addCheckListDoc":{
+                  "type":"integer"
+                },
+                "reason":{
+                  "type":"string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

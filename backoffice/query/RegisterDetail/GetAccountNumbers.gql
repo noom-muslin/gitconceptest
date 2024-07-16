@@ -1,0 +1,7 @@
+query MyQuery(
+    $account_number: String!
+    ) {
+  result: ngl_ats_cust_account(where: {base_account_name: {_eq: $account_number}}) {
+    base_account_num
+  }
+}

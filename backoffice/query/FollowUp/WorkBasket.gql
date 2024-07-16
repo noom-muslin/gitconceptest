@@ -1,0 +1,55 @@
+subscription FollowUpBasket(
+  $where: [ngl_appl_followup_bool_exp]
+  $order_by: [ngl_appl_followup_order_by!]
+  $limit: Int
+  $offset: Int
+  $stationName: String!
+) {
+  result: ngl_appl_followup(
+    where: {
+      from_task: { task_type: { station_code: { _eq: $stationName } } }
+      status: { _neq: "Cancel application" }
+      fu_updated: { _eq: false }
+      application: { application_system_type_id: { _eq: "Regular" } }
+      _and: $where
+    }
+    order_by: $order_by
+    limit: $limit
+    offset: $offset
+  ) {
+    id
+    application_id # Application No
+    status # status
+    receive_document_date_time # receive_document_date_time
+    date_fu_time # date_fu_time
+    internal # fu_type
+    no_of_followups # no_of_followups
+    fu_updated # fu_updated
+    from_task {
+      start_at
+      task_type {
+        station_code # request_station
+      }
+    }
+    destination_tasks(limit: 1, order_by: { create_date_time: desc_nulls_last }) {
+      task_type {
+        station_code
+      }
+    }
+    application {
+      primary_borrower {
+        borrower {
+          party {
+            full_name
+          }
+        }
+      }
+      application_class {
+        code
+      }
+      application_channel {
+        code
+      }
+    }
+  }
+}

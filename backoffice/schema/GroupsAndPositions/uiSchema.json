@@ -1,0 +1,371 @@
+{
+  "type": "BoxLayout",
+  "elements": [
+    {
+      "type": "StackLayout",
+      "options": {
+        "spacing": "16px",
+        "sx": {
+          "padding": "16px",
+          "backgroundColor": "primary.main"
+        }
+      },
+      "elements": [
+        {
+          "type": "PaperLayout",
+          "options": {
+            "variant": "breadcrumbs"
+          },
+          "elements": [
+            {
+              "type": "HrefLayout",
+              "options": {
+                "href": "/groups-and-positions"
+              },
+              "elements": [
+                {
+                  "type": "Icon",
+                  "label": "ArrowBack"
+                },
+                {
+                  "type": "Typography",
+                  "label": "กลับไป"
+                },
+                {
+                  "type": "Typography",
+                  "label": "Admin Panel"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Typography",
+          "label": "Groups and Positions",
+          "options": {
+            "variant": "h6White",
+            "sx": {
+              "padding": "4px 0"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "type": "StackLayout",
+      "options": {
+        "sx": {
+          "padding": "16px"
+        },
+        "spacing": "16px"
+      },
+      "elements": [
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "display": "flex",
+              "justifyContent": "space-between"
+            }
+          },
+          "elements": [
+            {
+              "type": "Typography",
+              "label": "Groups and Positions",
+              "options": {
+                "variant": "h6",
+                "sx": {
+                  "padding": "4px 0"
+                }
+              }
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "display": "flex",
+                  "gap": "16px",
+                  "justifyContent": "space-between"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label":  "ดาวน์โหลดผลการค้นหา",
+                  "options": {
+                    "validationSchema": false,
+                    "variant": "secondary",
+                    "chain": [
+                      {
+                        "operationType": "modal",
+                        "dialogName": "m_Position_Export",
+                        "subtype": "show"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label":  "+ เพิ่มข้อมูล",
+                  "options": {
+                    "operationType": "open",
+                    "route": "/groups-and-positions-add"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "PaperLayout",
+          "options": {
+            "component": "section",
+            "variant": "section"
+          },
+          "elements": [
+            {
+              "type": "StackLayout",
+              "options": {
+                "direction": "row"
+              },
+              "elements": [
+                {
+                  "type": "Typography",
+                  "label": "ค้นหา"
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "display": "flex",
+                  "gap": "20px",
+                  "padding": "16px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "TextField",
+                  "label": "รหัสตำแหน่ง",
+                  "scope": "#/properties/search/properties/groupsPositionCode",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                },
+                {
+                  "type": "TextField",
+                  "label": "ชื่อตำแหน่ง",
+                  "scope": "#/properties/search/properties/groupsPositionName",
+                  "options": {
+                    "fullwidth": true,
+                    "variant": "outlined"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BoxLayout",
+              "options": {
+                "sx": {
+                  "display": "flex",
+                  "justifyContent": "space-between",
+                  "gap": "16px",
+                  "padding": "16px",
+                  "paddingTop": "0px"
+                }
+              },
+              "elements": [
+                {
+                  "type": "ActionButton",
+                  "label":  "ล้างค่า",
+                  "options": {
+                    "operationType": "script",
+                    "converter": "clear_position_management_search_criteria",
+                    "resultMappingSchema": {
+                      "type": "object",
+                      "properties": {
+                        "search": {
+                          "type": "object",
+                          "properties": {
+                            "groupsPositionCode": {
+                              "type": "string"
+                            },
+                            "groupsPositionName": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "workbasket_grid": {
+                          "type": "object",
+                          "properties": {
+                            "filters": {
+                              "type": "array"
+                            },
+                            "pagination": {
+                              "type": "object",
+                              "properties": {
+                                "pageIndex": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "variant": "secondaryError",
+                    "validationSchema": false
+                  }
+                },
+                {
+                  "type": "ActionButton",
+                  "label":  "ค้นหา",
+                  "options": {
+                    "validationSchema": false,
+                    "chain": [
+                      {
+                        "operationType": "script",
+                        "converter": "check_groups_and_positions_search_criteria",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "canSubmit": {
+                              "type": "boolean",
+                              "dataPath": "canSubmit"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "type": "object",
+                          "required": [
+                            "payload"
+                          ],
+                          "properties": {
+                            "payload": {
+                              "type": "object",
+                              "required": [
+                                "data"
+                              ],
+                              "properties": {
+                                "data": {
+                                  "required": [
+                                    "canSubmit"
+                                  ],
+                                  "type": "object",
+                                  "properties": {
+                                    "canSubmit": {
+                                      "type": "boolean",
+                                      "const": true
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "operationType": "script",
+                        "converter": "work_basket_filter",
+                        "resultMappingSchema": {
+                          "type": "object",
+                          "properties": {
+                            "workbasket_grid": {
+                              "type": "object",
+                              "properties": {
+                                "filters": {
+                                  "type": "array"
+                                },
+                                "pagination": {
+                                  "type": "object",
+                                  "properties": {
+                                    "pageIndex": {
+                                      "type": "number"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "if": {
+                          "else": true
+                        },
+                        "operationType": "modal",
+                        "dialogName": "m_Basic_Error",
+                        "subtype": "show",
+                        "dialogVariables": {
+                          "title": "ไม่สามารถค้นหาได้",
+                          "text": "กรุณาระบุข้อมูลอย่างน้อย 1 รายการเพื่อค้นหา"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "options": {
+            "sx": {
+              "marginTop": "0px !important",
+              "background": "secondary.main"
+            }
+          },
+          "elements": [
+            {
+              "type": "Datagrid",
+              "scope": "#/properties/workbasket_grid",
+              "options": {
+                "grid": "GroupsAndPositions/WorkList",
+                "multiselectActions": [
+                  {
+                    "label": "Add Multiple Comments",
+                    "icon": "k-i-comment",
+                    "options": {
+                      "operationType": "modal",
+                      "subtype": "show",
+                      "dialogName": "EditOrderNote",
+                      "multiselect": true
+                    }
+                  }
+                ],
+                "dataContext": {
+                  "query": "GroupsAndPositions/Search"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "BoxLayout",
+          "elements": [
+            {
+              "type": "ActionButton",
+              "label":  "เพิ่มข้อมูล",
+              "options": {
+                "validationSchema": false,
+                "variant": "secondaryError",
+                "chain": [
+                  {
+                    "operationType": "modal",
+                    "dialogName": "m_GroupsAndPositions_Delete",
+                    "subtype": "show"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "object",
+      "properties": {
+        "application_status": {
+          "type": "string"
+        },
+        "application_number": {
+          "type": "string"
+        },
+        "account_number": {
+          "type": "string"
+        },
+        "warehouse_box_no": {
+          "type": "string"
+        },
+        "Application_in_datetime": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          }
+        },
+        "customer_firstname": {
+          "type": "string"
+        },
+        "customer_lastname": {
+          "type": "string"
+        },
+        "guarantor_firstname": {
+          "type": "string"
+        },
+        "guarantor_lastname": {
+          "type": "string"
+        },
+        "from_Station": {
+          "type": "string"
+        },
+        "follow_Up_Status": {
+          "type": "string"
+        },
+        "number_of_Time_Follow_Up": {
+          "type": "string"
+        }
+      }
+    },
+    "application_class_enum": {
+      "type": "array"
+    },
+    "workbasket_grid": {
+      "type": "object",
+      "filters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "logic": {
+              "type": "string"
+            },
+            "filters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "operator": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "sorting": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "dir": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer"
+          },
+          "pageSize": {
+            "type": "integer"
+          }
+        }
+      },
+      "selection": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "boolean"
+        }
+      }
+    },
+    "accountNumberToSearch": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "applicationSearchResult": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "integer",
+            "readonly": true
+          },
+          "accountNumber": {
+            "type": "string",
+            "readonly": true
+          },
+          "applicationId": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerNameList": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerName": {
+            "type": "array",
+            "readonly": true
+          },
+          "applicationStatus": {
+            "type": "string",
+            "readonly": true
+          },
+          "applicationGroup": {
+            "type": "string",
+            "readonly": true
+          },
+          "originalDocType": {
+            "type": "string",
+            "readonly": true
+          },
+          "accountSettlementDate": {
+            "type": "string",
+            "readonly": true
+          },
+          "dateInWarehouse": {
+            "type": "string",
+            "readonly": true
+          },
+          "noOfGuarantee": {
+            "type": "integer",
+            "readonly": true
+          }
+        }
+      }
+    },
+    "applicationToSearch": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "SubsrithaiSearchResult": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "no": {
+            "type": "integer",
+            "readonly": true
+          },
+          "accountNumber": {
+            "type": "array",
+            "readonly": true
+          },
+          "accountNumberList": {
+            "type": "string",
+            "readonly": true
+          },
+          "applicationId": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerNameList": {
+            "type": "string",
+            "readonly": true
+          },
+          "customerName": {
+            "type": "array",
+            "readonly": true
+          },
+          "applicationStatus": {
+            "type": "string",
+            "readonly": true
+          },
+          "applicationGroup": {
+            "type": "string",
+            "readonly": true
+          },
+          "originalDocType": {
+            "type": "string",
+            "readonly": true
+          },
+          "accountSettlementDate": {
+            "type": "string",
+            "readonly": true
+          },
+          "dateInWarehouse": {
+            "type": "string",
+            "readonly": true
+          },
+          "noOfGuarantee": {
+            "type": "integer",
+            "readonly": true
+          }
+        }
+      }
+    }
+  }
+}

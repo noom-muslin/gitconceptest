@@ -1,0 +1,199 @@
+{
+  "type": "BoxLayout",
+  "options": {
+    "sx": {
+      "minHeight": "100vh",
+      "display": "flex",
+      "flexDirection": "column"
+    }
+  },
+  "elements": [
+    {
+      "type": "AppBar",
+      "options": {
+        "features": {
+          "burger": false,
+          "logo": "/api2/assets/img/logo-with-title-scb.svg",
+          "title": ""
+        },
+        "systemMenu": {
+          "button": {
+            "icon": "Person2Outlined",
+            "variant": "violetBlur"
+          },
+          "features": {
+            "userName": false
+          }
+        },
+        "sx": {
+          "boxShadow": 0
+        }
+      },
+      "elements": [
+        {
+          "type": "StackLayout",
+          "options": {
+            "alignItems": "flex-end",
+            "sx": {
+              "& .MuiOutlinedInput-root": {
+                "minWidth": "250px",
+                "color": "secondary.light",
+                "background": "#704aaa",
+                "height": "36px",
+                "fontSize": "0.875rem",
+                "transition": "all cubic-bezier(0.4, 0, 0.2, 1) 0.3s",
+                "&:hover": {
+                  "background": "#7a51b9"
+                }
+              },
+              "& .MuiSelect-icon": {
+                "color": "secondary.light"
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                "border": 0
+              },
+              "& .Mui-focused fieldset.MuiOutlinedInput-notchedOutline": {
+                "borderColor": "primary.dark"
+              }
+            }
+          },
+          "elements": [
+            {
+              "type": "ExternalComponent",
+              "scope": "#",
+              "options": {
+                "externalComponentName": "role-selector",
+                "externalComponentScope": "remote1",
+                "externalComponentModule": "./RolesSelector",
+                "mapping": {
+                  "Indexing": {
+                    "label": "Indexing",
+                    "link": "/indexing"
+                  },
+                  "IndexingTC": {
+                    "label": "Indexing Time To Cash",
+                    "link": "/indexing-tc"
+                  },
+                  "IndexingCC": {
+                    "label": "Indexing CC",
+                    "link": "/indexing-cc"
+                  },
+                  "TempIndexing": {
+                    "label": "Temp Indexing",
+                    "link": "/temp-indexing"
+                  },
+                  "CSENT": {
+                    "label": "CSENT",
+                    "link": "/csent"
+                  },
+                  "Register": {
+                    "label": "Register",
+                    "link": "/register"
+                  },
+                  "NCB": {
+                    "label": "NCB",
+                    "link": "/ncb"
+                  },
+                  "InputFOS": {
+                    "label": "Input FOS",
+                    "link": "/inputFOS"
+                  },
+                  "MFProfile": {
+                    "label": "MF Profile",
+                    "link": "/mf-profile"
+                  },
+                  "FraudCheck": {
+                    "label": "Fraud Check",
+                    "link": "/fraud-check"
+                  },
+                  "CheckList": {
+                    "label": "CheckList",
+                    "link": "/check-list"
+                  },
+                  "SalesBuddy": {
+                    "label": "Sales Buddy",
+                    "link": "/sales-buddy"
+                  },
+                  "QCUser": {
+                    "label": "QC User",
+                    "link": "/qc-user"
+                  },
+                  "QCTM": {
+                    "label": "QC TM",
+                    "link": "/qc-tm"
+                  },
+                  "QCAM": {
+                    "label": "QC AM",
+                    "link": "/qc-am"
+                  },
+                  "QCHS": {
+                    "label": "QC HS",
+                    "link": "/qc-hs"
+                  },
+                  "CollateralAppraisal": {
+                    "label": "Collateral Appraisal",
+                    "link": "/collateral-appraisal"
+                  },
+                  "FOS": {
+                    "label": "FOS",
+                    "link": "/fos"
+                  },
+                  "OriginalDoc": {
+                    "label": "Original Doc",
+                    "link": "/originaldoc"
+                  },
+                  "Admin NLEADS Positions": {
+                    "label": "Admin NLEADS Positions",
+                    "link": "/position-management"
+                  },
+                  "Admin NLEADS Roles": {
+                    "label": "Admin NLEADS Roles",
+                    "link": "/groups-and-positions"
+                  },
+                  "FullFillMaker": {
+                    "label": "Full Fill Maker",
+                    "link": "/full-fill"
+                  },
+                  "FullFillChecker": {
+                    "label": "Full Fill Checker",
+                    "link": "/full-fill"
+                  },
+                  "CallVerify":{
+                    "label": "CallVerify",
+                    "link": "/callverify"
+                  },
+                  "RCVerifyHR":{
+                    "label": "RCVerifyHR",
+                    "link": "/rcverify"
+                  },
+                  "RCWebVerify":{
+                    "label": "RCWebVerify",
+                    "link": "/webverify"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BoxLayout",
+      "options": {
+        "component": "main",
+        "sx": {
+          "flex": 1,
+          "backgroundColor": "secondary.light"
+        }
+      },
+      "elements": [
+        {
+          "type": "Bucket",
+          "options": {
+            "name": "content"
+          }
+        }
+      ]
+    }
+  ]
+}
