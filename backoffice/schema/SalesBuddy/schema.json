@@ -1,6 +1,7 @@
 branch-5
 {
   "type": "object",
+  hotfix/sit-1
   "properties": {
     "search": {
       "type": "object",
